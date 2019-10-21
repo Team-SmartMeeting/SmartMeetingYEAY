@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Toolbar;
 
 import com.example.smartmeeting.meetings.MeetingDTO;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -23,6 +25,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private FirebaseAuth firebaseAuth;
+    private ProgressDialog progressDialog;
     private Toolbar toolbar;
     Menu menu;
 
@@ -33,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ListView listView = findViewById(R.id.list);
+
+        //Firebase
+
+        //progresbar
+        progressDialog = new ProgressDialog(this);
+
+
+
 
 
 

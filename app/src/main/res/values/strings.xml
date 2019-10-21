@@ -1,5 +1,12 @@
 <resources>
 
+    //Ting ting missinglogin box
+    <string name="meesinglogin_login">Login</string>
+    <string name="meesinglogin_signup">Sign up</string>
+    <string name="meesinglogin_createmeeting">Create meeting</string>
+    <string name="meesinglogin_lookupmeeting">Look up meeting with ID</string>
+    <string name="meesinglogin_text">Uden at være logget kan du følgende: </string>
+
     //navne til toolbaren:
     <string name="app_name">SmartMeeting</string>
     <string name="create_meeting">Create meeting</string>

@@ -20,6 +20,7 @@ public class MeetingDTO implements IMeetingDTO {
     private  LocalTime time;
     private int durationInMin;
     private boolean prioritizeTopic;
+    // Mangler en AGENDA lige her som også skal til høre mødet
 
 
     /*
