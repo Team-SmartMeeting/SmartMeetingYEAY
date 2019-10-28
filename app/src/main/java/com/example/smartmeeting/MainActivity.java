@@ -64,6 +64,12 @@ public class MainActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.GONE);
                             if (task.isSuccessful()) {
                                 //SKAL LOGGE IND HER OG GEMME BRUGERE I SHARED PREFFERANCES.
+                                Intent in = new Intent(getApplicationContext(), MeetingOverview.class);
+                                startActivity(in);
+                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+
+
                             } else {
                                 Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }
