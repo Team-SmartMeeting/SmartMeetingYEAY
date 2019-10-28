@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText txtPassword = findViewById(R.id.text_password);
         final ProgressBar progressBar = findViewById(R.id.progressBar);
         TextView registerText = findViewById(R.id.text_view_register);
+        TextView forgotPassword = findViewById(R.id.text_view_forget_password);
 
         progressBar.setVisibility(View.GONE);
 
@@ -87,6 +88,18 @@ public class MainActivity extends AppCompatActivity {
                 Intent in = new Intent(getApplicationContext(), Register.class);
                 startActivity(in);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+        //Forgot password teksten som clickable tekst....
+        forgotPassword.setClickable(true);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getApplicationContext(), ForgotPassword.class);
+                startActivity(in);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         });
 

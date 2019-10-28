@@ -66,6 +66,16 @@ public class Register extends AppCompatActivity {
             }
         });
 
+        //TEKSTEN
+        registerText.setClickable(true);
+        registerText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
     }
 
     @Override
