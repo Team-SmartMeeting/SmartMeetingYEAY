@@ -1,39 +1,31 @@
 package com.example.smartmeeting;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-
-public class MainActivity extends AppCompatActivity {
+public class Register extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
 
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_register);
 
         //Firebase
         firebaseAuth = FirebaseAuth.getInstance();
@@ -41,31 +33,32 @@ public class MainActivity extends AppCompatActivity {
         //progresbar
         progressDialog = new ProgressDialog(this);
 
+
         //Finder alle objekterne i XML filen.
-        Button btnLogin = findViewById(R.id.btn_login);
+        Button btnSignup = findViewById(R.id.btn_signup);
         final EditText txtEmail = findViewById(R.id.text_email);
         final EditText txtPassword = findViewById(R.id.text_password);
         final ProgressBar progressBar = findViewById(R.id.progressBar);
-        TextView registerText = findViewById(R.id.text_view_register);
+        TextView registerText = findViewById(R.id.text_view_login);
 
         progressBar.setVisibility(View.GONE);
 
-
-
-        //Login knappen
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        //sign up knappen
+        btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!txtEmail.getText().toString().equals("") && !txtPassword.getText().toString().equals("") ) {
                     progressBar.setVisibility(View.VISIBLE);
-                    firebaseAuth.signInWithEmailAndPassword(txtEmail.getText().toString(), txtPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    firebaseAuth.createUserWithEmailAndPassword(txtEmail.getText().toString(), txtPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             progressBar.setVisibility(View.GONE);
+
                             if (task.isSuccessful()) {
-                                //SKAL LOGGE IND HER OG GEMME BRUGERE I SHARED PREFFERANCES.
+                                finish();
+
                             } else {
-                                Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(Register.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
                     });
@@ -73,24 +66,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Registrere teksten som clickable tekst... (HAR ADDED android:clickable="true")
-        registerText.setClickable(true);
-        registerText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(), Register.class);
-                startActivity(in);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
-        });
-
-
-
-
     }
 
-
-
-
-
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
 }

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "308706174974-6jpmoo01mur4tijj6i27jsadq41tm251.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smartmeeting",
+            "certificate_hash": "4e060521e1e5ab9eecd175810aaef01aecb7fa59"
+          }
+        },
+        {
           "client_id": "308706174974-0v1mvv2rrcrg348umevqu9b5ks5cc0tc.apps.googleusercontent.com",
           "client_type": 3
         }
