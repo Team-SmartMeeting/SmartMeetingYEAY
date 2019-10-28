@@ -34,19 +34,21 @@ public class ForgotPassword extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
-                firebaseAuth.sendPasswordResetEmail(email.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        progressBar.setVisibility(View.GONE);
-                        if (task.isSuccessful()){
-                            Toast.makeText(ForgotPassword.this, "Password recovery mail is send to your email.", Toast.LENGTH_LONG).show();
-                        } else {
-                            Toast.makeText(ForgotPassword.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                        }
+                if (email.length() > 0) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    firebaseAuth.sendPasswordResetEmail(email.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            progressBar.setVisibility(View.GONE);
+                            if (task.isSuccessful()) {
+                                Toast.makeText(ForgotPassword.this, "Password recovery mail is send to your email.", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(ForgotPassword.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            }
 
-                    }
-                });
+                        }
+                    });
+                }
             }
         });
 
