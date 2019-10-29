@@ -38,6 +38,7 @@ public class Register extends AppCompatActivity {
         Button btnSignup = findViewById(R.id.btn_signup);
         final EditText txtEmail = findViewById(R.id.text_email);
         final EditText txtPassword = findViewById(R.id.text_password);
+        final EditText txtPassword2 = findViewById(R.id.text_password_re);
         final ProgressBar progressBar = findViewById(R.id.progressBar);
         TextView registerText = findViewById(R.id.text_view_login);
 
@@ -47,21 +48,30 @@ public class Register extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //kontroller at password og bruger navn IKKE er tomme
                 if (!txtEmail.getText().toString().equals("") && !txtPassword.getText().toString().equals("") ) {
-                    progressBar.setVisibility(View.VISIBLE);
-                    firebaseAuth.createUserWithEmailAndPassword(txtEmail.getText().toString(), txtPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            progressBar.setVisibility(View.GONE);
 
-                            if (task.isSuccessful()) {
-                                finish();
+                    //Kontroller at de 2 password felter er det samme.
+                    if (txtPassword.getText().toString().equals(txtPassword2.getText().toString())) {
+                        progressBar.setVisibility(View.VISIBLE);
+                        firebaseAuth.createUserWithEmailAndPassword(txtEmail.getText().toString(), txtPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                progressBar.setVisibility(View.GONE);
 
-                            } else {
-                                Toast.makeText(Register.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                if (task.isSuccessful()) {
+                                    finish();
+
+                                } else {
+                                    Toast.makeText(Register.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
+                    // Hvis passwordene er forskellige, printer en fejl message ude
+                    else {
+                        Toast.makeText(Register.this, "Passwordet matchede ikke med det i re enter password",Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });

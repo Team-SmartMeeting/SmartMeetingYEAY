@@ -77,6 +77,23 @@
                     android:inputType="textPassword"
                     android:singleLine="true" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:labelFor="@id/text_password"
+                    android:text="Re enter password" />
+
+                <EditText
+                    android:id="@+id/text_password_re"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:drawablePadding="10dp"
+                    android:hint="Repeat password"
+                    android:inputType="textPassword"
+                    android:singleLine="true" />
+
 
                 <Button
                     android:id="@+id/btn_signup"
