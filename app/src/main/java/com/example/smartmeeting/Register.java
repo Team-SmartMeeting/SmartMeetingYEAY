@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +25,10 @@ public class Register extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
 
+    //Share preferances:
+    private SharedPreferences mPreferences;
+    private SharedPreferences.Editor mEditor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,10 @@ public class Register extends AppCompatActivity {
 
         //progresbar
         progressDialog = new ProgressDialog(this);
+
+        //Sætter mine shared preferences op
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mPreferences.edit();
 
 
         //Finder alle objekterne i XML filen.
@@ -64,6 +74,8 @@ public class Register extends AppCompatActivity {
                                     firebaseAuth.signInWithEmailAndPassword(txtEmail.getText().toString(), txtPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
+                                            mEditor.putString("newUser","0");
+                                            mEditor.commit();
                                             finish();
                                             Intent in = new Intent(getApplicationContext(), MeetingOverview.class);
                                             startActivity(in);
