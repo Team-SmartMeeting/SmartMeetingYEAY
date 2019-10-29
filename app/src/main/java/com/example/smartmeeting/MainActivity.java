@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -50,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
         TextView forgotPassword = findViewById(R.id.text_view_forget_password);
 
         progressBar.setVisibility(View.GONE);
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (firebaseUser != null) {
+            Intent in = new Intent(getApplicationContext(), MeetingOverview.class);
+            startActivity(in);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        }
 
 
 
