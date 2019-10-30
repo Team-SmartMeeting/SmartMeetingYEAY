@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
@@ -51,6 +53,8 @@ public class Register extends AppCompatActivity {
         final EditText txtPassword = findViewById(R.id.text_password);
         final EditText txtPassword2 = findViewById(R.id.text_password_re);
         final ProgressBar progressBar = findViewById(R.id.progressBar);
+        final EditText txtName = findViewById(R.id.text_name);
+        final EditText txtPhoneNumer = findViewById(R.id.text_phonenumber);
         TextView registerText = findViewById(R.id.text_view_login);
 
         progressBar.setVisibility(View.GONE);
@@ -71,12 +75,25 @@ public class Register extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
 
                                 if (task.isSuccessful()) {
+
+                                    //Går i databasen og ligger telefon nummer og navn ind.
+                                    final User user = new User(txtName.getText().toString(), txtEmail.getText().toString(), txtPhoneNumer.getText().toString());
+
+                                    //Logger ind!
                                     firebaseAuth.signInWithEmailAndPassword(txtEmail.getText().toString(), txtPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
+                                            //Opdatere share pref så telefonen ved der er oprettet en bruger for enheden.
                                             mEditor.putString("newUser","0");
                                             mEditor.commit();
                                             finish();
+
+                                            //indsætter den bruger man har lavet til databasen
+                                            FirebaseDatabase.getInstance().getReference("Users")
+                                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                    .setValue(user);
+
+
                                             Intent in = new Intent(getApplicationContext(), MeetingOverview.class);
                                             startActivity(in);
                                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
