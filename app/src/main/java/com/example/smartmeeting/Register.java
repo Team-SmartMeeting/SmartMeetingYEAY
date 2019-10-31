@@ -72,7 +72,6 @@ public class Register extends AppCompatActivity {
                         firebaseAuth.createUserWithEmailAndPassword(txtEmail.getText().toString(), txtPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
 
                                 if (task.isSuccessful()) {
 
@@ -83,6 +82,8 @@ public class Register extends AppCompatActivity {
                                     firebaseAuth.signInWithEmailAndPassword(txtEmail.getText().toString(), txtPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                         @Override
                                         public void onComplete(@NonNull Task<AuthResult> task) {
+                                            //Fjerne progressbaren igen
+                                            progressBar.setVisibility(View.GONE);
                                             //Opdatere share pref så telefonen ved der er oprettet en bruger for enheden.
                                             mEditor.putString("newUser","0");
                                             mEditor.commit();
