@@ -54,7 +54,7 @@ public class Register extends AppCompatActivity {
         final EditText txtPassword2 = findViewById(R.id.text_password_re);
         final ProgressBar progressBar = findViewById(R.id.progressBar);
         final EditText txtName = findViewById(R.id.text_name);
-        final EditText txtPhoneNumer = findViewById(R.id.text_phonenumber);
+        final EditText txtPhoneNumber = findViewById(R.id.text_phonenumber);
         TextView registerText = findViewById(R.id.text_view_login);
 
         progressBar.setVisibility(View.GONE);
@@ -77,7 +77,7 @@ public class Register extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     //Går i databasen og ligger telefon nummer og navn ind.
-                                    final User user = new User(txtName.getText().toString(), txtEmail.getText().toString(), txtPhoneNumer.getText().toString());
+                                    final User user = new User(txtName.getText().toString(), txtEmail.getText().toString(), txtPhoneNumber.getText().toString());
 
                                     //Logger ind!
                                     firebaseAuth.signInWithEmailAndPassword(txtEmail.getText().toString(), txtPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -111,7 +111,7 @@ public class Register extends AppCompatActivity {
                     }
                     // Hvis passwordene er forskellige, printer en fejl message ude
                     else {
-                        Toast.makeText(Register.this, "Passwordet matchede ikke med det i re enter password",Toast.LENGTH_LONG).show();
+                        Toast.makeText(Register.this, "Passwords did not match.",Toast.LENGTH_LONG).show();
                     }
                 }
             }
