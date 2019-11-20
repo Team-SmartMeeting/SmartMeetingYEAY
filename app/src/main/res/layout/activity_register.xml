@@ -64,7 +64,7 @@
                     android:drawableLeft="@drawable/ic_email"
                     android:drawablePadding="10dp"
                     android:hint="Full name"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
                     android:singleLine="true" />
 
                 <TextView
@@ -100,7 +100,7 @@
                     android:drawableLeft="@drawable/ic_email"
                     android:drawablePadding="10dp"
                     android:hint="+45 3156 8872"
-                    android:inputType="textEmailAddress"
+                    android:inputType="phone"
                     android:singleLine="true" />
 
                 <TextView
