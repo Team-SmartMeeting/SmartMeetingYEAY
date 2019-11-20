@@ -2,6 +2,7 @@ package com.example.smartmeeting;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -34,7 +35,7 @@ public class add_contact extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int amountOfContact = mPreferences.getInt("nr_of_contact", 0);
+                int amountOfContact = mPreferences.getInt("nrofcontact", 0);
 
                 String name = tv_name.getText().toString();
                 String email = tv_email.getText().toString();
@@ -42,10 +43,13 @@ public class add_contact extends AppCompatActivity {
 
                 if (name != null && email.contains("@") && email.contains(".") && phoneNumber != null ){
 
-                    String contact_String = name + "|" + email + "|" + phoneNumber;
+                    String contact_String = name + "     " + email + "     " + phoneNumber;
+                    String nr = Integer.toString(amountOfContact);
 
-                    mEditor.putString(Integer.toString(amountOfContact), contact_String);
-                    mEditor.putInt("nr_of_contact", (amountOfContact+1));
+                    mEditor.putString(nr, contact_String);
+                    mEditor.commit();
+                    amountOfContact++;
+                    mEditor.putInt("nrofcontact", (amountOfContact));
                     mEditor.commit();
                     Toast.makeText(add_contact.this, "User saved",Toast.LENGTH_LONG).show();
                 }

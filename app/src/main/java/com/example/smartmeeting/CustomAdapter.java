@@ -47,7 +47,7 @@ public class CustomAdapter extends BaseAdapter {
         if(row == null){
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            row = inflater.inflate(R.layout.listview_contact_template , null);
+            row = inflater.inflate(R.layout.listview_contact_template, null);
         }
 
         TextView head = (TextView) row.findViewById(R.id.item_name);
