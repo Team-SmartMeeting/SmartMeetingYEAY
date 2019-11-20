@@ -43,7 +43,7 @@ public class add_contact extends AppCompatActivity {
 
                 if (name != null && email.contains("@") && email.contains(".") && phoneNumber != null ){
 
-                    String contact_String = name + "     " + email + "     " + phoneNumber;
+                    String contact_String = name + "     " + email + "     " + phoneNumber + "     " + Integer.toString(amountOfContact);
                     String nr = Integer.toString(amountOfContact);
 
                     mEditor.putString(nr, contact_String);
@@ -52,6 +52,8 @@ public class add_contact extends AppCompatActivity {
                     mEditor.putInt("nrofcontact", (amountOfContact));
                     mEditor.commit();
                     Toast.makeText(add_contact.this, "User saved",Toast.LENGTH_LONG).show();
+
+                    finish();
                 }
             }
         });
@@ -59,4 +61,5 @@ public class add_contact extends AppCompatActivity {
 
 
     }
+
 }

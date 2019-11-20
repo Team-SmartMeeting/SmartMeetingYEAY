@@ -7,9 +7,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,17 +40,9 @@ public class ContactList extends AppCompatActivity {
 
         checkSharedPreferences();
 
-
-        for (int i = 0; i < kontakter.size(); i++){
-            kontakt_names.add(kontakter.get(i).getName());
-        }
-
-
-        ListView listView = findViewById(R.id.listview_Contacts);
-
-        listView.setAdapter(new CustomAdapter(ContactList.this,kontakt_names));
-
+        //TEST MIDTER KNAPPEN TIL AT ADDED NYE KONTAKTER
         Button btn = findViewById(R.id.btn_new_meeting);
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,16 +53,20 @@ public class ContactList extends AppCompatActivity {
         });
 
 
+
     }
 
     private void checkSharedPreferences() {
+        kontakter.clear();
+        kontakt_names.clear();
+
         int amountOfContact = mPreferences.getInt("nrofcontact", 0);
 
         for (int i = 0; i < amountOfContact; i++) {
             String mKontakt = mPreferences.getString(Integer.toString(i), null);
             if (mKontakt != null) {
-                String[] kontaktString = mKontakt.split("     ", 3);
-                ContactElement nyKontakt = new ContactElement(kontaktString[0], kontaktString[1], kontaktString[2]);
+                String[] kontaktString = mKontakt.split("     ", 4);
+                ContactElement nyKontakt = new ContactElement(kontaktString[0], kontaktString[1], kontaktString[2], kontaktString[3]);
                 kontakter.add(nyKontakt);
             }
         }
@@ -80,11 +79,27 @@ public class ContactList extends AppCompatActivity {
             }
         });
 
+        for (int i = 0; i < kontakter.size(); i++){
+            kontakt_names.add(kontakter.get(i).getName());
+        }
+
+        //Listview bliver initialiseret, får en adapter (custom) og får clickable. Her efter bliver knap funktionen lave.
+        ListView listView = findViewById(R.id.listview_Contacts);
+        listView.setAdapter(new CustomAdapter(ContactList.this,kontakt_names));
+        listView.setClickable(true);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(ContactList.this, kontakter.get(position).getNr(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         checkSharedPreferences();
     }
 }

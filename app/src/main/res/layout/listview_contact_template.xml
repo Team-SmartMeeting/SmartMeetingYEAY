@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="wrap_content"
+    >
 
 
 
 
         <TextView
-                android:id="@+id/item_name"
-                android:layout_width="match_parent"
-                android:layout_height="34dp"
-                android:text="Name"
-                android:background="@drawable/transparent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textSize="28sp"/>
+            android:id="@+id/item_name"
+            android:background="@drawable/transparent"
+            android:layout_width="match_parent"
+            android:paddingLeft="15dp"
+            android:layout_height="34dp"
+            android:text="Name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/item_email"
+            android:background="@drawable/transparent"
+            android:layout_width="match_parent"
+            android:paddingLeft="15dp"
+            android:layout_height="24dp"
+            android:text="Email"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18sp"/>
 
 
 

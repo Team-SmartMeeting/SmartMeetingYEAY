@@ -5,11 +5,13 @@ public class ContactElement {
     private String name;
     private String email;
     private String nr;
+    private String id;
 
-    public ContactElement(String name, String email, String nr){
+    public ContactElement(String name, String email, String nr, String id){
         this.name = name;
         this.email = email;
         this.nr = nr;
+        this.id = id;
     }
 
 
