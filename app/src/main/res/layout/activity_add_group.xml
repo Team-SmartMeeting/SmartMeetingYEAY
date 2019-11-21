@@ -11,13 +11,11 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity=""
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.18">
+        app:layout_constraintTop_toTopOf="parent">
 
         <Space
             android:layout_width="0dp"
@@ -34,7 +32,7 @@
             android:text="Group Name" />
 
         <EditText
-            android:id="@+id/create_group_name_et"
+            android:id="@+id/create_group_name_ed"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginLeft="20dp"
@@ -51,11 +49,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:fontFamily="sans-serif-light"
-            android:labelFor="@id/create_meeting_name_ed"
+            android:labelFor="@id/create_group_name_ed2"
             android:text="Add Users to Group" />
 
         <EditText
-            android:id="@+id/create_group_name_et2"
+            android:id="@+id/create_group_name_ed2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -93,10 +91,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Create Group"
+        android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.00999999" />
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
 
 
