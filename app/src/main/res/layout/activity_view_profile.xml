@@ -86,7 +86,25 @@
             android:padding="5dp"
             android:text="SmartMeeting@Gmail.com" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:labelFor="@id/company"
+            android:layout_marginLeft="20dp"
+            android:text="Company" />
 
+
+        <TextView
+            android:id="@+id/company"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@drawable/edit_text_field"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:padding="5dp"
+            android:text="Company Name" />
 
 
         <TextView
@@ -190,7 +208,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_add_contact"
+        android:id="@+id/btn_edit_profile"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="40dp"
