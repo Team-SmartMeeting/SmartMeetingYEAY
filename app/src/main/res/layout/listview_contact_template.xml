@@ -18,16 +18,33 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textSize="28sp"/>
 
-        <TextView
-            android:id="@+id/item_email"
-            android:background="@drawable/transparent"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:paddingLeft="15dp"
-            android:layout_height="24dp"
-            android:text="Email"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-            android:textSize="18sp"/>
+            android:layout_height="wrap_content"
+            >
+                <TextView
+                    android:id="@+id/item_email"
+                    android:background="@drawable/transparent"
+                    android:layout_width="200dp"
+                    android:drawableLeft="@drawable/ic_email"
+                    android:paddingLeft="15dp"
+                    android:layout_height="24dp"
+                    android:text="Email"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="18sp"/>
 
+                <TextView
+                    android:id="@+id/item_phone"
+                    android:background="@drawable/transparent"
+                    android:layout_width="200dp"
+                    android:drawableLeft="@drawable/ic_phone"
+                    android:paddingLeft="15dp"
+                    android:layout_height="24dp"
+                    android:text="phone"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textSize="18sp"/>
 
+        </LinearLayout>
 
 </LinearLayout>
