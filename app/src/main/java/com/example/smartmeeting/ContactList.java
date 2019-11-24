@@ -24,6 +24,8 @@ public class ContactList extends AppCompatActivity {
 
     private ArrayList<ContactElement> kontakter = new ArrayList<>();
     ArrayList<String> kontakt_names = new ArrayList<>();
+    ArrayList<String> kontakt_phone = new ArrayList<>();
+    ArrayList<String> kontakt_email = new ArrayList<>();
 
 
 
@@ -112,11 +114,14 @@ public class ContactList extends AppCompatActivity {
 
         for (int i = 0; i < kontakter.size(); i++){
             kontakt_names.add(kontakter.get(i).getName());
+            kontakt_email.add(kontakter.get(i).getEmail());
+            kontakt_phone.add(kontakter.get(i).getNr());
+
         }
 
         //Listview bliver initialiseret, får en adapter (custom) og får clickable. Her efter bliver knap funktionen lave.
         ListView listView = findViewById(R.id.listview_Contacts);
-        listView.setAdapter(new CustomAdapterContactlist(ContactList.this,kontakt_names));
+        listView.setAdapter(new CustomAdapterContactlist(ContactList.this,kontakt_names, kontakt_email, kontakt_phone));
         listView.setClickable(true);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

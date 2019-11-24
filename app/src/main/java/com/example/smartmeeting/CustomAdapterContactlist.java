@@ -15,11 +15,15 @@ public class CustomAdapterContactlist extends BaseAdapter {
     Context context;
     static LayoutInflater inflater = null;
     ArrayList<String> header;
+    ArrayList<String> emails;
+    ArrayList<String> phones;
 
-    public CustomAdapterContactlist(Context context, ArrayList<String> header){
+    public CustomAdapterContactlist(Context context, ArrayList<String> header, ArrayList<String> email, ArrayList<String> phone){
 
         this.context = context;
         this.header = header;
+        this.emails = email;
+        this.phones = phone;
 
     }
 
@@ -51,8 +55,12 @@ public class CustomAdapterContactlist extends BaseAdapter {
         }
 
         TextView head = (TextView) row.findViewById(R.id.item_name);
+        TextView email = (TextView) row.findViewById(R.id.item_email);
+        TextView phone = (TextView) row.findViewById(R.id.item_phone);
 
         head.setText(header.get(position));
+        email.setText(emails.get(position));
+        phone.setText(phones.get(position));
 
         return row;
     }
