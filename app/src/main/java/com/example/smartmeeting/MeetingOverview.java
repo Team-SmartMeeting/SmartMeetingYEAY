@@ -42,8 +42,8 @@ public class MeetingOverview extends AppCompatActivity {
         btn_groupe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), groups_list.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), groups_list.class);
+                startActivity(intent);
 
             }
         });
@@ -53,7 +53,8 @@ public class MeetingOverview extends AppCompatActivity {
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
+                startActivity(intent);
             }
         });
 

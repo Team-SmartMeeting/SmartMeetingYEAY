@@ -57,20 +57,14 @@ public class ContactList extends AppCompatActivity {
         Button btn_groupe = findViewById(R.id.btn_groupes_menu);
         Button btn_contacts = findViewById(R.id.btn_contacts_menu);
 
-        btn_contacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ContactList.class);
-                startActivity(intent);
 
-            }
-        });
+        btn_contacts.setBackgroundResource(R.drawable.button_pressed);
 
         btn_groupe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), groups_list.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), groups_list.class);
+                startActivity(intent);
 
             }
         });
@@ -86,7 +80,8 @@ public class ContactList extends AppCompatActivity {
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
+                startActivity(intent);
             }
         });
 

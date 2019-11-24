@@ -39,14 +39,7 @@ public class groups_list extends AppCompatActivity {
             }
         });
 
-        btn_groupe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), groups_list.class);
-                startActivity(intent);
-
-            }
-        });
+        btn_groupe.setBackgroundResource(R.drawable.button_pressed);
 
         btn_meetings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +52,8 @@ public class groups_list extends AppCompatActivity {
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
+                startActivity(intent);
             }
         });
     }
