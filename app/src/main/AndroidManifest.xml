@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".add_contact"></activity>
-        <activity android:name=".groups_list"></activity>
+        <activity android:name=".Agenda"></activity>
+        <activity android:name=".add_contact" />
+        <activity android:name=".groups_list" />
         <activity android:name=".add_group" />
-        <activity android:name=".ViewProfile"></activity>
+        <activity android:name=".ViewProfile" />
         <activity android:name=".EditProfile" />
         <activity android:name=".ContactList" />
         <activity android:name=".CreateMeeting" />
