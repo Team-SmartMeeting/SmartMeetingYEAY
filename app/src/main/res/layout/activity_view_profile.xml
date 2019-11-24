@@ -242,7 +242,7 @@
         android:id="@+id/btn_edit_profile"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/btn_new_meeting_drawable"
         android:text="Edit profile"
         android:textColor="#FFFF"

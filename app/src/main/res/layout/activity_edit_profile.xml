@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background3"
     tools:context=".EditProfile">
 
     <LinearLayout
@@ -15,226 +16,215 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity=""
-        android:layout_weight="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" >
-        </Space>
-
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:labelFor="@id/name"
-            android:layout_marginLeft="20dp"
-            android:text="Name" />
-
-
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:inputType="textPersonName"
-            android:padding="5dp"
-            android:hint="F.eks. Søren Aarup Poulsen" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:labelFor="@id/phonenumber"
-            android:layout_marginLeft="20dp"
-            android:text="Phone number" />
-
-
-        <EditText
-            android:id="@+id/phonenumber"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:inputType="phone"
-            android:padding="5dp"
-            android:hint="F.eks. 12345678" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:labelFor="@id/email"
-            android:layout_marginLeft="20dp"
-            android:text="Email" />
-
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:inputType="textEmailAddress"
-            android:padding="5dp"
-            android:hint="F.eks. SmartMeeting@Gmail.com" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:labelFor="@id/company"
-            android:layout_marginLeft="20dp"
-            android:text="Company" />
-
-
-        <EditText
-            android:id="@+id/company"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:inputType="textPersonName"
-            android:padding="5dp"
-            android:hint="F.eks. Company Name" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:labelFor="@id/address"
-            android:layout_marginLeft="20dp"
-            android:text="Address" />
-
-
-        <EditText
-            android:id="@+id/address"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:inputType="textPostalAddress"
-            android:padding="5dp"
-            android:hint="F.eks. Roadname 1" />
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:labelFor="@id/city"
-            android:layout_marginLeft="20dp"
-            android:text="City" />
-
-
-        <EditText
-            android:id="@+id/city"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:inputType="textPersonName"
-            android:padding="5dp"
-            android:hint="F.eks. Town City" />
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:labelFor="@id/zip_code"
-            android:layout_marginLeft="20dp"
-            android:text="Zip code" />
-
-
-        <EditText
-            android:id="@+id/zip_code"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:inputType="phone"
-            android:padding="5dp"
-            android:hint="F.eks. 1234" />
-
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:labelFor="@id/country"
-            android:layout_marginLeft="20dp"
-            android:text="Country" />
-
-
-        <EditText
-            android:id="@+id/country"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:inputType="textPersonName"
-            android:padding="5dp"
-            android:hint="F.eks.Country name" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="6" >
-        </Space>
-
-
-
-
-
-
-    </LinearLayout>
-
-        <ListView
-            android:id="@+id/listview_meetings"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity=""
             android:layout_weight="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-        </ListView>
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" >
+            </Space>
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:labelFor="@id/name"
+                android:layout_marginLeft="20dp"
+                android:text="Name" />
+
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/edit_text_field"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPersonName"
+                android:padding="5dp"
+                android:hint="F.eks. Søren Aarup Poulsen" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:labelFor="@id/phonenumber"
+                android:layout_marginLeft="20dp"
+                android:text="Phone number" />
+
+
+            <EditText
+                android:id="@+id/phonenumber"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/edit_text_field"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="phone"
+                android:padding="5dp"
+                android:hint="F.eks. 12345678" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:labelFor="@id/email"
+                android:layout_marginLeft="20dp"
+                android:text="Email" />
+
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/edit_text_field"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="textEmailAddress"
+                android:padding="5dp"
+                android:hint="F.eks. SmartMeeting@Gmail.com" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:labelFor="@id/company"
+                android:layout_marginLeft="20dp"
+                android:text="Company" />
+
+
+            <EditText
+                android:id="@+id/company"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/edit_text_field"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPersonName"
+                android:padding="5dp"
+                android:hint="F.eks. Company Name" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:labelFor="@id/address"
+                android:layout_marginLeft="20dp"
+                android:text="Address" />
+
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/edit_text_field"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPostalAddress"
+                android:padding="5dp"
+                android:hint="F.eks. Roadname 1" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:labelFor="@id/city"
+                android:layout_marginLeft="20dp"
+                android:text="City" />
+
+
+            <EditText
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/edit_text_field"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPersonName"
+                android:padding="5dp"
+                android:hint="F.eks. Town City" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:labelFor="@id/zip_code"
+                android:layout_marginLeft="20dp"
+                android:text="Zip code" />
+
+
+            <EditText
+                android:id="@+id/zip_code"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/edit_text_field"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="phone"
+                android:padding="5dp"
+                android:hint="F.eks. 1234" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:labelFor="@id/country"
+                android:layout_marginLeft="20dp"
+                android:text="Country" />
+
+
+            <EditText
+                android:id="@+id/country"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/edit_text_field"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:inputType="textPersonName"
+                android:padding="5dp"
+                android:hint="F.eks.Country name" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="6" >
+            </Space>
+
+
+
+
+
+
+        </LinearLayout>
+
 
         <include layout="@layout/toolbar" />
 
@@ -246,7 +236,7 @@
         android:id="@+id/btn_save_profile"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/btn_new_meeting_drawable"
         android:text="Save profile"
         android:textColor="#FFFF"
