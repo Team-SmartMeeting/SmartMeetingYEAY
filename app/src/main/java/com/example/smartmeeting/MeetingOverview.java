@@ -48,13 +48,7 @@ public class MeetingOverview extends AppCompatActivity {
             }
         });
 
-        btn_meetings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
-                startActivity(intent);
-            }
-        });
+        btn_meetings.setBackgroundResource(R.drawable.button_pressed);
 
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
