@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/menufarve">
+
+
+    <Button
+        android:id="@+id/btn_meeting_menu"
+        android:layout_width="1dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:background="@color/menufarve"
+        android:text="Meetings" />
+
+
+    <Button
+        android:id="@+id/btn_groupes_menu"
+        android:layout_width="1dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:background="@color/menufarve"
+        android:text="Groupes" />
+
+
+    <Button
+        android:id="@+id/btn_contacts_menu"
+        android:layout_width="1dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:background="@color/menufarve"
+        android:text="Contacts" />
+
+
+    <Button
+        android:id="@+id/btn_profile_menu"
+        android:layout_width="1dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:background="@color/menufarve"
+        android:text="Profile" />
+
+</LinearLayout>
