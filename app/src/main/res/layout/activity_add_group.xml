@@ -7,8 +7,10 @@
     android:background="@drawable/background3"
     tools:context=".CreateMeeting">
 
+
+
+
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -17,57 +19,92 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1"></Space>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:fontFamily="sans-serif-light"
-            android:labelFor="@id/create_meeting_name_ed"
-            android:text="Group Name" />
-
-        <EditText
-            android:id="@+id/create_group_name_ed"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edit_text_field"
-            android:hint="fx. group1"
-            android:inputType="textPersonName"
-            android:padding="5dp" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Create Group"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:fontFamily="sans-serif-light"
-            android:labelFor="@id/create_group_name_ed2"
-            android:text="Add Users to Group" />
 
-        <EditText
-            android:id="@+id/create_group_name_ed2"
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="sans-serif-light"
+                android:labelFor="@id/create_meeting_name_ed"
+                android:text="Group Name" />
+
+            <EditText
+                android:id="@+id/create_group_name_ed"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edit_text_field"
+                android:hint="fx. group1"
+                android:inputType="textPersonName"
+                android:padding="5dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="sans-serif-light"
+                android:labelFor="@id/create_group_name_ed2"
+                android:text="Add Users to Group" />
+
+            <EditText
+                android:id="@+id/create_group_name_ed2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edit_text_field"
+                android:hint="fx. Mufufu@gmail.com"
+                android:inputType="textPersonName"
+                android:padding="5dp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="6"></Space>
+
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listview_meetings"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edit_text_field"
-            android:hint="fx. Mufufu@gmail.com"
-            android:inputType="textPersonName"
-            android:padding="5dp" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="6"></Space>
+        </ListView>
+
+        <include layout="@layout/toolbar" />
 
 
     </LinearLayout>
@@ -76,7 +113,7 @@
         android:id="@+id/btn_add_group"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/btn_new_meeting_drawable"
         android:text="Create Group"
         android:textColor="#FFFF"
@@ -85,15 +122,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Create Group"
-        android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
 
 
 
