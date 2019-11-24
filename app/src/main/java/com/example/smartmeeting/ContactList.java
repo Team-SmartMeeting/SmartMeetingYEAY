@@ -132,8 +132,6 @@ public class ContactList extends AppCompatActivity {
                 intent.putExtra("email",kontakter.get(position).getEmail());
                 intent.putExtra("number",kontakter.get(position).getNr());
                 startActivity(intent);
-
-                Toast.makeText(ContactList.this, kontakter.get(position).getNr(), Toast.LENGTH_SHORT).show();
             }
         });
 
