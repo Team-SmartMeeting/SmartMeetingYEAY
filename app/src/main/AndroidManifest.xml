@@ -12,7 +12,8 @@
         <activity android:name=".add_contact"></activity>
         <activity android:name=".groups_list"></activity>
         <activity android:name=".add_group" />
-        <activity android:name=".add_contact" />
+        <activity android:name=".ViewProfile"></activity>
+        <activity android:name=".EditProfile" />
         <activity android:name=".ContactList" />
         <activity android:name=".CreateMeeting" />
         <activity android:name=".ForgotPassword" />
