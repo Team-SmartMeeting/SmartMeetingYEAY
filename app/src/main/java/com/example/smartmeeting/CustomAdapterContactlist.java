@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends BaseAdapter {
+public class CustomAdapterContactlist extends BaseAdapter {
 
     Context context;
     static LayoutInflater inflater = null;
     ArrayList<String> header;
 
-    public CustomAdapter(Context context, ArrayList<String> header){
+    public CustomAdapterContactlist(Context context, ArrayList<String> header){
 
         this.context = context;
         this.header = header;

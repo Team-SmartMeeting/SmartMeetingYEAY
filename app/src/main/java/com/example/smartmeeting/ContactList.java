@@ -7,14 +7,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -85,7 +82,7 @@ public class ContactList extends AppCompatActivity {
 
         //Listview bliver initialiseret, får en adapter (custom) og får clickable. Her efter bliver knap funktionen lave.
         ListView listView = findViewById(R.id.listview_Contacts);
-        listView.setAdapter(new CustomAdapter(ContactList.this,kontakt_names));
+        listView.setAdapter(new CustomAdapterContactlist(ContactList.this,kontakt_names));
         listView.setClickable(true);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
