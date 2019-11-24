@@ -19,6 +19,8 @@
         <activity android:name=".ForgotPassword" />
         <activity android:name=".MeetingOverview" />
         <activity android:name=".Register" />
+        <activity android:name=".popup"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
