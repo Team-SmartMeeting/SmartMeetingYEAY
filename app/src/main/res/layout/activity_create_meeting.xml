@@ -203,10 +203,10 @@
 
         <Button
             android:id="@+id/btn_new_meeting"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="50dp"
             android:background="@drawable/btn_new_meeting_drawable"
             android:text="Next"
             android:textColor="#FFFFFF"
