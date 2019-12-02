@@ -1,6 +1,10 @@
-package com.example.smartmeeting;
+package com.example.smartmeeting.MainLogic.DTO.user;
 
-public class User {
+/**
+ * @author Søren Aarup Poulsen
+ */
+
+public class User implements IUserDTO {
 
     private String name;
     private String email;
@@ -10,8 +14,8 @@ public class User {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
-
     }
+
 
     public String getName() {
         return name;

@@ -1,27 +1,29 @@
-package com.example.smartmeeting;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.smartmeeting.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class add_group extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.smartmeeting.R;
+
+public class MeetingOverview extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_group);
-        Button btn = findViewById(R.id.btn_add_group);
+        setContentView(R.layout.activity_meeting_overview);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), groups_list.class);
-                startActivity(intent);
-            }
-        });
+        Button bigBtn = findViewById(R.id.btn_new_meeting);
+
+
+
+
+
+
+
 
         //Menuen
         Button btn_profile = findViewById(R.id.btn_profile_menu);
@@ -47,19 +49,16 @@ public class add_group extends AppCompatActivity {
             }
         });
 
-        btn_meetings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
-                startActivity(intent);
-            }
-        });
+        btn_meetings.setBackgroundResource(R.drawable.button_pressed);
 
         btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
+                startActivity(intent);
             }
         });
+
+
     }
 }

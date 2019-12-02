@@ -1,4 +1,4 @@
-package com.example.smartmeeting;
+package com.example.smartmeeting.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.smartmeeting.R;
 
 public class ViewProfile extends AppCompatActivity {
 

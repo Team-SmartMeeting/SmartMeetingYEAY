@@ -1,4 +1,4 @@
-package com.example.smartmeeting;
+package com.example.smartmeeting.Activitys;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,7 +8,14 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.example.smartmeeting.R;
+
 import org.w3c.dom.Text;
+
+/**
+ * @author Søren Aarup Poulsen
+ */
+
 
 public class popup extends Activity {
 

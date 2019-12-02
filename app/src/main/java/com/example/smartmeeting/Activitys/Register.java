@@ -1,4 +1,4 @@
-package com.example.smartmeeting;
+package com.example.smartmeeting.Activitys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,12 +15,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.smartmeeting.MainLogic.DTO.user.User;
+import com.example.smartmeeting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+/**
+ * @author Søren Aarup Poulsen
+ */
 
 public class Register extends AppCompatActivity {
 
@@ -98,6 +103,8 @@ public class Register extends AppCompatActivity {
                                             Intent in = new Intent(getApplicationContext(), MeetingOverview.class);
                                             startActivity(in);
                                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                                            finish();
 
                                         }
                                     });

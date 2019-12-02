@@ -1,8 +1,10 @@
-package com.example.smartmeeting;
+package com.example.smartmeeting.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.smartmeeting.R;
 
 public class CreateMeeting extends AppCompatActivity {
 

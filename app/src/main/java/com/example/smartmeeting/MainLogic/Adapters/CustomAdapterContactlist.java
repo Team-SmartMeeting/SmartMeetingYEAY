@@ -1,4 +1,4 @@
-package com.example.smartmeeting;
+package com.example.smartmeeting.MainLogic.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.smartmeeting.R;
+
 import java.util.ArrayList;
+
+/**
+ * @author Søren Aarup Poulsen
+ */
 
 public class CustomAdapterContactlist extends BaseAdapter {
 

@@ -1,4 +1,4 @@
-package com.example.smartmeeting;
+package com.example.smartmeeting.Activitys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,11 +11,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.smartmeeting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgotPassword extends AppCompatActivity {
+
+    /**
+     * @author Søren Aarup Poulsen
+     */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

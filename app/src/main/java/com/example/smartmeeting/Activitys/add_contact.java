@@ -1,4 +1,4 @@
-package com.example.smartmeeting;
+package com.example.smartmeeting.Activitys;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.smartmeeting.R;
+
 public class add_contact extends AppCompatActivity {
+
+    /**
+     * @author Søren Aarup Poulsen
+     */
+
 
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
