@@ -86,12 +86,7 @@ public class EditProfile extends AppCompatActivity {
             }
         });
 
-        btn_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        btn_profile.setBackgroundResource(R.drawable.button_pressed);
 
 
     }
