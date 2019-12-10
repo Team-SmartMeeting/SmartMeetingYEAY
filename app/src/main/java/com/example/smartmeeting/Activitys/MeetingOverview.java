@@ -18,6 +18,15 @@ public class MeetingOverview extends AppCompatActivity {
 
         Button bigBtn = findViewById(R.id.btn_new_meeting);
 
+        bigBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CreateMeeting.class);
+                startActivity(intent);
+
+            }
+        });
+
 
 
 
