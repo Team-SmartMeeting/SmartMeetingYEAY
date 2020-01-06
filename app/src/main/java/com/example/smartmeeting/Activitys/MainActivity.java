@@ -75,11 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (firebaseUser != null) {
-            Intent in = new Intent(getApplicationContext(), MeetingOverview.class);
-            startActivity(in);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        }
 
 
 
@@ -94,7 +89,9 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             progressBar.setVisibility(View.GONE);
                             if (task.isSuccessful()) {
-                                mEditor.putString("newUser","0");
+                                mEditor.putString("newUser", "0");
+                                mEditor.putString("userEmail", txtEmail.getText().toString());
+                                mEditor.putString("userPW", txtPassword.getText().toString());
                                 mEditor.commit();
 
                                 //SKAL LOGGE IND HER OG GEMME BRUGERE I SHARED PREFFERANCES.
@@ -110,6 +107,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        if (firebaseUser != null) {
+            txtEmail.setText(mPreferences.getString("userEmail", "Email"));
+            txtPassword.setText(mPreferences.getString("userPW", "Password"));
+
+            btnLogin.performClick();
+        }
 
         //Registrere teksten som clickable tekst... (HAR ADDED android:clickable="true")
         registerText.setClickable(true);
