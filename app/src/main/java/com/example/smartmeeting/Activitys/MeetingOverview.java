@@ -45,6 +45,7 @@ public class MeetingOverview extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ContactList.class);
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -54,6 +55,7 @@ public class MeetingOverview extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), groups_list.class);
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -65,6 +67,7 @@ public class MeetingOverview extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
                 startActivity(intent);
+                finish();
             }
         });
 
