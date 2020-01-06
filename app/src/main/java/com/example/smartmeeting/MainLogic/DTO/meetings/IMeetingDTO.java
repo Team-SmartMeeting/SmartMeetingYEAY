@@ -2,6 +2,7 @@ package com.example.smartmeeting.MainLogic.DTO.meetings;
 
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  * @author Søren Aarup Poulsen
@@ -23,6 +24,18 @@ public interface IMeetingDTO {
     LocalDate getDate();
 
     void setDate(LocalDate date);
+
+    LocalTime getTime();
+
+    void setTime(LocalTime time);
+
+    int getDuration();
+
+    void setDuration(int duration);
+
+    boolean getPriotize();
+
+    void setPriotize(boolean priotize);
 
     // </editor-folder>
 
