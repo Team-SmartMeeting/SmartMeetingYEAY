@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
@@ -29,6 +30,7 @@ public class CreateMeeting extends AppCompatActivity {
         final TextView meetingDate = findViewById(R.id.create_meeting_date_et);
         final TextView meetingTime = findViewById(R.id.create_meeting_time_et);
         final TextView meetingDuration = findViewById(R.id.create_meeting_duration_et);
+        final Switch skifter = findViewById(R.id.switch1);
 
         bigBtn.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -47,8 +49,10 @@ public class CreateMeeting extends AppCompatActivity {
                     DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm");
                     LocalTime localTime = LocalTime.parse(meetingTime.getText().toString(), timeFormatter);
 
+                    boolean ischecked = skifter.isChecked();
+
                     //opretter et møde
-                    MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), localDate, )
+                    MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), localDate, localTime, meetingDuration, )
 
 
                     Intent intent = new Intent(getApplicationContext(), Agenda.class);
