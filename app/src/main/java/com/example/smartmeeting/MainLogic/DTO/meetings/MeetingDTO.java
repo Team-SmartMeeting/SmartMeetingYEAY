@@ -2,6 +2,7 @@ package com.example.smartmeeting.MainLogic.DTO.meetings;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class MeetingDTO implements IMeetingDTO {
 
@@ -12,11 +13,11 @@ public class MeetingDTO implements IMeetingDTO {
     private LocalTime startTime;
     private boolean priotize;
     private int duration;
+    private ArrayList<String> Agendalist;
 
-    public MeetingDTO(String meetingName, String creatingUser, LocalDate startDate, LocalTime startTime, boolean priotize, int duration){
+    public MeetingDTO(String meetingName, LocalDate startDate, LocalTime startTime, boolean priotize, int duration){
 
         this.meetingName = meetingName;
-        this.creatingUser = creatingUser;
         this.startDate = startDate;
         this.startTime = startTime;
         this.priotize = priotize;
@@ -90,5 +91,11 @@ public class MeetingDTO implements IMeetingDTO {
     }
 
 
+    public ArrayList<String> getAgendalist() {
+        return Agendalist;
+    }
 
+    public void setAgendalist(ArrayList<String> agendalist) {
+        Agendalist = agendalist;
+    }
 }
