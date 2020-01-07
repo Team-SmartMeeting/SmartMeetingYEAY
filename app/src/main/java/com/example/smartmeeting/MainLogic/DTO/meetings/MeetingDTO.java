@@ -9,13 +9,13 @@ public class MeetingDTO implements IMeetingDTO {
 
     private String meetingName;
     private String creatingUser;
-    private LocalDate startDate;
-    private LocalTime startTime;
+    private String startDate;
+    private String startTime;
     private boolean priotize;
     private int duration;
     private ArrayList<String> Agendalist;
 
-    public MeetingDTO(String meetingName, LocalDate startDate, LocalTime startTime, boolean priotize, int duration){
+    public MeetingDTO(String meetingName, String startDate, String startTime, boolean priotize, int duration){
 
         this.meetingName = meetingName;
         this.startDate = startDate;
@@ -50,22 +50,22 @@ public class MeetingDTO implements IMeetingDTO {
     }
 
     @Override
-    public LocalDate getDate() {
+    public String getDate() {
         return startDate;
     }
 
     @Override
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.startDate = date;
     }
 
     @Override
-    public LocalTime getTime() {
+    public String getTime() {
         return startTime;
     }
 
     @Override
-    public void setTime(LocalTime time) {
+    public void setTime(String time) {
         this.startTime = time;
     }
 

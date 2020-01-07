@@ -21,13 +21,13 @@ public interface IMeetingDTO {
 
     void setCreatingUser(String creatingUser);
 
-    LocalDate getDate();
+    String getDate();
 
-    void setDate(LocalDate date);
+    void setDate(String date);
 
-    LocalTime getTime();
+    String getTime();
 
-    void setTime(LocalTime time);
+    void setTime(String time);
 
     int getDuration();
 

@@ -64,11 +64,11 @@ public class CreateMeeting extends AppCompatActivity {
                     boolean ischecked = skifter.isChecked();
 
                     //opretter et møde
-                    MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), localDate, localTime, ischecked, Integer.parseInt(meetingDuration.getText().toString()));
+                    MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), meetingDate.getText().toString(), meetingTime.getText().toString(), ischecked, Integer.parseInt(meetingDuration.getText().toString()));
 
-                    //firebase
-                    DatabaseReference meetingsRef = ref.child("Meetings");
-                    meetingsRef.setValue(meeting);
+//                    //firebase
+//                    DatabaseReference meetingsRef = ref.push();
+//                    meetingsRef.setValue(meeting);
 
                     Intent intent = new Intent(getApplicationContext(), Agenda.class);
                     startActivity(intent);
