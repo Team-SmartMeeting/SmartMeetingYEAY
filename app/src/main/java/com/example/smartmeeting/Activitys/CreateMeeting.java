@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
 import com.example.smartmeeting.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -20,12 +23,21 @@ import java.time.format.DateTimeFormatter;
 
 public class CreateMeeting extends AppCompatActivity {
 
+    //firebase
+    DatabaseReference ref;
+    FirebaseDatabase database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_meeting);
         Button bigBtn = findViewById(R.id.btn_new_meeting);
 
+        //firebase (Hentet fra google)
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Meetings");
+
+        //Objekter i XML
         final TextView meetingName = findViewById(R.id.create_meeting_name_ed);
         final TextView meetingDate = findViewById(R.id.create_meeting_date_et);
         final TextView meetingTime = findViewById(R.id.create_meeting_time_et);
@@ -52,8 +64,11 @@ public class CreateMeeting extends AppCompatActivity {
                     boolean ischecked = skifter.isChecked();
 
                     //opretter et møde
-                    MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), localDate, localTime, meetingDuration, )
+                    MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), localDate, localTime, ischecked, Integer.parseInt(meetingDuration.getText().toString()));
 
+                    //firebase
+                    DatabaseReference meetingsRef = ref.child("Meetings");
+                    meetingsRef.setValue(meeting);
 
                     Intent intent = new Intent(getApplicationContext(), Agenda.class);
                     startActivity(intent);
