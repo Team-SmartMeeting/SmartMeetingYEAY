@@ -16,7 +16,7 @@ public class MeetingOverview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meeting_overview);
 
-        Button bigBtn = findViewById(R.id.btn_new_meeting);
+        Button bigBtn = findViewById(R.id.btn_big);
 
         bigBtn.setOnClickListener(new View.OnClickListener() {
             @Override

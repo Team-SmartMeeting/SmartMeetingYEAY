@@ -15,7 +15,7 @@ public class Agenda extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
-        Button btn_paticipants = findViewById(R.id.btn_add_participant);
+        Button btn_paticipants = findViewById(R.id.btn_big);
         Button btn_topics = findViewById(R.id.btn_add_topic);
 
 //        btn_topics.setOnClickListener(new View.OnClickListener() {

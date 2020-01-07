@@ -15,7 +15,7 @@ public class add_group extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_group);
-        Button btn = findViewById(R.id.btn_add_group);
+        Button btn = findViewById(R.id.btn_big);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

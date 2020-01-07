@@ -2,42 +2,84 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/menufarve">
+    android:gravity="bottom">
 
 
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_weight="1"
+    >
     <Button
+
         android:id="@+id/btn_meeting_menu"
-        android:layout_width="1dp"
+        android:layout_width="0.5dp"
         android:layout_weight="2"
-        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_height="match_parent"
         android:background="@drawable/button_normal"
-        android:text="Meetings" />
+        android:text="Meetings"
+        android:textSize="12dp"
+        />
 
 
     <Button
         android:id="@+id/btn_groupes_menu"
-        android:layout_width="1dp"
+        android:layout_width="0.5dp"
         android:layout_weight="2"
-        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_height="match_parent"
         android:background="@drawable/button_normal"
-        android:text="Groups" />
+        android:text="Groups"
+        android:textSize="12dp"
+        />
+</LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
 
     <Button
-        android:id="@+id/btn_contacts_menu"
-        android:layout_width="1dp"
-        android:layout_weight="2"
+        android:id="@+id/btn_big"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/btn_new_meeting_drawable"
+        android:textSize="12dp"
+        />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+    <Button
+        android:id="@+id/btn_contacts_menu"
+        android:layout_width="0.5dp"
+        android:layout_weight="2"
+        android:layout_gravity="bottom"
+        android:layout_height="match_parent"
         android:background="@drawable/button_normal"
-        android:text="Contacts" />
+        android:text="Contacts"
+        android:textSize="12dp"
+        />
 
 
     <Button
         android:id="@+id/btn_profile_menu"
-        android:layout_width="1dp"
+        android:layout_width="0.5dp"
         android:layout_weight="2"
-        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_height="match_parent"
         android:background="@drawable/button_normal"
-        android:text="Profile" />
+        android:text="Profile"
+        android:textSize="12dp"
+        />
+
+
+</LinearLayout>
 
 </LinearLayout>

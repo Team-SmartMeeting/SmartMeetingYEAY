@@ -16,7 +16,7 @@ public class groups_list extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups_list);
 
-        Button btn = findViewById(R.id.btn_new_group);
+        Button btn = findViewById(R.id.btn_big);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

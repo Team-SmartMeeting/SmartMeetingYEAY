@@ -24,7 +24,7 @@ public class CreateMeeting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_meeting);
-        Button bigBtn = findViewById(R.id.btn_new_meeting);
+        Button bigBtn = findViewById(R.id.btn_big);
 
         final TextView meetingName = findViewById(R.id.create_meeting_name_ed);
         final TextView meetingDate = findViewById(R.id.create_meeting_date_et);
@@ -52,7 +52,7 @@ public class CreateMeeting extends AppCompatActivity {
                     boolean ischecked = skifter.isChecked();
 
                     //opretter et møde
-                    MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), localDate, localTime, meetingDuration, )
+//                    MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), localDate, localTime, meetingDuration);
 
 
                     Intent intent = new Intent(getApplicationContext(), Agenda.class);
