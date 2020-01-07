@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.smartmeeting.MainLogic.CreateMeetingLogic;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
 import com.example.smartmeeting.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -66,11 +67,16 @@ public class CreateMeeting extends AppCompatActivity {
                     //opretter et møde
                     MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), meetingDate.getText().toString(), meetingTime.getText().toString(), ischecked, Integer.parseInt(meetingDuration.getText().toString()));
 
-//                    //firebase
-//                    DatabaseReference meetingsRef = ref.push();
-//                    meetingsRef.setValue(meeting);
+                    //firebase
+                    DatabaseReference meetingsRef = ref.push();
+                    meetingsRef.setValue(meeting);
+
+                    //try
+                    CreateMeetingLogic cml = new CreateMeetingLogic(meetingName.getText().toString(), meetingDate.getText().toString(), meetingTime.getText().toString(), ischecked, Integer.parseInt(meetingDuration.getText().toString()));
+
 
                     Intent intent = new Intent(getApplicationContext(), Agenda.class);
+                    intent.putExtra("cml", cml);
                     startActivity(intent);
                 }
 

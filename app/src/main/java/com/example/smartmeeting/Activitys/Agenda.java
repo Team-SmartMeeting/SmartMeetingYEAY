@@ -7,14 +7,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.smartmeeting.MainLogic.CreateMeetingLogic;
 import com.example.smartmeeting.R;
 
+import java.util.ArrayList;
+
 public class Agenda extends AppCompatActivity {
+
+    ArrayList<String> agenda;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agenda);
+
+        agenda = new ArrayList<>();
+
+
+
+
+
+        //KNAPPERNE
         Button btn_paticipants = findViewById(R.id.btn_add_participant);
         Button btn_topics = findViewById(R.id.btn_add_topic);
 
@@ -70,6 +83,14 @@ public class Agenda extends AppCompatActivity {
 
         btn_profile.setBackgroundResource(R.drawable.button_pressed);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
 }
+
+
 
 
