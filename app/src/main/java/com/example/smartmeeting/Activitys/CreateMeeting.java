@@ -28,6 +28,7 @@ public class CreateMeeting extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_meeting);
         Button bigBtn = findViewById(R.id.btn_big);
+        bigBtn.setText("Next");
 
         //firebase (Hentet fra google)
         database = FirebaseDatabase.getInstance();
