@@ -11,16 +11,11 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.smartmeeting.MainLogic.CreateMeetingLogic;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
 import com.example.smartmeeting.R;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import com.google.gson.Gson;
 
 public class CreateMeeting extends AppCompatActivity {
 
@@ -53,30 +48,23 @@ public class CreateMeeting extends AppCompatActivity {
                 //Checker om felter er tommme!
                 if (!meetingName.getText().toString().equals("") && !meetingDuration.getText().toString().equals("") && !meetingDate.getText().toString().equals("") && !meetingTime.getText().toString().equals("")) {
 
-
-                    //Omformer string til en localdate
-                    DateTimeFormatter dateformatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    LocalDate localDate = LocalDate.parse(meetingDate.getText().toString(), dateformatter);
-
-                    //Omformer string til localTime
-                    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm");
-                    LocalTime localTime = LocalTime.parse(meetingTime.getText().toString(), timeFormatter);
-
                     boolean ischecked = skifter.isChecked();
 
                     //opretter et møde
                     MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), meetingDate.getText().toString(), meetingTime.getText().toString(), ischecked, Integer.parseInt(meetingDuration.getText().toString()));
 
                     //firebase
-                    DatabaseReference meetingsRef = ref.push();
-                    meetingsRef.setValue(meeting);
+//                    DatabaseReference meetingsRef = ref.push();
+//                    meetingsRef.setValue(meeting);
 
-                    //try
-                    CreateMeetingLogic cml = new CreateMeetingLogic(meetingName.getText().toString(), meetingDate.getText().toString(), meetingTime.getText().toString(), ischecked, Integer.parseInt(meetingDuration.getText().toString()));
-
+                    //MØDE I STRING FORMAT! (taget fra stackoverflow)
+                    //-------------------------------------------------
+                    Gson gson = new Gson();
+                    String myJson = gson.toJson(meeting);
+                    //-------------------------------------------------
 
                     Intent intent = new Intent(getApplicationContext(), Agenda.class);
-                    intent.putExtra("cml", cml);
+                    intent.putExtra("meeting", myJson);
                     startActivity(intent);
                 }
 

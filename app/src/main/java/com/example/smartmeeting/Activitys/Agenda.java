@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.smartmeeting.MainLogic.CreateMeetingLogic;
+import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
 import com.example.smartmeeting.R;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,10 @@ public class Agenda extends AppCompatActivity {
         setContentView(R.layout.activity_agenda);
 
         agenda = new ArrayList<>();
+
+        //henter mødet med Gson
+        Gson gson = new Gson();
+        MeetingDTO myMeeting = gson.fromJson(getIntent().getStringExtra("meeting"), MeetingDTO.class);
 
 
 
