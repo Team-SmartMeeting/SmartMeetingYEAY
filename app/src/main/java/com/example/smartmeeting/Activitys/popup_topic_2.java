@@ -1,26 +1,21 @@
 package com.example.smartmeeting.Activitys;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-
 import com.example.smartmeeting.R;
 
-/**
- * @author Søren Aarup Poulsen
- */
-
-
-public class popupTopic extends Activity {
+public class popup_topic_2 extends AppCompatActivity {
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.popup_topic);
+        setContentView(R.layout.activity_popup_topic_2);
+
 
         Intent intent = getIntent();
 
@@ -41,6 +36,5 @@ public class popupTopic extends Activity {
         int height = dm.widthPixels;
 
         getWindow().setLayout((int)(width*.8),(int)(height*.8));
-
     }
 }

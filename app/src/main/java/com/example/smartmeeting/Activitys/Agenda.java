@@ -47,8 +47,8 @@ public class Agenda extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Agenda.this, popupTopic.class);
-                startActivityForResult(intent, 1);
+                Intent intent = new Intent(Agenda.this, popup_topic_2.class);
+                startActivity(intent);
 
             }
         });
@@ -112,8 +112,6 @@ public class Agenda extends AppCompatActivity {
             if (resultCode == RESULT_OK){
                 Topic nytTopic = gson.fromJson(data.getStringExtra("edittextvalue"), Topic.class);
                 agenda.add(nytTopic);
-
-
 
             }
 
