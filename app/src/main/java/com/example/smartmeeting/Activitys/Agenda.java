@@ -1,12 +1,15 @@
 package com.example.smartmeeting.Activitys;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.smartmeeting.MainLogic.DTO.Topic.Topic;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
 import com.example.smartmeeting.R;
 import com.google.gson.Gson;
@@ -15,7 +18,8 @@ import java.util.ArrayList;
 
 public class Agenda extends AppCompatActivity {
 
-    ArrayList<String> agenda;
+    ArrayList<Topic> agenda;
+    Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +29,7 @@ public class Agenda extends AppCompatActivity {
         agenda = new ArrayList<>();
 
         //henter mødet med Gson
-        Gson gson = new Gson();
+        gson = new Gson();
         MeetingDTO myMeeting = gson.fromJson(getIntent().getStringExtra("meeting"), MeetingDTO.class);
 
 
@@ -44,7 +48,7 @@ public class Agenda extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Agenda.this, popupTopic.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
 
             }
         });
@@ -97,6 +101,31 @@ public class Agenda extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+    }
+
+    //taget fra stackoverflow
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1){
+            if (resultCode == RESULT_OK){
+                Topic nytTopic = gson.fromJson(data.getStringExtra("edittextvalue"), Topic.class);
+                agenda.add(nytTopic);
+
+
+
+            }
+
+        }
+    }
+
+    public void UpdateList(){
+
+        ArrayList<String> TopicTitels = new ArrayList<>();
+        ArrayList<String> TopicTime = new ArrayList<>();
+        ArrayList<String> TopicDescription = new ArrayList<>();
+
 
     }
 }

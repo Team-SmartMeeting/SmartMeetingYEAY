@@ -19,10 +19,6 @@ import com.google.gson.Gson;
 
 public class CreateMeeting extends AppCompatActivity {
 
-    //firebase
-    DatabaseReference ref;
-    FirebaseDatabase database;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +26,6 @@ public class CreateMeeting extends AppCompatActivity {
         Button bigBtn = findViewById(R.id.btn_big);
         bigBtn.setText("Next");
 
-        //firebase (Hentet fra google)
-        database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Meetings");
 
         //Objekter i XML
         final TextView meetingName = findViewById(R.id.create_meeting_name_ed);
@@ -53,10 +46,6 @@ public class CreateMeeting extends AppCompatActivity {
 
                     //opretter et møde
                     MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), meetingDate.getText().toString(), meetingTime.getText().toString(), ischecked, Integer.parseInt(meetingDuration.getText().toString()));
-
-                    //firebase
-//                    DatabaseReference meetingsRef = ref.push();
-//                    meetingsRef.setValue(meeting);
 
                     //MØDE I STRING FORMAT! (taget fra stackoverflow)
                     //-------------------------------------------------

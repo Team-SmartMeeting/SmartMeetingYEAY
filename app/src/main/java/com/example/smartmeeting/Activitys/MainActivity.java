@@ -109,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if (firebaseUser != null) {
-            txtEmail.setText(mPreferences.getString("userEmail", "Email"));
-            txtPassword.setText(mPreferences.getString("userPW", "Password"));
+            txtEmail.setText(mPreferences.getString("userEmail", ""));
+            txtPassword.setText(mPreferences.getString("userPW", ""));
 
             btnLogin.performClick();
         }

@@ -2,6 +2,10 @@ package com.example.smartmeeting.MainLogic.DTO.Topic;
 
 import java.util.ArrayList;
 
+/**
+ * @author Søren Aarup Poulsen
+ */
+
 public class Topic implements ITopic {
 
 

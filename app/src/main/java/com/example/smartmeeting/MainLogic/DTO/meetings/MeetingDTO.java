@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
+/**
+ * @author Søren Aarup Poulsen
+ */
+
 public class MeetingDTO implements IMeetingDTO {
 
 

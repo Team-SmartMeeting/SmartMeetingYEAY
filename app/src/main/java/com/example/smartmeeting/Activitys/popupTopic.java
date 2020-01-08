@@ -25,13 +25,12 @@ public class popupTopic extends Activity {
         Intent intent = getIntent();
 
 
-        TextView tv_name = findViewById(R.id.text_name);
-        TextView tv_phone = findViewById(R.id.text_phonenumber);
-        TextView tv_email = findViewById(R.id.text_email);
+        TextView tv_titel = findViewById(R.id.pop_topic_titel);
+        TextView tv_tid = findViewById(R.id.pop_topic_tid);
+        TextView tv_topic = findViewById(R.id.pop_topic_description);
 
-        tv_name.setText(intent.getStringExtra("name"));
-        tv_phone.setText(intent.getStringExtra("number"));
-        tv_email.setText(intent.getStringExtra("email"));
+
+
 
 
 

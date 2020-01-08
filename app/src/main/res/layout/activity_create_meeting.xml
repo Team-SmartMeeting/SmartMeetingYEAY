@@ -213,6 +213,8 @@
             android:layout_weight="1" >
         </Space>
 
+        <include layout="@layout/toolbar" />
+
 
     </LinearLayout>
 

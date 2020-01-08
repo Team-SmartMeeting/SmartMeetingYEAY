@@ -90,6 +90,8 @@ public class Register extends AppCompatActivity {
                                             //Fjerne progressbaren igen
                                             progressBar.setVisibility(View.GONE);
                                             //Opdatere share pref så telefonen ved der er oprettet en bruger for enheden.
+                                            mEditor.putString("userEmail", txtEmail.getText().toString());
+                                            mEditor.putString("userPW", txtPassword.getText().toString());
                                             mEditor.putString("newUser","0");
                                             mEditor.commit();
                                             finish();
