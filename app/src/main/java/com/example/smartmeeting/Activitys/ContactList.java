@@ -48,7 +48,8 @@ public class ContactList extends AppCompatActivity {
         checkSharedPreferences();
 
         //TEST MIDTER KNAPPEN TIL AT ADDED NYE KONTAKTER
-        Button btn = findViewById(R.id.btn_new_meeting);
+        Button btn = findViewById(R.id.btn_big);
+        btn.setText("Add \n Contact");
 
 
         btn.setOnClickListener(new View.OnClickListener() {

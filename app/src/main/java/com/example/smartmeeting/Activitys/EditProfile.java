@@ -44,7 +44,8 @@ public class EditProfile extends AppCompatActivity {
         textCountry.setHint();
         */
 
-        Button editProfile = (Button) findViewById(R.id.btn_save_profile);
+        Button editProfile = (Button) findViewById(R.id.btn_big);
+        editProfile.setText("Save \n Changes");
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

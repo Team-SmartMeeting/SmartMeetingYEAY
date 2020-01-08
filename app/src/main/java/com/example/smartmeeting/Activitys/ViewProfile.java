@@ -41,7 +41,8 @@ public class ViewProfile extends AppCompatActivity {
         textZipCode.setText();
         textCountry.setText();
         */
-        Button editProfile = findViewById(R.id.btn_edit_profile);
+        Button editProfile = findViewById(R.id.btn_big);
+        editProfile.setText("Edit \n Profile");
             editProfile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

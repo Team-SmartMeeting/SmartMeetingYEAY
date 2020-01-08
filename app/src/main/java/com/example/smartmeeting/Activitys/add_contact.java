@@ -36,7 +36,8 @@ public class add_contact extends AppCompatActivity {
         final TextView tv_email = findViewById(R.id.create_contact_email_et);
         final TextView tv_PhoneNumber = findViewById(R.id.create_contact_phonenumber_et);
 
-        Button btn = findViewById(R.id.btn_add_contact);
+        Button btn = findViewById(R.id.btn_big);
+        btn.setText("Add\n Contact");
 
         // fortæller hvad knappen gør:
         btn.setOnClickListener(new View.OnClickListener() {
