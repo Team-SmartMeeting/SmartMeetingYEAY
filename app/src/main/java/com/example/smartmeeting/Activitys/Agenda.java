@@ -32,18 +32,22 @@ public class Agenda extends AppCompatActivity {
 
 
 
+
+
         //KNAPPERNE
         Button btnPaticipants = findViewById(R.id.btn_big);
         Button btnTopics = findViewById(R.id.btn_add_topic);
         btnPaticipants.setText("Add\n Participants");
 
-//        btn_topics.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent_topic = new Intent(getApplicationContext(),addtopic.class);
-//                startActivity(intent_topic);
-//            }
-//        });
+        btnTopics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Agenda.this, popupTopic.class);
+                startActivity(intent);
+
+            }
+        });
 
 //        btn_paticipants.setOnClickListener(new View.OnClickListener() {
 //            @Override

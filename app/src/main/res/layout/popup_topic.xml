@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="25dp"
+    android:background="@drawable/gradientbackground"
+    >
+
+
+
+    <RelativeLayout
+        android:id="@+id/loginLayout"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/login_title"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="30dp"
+            android:elevation="4dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="sans-serif-light"
+                android:labelFor="@id/text_email"
+                android:text="Topic"
+                android:textSize="24sp" />
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+                <!-- Here you put the rest of your current view-->
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="30dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:labelFor="@id/pop_topic_titel"
+                        android:text="Titel" />
+
+                    <EditText
+                        android:id="@+id/pop_topic_titel"
+                        style="@style/Widget.AppCompat.AutoCompleteTextView"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="10dp"
+                        android:hint="Personale festen"
+                        android:inputType="textPersonName"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:labelFor="@id/pop_topic_tid"
+                        android:text="Tid i min." />
+
+                    <EditText
+                        android:id="@+id/pop_topic_tid"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="10dp"
+                        android:hint="15"
+                        android:inputType="number"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:labelFor="@id/pop_topic_description"
+                        android:text="Description" />
+
+
+                    <EditText
+                        android:id="@+id/pop_topic_description"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:drawablePadding="10dp"
+                        android:maxLines="5"
+                        android:hint="Gennemgang er de forskellige måder"
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true"
+                        android:layout_weight="3"/>
+
+
+                </LinearLayout>
+            </ScrollView>
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>
