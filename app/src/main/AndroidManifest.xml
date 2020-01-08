@@ -9,19 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".Activitys.Agenda"></activity>
-        <activity android:name=".Activitys.add_contact"></activity>
-        <activity android:name=".Activitys.groups_list"></activity>
+        <activity android:name=".Activitys.DuringMeeting"></activity>
+        <activity android:name=".Activitys.Agenda" />
+        <activity android:name=".Activitys.add_contact" />
+        <activity android:name=".Activitys.groups_list" />
         <activity android:name=".Activitys.add_group" />
-        <activity android:name=".Activitys.ViewProfile"></activity>
+        <activity android:name=".Activitys.ViewProfile" />
         <activity android:name=".Activitys.EditProfile" />
         <activity android:name=".Activitys.ContactList" />
         <activity android:name=".Activitys.CreateMeeting" />
         <activity android:name=".Activitys.ForgotPassword" />
         <activity android:name=".Activitys.MeetingOverview" />
         <activity android:name=".Activitys.Register" />
-        <activity android:name=".Activitys.popup"
-            android:theme="@style/AppTheme.CustomTheme"></activity>
+        <activity
+            android:name=".Activitys.popup"
+            android:theme="@style/AppTheme.CustomTheme" />
         <activity android:name=".Activitys.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
