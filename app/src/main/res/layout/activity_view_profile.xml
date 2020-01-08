@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background3"
+    android:background="@drawable/gradientbackground"
     tools:context=".Activitys.ViewProfile">
 
     <LinearLayout
@@ -213,17 +213,17 @@
 
 </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_edit_profile"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/btn_new_meeting_drawable"
-        android:text="Edit profile"
-        android:textColor="#FFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/btn_edit_profile"-->
+<!--        android:layout_width="80dp"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:layout_marginBottom="50dp"-->
+<!--        android:background="@drawable/btn_new_meeting_drawable"-->
+<!--        android:text="Edit profile"-->
+<!--        android:textColor="#FFFF"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

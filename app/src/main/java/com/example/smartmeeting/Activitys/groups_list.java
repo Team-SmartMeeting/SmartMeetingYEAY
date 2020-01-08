@@ -17,6 +17,7 @@ public class groups_list extends AppCompatActivity {
         setContentView(R.layout.activity_groups_list);
 
         Button btn = findViewById(R.id.btn_big);
+        btn.setText("Add \n Group ");
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

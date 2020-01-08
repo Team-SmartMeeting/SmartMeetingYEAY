@@ -17,6 +17,7 @@ public class MeetingOverview extends AppCompatActivity {
         setContentView(R.layout.activity_meeting_overview);
 
         Button bigBtn = findViewById(R.id.btn_big);
+        bigBtn.setText("Create\n Meeting");
 
         bigBtn.setOnClickListener(new View.OnClickListener() {
             @Override
