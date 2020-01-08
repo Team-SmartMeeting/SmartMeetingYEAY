@@ -27,32 +27,32 @@ public class Topic implements ITopic {
 
     @Override
     public String getTopicName() {
-        return null;
+        return topicName;
     }
 
     @Override
     public void setTopicName(String topicName) {
-
+        this.topicName = topicName;
     }
 
     @Override
     public int getTopicDuration() {
-        return 0;
+        return topicDuration;
     }
 
     @Override
-    public void setTopicDuration(String topicDuration) {
-
+    public void setTopicDuration(int topicDuration) {
+        this.topicDuration = topicDuration;
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return description;
     }
 
     @Override
     public void setDescription(String description) {
-
+        this.description = description;
     }
 
 }

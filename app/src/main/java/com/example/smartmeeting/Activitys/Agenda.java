@@ -29,6 +29,10 @@ public class Agenda extends AppCompatActivity {
     ArrayList<String> TopicTime;
     ArrayList<String> TopicDescription;
 
+
+    //
+    ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +48,7 @@ public class Agenda extends AppCompatActivity {
         TopicTitels = new ArrayList<>();
         TopicTime = new ArrayList<>();
         TopicDescription = new ArrayList<>();
-
-
-
-
-
-
+        listView = findViewById(R.id.listview_agenda);
 
         //KNAPPERNE
         Button btnPaticipants = findViewById(R.id.btn_big);
@@ -147,20 +146,19 @@ public class Agenda extends AppCompatActivity {
             TopicDescription.add(agenda.get(i).getDescription());
         }
 
-        //
-        ListView listView = findViewById(R.id.listview_agenda);
-
         // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
         listView.setAdapter(new CustomAdapterAgenda(Agenda.this,TopicTitels, TopicTime, TopicDescription));
-        listView.setClickable(true);
 
+
+//        listView.setClickable(true);
+//
 //        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(ContactList.this, popup.class);
-//                intent.putExtra("name",kontakter.get(position).getName());
-//                intent.putExtra("email",kontakter.get(position).getEmail());
-//                intent.putExtra("number",kontakter.get(position).getNr());
+//                Intent intent = new Intent(Agenda.this, popup.class);
+//                intent.putExtra("name",agenda.get(position).getTopicName());
+//                intent.putExtra("email",agenda.get(position).getTopicDuration());
+//                intent.putExtra("number",agenda.get(position).getDescription());
 //                startActivity(intent);
 //
 //            }

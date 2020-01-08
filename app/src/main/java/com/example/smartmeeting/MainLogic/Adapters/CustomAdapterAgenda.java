@@ -59,13 +59,13 @@ public class CustomAdapterAgenda extends BaseAdapter {
             row = inflater.inflate(R.layout.listview_topic_template, null);
         }
 
-        TextView head = (TextView) row.findViewById(R.id.item_topic_titel);
-        TextView email = (TextView) row.findViewById(R.id.item_topic_time);
-        TextView phone = (TextView) row.findViewById(R.id.item_topic_description);
+        TextView titlen = (TextView) row.findViewById(R.id.pop_topic_titel);
+        TextView tiden = (TextView) row.findViewById(R.id.pop_topic_tid);
+        TextView beskrivelse = (TextView) row.findViewById(R.id.pop_topic_description);
 
-        head.setText(titel.get(position));
-        email.setText(time.get(position));
-        phone.setText(description.get(position));
+        titlen.setText(titel.get(position));
+        tiden.setText(time.get(position));
+        beskrivelse.setText(description.get(position));
 
         return row;
     }

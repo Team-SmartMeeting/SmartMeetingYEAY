@@ -16,7 +16,7 @@ public interface ITopic {
 
     int getTopicDuration();
 
-    void setTopicDuration(String topicDuration);
+    void setTopicDuration(int topicDuration);
 
     String getDescription();
 
