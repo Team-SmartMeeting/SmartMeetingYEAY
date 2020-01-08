@@ -33,7 +33,7 @@ public class Agenda extends AppCompatActivity {
 
 
         //KNAPPERNE
-        Button btnPaticipants = findViewById(R.id.btn_add_participant);
+        Button btnPaticipants = findViewById(R.id.btn_big);
         Button btnTopics = findViewById(R.id.btn_add_topic);
         btnPaticipants.setText("Add\n Participants");
 
