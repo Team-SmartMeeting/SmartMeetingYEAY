@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/gradientbackground"
+    >
+
+
+
+
+        <TextView
+            android:id="@+id/item_topic_titel"
+            android:background="@drawable/transparent"
+            android:layout_width="match_parent"
+            android:paddingLeft="15dp"
+            android:layout_height="34dp"
+            android:text="Titel"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="28sp"/>
+
+        <TextView
+            android:id="@+id/item_topic_time"
+            android:background="@drawable/transparent"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:drawableLeft="@drawable/clock"
+            android:paddingLeft="15dp"
+            android:layout_height="24dp"
+            android:text="Time"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/item_topic_description"
+            android:background="@drawable/transparent"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:paddingLeft="15dp"
+            android:layout_height="24dp"
+            android:text="Description"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="18sp"/>
+
+
+</LinearLayout>

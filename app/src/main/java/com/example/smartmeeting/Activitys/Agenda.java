@@ -6,9 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterAgenda;
+import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterContactlist;
 import com.example.smartmeeting.MainLogic.DTO.Topic.Topic;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
 import com.example.smartmeeting.R;
@@ -21,6 +25,10 @@ public class Agenda extends AppCompatActivity {
     ArrayList<Topic> agenda;
     Gson gson;
 
+    ArrayList<String> TopicTitels;
+    ArrayList<String> TopicTime;
+    ArrayList<String> TopicDescription;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +39,11 @@ public class Agenda extends AppCompatActivity {
         //henter mødet med Gson
         gson = new Gson();
         MeetingDTO myMeeting = gson.fromJson(getIntent().getStringExtra("meeting"), MeetingDTO.class);
+
+
+        TopicTitels = new ArrayList<>();
+        TopicTime = new ArrayList<>();
+        TopicDescription = new ArrayList<>();
 
 
 
@@ -48,7 +61,7 @@ public class Agenda extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Agenda.this, popup_topic_2.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
 
             }
         });
@@ -101,6 +114,7 @@ public class Agenda extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        UpdateList();
 
     }
 
@@ -110,9 +124,10 @@ public class Agenda extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1){
             if (resultCode == RESULT_OK){
-                Topic nytTopic = gson.fromJson(data.getStringExtra("edittextvalue"), Topic.class);
+                Topic nytTopic = gson.fromJson(data.getStringExtra("nytopic"), Topic.class);
                 agenda.add(nytTopic);
 
+                UpdateList();
             }
 
         }
@@ -120,9 +135,38 @@ public class Agenda extends AppCompatActivity {
 
     public void UpdateList(){
 
-        ArrayList<String> TopicTitels = new ArrayList<>();
-        ArrayList<String> TopicTime = new ArrayList<>();
-        ArrayList<String> TopicDescription = new ArrayList<>();
+        //CLEAR ALLE ARRAYLISTER SÅ DE ER KLAR TIL AT BLIVE REPOSTET
+        TopicTitels.clear();
+        TopicTime.clear();
+        TopicDescription.clear();
+
+        //TILFØJER ALLE TOPICS TIL ARRAYLISTER
+        for (int i = 0; i < agenda.size(); i++) {
+            TopicTitels.add(agenda.get(i).getTopicName());
+            TopicTime.add(Integer.toString(agenda.get(i).getTopicDuration()));
+            TopicDescription.add(agenda.get(i).getDescription());
+        }
+
+        //
+        ListView listView = findViewById(R.id.listview_agenda);
+
+        // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
+        listView.setAdapter(new CustomAdapterAgenda(Agenda.this,TopicTitels, TopicTime, TopicDescription));
+        listView.setClickable(true);
+
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent intent = new Intent(ContactList.this, popup.class);
+//                intent.putExtra("name",kontakter.get(position).getName());
+//                intent.putExtra("email",kontakter.get(position).getEmail());
+//                intent.putExtra("number",kontakter.get(position).getNr());
+//                startActivity(intent);
+//
+//            }
+//        });
+
+
 
 
     }
