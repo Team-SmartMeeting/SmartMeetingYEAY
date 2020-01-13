@@ -22,7 +22,10 @@ public class MeetingOverview extends AppCompatActivity {
         bigBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), CreateMeeting.class);
+                //Intent intent = new Intent(getApplicationContext(), CreateMeeting.class);
+                //startActivity(intent);
+
+                Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
                 startActivity(intent);
 
             }
