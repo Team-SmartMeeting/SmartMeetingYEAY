@@ -10,7 +10,7 @@
 
 
         <TextView
-            android:id="@+id/item_topic_titel"
+            android:id="@+id/pop_topic_titel"
             android:background="@drawable/transparent"
             android:layout_width="match_parent"
             android:paddingLeft="15dp"
@@ -20,7 +20,7 @@
             android:textSize="28sp"/>
 
         <TextView
-            android:id="@+id/item_topic_time"
+            android:id="@+id/pop_topic_time"
             android:background="@drawable/transparent"
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             android:textSize="18sp"/>
 
         <TextView
-            android:id="@+id/item_topic_description"
+            android:id="@+id/pop_topic_description"
             android:background="@drawable/transparent"
             android:layout_weight="1"
             android:layout_width="match_parent"

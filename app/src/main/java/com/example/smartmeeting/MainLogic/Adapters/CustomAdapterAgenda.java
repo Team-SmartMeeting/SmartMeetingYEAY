@@ -60,7 +60,7 @@ public class CustomAdapterAgenda extends BaseAdapter {
         }
 
         TextView titlen = (TextView) row.findViewById(R.id.pop_topic_titel);
-        TextView tiden = (TextView) row.findViewById(R.id.pop_topic_tid);
+        TextView tiden = (TextView) row.findViewById(R.id.pop_topic_time);
         TextView beskrivelse = (TextView) row.findViewById(R.id.pop_topic_description);
 
         titlen.setText(titel.get(position));
