@@ -1,0 +1,31 @@
+logo i login skærm
+
+fjern figur billede og erstat med siluettetete
+
+register/sign in er for stor, den skal ikke være større end login
+
+noget tekst på møde oversigt skærmen, så der står noget selvom der ikke er møder oprettet,
+så man ved det ikke er en fejl med med nul tekst.
+
+toolbar er gammeldags. fjern graduaering og skift farve på rund knap. highlights på den knap man er på skal være tydeligere,
+men stadig diskrete - kig på mobilepay for eksempel
+
+teksten på f. eks create user er ikke tydelig i forklaringsfeltet (full name er ikke tydelig)
+
+https://material.io/components/text-fields/ for selve tekstfelterne
+
+allow participants behøver ikke den hvide baggrund, men tydeligere tekst i stedet for
+
+sorte button er måske på lige fod med de andre felter i toolbar
+
+datepicker til createmeeting tekstefelter (og andre generelt)
+
+agenda mangler konstrast
+
+floating action button til add topic rykket ned, højre side bund
+
+add topic mangler også kontrast
+
+ny side for kontakter, ligesom messenger eller facebook os - især fordi graduering er fucked up i popup
+
+profil ligner man kan redigere tekstefelterne, selv når man ikke er i edit mode
