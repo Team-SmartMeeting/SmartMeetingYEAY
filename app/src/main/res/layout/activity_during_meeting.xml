@@ -86,28 +86,30 @@
 
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/llclock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/colorAccent"
                 >
 
-            <TextClock
+            <TextView
                 android:id="@+id/clock"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="5:00"
-                android:textSize="20dp"
+                android:textSize="40dp"
 
             >
 
-        </TextClock>
+        </TextView>
         </LinearLayout>
             </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="400dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             >
 
         </LinearLayout>
@@ -140,7 +142,7 @@
                 </TextView>
 
                 <TextView
-                    android:id="@+id/listview_topic"
+                    android:id="@+id/nexttopic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -190,7 +192,8 @@
                     >
 
                 </TextView>
-            <TextClock
+            <TextView
+                android:id="@+id/totaltimer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -200,7 +203,7 @@
 
                 >
 
-            </TextClock>
+            </TextView>
             </LinearLayout>
         </LinearLayout>
 

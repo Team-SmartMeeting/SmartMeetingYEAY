@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextClock;
 import android.widget.TextView;
 
@@ -21,7 +22,10 @@ public class DuringMeeting extends AppCompatActivity {
     int topicListCurNum = 0;
     TextView topicDescription;
     TextView topicTitle;
-    TextClock topicTimer;
+    TextView topicTimer;
+    TextView topicTotalTimer;
+    TextView nexttopic;
+    LinearLayout llclock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +33,31 @@ public class DuringMeeting extends AppCompatActivity {
         setContentView(R.layout.activity_during_meeting);
 
 
-
         topicDescription = findViewById(R.id.topiccontent);
         topicTitle = findViewById(R.id.topictitle2);
         topicTimer = findViewById(R.id.clock);
+        topicTotalTimer = findViewById(R.id.totaltimer);
+        nexttopic = findViewById(R.id.nexttopic);
+        llclock = findViewById(R.id.llclock);
 
         topicTitle.setText(getTopicTitle(meetingID, topicListCurNum));
         topicDescription.setText(getTopicDesciption(meetingID, topicListCurNum));
-        topicTimer.setText(getTopicTime(meetingID, topicListCurNum));
+        topicTimer.setText(toClock(getTopicTime(meetingID, topicListCurNum)));
+        nexttopic.setText(getTopicTitle(meetingID, topicListCurNum + 1));
+        //llclock.setBackground("");
+
+        int totalTime = 0;
+
+        for (int i = 0;i < topicListNum;i++){
+            totalTime += getTopicTime(meetingID, i);
+        }
+
+
+
+        topicTotalTimer.setText(toClock(totalTime));
+
+
+
 
 
 
@@ -54,7 +75,14 @@ public class DuringMeeting extends AppCompatActivity {
                 else {
                     topicTitle.setText(getTopicTitle(meetingID, topicListCurNum));
                     topicDescription.setText(getTopicDesciption(meetingID, topicListCurNum));
-                    topicTimer.setText(getTopicTime(meetingID, topicListCurNum));
+                    topicTimer.setText(toClock(getTopicTime(meetingID, topicListCurNum)));
+
+                    if (topicListCurNum ==  topicListNum - 1){
+                        nexttopic.setText("End of meeting");
+                    }
+                    else {
+                        nexttopic.setText(getTopicTitle(meetingID, topicListCurNum + 1));
+                    }
                 }
             }
         });
@@ -90,12 +118,30 @@ public class DuringMeeting extends AppCompatActivity {
         return topicDesciption.get(listNum);
     }
 
-    public String getTopicTime(String meetingID, int listNum){
-        ArrayList<String> topicTime = new ArrayList<>();
-        topicTime.add("1:00");
-        topicTime.add("2:00");
-        topicTime.add("3:00");
+    public int getTopicTime(String meetingID, int listNum){
+        ArrayList<Integer> topicTime = new ArrayList<>();
+        topicTime.add(71);
+        topicTime.add(122);
+        topicTime.add(183);
         return topicTime.get(listNum);
+    }
+
+
+    public String toClock(int totalTime){
+
+        int minuts = totalTime / 60;
+
+        int secunds = totalTime - minuts * 60;
+
+        String clock;
+        if (secunds < 10){
+            clock = minuts + ":0" + secunds;
+        }
+        else {
+            clock = minuts + ":" + secunds;
+        }
+
+        return clock;
     }
 
 
