@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/gradientbackground"
+
     >
 
 
@@ -46,7 +47,7 @@
                         android:labelFor="@id/text_email"
                         android:text="Name" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/text_name"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -64,7 +65,7 @@
                         android:labelFor="@id/text_email"
                         android:text="Email" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/text_email"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -82,7 +83,7 @@
                         android:labelFor="@id/text_email"
                         android:text="phone number" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/text_phonenumber"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
@@ -92,6 +93,17 @@
                         android:hint="+45 3156 8872"
                         android:inputType="phone"
                         android:singleLine="true" />
+
+                    <Button
+                        android:id="@+id/edit_contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_contact_button"
+                        android:text="Edit Contact"
+                        >
+
+
+                    </Button>
 
 
                 </LinearLayout>
@@ -106,9 +118,9 @@
             android:layout_below="@+id/login_title"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:background="@drawable/user_profile_image_background2"
+            android:background="@drawable/placeholder"
             android:elevation="4dp"
-            android:src="@drawable/ic_boy"/>
+            />
 
 
 

@@ -40,6 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
+            android:textColor="#FFFFFF"
             android:labelFor="@id/create_meeting_name_ed"
             android:layout_marginLeft="20dp"
             android:text="Name / Username" />
@@ -49,17 +50,19 @@
             android:id="@+id/create_contact_name_et"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
+            android:textColor="#FFFFFF"
             android:inputType="textPersonName"
             android:padding="5dp"
             android:hint="F.eks. Søren Aarup Poulsen or Ak5ina" />
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
             android:fontFamily="sans-serif-light"
             android:labelFor="@id/create_meeting_name_ed"
             android:layout_marginLeft="20dp"
@@ -70,7 +73,7 @@
             android:id="@+id/create_contact_phonenumber_et"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
+            android:textColor="#FFFFFF"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
@@ -83,6 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
+            android:textColor="#FFFFFF"
             android:labelFor="@id/create_meeting_name_ed"
             android:layout_marginLeft="20dp"
             android:text="Email" />
@@ -92,12 +96,14 @@
             android:id="@+id/create_contact_email_et"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
+            android:textColor="#FFFFFF"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
             android:inputType="textEmailAddress"
             android:padding="5dp"
             android:hint="F.eks. SmartMeeting@Gmail.com" />
+
 
         <Space
             android:layout_width="0dp"
@@ -108,35 +114,10 @@
 
 
     </LinearLayout>
-    <ListView
-        android:id="@+id/listview_meetings"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-    </ListView>
 
     <include layout="@layout/toolbar" />
 
 
 </LinearLayout>
-
-<!--    <Button-->
-<!--        android:id="@+id/btn_add_contact"-->
-<!--        android:layout_width="80dp"-->
-<!--        android:layout_height="80dp"-->
-<!--        android:layout_marginBottom="50dp"-->
-<!--        android:background="@drawable/btn_new_meeting_drawable"-->
-<!--        android:text="Add Contact"-->
-<!--        android:textColor="#FFFF"-->
-<!--        android:textSize="18sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

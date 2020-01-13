@@ -22,7 +22,7 @@
         <activity android:name=".Activitys.MeetingOverview" />
         <activity android:name=".Activitys.Register" />
         <activity
-            android:name=".Activitys.popup"
+            android:name=".Activitys.ShowContact"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity android:name=".Activitys.MainActivity">
             <intent-filter>
