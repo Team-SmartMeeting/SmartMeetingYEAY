@@ -19,15 +19,20 @@ public class DuringMeeting extends AppCompatActivity {
     ArrayList<String> topicList = getTopic(meetingID);
     int topicListNum = topicList.size();
     int topicListCurNum = 0;
-    TextView topicDescription = findViewById(R.id.topiccontent);
-    TextView topicTitle = findViewById(R.id.topictitle2);
-    TextClock topicTimer = findViewById(R.id.clock);
+    TextView topicDescription;
+    TextView topicTitle;
+    TextClock topicTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_during_meeting);
 
+
+
+        topicDescription = findViewById(R.id.topiccontent);
+        topicTitle = findViewById(R.id.topictitle2);
+        topicTimer = findViewById(R.id.clock);
 
         topicTitle.setText(getTopicTitle(meetingID, topicListCurNum));
         topicDescription.setText(getTopicDesciption(meetingID, topicListCurNum));
@@ -42,6 +47,8 @@ public class DuringMeeting extends AppCompatActivity {
                 topicListCurNum++;
 
                 if (topicListCurNum == topicListNum){
+                    Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
+                    startActivity(intent);
 
                 }
                 else {
