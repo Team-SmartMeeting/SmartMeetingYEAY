@@ -16,6 +16,8 @@ import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterContactlist;
 import com.example.smartmeeting.MainLogic.DTO.Topic.Topic;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
 import com.example.smartmeeting.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -30,6 +32,12 @@ public class Agenda extends AppCompatActivity {
     ArrayList<String> TopicDescription;
 
 
+    DatabaseReference ref;
+    FirebaseDatabase database;
+
+    MeetingDTO myMeeting;
+
+
     //
     ListView listView;
 
@@ -40,9 +48,13 @@ public class Agenda extends AppCompatActivity {
 
         agenda = new ArrayList<>();
 
+        //Firebase
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Meetings");
+
         //henter mødet med Gson
         gson = new Gson();
-        MeetingDTO myMeeting = gson.fromJson(getIntent().getStringExtra("meeting"), MeetingDTO.class);
+        myMeeting = gson.fromJson(getIntent().getStringExtra("meeting"), MeetingDTO.class);
 
 
         TopicTitels = new ArrayList<>();
@@ -65,13 +77,20 @@ public class Agenda extends AppCompatActivity {
             }
         });
 
-//        btn_paticipants.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent_participants = new Intent(getApplicationContext(), participants.class);
-//                startActivity(intent_participants);
-//            }
-//        });
+        btnPaticipants.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myMeeting.setAgendalist(agenda);
+
+                    DatabaseReference meetingRef = ref.push();
+
+                    meetingRef.setValue(myMeeting);
+
+                    Intent in = new Intent(getApplicationContext(), UserInvited.class);
+                    startActivity(in);
+                    finish();
+                }
+            });
 
         //Menuen
         Button btn_profile = findViewById(R.id.btn_profile_menu);

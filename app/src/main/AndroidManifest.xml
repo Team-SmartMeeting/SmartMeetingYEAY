@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".Activitys.popup_topic_2"></activity>
+        <activity android:name=".Activitys.UserInvited"></activity>
+        <activity android:name=".Activitys.InviteToMeeting" />
+        <activity android:name=".Activitys.popup_topic_2" />
         <activity android:name=".Activitys.Agenda" />
         <activity android:name=".Activitys.add_contact" />
         <activity android:name=".Activitys.groups_list" />

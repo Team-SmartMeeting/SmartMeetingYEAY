@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradientbackground"
+    tools:context=".Activitys.Agenda">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Invited users"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1">
+
+                </Space>
+
+                <TextView
+                    android:id="@+id/metting_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-light"
+                    android:labelFor="@id/create_meeting_name_ed"
+                    android:text="Current meeting :Møde med App Gruppen" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Button
+                        android:id="@+id/btn_add_topic"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/btn_new_meeting_drawable"
+                        android:text="+"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="#FFFF"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+                        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+
+                    <TextView
+                        android:id="@+id/add_topic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:layout_marginLeft="10dp"
+                        android:labelFor="@id/create_meeting_name_ed"
+                        android:text="Invite user"
+                        app:layout_constraintBottom_toTopOf="@+id/btn_add_topic"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.98"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/listview_agenda"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            </ListView>
+
+
+        </LinearLayout>
+
+        <include layout="@layout/toolbar" />
+
+
+    </LinearLayout>
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_add_participant"-->
+    <!--        android:layout_width="100dp"-->
+    <!--        android:layout_height="100dp"-->
+    <!--        android:layout_marginBottom="50dp"-->
+    <!--        android:background="@drawable/btn_new_meeting_drawable"-->
+    <!--        android:text="Add participants"-->
+    <!--        android:textColor="#FFFF"-->
+    <!--        android:textSize="18sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
