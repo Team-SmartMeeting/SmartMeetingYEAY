@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradientbackground"
+    tools:context=".Activitys.ContactList">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="Invite"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+
+            <EditText
+                android:id="@+id/edittext_email_to_inv"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:hint="Type Email"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+
+            <Button
+                android:id="@+id/btn_invite_from_email_lastbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Invite with email" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"></Space>
+
+
+            <include layout="@layout/toolbar" />
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+    <!--    <Button-->
+    <!--        android:id="@+id/btn_new_group"-->
+    <!--        android:layout_width="80dp"-->
+    <!--        android:layout_height="80dp"-->
+    <!--        android:layout_marginBottom="50dp"-->
+    <!--        android:background="@drawable/btn_new_meeting_drawable"-->
+    <!--        android:text="Create Group"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -1,36 +1,54 @@
 package com.example.smartmeeting.Activitys;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
+import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterAgenda;
+import com.example.smartmeeting.MainLogic.DTO.user.User;
 import com.example.smartmeeting.R;
 
+import java.util.ArrayList;
+
 public class InviteToMeeting extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite_to_meeting);
 
+        //SÆTTER TINGENE OP
         Button btn_contact = findViewById(R.id.btn_invite_from_contact);
         Button btn_emil = findViewById(R.id.btn_invite_from_email);
 
+
+        //KNAPPER BLIVER SAT TIL
         btn_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                Intent in = new Intent(InviteToMeeting.this, InviteByEmail.class);
+                startActivityForResult(in, 3);
+
             }
         });
+
+
 
         btn_emil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
+                Intent in = new Intent(InviteToMeeting.this, InviteByEmail.class);
+                startActivityForResult(in, 4);
+
 
             }
         });
@@ -38,7 +56,7 @@ public class InviteToMeeting extends AppCompatActivity {
 
 
 
-        //Menuen
+        //MENUEN
         Button btn_profile = findViewById(R.id.btn_profile_menu);
         Button btn_meetings = findViewById(R.id.btn_meeting_menu);
         Button btn_groupe = findViewById(R.id.btn_groupes_menu);
@@ -75,4 +93,27 @@ public class InviteToMeeting extends AppCompatActivity {
         btn_profile.setBackgroundResource(R.drawable.button_pressed);
 
     }
+
+
+    //taget fra stackoverflow
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 3){
+            if (resultCode == RESULT_OK){
+                //Find en bruger igennem kontakten (brug måske email også her)
+
+
+            }
+
+        } else if (requestCode == 4){
+            if (resultCode == RESULT_OK){
+                //Find en bruger igennem emailen
+
+
+            }
+
+        }
+    }
+
 }
