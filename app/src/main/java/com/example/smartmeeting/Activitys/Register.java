@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
@@ -36,6 +37,9 @@ public class Register extends AppCompatActivity {
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor mEditor;
 
+    DatabaseReference ref;
+    FirebaseDatabase database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +47,8 @@ public class Register extends AppCompatActivity {
 
         //Firebase
         firebaseAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Users");
 
         //progresbar
         progressDialog = new ProgressDialog(this);
@@ -97,9 +103,15 @@ public class Register extends AppCompatActivity {
                                             finish();
 
                                             //indsætter den bruger man har lavet til databasen
-                                            FirebaseDatabase.getInstance().getReference("Users")
-                                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                                    .setValue(user);
+//                                            FirebaseDatabase.getInstance().getReference("Users")
+//                                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+//                                                    .setValue(user);
+
+                                            DatabaseReference usersRef = ref.child(txtEmail.getText().toString().replace(".",","));
+
+                                            usersRef.setValue(user);
+
+
 
 
                                             Intent in = new Intent(getApplicationContext(), MeetingOverview.class);
