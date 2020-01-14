@@ -87,7 +87,7 @@ public class Register extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     //Går i databasen og ligger telefon nummer og navn ind.
-                                    final UserDTO userDTO = new UserDTO(txtName.getText().toString(), txtEmail.getText().toString(), txtPhoneNumber.getText().toString(),null,null, 0,null);
+                                    final UserDTO userDTO = new UserDTO(txtName.getText().toString(), txtEmail.getText().toString(), txtPhoneNumber.getText().toString());
 
                                     //Logger ind!
                                     firebaseAuth.signInWithEmailAndPassword(txtEmail.getText().toString(), txtPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

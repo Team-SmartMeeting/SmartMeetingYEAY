@@ -26,9 +26,6 @@ public class ViewProfile extends AppCompatActivity {
 
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
-    private SharedPreferences mPreferences;
-    private UserDTO currentUser;
-    private SharedPreferences.Editor mEditor;
 
     private String email;
     private TextView textName;
@@ -44,11 +41,6 @@ public class ViewProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_profile);
 
-        currentUser = new UserDTO();
-        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mPreferences.edit();
-
-
         textName = findViewById(R.id.name);
         textPhone = findViewById(R.id.phonenumber);
         textEmail = findViewById(R.id.email);
@@ -62,13 +54,12 @@ public class ViewProfile extends AppCompatActivity {
         editProfile.setText("Edit \n Profile");
 
 
+        //Checker om der er en user logget på
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            // Name, email address, and profile photo Url
-
             email = user.getEmail();
-//            textEmail.setText(email);
-        }
+        } else {finish();}
+
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Users").child(email.replace(".",","));
 
@@ -137,30 +128,4 @@ public class ViewProfile extends AppCompatActivity {
         btn_profile.setBackgroundResource(R.drawable.button_pressed);
 
     }
-
-//    private void showData(DataSnapshot dataSnapshot) {
-//
-//        for(DataSnapshot ds : dataSnapshot.getChildren()){
-//            UserDTO currentUser = new UserDTO();
-
-//            currentUser.setName(ds.getValue(UserDTO.class).getName());
-//            currentUser.setEmail(ds.child("Users").getValue(UserDTO).getEmail());
-//            currentUser.setPhoneNumber(ds.getValue(UserDTO.class).getPhoneNumber());
-//            currentUser.setCompany(ds.getValue(UserDTO.class).getCompany());
-//            currentUser.setAddress(ds.getValue(UserDTO.class).getAddress());
-//            currentUser.setZipCode(ds.getValue(UserDTO.class).getZipCode());
-//            currentUser.setCountry(ds.getValue(UserDTO.class).getCountry());
-
-
-
-
-//            textName.setText(currentUser.getName());
-//            textEmail.setText(currentUser.getEmail());
-//            textPhone.setText(currentUser.getPhoneNumber());
-//            textCompany.setText(currentUser.getCompany());
-//            textAddress.setText(currentUser.getAddress());
-//            textZipCode.setText(Integer.toString(currentUser.getZipCode()));
-//            textCountry.setText(currentUser.getCountry());
-//        }
-//    }
 }

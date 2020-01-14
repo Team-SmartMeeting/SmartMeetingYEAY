@@ -23,7 +23,6 @@ import com.google.gson.Gson;
  */
 
 public class EditProfile extends AppCompatActivity {
-    private FirebaseAuth firebaseAuth;
     DatabaseReference ref;
     FirebaseDatabase database;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -33,7 +32,6 @@ public class EditProfile extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         //Firebase
-        firebaseAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users");
 
@@ -66,6 +64,7 @@ public class EditProfile extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
                     startActivity(intent);
+                    finish();
                 }
             }
         });

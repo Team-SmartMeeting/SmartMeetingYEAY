@@ -14,6 +14,16 @@ public class UserDTO implements IUserDTO {
     private int ZipCode;
     private String Country;
 
+    public UserDTO() {
+    }
+
+
+    public UserDTO(String name, String email, String phoneNumber) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
     public UserDTO(String name, String email, String phoneNumber,String Company,String Address, int ZipCode, String Country) {
         this.name = name;
         this.email = email;
@@ -24,9 +34,6 @@ public class UserDTO implements IUserDTO {
         this.Country = Country;
     }
 
-
-    public UserDTO() {
-    }
 
 
     public String getName() {
