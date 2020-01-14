@@ -67,16 +67,23 @@ public class ViewProfile extends AppCompatActivity {
             // Name, email address, and profile photo Url
 
             email = user.getEmail();
-            textEmail.setText(email);
+//            textEmail.setText(email);
         }
         mDatabase = FirebaseDatabase.getInstance();
-        mReference = mDatabase.getReference();
+        mReference = mDatabase.getReference().child("Users").child(email.replace(".",","));
 
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserDTO post = dataSnapshot.getValue(UserDTO.class);
 
-                showData(dataSnapshot);
+                textName.setText(post.getName());
+                textEmail.setText(post.getEmail());
+                textPhone.setText(post.getPhoneNumber());
+                textCompany.setText(post.getCompany());
+                textAddress.setText(post.getAddress());
+                textZipCode.setText(Integer.toString(post.getZipCode()));
+                textCountry.setText(post.getCountry());
             }
 
             @Override
@@ -131,13 +138,13 @@ public class ViewProfile extends AppCompatActivity {
 
     }
 
-    private void showData(DataSnapshot dataSnapshot) {
-
-        for(DataSnapshot ds : dataSnapshot.getChildren()){
-            UserDTO currentUser2 = new UserDTO();
+//    private void showData(DataSnapshot dataSnapshot) {
+//
+//        for(DataSnapshot ds : dataSnapshot.getChildren()){
+//            UserDTO currentUser = new UserDTO();
 
 //            currentUser.setName(ds.getValue(UserDTO.class).getName());
-            currentUser2.setEmail(ds.child("Users").child(email.replace(".",",")).getValue(UserDTO.class).getEmail());
+//            currentUser.setEmail(ds.child("Users").getValue(UserDTO).getEmail());
 //            currentUser.setPhoneNumber(ds.getValue(UserDTO.class).getPhoneNumber());
 //            currentUser.setCompany(ds.getValue(UserDTO.class).getCompany());
 //            currentUser.setAddress(ds.getValue(UserDTO.class).getAddress());
@@ -148,12 +155,12 @@ public class ViewProfile extends AppCompatActivity {
 
 
 //            textName.setText(currentUser.getName());
-            textEmail.setText(currentUser2.getEmail());
+//            textEmail.setText(currentUser.getEmail());
 //            textPhone.setText(currentUser.getPhoneNumber());
 //            textCompany.setText(currentUser.getCompany());
 //            textAddress.setText(currentUser.getAddress());
 //            textZipCode.setText(Integer.toString(currentUser.getZipCode()));
 //            textCountry.setText(currentUser.getCountry());
-        }
-    }
+//        }
+//    }
 }
