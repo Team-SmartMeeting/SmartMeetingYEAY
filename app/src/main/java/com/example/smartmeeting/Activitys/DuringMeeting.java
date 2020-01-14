@@ -28,10 +28,60 @@ public class DuringMeeting extends AppCompatActivity {
     TextView nexttopic;
     LinearLayout llclock;
 
+    int timerTRY;
+    int timerTRYTotal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_during_meeting);
+
+
+        int totalTime = 0;
+
+        for (int i = 0;i < topicListNum;i++){
+            totalTime += getTopicTime(meetingID, i);
+        }
+
+        timerTRY = getTopicTime(getMeeting(), topicListCurNum);
+        timerTRYTotal = totalTime;
+
+
+
+
+        Thread t = new Thread(){
+            @Override
+            public void run(){
+                while (!isInterrupted()){
+                    try {
+                        Thread.sleep(1000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                timerTRY--;
+                                timerTRYTotal--;
+                                topicTimer.setText(toClock(timerTRY));
+                                topicTotalTimer.setText(toClock(timerTRYTotal));
+
+                            }
+                        });
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+
+        t.start();
+
+
+
+
+
+
+
+
+
 
 
         topicDescription = findViewById(R.id.topiccontent);
@@ -47,11 +97,7 @@ public class DuringMeeting extends AppCompatActivity {
         nexttopic.setText(getTopicTitle(meetingID, topicListCurNum + 1));
         llclock.setBackgroundColor(Color.GREEN);
 
-        int totalTime = 0;
 
-        for (int i = 0;i < topicListNum;i++){
-            totalTime += getTopicTime(meetingID, i);
-        }
 
 
         topicTotalTimer.setText(toClock(totalTime));
@@ -68,6 +114,7 @@ public class DuringMeeting extends AppCompatActivity {
 
                 }
                 else {
+                    timerTRY = getTopicTime(getMeeting(), topicListCurNum);
                     topicTitle.setText(getTopicTitle(meetingID, topicListCurNum));
                     topicDescription.setText(getTopicDesciption(meetingID, topicListCurNum));
                     topicTimer.setText(toClock(getTopicTime(meetingID, topicListCurNum)));
@@ -115,7 +162,7 @@ public class DuringMeeting extends AppCompatActivity {
 
     public int getTopicTime(String meetingID, int listNum){
         ArrayList<Integer> topicTime = new ArrayList<>();
-        topicTime.add(71);
+        topicTime.add(3);
         topicTime.add(122);
         topicTime.add(183);
         return topicTime.get(listNum);
@@ -129,11 +176,16 @@ public class DuringMeeting extends AppCompatActivity {
         int secunds = totalTime - minuts * 60;
 
         String clock;
-        if (secunds < 10){
+        if (secunds < 10 && secunds > -10 ){
             clock = minuts + ":0" + secunds;
         }
         else {
             clock = minuts + ":" + secunds;
+        }
+
+        clock = clock.replace("-", "");
+        if (totalTime < 0) {
+            clock = "-" + clock;
         }
 
         return clock;
