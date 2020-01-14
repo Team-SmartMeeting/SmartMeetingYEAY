@@ -59,7 +59,7 @@ public class add_contact extends AppCompatActivity {
                     amountOfContact++;
                     mEditor.putInt("nrofcontact", (amountOfContact));
                     mEditor.commit();
-                    Toast.makeText(add_contact.this, "User saved",Toast.LENGTH_LONG).show();
+                    Toast.makeText(add_contact.this, "UserDTO saved",Toast.LENGTH_LONG).show();
 
                     finish();
                 }

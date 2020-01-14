@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.smartmeeting.MainLogic.DTO.user.User;
+import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
 import com.example.smartmeeting.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -87,7 +87,7 @@ public class Register extends AppCompatActivity {
                                 if (task.isSuccessful()) {
 
                                     //Går i databasen og ligger telefon nummer og navn ind.
-                                    final User user = new User(txtName.getText().toString(), txtEmail.getText().toString(), txtPhoneNumber.getText().toString());
+                                    final UserDTO userDTO = new UserDTO(txtName.getText().toString(), txtEmail.getText().toString(), txtPhoneNumber.getText().toString(),null,null, 0,null);
 
                                     //Logger ind!
                                     firebaseAuth.signInWithEmailAndPassword(txtEmail.getText().toString(), txtPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -105,11 +105,11 @@ public class Register extends AppCompatActivity {
                                             //indsætter den bruger man har lavet til databasen
 //                                            FirebaseDatabase.getInstance().getReference("Users")
 //                                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-//                                                    .setValue(user);
+//                                                    .setValue(userDTO);
 
                                             DatabaseReference usersRef = ref.child(txtEmail.getText().toString().replace(".",","));
 
-                                            usersRef.setValue(user);
+                                            usersRef.setValue(userDTO);
 
 
 
