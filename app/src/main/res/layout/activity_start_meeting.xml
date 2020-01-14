@@ -16,34 +16,54 @@
         >
 
         <TextView
+            android:layout_marginTop="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Meeting title"
+            android:textSize="30dp"
             >
         </TextView>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Meeting has yet to start"
-            android:textSize="40dp"
-            android:gravity="center"
+            android:textSize="30dp"
             android:layout_marginTop="50dp"
             >
         </TextView>
 
         <Button
-            android:id="@+id/btn_back"
+            android:id="@+id/btn_start"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:background="@drawable/btn_new_meeting_drawable"
             android:text="Start meeting"
-            android:layout_gravity="center"
+
             >
         </Button>
 
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-
+            <ListView
+                android:id="@+id/listview_topics"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+            </ListView>
+        </LinearLayout>
     </LinearLayout>
 
 

@@ -25,7 +25,7 @@ public class MeetingOverview extends AppCompatActivity {
                 //Intent intent = new Intent(getApplicationContext(), CreateMeeting.class);
                 //startActivity(intent);
 
-                Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
+                Intent intent = new Intent(getApplicationContext(), StartMeeting.class);
                 startActivity(intent);
 
             }
