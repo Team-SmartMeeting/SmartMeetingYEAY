@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
 
 public class ViewProfile extends AppCompatActivity {
 
@@ -29,14 +30,14 @@ public class ViewProfile extends AppCompatActivity {
     private UserDTO currentUser;
     private SharedPreferences.Editor mEditor;
 
-    String email;
-    TextView textName;
-    TextView textPhone;
-    TextView textEmail;
-    TextView textCompany;
-    TextView textAddress;
-    TextView textZipCode;
-    TextView textCountry;
+    private String email;
+    private TextView textName;
+    private TextView textPhone;
+    private TextView textEmail;
+    private TextView textCompany;
+    private TextView textAddress;
+    private TextView textZipCode;
+    private TextView textCountry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +49,13 @@ public class ViewProfile extends AppCompatActivity {
         mEditor = mPreferences.edit();
 
 
-        TextView textName = findViewById(R.id.name);
-        TextView textPhone = findViewById(R.id.phonenumber);
-        TextView textEmail = findViewById(R.id.email);
-        TextView textCompany = findViewById(R.id.company);
-        TextView textAddress = findViewById(R.id.address);
-        TextView textZipCode = findViewById(R.id.zip_code);
-        TextView textCountry = findViewById(R.id.country);
+        textName = findViewById(R.id.name);
+        textPhone = findViewById(R.id.phonenumber);
+        textEmail = findViewById(R.id.email);
+        textCompany = findViewById(R.id.company);
+        textAddress = findViewById(R.id.address);
+        textZipCode = findViewById(R.id.zip_code);
+        textCountry = findViewById(R.id.country);
 
 
         Button editProfile = findViewById(R.id.btn_big);
@@ -69,7 +70,7 @@ public class ViewProfile extends AppCompatActivity {
             textEmail.setText(email);
         }
         mDatabase = FirebaseDatabase.getInstance();
-        mReference = mDatabase.getReference().child("Users").child(email.replace(".",","));
+        mReference = mDatabase.getReference();
 
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -133,26 +134,26 @@ public class ViewProfile extends AppCompatActivity {
     private void showData(DataSnapshot dataSnapshot) {
 
         for(DataSnapshot ds : dataSnapshot.getChildren()){
+            UserDTO currentUser2 = new UserDTO();
+
+//            currentUser.setName(ds.getValue(UserDTO.class).getName());
+            currentUser2.setEmail(ds.child("Users").child(email.replace(".",",")).getValue(UserDTO.class).getEmail());
+//            currentUser.setPhoneNumber(ds.getValue(UserDTO.class).getPhoneNumber());
+//            currentUser.setCompany(ds.getValue(UserDTO.class).getCompany());
+//            currentUser.setAddress(ds.getValue(UserDTO.class).getAddress());
+//            currentUser.setZipCode(ds.getValue(UserDTO.class).getZipCode());
+//            currentUser.setCountry(ds.getValue(UserDTO.class).getCountry());
 
 
-            currentUser.setName(ds.getValue(UserDTO.class).getName());
-            currentUser.setEmail(ds.getValue(UserDTO.class).getEmail());
-            currentUser.setPhoneNumber(ds.getValue(UserDTO.class).getPhoneNumber());
-            currentUser.setCompany(ds.getValue(UserDTO.class).getCompany());
-            currentUser.setAddress(ds.getValue(UserDTO.class).getAddress());
-            currentUser.setZipCode(ds.getValue(UserDTO.class).getZipCode());
-            currentUser.setCountry(ds.getValue(UserDTO.class).getCountry());
 
 
-
-
-            textName.setText(currentUser.getName());
-            textEmail.setText(currentUser.getEmail());
-            textPhone.setText(currentUser.getPhoneNumber());
-            textCompany.setText(currentUser.getCompany());
-            textAddress.setText(currentUser.getAddress());
-            textZipCode.setText(Integer.toString(currentUser.getZipCode()));
-            textCountry.setText(currentUser.getCountry());
+//            textName.setText(currentUser.getName());
+            textEmail.setText(currentUser2.getEmail());
+//            textPhone.setText(currentUser.getPhoneNumber());
+//            textCompany.setText(currentUser.getCompany());
+//            textAddress.setText(currentUser.getAddress());
+//            textZipCode.setText(Integer.toString(currentUser.getZipCode()));
+//            textCountry.setText(currentUser.getCountry());
         }
     }
 }
