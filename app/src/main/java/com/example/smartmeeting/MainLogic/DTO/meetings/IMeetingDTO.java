@@ -3,6 +3,7 @@ package com.example.smartmeeting.MainLogic.DTO.meetings;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 /**
  * @author Søren Aarup Poulsen
@@ -36,6 +37,10 @@ public interface IMeetingDTO {
     boolean getPriotize();
 
     void setPriotize(boolean priotize);
+
+    ArrayList<String> getInviteUserList();
+
+    void setInviteUserList(ArrayList<String> inviteUserList);
 
     // </editor-folder>
 

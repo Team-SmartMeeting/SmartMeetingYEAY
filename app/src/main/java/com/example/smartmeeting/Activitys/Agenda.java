@@ -80,15 +80,25 @@ public class Agenda extends AppCompatActivity {
         btnPaticipants.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //GIR MØDET AGENDAEN
                     myMeeting.setAgendalist(agenda);
 
-                    DatabaseReference meetingRef = ref.push();
+                    //MØDE I STRING FORMAT! (taget fra stackoverflow)
+                    //-------------------------------------------------
+                    Gson gson = new Gson();
+                    String myJson = gson.toJson(myMeeting);
+                    //-------------------------------------------------
 
-                    meetingRef.setValue(myMeeting);
-
-                    Intent in = new Intent(getApplicationContext(), UserInvited.class);
-                    startActivity(in);
+                    Intent intent = new Intent(getApplicationContext(), UserInvited.class);
+                    intent.putExtra("mymeeting", myJson);
+                    startActivity(intent);
                     finish();
+
+                    //INDSÆT TIL DATABASEN
+//                    DatabaseReference meetingRef = ref.push();
+//                    meetingRef.setValue(myMeeting);
+
+
                 }
             });
 

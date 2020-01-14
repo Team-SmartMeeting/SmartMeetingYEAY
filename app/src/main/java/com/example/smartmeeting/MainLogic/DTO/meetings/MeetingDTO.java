@@ -20,6 +20,7 @@ public class MeetingDTO implements IMeetingDTO {
     private boolean priotize;
     private int duration;
     private ArrayList<Topic> Agendalist;
+    private ArrayList<String> inviteUserList;
 
     public MeetingDTO(String meetingName, String startDate, String startTime, boolean priotize, int duration){
 
@@ -31,9 +32,7 @@ public class MeetingDTO implements IMeetingDTO {
 
     }
 
-
     //GETTERS AND SETTERS
-
 
     @Override
     public String getMeetingName() {
@@ -103,5 +102,15 @@ public class MeetingDTO implements IMeetingDTO {
 
     public void setAgendalist(ArrayList<Topic> agendalist) {
         Agendalist = agendalist;
+    }
+
+    @Override
+    public ArrayList<String> getInviteUserList() {
+        return inviteUserList;
+    }
+
+    @Override
+    public void setInviteUserList(ArrayList<String> inviteUserList) {
+        this.inviteUserList = inviteUserList;
     }
 }

@@ -56,6 +56,7 @@ public class CreateMeeting extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), Agenda.class);
                     intent.putExtra("meeting", myJson);
                     startActivity(intent);
+                    finish();
                 }
 
             }
