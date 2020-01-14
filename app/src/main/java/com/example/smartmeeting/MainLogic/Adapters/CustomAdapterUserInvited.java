@@ -19,21 +19,19 @@ public class CustomAdapterUserInvited extends BaseAdapter {
 
     Context context;
     static LayoutInflater inflater = null;
-    ArrayList<String> titel;
-    ArrayList<String> time;
-    ArrayList<String> description;
+    ArrayList<String> emails;
 
     public CustomAdapterUserInvited(Context context, ArrayList<String> emails){
 
         this.context = context;
-        this.titel = emails;
+        this.emails = emails;
 
     }
 
 
     @Override
     public int getCount() {
-        return titel.size();
+        return emails.size();
     }
 
     @Override
@@ -54,16 +52,12 @@ public class CustomAdapterUserInvited extends BaseAdapter {
         if(row == null){
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            row = inflater.inflate(R.layout.listview_topic_template, null);
+            row = inflater.inflate(R.layout.listview_invited_template, null);
         }
 
-        TextView titlen = (TextView) row.findViewById(R.id.pop_topic_titel);
-        TextView tiden = (TextView) row.findViewById(R.id.pop_topic_time);
-        TextView beskrivelse = (TextView) row.findViewById(R.id.pop_topic_description);
+        TextView titlen = (TextView) row.findViewById(R.id.listview_invited_users_element);
 
-        titlen.setText(titel.get(position));
-        tiden.setText(time.get(position));
-        beskrivelse.setText(description.get(position));
+        titlen.setText(emails.get(position));
 
         return row;
     }

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterAgenda;
+import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterUserInvited;
 import com.example.smartmeeting.MainLogic.DTO.Topic.Topic;
 import com.example.smartmeeting.MainLogic.DTO.user.User;
 import com.example.smartmeeting.R;
@@ -30,6 +31,8 @@ public class UserInvited extends AppCompatActivity {
         setContentView(R.layout.activity_user_invited);
 
         gson = new Gson();
+
+        listView = findViewById(R.id.listview_invited_users);
 
         emails = new ArrayList<>();
 
@@ -68,9 +71,11 @@ public class UserInvited extends AppCompatActivity {
         //TILFØJER ALLE TOPICS TIL ARRAYLISTER
 
         // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
-//        listView.setAdapter(new CustomAdapterAgenda(UserInvited.this, emails));
+        listView.setAdapter(new CustomAdapterUserInvited(UserInvited.this, emails));
 
 
+
+        //DENNE DEL SKAL LAVES FOR MAN KAN KLIKKE PÅ ELEMENTERNE
 //        listView.setClickable(true);
 //
 //        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -84,8 +89,6 @@ public class UserInvited extends AppCompatActivity {
 //
 //            }
 //        });
-
-
 
 
     }

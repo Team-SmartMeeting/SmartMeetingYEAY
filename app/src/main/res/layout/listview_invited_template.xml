@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/gradientbackground"
+    >
+
+
+
+
+        <TextView
+            android:id="@+id/listview_invited_users_element"
+            android:layout_weight="100"
+            android:layout_width="wrap_content"
+            android:paddingLeft="15dp"
+            android:layout_height="match_parent"
+            android:text="Titel"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="28sp"/>
+
+        <Button
+            android:id="@+id/btn_cancel_invite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
+
+
+</LinearLayout>
