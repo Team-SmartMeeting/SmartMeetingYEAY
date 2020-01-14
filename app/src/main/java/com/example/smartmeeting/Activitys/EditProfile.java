@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
 import com.example.smartmeeting.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
@@ -25,6 +26,7 @@ public class EditProfile extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     DatabaseReference ref;
     FirebaseDatabase database;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,20 +52,19 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Checker om felter er tommme!
-                if (!textName.getText().toString().equals("") && !textPhone.getText().toString().equals("") && !textEmail.getText().toString().equals("") && !textCompany.getText().toString().equals("") && !textAddress.getText().toString().equals("") && !textZipCode.getText().toString().equals("") && !textCountry.getText().toString().equals("")) {
+                if (!textName.getText().toString().equals("") && !textPhone.getText().toString().equals("") && !textCompany.getText().toString().equals("") && !textAddress.getText().toString().equals("") && !textZipCode.getText().toString().equals("") && !textCountry.getText().toString().equals("")) {
 
 
                     //opretter en Profil
-                    UserDTO profile = new UserDTO(textName.getText().toString(), textEmail.getText().toString(),textPhone.getText().toString(), textCompany.getText().toString(),textAddress.getText().toString(), Integer.parseInt(textZipCode.getText().toString()),textCountry.getText().toString());
+                    UserDTO profile = new UserDTO(textName.getText().toString(), String.valueOf(user.getEmail()).replace(".",","),textPhone.getText().toString(), textCompany.getText().toString(),textAddress.getText().toString(), Integer.parseInt(textZipCode.getText().toString()),textCountry.getText().toString());
 
-                    //Profile I STRING FORMAT! (taget fra stackoverflow)
-                    //-------------------------------------------------
-                    Gson gson = new Gson();
-                    String myJson = gson.toJson(profile);
-                    //-------------------------------------------------
+                    if (user != null) {
+                        ref.child(String.valueOf(user.getEmail()).replace(".",",")).setValue(profile);
+                    } else {
+                        System.out.println("You are not logged in");
+                    }
 
                     Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
-                    intent.putExtra("UserDTO", myJson);
                     startActivity(intent);
                 }
             }

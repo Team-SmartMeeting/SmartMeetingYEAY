@@ -118,9 +118,11 @@
             android:layout_below="@+id/login_title"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:background="@drawable/placeholder"
-            android:elevation="4dp"
-            />
+            android:elevation="4dp">
+
+        </ImageButton>
+<!--            android:background="@drawable/placeholder"-->
+
 
 
 

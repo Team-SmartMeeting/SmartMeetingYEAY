@@ -25,6 +25,10 @@ public class UserDTO implements IUserDTO {
     }
 
 
+    public UserDTO() {
+    }
+
+
     public String getName() {
         return name;
     }
