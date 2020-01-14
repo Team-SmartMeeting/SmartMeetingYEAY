@@ -69,7 +69,7 @@ public class ViewProfile extends AppCompatActivity {
             textEmail.setText(email);
         }
         mDatabase = FirebaseDatabase.getInstance();
-        mReference = mDatabase.getReference();
+        mReference = mDatabase.getReference().child("Users").child(email.replace(".",","));
 
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -135,7 +135,7 @@ public class ViewProfile extends AppCompatActivity {
         for(DataSnapshot ds : dataSnapshot.getChildren()){
 
 
-            currentUser.setName(ds.child(email.replace(".",",")).getValue(UserDTO.class).getName());
+            currentUser.setName(ds.getValue(UserDTO.class).getName());
             currentUser.setEmail(ds.getValue(UserDTO.class).getEmail());
             currentUser.setPhoneNumber(ds.getValue(UserDTO.class).getPhoneNumber());
             currentUser.setCompany(ds.getValue(UserDTO.class).getCompany());
