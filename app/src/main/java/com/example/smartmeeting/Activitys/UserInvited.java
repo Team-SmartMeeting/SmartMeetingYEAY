@@ -20,10 +20,8 @@ import java.util.ArrayList;
 public class UserInvited extends AppCompatActivity {
 
     ListView listView;
-    ArrayList<String> names;
     ArrayList<String> emails;
 
-    ArrayList<User> users;
     Gson gson;
 
     @Override
@@ -32,6 +30,8 @@ public class UserInvited extends AppCompatActivity {
         setContentView(R.layout.activity_user_invited);
 
         gson = new Gson();
+
+        emails = new ArrayList<>();
 
         Button btn_add_user = findViewById(R.id.btn_add_user);
         Button btn_big = findViewById(R.id.btn_big);
@@ -50,10 +50,10 @@ public class UserInvited extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1){
+        if (requestCode == 2){
             if (resultCode == RESULT_OK){
-                User nyUser = gson.fromJson(data.getStringExtra("nyuser"), User.class);
-                users.add(nyUser);
+                String nyUser = data.getStringExtra("nymail2");
+                emails.add(nyUser);
 
                 UpdateList();
             }
@@ -64,17 +64,11 @@ public class UserInvited extends AppCompatActivity {
     public void UpdateList(){
 
         //CLEAR ALLE ARRAYLISTER SÅ DE ER KLAR TIL AT BLIVE REPOSTET
-        names.clear();
-        emails.clear();
 
         //TILFØJER ALLE TOPICS TIL ARRAYLISTER
-        for (int i = 0; i < users.size(); i++) {
-            names.add(users.get(i).getName());
-            emails.add(users.get(i).getEmail());
-        }
 
         // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
-//        listView.setAdapter(new CustomAdapterAgenda(Agenda.this,TopicTitels, TopicTime, TopicDescription));
+//        listView.setAdapter(new CustomAdapterAgenda(UserInvited.this, emails));
 
 
 //        listView.setClickable(true);

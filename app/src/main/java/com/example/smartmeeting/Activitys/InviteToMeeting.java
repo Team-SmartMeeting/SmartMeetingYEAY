@@ -102,6 +102,12 @@ public class InviteToMeeting extends AppCompatActivity {
         if (requestCode == 3){
             if (resultCode == RESULT_OK){
                 //Find en bruger igennem kontakten (brug måske email også her)
+                String nytTopic = data.getStringExtra("nykontakt");
+
+                Intent intent = new Intent();
+                intent.putExtra("nymail2", nytTopic);
+                setResult(RESULT_OK, intent);
+                finish();
 
 
             }
@@ -109,6 +115,12 @@ public class InviteToMeeting extends AppCompatActivity {
         } else if (requestCode == 4){
             if (resultCode == RESULT_OK){
                 //Find en bruger igennem emailen
+                String nytTopic = data.getStringExtra("nymail");
+
+                Intent intent = new Intent();
+                intent.putExtra("nymail2", nytTopic);
+                setResult(RESULT_OK, intent);
+                finish();
 
 
             }
