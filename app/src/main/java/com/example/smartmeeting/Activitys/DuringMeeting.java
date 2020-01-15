@@ -1,7 +1,9 @@
 package com.example.smartmeeting.Activitys;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,43 +12,106 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextClock;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.smartmeeting.MainLogic.DTO.Topic.Topic;
+import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
+import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
 import com.example.smartmeeting.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class DuringMeeting extends AppCompatActivity {
+public class DuringMeeting extends AppCompatActivity{
 
-    String meetingID = getMeeting();
-    ArrayList<String> topicList = getTopic(meetingID);
-    int topicListNum = topicList.size();
-    int topicListCurNum = 0;
-    TextView topicDescription;
-    TextView topicTitle;
-    TextView topicTimer;
-    TextView topicTotalTimer;
-    TextView nexttopic;
-    LinearLayout llclock;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mReference;
 
-    int timerTRY;
-    int timerTRYTotal;
+    private String meetingID = getMeeting();
+    private ArrayList<Topic> topicList;
+    private int topicListNum;
+    private int topicListCurNum = 0;
+    private TextView topicDescription;
+    private TextView topicTitle;
+    private TextView topicTimer;
+    private TextView topicTotalTimer;
+    private TextView nexttopic;
+    private LinearLayout llclock;
+    //private String email;
+
+    private int timerTRY;
+    private int timerTRYTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_during_meeting);
 
+        topicDescription = findViewById(R.id.topiccontent);
+        topicTitle = findViewById(R.id.topictitle2);
+        topicTimer = findViewById(R.id.clock);
+        topicTotalTimer = findViewById(R.id.totaltimer);
+        nexttopic = findViewById(R.id.nexttopic);
+        llclock = findViewById(R.id.llclock);
+
+
+        topicList = new ArrayList<>();
+
+
+        //Checker om der er en user logget på
+        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //if (user != null) {
+        //    email = user.getEmail();
+        //} else {finish();}
+
+//        mDatabase = FirebaseDatabase.getInstance();
+//        mReference = mDatabase.getReference().child("Meetings").child(getMeeting());
+//
+//        mReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                MeetingDTO post = dataSnapshot.getValue(MeetingDTO.class);
+//
+//                //textName.setText(post.getName());
+//
+//                if (post.getAgendalist() != null){
+//                    topicList = post.getAgendalist();
+//                }
+//                else {
+//
+//                }
+//
+//                topicListNum = topicList.size();
+//                System.out.println(topicListNum);
+//                for (int i = 0;i < topicListNum;i++){
+//
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+
+
 
         int totalTime = 0;
 
         for (int i = 0;i < topicListNum;i++){
-            totalTime += getTopicTime(meetingID, i);
+            totalTime += getTopicTime(i);
         }
 
-        timerTRY = getTopicTime(getMeeting(), topicListCurNum);
+        timerTRY = getTopicTime(topicListCurNum);
         timerTRYTotal = totalTime;
-
-
 
 
         Thread t = new Thread(){
@@ -62,7 +127,6 @@ public class DuringMeeting extends AppCompatActivity {
                                 timerTRYTotal--;
                                 topicTimer.setText(toClock(timerTRY));
                                 topicTotalTimer.setText(toClock(timerTRYTotal));
-
                             }
                         });
                     } catch (InterruptedException e) {
@@ -76,31 +140,15 @@ public class DuringMeeting extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-        topicDescription = findViewById(R.id.topiccontent);
-        topicTitle = findViewById(R.id.topictitle2);
-        topicTimer = findViewById(R.id.clock);
-        topicTotalTimer = findViewById(R.id.totaltimer);
-        nexttopic = findViewById(R.id.nexttopic);
-        llclock = findViewById(R.id.llclock);
-
-        topicTitle.setText(getTopicTitle(meetingID, topicListCurNum));
-        topicDescription.setText(getTopicDesciption(meetingID, topicListCurNum));
-        topicTimer.setText(toClock(getTopicTime(meetingID, topicListCurNum)));
-        nexttopic.setText(getTopicTitle(meetingID, topicListCurNum + 1));
+        topicTitle.setText(getTopicTitle(topicListCurNum));
+        topicDescription.setText(getTopicDesciption(topicListCurNum));
+        topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
+        nexttopic.setText(getTopicTitle(topicListCurNum + 1));
         llclock.setBackgroundColor(Color.GREEN);
 
 
 
-
-        topicTotalTimer.setText(toClock(totalTime));
+//        topicTotalTimer.setText(toClock(totalTime));
 
         Button btnNext = findViewById(R.id.btn_next);
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -111,48 +159,44 @@ public class DuringMeeting extends AppCompatActivity {
                 if (topicListCurNum == topicListNum){
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     startActivity(intent);
-
                 }
                 else {
-                    timerTRY = getTopicTime(getMeeting(), topicListCurNum);
-                    topicTitle.setText(getTopicTitle(meetingID, topicListCurNum));
-                    topicDescription.setText(getTopicDesciption(meetingID, topicListCurNum));
-                    topicTimer.setText(toClock(getTopicTime(meetingID, topicListCurNum)));
+                    timerTRY = getTopicTime(topicListCurNum);
+                    topicTitle.setText(getTopicTitle(topicListCurNum));
+                    topicDescription.setText(getTopicDesciption(topicListCurNum));
+                    topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
 
                     if (topicListCurNum ==  topicListNum - 1){
                         nexttopic.setText("End of meeting");
                     }
                     else {
-                        nexttopic.setText(getTopicTitle(meetingID, topicListCurNum + 1));
+                        nexttopic.setText(getTopicTitle(topicListCurNum + 1));
                     }
                 }
             }
         });
-
     }
 
 
     public String getMeeting(){
-        return "meetingID";
+        return "-LyYzCNhXW7Dtre1fSjB";
     }
 
-    public ArrayList<String> getTopic(String meetingID){
-        ArrayList<String> topics = new ArrayList<>();
-        topics.add("TopicID1");
-        topics.add("TopicID2");
-        topics.add("TopicID3");
-        return topics;
+    public Topic getTopic(int listNum){
+        return topicList.get(listNum);
     }
 
-    public String getTopicTitle(String meetingID, int listNum){
-        ArrayList<String> topicTitle = new ArrayList<>();
-        topicTitle.add("Title 1");
-        topicTitle.add("Title 2");
-        topicTitle.add("Title 3");
-        return topicTitle.get(listNum);
+    public String getTopicTitle(int listNum){
+        //String title = getTopic(listNum).getTopicName();
+
+        ///ArrayList<String> topicTitle = new ArrayList<>();
+        //topicTitle.add("Title 1");
+        //topicTitle.add("Title 2");
+        //topicTitle.add("Title 3");
+        return getTopic(listNum).getTopicName();
     }
 
-    public String getTopicDesciption(String meetingID, int listNum){
+    public String getTopicDesciption(int listNum){
         ArrayList<String> topicDesciption = new ArrayList<>();
         topicDesciption.add("Description 1");
         topicDesciption.add("Description 2");
@@ -160,7 +204,7 @@ public class DuringMeeting extends AppCompatActivity {
         return topicDesciption.get(listNum);
     }
 
-    public int getTopicTime(String meetingID, int listNum){
+    public int getTopicTime(int listNum){
         ArrayList<Integer> topicTime = new ArrayList<>();
         topicTime.add(3);
         topicTime.add(122);
@@ -190,6 +234,7 @@ public class DuringMeeting extends AppCompatActivity {
 
         return clock;
     }
+
 
 
 }

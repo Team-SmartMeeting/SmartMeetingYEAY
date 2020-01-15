@@ -13,6 +13,10 @@ public class Topic implements ITopic {
     private String description;
     private int topicDuration;
 
+    public Topic(){
+
+    }
+
     public Topic(String topicName, String description, int topicDuration){
 
         this.topicName = topicName;
