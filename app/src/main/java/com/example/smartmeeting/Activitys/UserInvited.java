@@ -1,5 +1,6 @@
 package com.example.smartmeeting.Activitys;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,9 +14,13 @@ import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterAgenda;
 import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterUserInvited;
 import com.example.smartmeeting.MainLogic.DTO.Topic.Topic;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
+import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
 import com.example.smartmeeting.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -31,10 +36,15 @@ public class UserInvited extends AppCompatActivity {
     Gson gson;
     MeetingDTO myMeeting;
 
+    String key;
+    ArrayList<String> meets;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_invited);
+
+        meets = new ArrayList<>();
 
         //HENTER MØDET MED GSON
         gson = new Gson();
@@ -72,10 +82,11 @@ public class UserInvited extends AppCompatActivity {
 //        INDSÆT TIL DATABASEN
                 DatabaseReference meetingRef = ref.push();
                 meetingRef.setValue(myMeeting);
+                key = meetingRef.getKey();
 
                 inviteUsersToMeeting(myMeeting);
 
-                finish();
+
             }
         });
 
@@ -83,9 +94,38 @@ public class UserInvited extends AppCompatActivity {
 
     private void inviteUsersToMeeting(MeetingDTO meetingToInvFrom) {
 
+        for (String emailTIlInvite : meetingToInvFrom.getInviteUserList()) {
+
+            ref = database.getReference().child("Users").child(emailTIlInvite.replace(".", ","));
 
 
+            //EVENT LISTENEREN
+            ref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    UserDTO post = dataSnapshot.getValue(UserDTO.class);
+
+                    if (post.getMeetingsList() != null) {
+                        meets = post.getMeetingsList();
+                        meets.add(key);
+                        post.setMeetingsList(meets);
+                    } else {
+                        meets.add(key);
+                        post.setMeetingsList(meets);
+                    }
+
+                    ref.child(String.valueOf(post.getEmail()).replace(".", ",")).setValue(post);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+        }
     }
+
 
     //taget fra stackoverflow
     @Override
