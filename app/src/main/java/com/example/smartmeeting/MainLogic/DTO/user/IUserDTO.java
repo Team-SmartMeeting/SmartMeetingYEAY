@@ -7,9 +7,6 @@ package com.example.smartmeeting.MainLogic.DTO.user;
 
 public interface IUserDTO {
 
-
-    // <editor-folder desc="Properties"
-
     String getName();
 
     void setName(String name);
@@ -22,9 +19,19 @@ public interface IUserDTO {
 
     void setPhoneNumber(String phoneNumber);
 
-    // </editor-folder>
+    String getCompany();
 
-    /*
-    ---------------------- Public Methods -----------------------
-     */
+    void setCompany(String company);
+
+    String getAddress();
+
+    void setAddress(String address);
+
+    int getZipCode();
+
+    void setZipCode(int zipcode);
+
+    String getCountry();
+
+    void setCountry(String country);
 }
