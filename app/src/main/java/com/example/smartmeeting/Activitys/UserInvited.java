@@ -39,6 +39,8 @@ public class UserInvited extends AppCompatActivity {
     String key;
     ArrayList<String> meets;
 
+    UserDTO post;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,7 +105,7 @@ public class UserInvited extends AppCompatActivity {
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    UserDTO post = dataSnapshot.getValue(UserDTO.class);
+                    post = dataSnapshot.getValue(UserDTO.class);
 
                     if (post.getMeetingsList() != null) {
                         meets = post.getMeetingsList();
@@ -114,7 +116,6 @@ public class UserInvited extends AppCompatActivity {
                         post.setMeetingsList(meets);
                     }
 
-                    ref.child(String.valueOf(post.getEmail()).replace(".", ",")).setValue(post);
                 }
 
                 @Override
@@ -122,6 +123,9 @@ public class UserInvited extends AppCompatActivity {
 
                 }
             });
+
+
+//            ref.child(String.valueOf(post.getEmail()).replace(".", ",")).setValue(post);
 
         }
     }
