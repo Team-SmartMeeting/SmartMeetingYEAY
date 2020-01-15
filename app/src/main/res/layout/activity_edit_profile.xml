@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradientbackground"
+    android:background="@drawable/gradientbackground2"
     tools:context=".Activitys.EditProfile">
 
     <LinearLayout
@@ -49,12 +49,13 @@
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:background="@drawable/edit_text_field"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:textColor="#FFFFFF"
                 android:layout_marginBottom="20dp"
                 android:inputType="textPersonName"
                 android:padding="5dp"
+                android:background="@drawable/border"
                 android:hint="F.eks. Søren Aarup Poulsen" />
 
             <TextView
@@ -70,12 +71,13 @@
                 android:id="@+id/phonenumber"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:background="@drawable/edit_text_field"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:textColor="#FFFFFF"
                 android:layout_marginBottom="20dp"
                 android:inputType="phone"
                 android:padding="5dp"
+                android:background="@drawable/border"
                 android:hint="F.eks. 12345678" />
 
 
@@ -92,12 +94,13 @@
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:background="@drawable/edit_text_field"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:textColor="#FFFFFF"
                 android:layout_marginBottom="20dp"
                 android:inputType="textEmailAddress"
                 android:padding="5dp"
+                android:background="@drawable/border"
                 android:hint="F.eks. SmartMeeting@Gmail.com" />
 
             <TextView
@@ -113,12 +116,13 @@
                 android:id="@+id/company"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:background="@drawable/edit_text_field"
                 android:layout_marginLeft="20dp"
+                android:textColor="#FFFFFF"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:inputType="textPersonName"
                 android:padding="5dp"
+                android:background="@drawable/border"
                 android:hint="F.eks. Company Name" />
 
 
@@ -135,12 +139,13 @@
                 android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:background="@drawable/edit_text_field"
+                android:textColor="#FFFFFF"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:inputType="textPostalAddress"
                 android:padding="5dp"
+                android:background="@drawable/border"
                 android:hint="F.eks. Roadname 1" />
 
 
@@ -158,12 +163,13 @@
                 android:id="@+id/city"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:background="@drawable/edit_text_field"
                 android:layout_marginLeft="20dp"
+                android:textColor="#FFFFFF"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:inputType="textPersonName"
                 android:padding="5dp"
+                android:background="@drawable/border"
                 android:hint="F.eks. Town City" />
 
 
@@ -181,12 +187,13 @@
                 android:id="@+id/zip_code"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:background="@drawable/edit_text_field"
                 android:layout_marginLeft="20dp"
+                android:textColor="#FFFFFF"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:inputType="phone"
                 android:padding="5dp"
+                android:background="@drawable/border"
                 android:hint="F.eks. 1234" />
 
 
@@ -204,12 +211,13 @@
                 android:id="@+id/country"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:background="@drawable/edit_text_field"
                 android:layout_marginLeft="20dp"
+                android:textColor="#FFFFFF"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:inputType="textPersonName"
                 android:padding="5dp"
+                android:background="@drawable/border"
                 android:hint="F.eks.Country name" />
 
             <Space
@@ -230,19 +238,5 @@
 
 
     </LinearLayout>
-
-
-<!--    <Button-->
-<!--        android:id="@+id/btn_save_profile"-->
-<!--        android:layout_width="80dp"-->
-<!--        android:layout_height="80dp"-->
-<!--        android:layout_marginBottom="50dp"-->
-<!--        android:background="@drawable/btn_new_meeting_drawable"-->
-<!--        android:text="Save profile"-->
-<!--        android:textColor="#FFFF"-->
-<!--        android:textSize="18sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

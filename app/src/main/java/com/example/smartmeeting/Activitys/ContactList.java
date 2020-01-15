@@ -139,7 +139,7 @@ public class ContactList extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ContactList.this, popup.class);
+                Intent intent = new Intent(ContactList.this, ShowContact.class);
                 intent.putExtra("name",kontakter.get(position).getName());
                 intent.putExtra("email",kontakter.get(position).getEmail());
                 intent.putExtra("number",kontakter.get(position).getNr());

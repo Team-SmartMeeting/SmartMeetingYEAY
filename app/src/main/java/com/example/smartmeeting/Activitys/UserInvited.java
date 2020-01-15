@@ -13,7 +13,6 @@ import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterAgenda;
 import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterUserInvited;
 import com.example.smartmeeting.MainLogic.DTO.Topic.Topic;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
-import com.example.smartmeeting.MainLogic.DTO.user.User;
 import com.example.smartmeeting.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -74,9 +73,17 @@ public class UserInvited extends AppCompatActivity {
                 DatabaseReference meetingRef = ref.push();
                 meetingRef.setValue(myMeeting);
 
+                inviteUsersToMeeting(myMeeting);
+
                 finish();
             }
         });
+
+    }
+
+    private void inviteUsersToMeeting(MeetingDTO meetingToInvFrom) {
+
+
 
     }
 

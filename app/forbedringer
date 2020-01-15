@@ -10,7 +10,7 @@ så man ved det ikke er en fejl med med nul tekst.
 toolbar er gammeldags. fjern graduaering og skift farve på rund knap. highlights på den knap man er på skal være tydeligere,
 men stadig diskrete - kig på mobilepay for eksempel
 
-teksten på f. eks create user er ikke tydelig i forklaringsfeltet (full name er ikke tydelig)
+teksten på f. eks create userDTO er ikke tydelig i forklaringsfeltet (full name er ikke tydelig)
 
 https://material.io/components/text-fields/ for selve tekstfelterne
 

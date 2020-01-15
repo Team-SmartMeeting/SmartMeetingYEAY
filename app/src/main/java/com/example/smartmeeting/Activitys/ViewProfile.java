@@ -1,5 +1,6 @@
 package com.example.smartmeeting.Activitys;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,39 +11,77 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
 import com.example.smartmeeting.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
 
 public class ViewProfile extends AppCompatActivity {
 
-    private SharedPreferences mPreferences;
-    private SharedPreferences.Editor mEditor;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mReference;
+
+    private String email;
+    private TextView textName;
+    private TextView textPhone;
+    private TextView textEmail;
+    private TextView textCompany;
+    private TextView textAddress;
+    private TextView textZipCode;
+    private TextView textCountry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_profile);
 
-        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mEditor = mPreferences.edit();
+        textName = findViewById(R.id.name);
+        textPhone = findViewById(R.id.phonenumber);
+        textEmail = findViewById(R.id.email);
+        textCompany = findViewById(R.id.company);
+        textAddress = findViewById(R.id.address);
+        textZipCode = findViewById(R.id.zip_code);
+        textCountry = findViewById(R.id.country);
 
-        TextView textName = findViewById(R.id.name);
-        TextView textPhone = findViewById(R.id.phonenumber);
-        TextView textEmail = findViewById(R.id.email);
-        TextView textCompany = findViewById(R.id.company);
-        TextView textAddress = findViewById(R.id.address);
-        TextView textZipCode = findViewById(R.id.zip_code);
-        TextView textCountry = findViewById(R.id.country);
-        /*
-        textName.setText();
-        textPhone.setText();
-        textEmail.setText();
-        textCompany.setText();
-        textAddress.setText();
-        textZipCode.setText();
-        textCountry.setText();
-        */
+
         Button editProfile = findViewById(R.id.btn_big);
         editProfile.setText("Edit \n Profile");
+
+
+        //Checker om der er en user logget på
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            email = user.getEmail();
+        } else {finish();}
+
+        mDatabase = FirebaseDatabase.getInstance();
+        mReference = mDatabase.getReference().child("Users").child(email.replace(".",","));
+
+        mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserDTO post = dataSnapshot.getValue(UserDTO.class);
+
+                textName.setText(post.getName());
+                textEmail.setText(post.getEmail());
+                textPhone.setText(post.getPhoneNumber());
+                textCompany.setText(post.getCompany());
+                textAddress.setText(post.getAddress());
+                textZipCode.setText(Integer.toString(post.getZipCode()));
+                textCountry.setText(post.getCountry());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
             editProfile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
