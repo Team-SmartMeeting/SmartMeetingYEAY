@@ -22,6 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.auth.User;
 
+/**
+ * @author Simon Philipsen
+ */
 public class ViewProfile extends AppCompatActivity {
 
     private FirebaseDatabase mDatabase;
@@ -33,6 +36,7 @@ public class ViewProfile extends AppCompatActivity {
     private TextView textEmail;
     private TextView textCompany;
     private TextView textAddress;
+    private TextView textCity;
     private TextView textZipCode;
     private TextView textCountry;
 
@@ -46,6 +50,7 @@ public class ViewProfile extends AppCompatActivity {
         textEmail = findViewById(R.id.email);
         textCompany = findViewById(R.id.company);
         textAddress = findViewById(R.id.address);
+        textCity = findViewById(R.id.city);
         textZipCode = findViewById(R.id.zip_code);
         textCountry = findViewById(R.id.country);
 
@@ -73,6 +78,7 @@ public class ViewProfile extends AppCompatActivity {
                 textPhone.setText(post.getPhoneNumber());
                 textCompany.setText(post.getCompany());
                 textAddress.setText(post.getAddress());
+                textCity.setText(post.getCity());
                 textZipCode.setText(Integer.toString(post.getZipCode()));
                 textCountry.setText(post.getCountry());
             }

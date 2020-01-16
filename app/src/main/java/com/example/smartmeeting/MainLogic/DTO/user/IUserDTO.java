@@ -27,6 +27,10 @@ public interface IUserDTO {
 
     void setAddress(String address);
 
+    String getCity();
+
+    void setCity(String City);
+
     int getZipCode();
 
     void setZipCode(int zipcode);

@@ -15,6 +15,7 @@ public class UserDTO implements IUserDTO {
     private String phoneNumber;
     private String Company;
     private String Address;
+    private String City;
     private int ZipCode;
     private String Country;
     private ArrayList<String> meetingsList;
@@ -30,12 +31,13 @@ public class UserDTO implements IUserDTO {
         meetingsList = new ArrayList<>();
     }
 
-    public UserDTO(String name, String email, String phoneNumber,String Company,String Address, int ZipCode, String Country) {
+    public UserDTO(String name, String email, String phoneNumber,String Company,String Address,String City, int ZipCode, String Country) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.Company = Company;
         this.Address = Address;
+        this.City = City;
         this.ZipCode = ZipCode;
         this.Country = Country;
         meetingsList = new ArrayList<>();
@@ -81,6 +83,14 @@ public class UserDTO implements IUserDTO {
 
     public void setAddress(String address) {
         this.Address = address;
+    }
+
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String city) {
+        this.City = city;
     }
 
     public int getZipCode() {

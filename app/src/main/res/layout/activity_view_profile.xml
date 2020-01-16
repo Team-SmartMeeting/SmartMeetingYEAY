@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/gradientbackground2"
     tools:context=".Activitys.ViewProfile">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -211,25 +207,17 @@
 
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
+        </ScrollView>
+        <Button
+            android:id="@+id/btn_big"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_new_meeting_drawable"
+            android:text="Button"
+            android:layout_gravity="right">
+        </Button>
 
-            >
-            <Button
-                android:id="@+id/btn_big"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@drawable/btn_new_meeting_drawable"
-                android:text="Button">
-
-            </Button>
-
-
-        </LinearLayout>
         <include layout="@layout/toolbar" />
-
-
 </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>

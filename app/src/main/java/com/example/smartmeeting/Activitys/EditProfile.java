@@ -1,5 +1,6 @@
 package com.example.smartmeeting.Activitys;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +14,11 @@ import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
 import com.example.smartmeeting.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 
@@ -23,9 +27,13 @@ import com.google.gson.Gson;
  */
 
 public class EditProfile extends AppCompatActivity {
+
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mReference;
     DatabaseReference ref;
     FirebaseDatabase database;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    String email = user.getEmail();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,26 +43,52 @@ public class EditProfile extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users");
 
-        final TextView textName = (TextView) findViewById(R.id.name);
-        final TextView textPhone = (TextView) findViewById(R.id.phonenumber);
-        final TextView textEmail = (TextView) findViewById(R.id.email);
-        final TextView textCompany = (TextView) findViewById(R.id.company);
-        final TextView textAddress = (TextView) findViewById(R.id.address);
-        final TextView textZipCode = (TextView) findViewById(R.id.zip_code);
-        final TextView textCountry = (TextView) findViewById(R.id.country);
+        final TextView textName =  findViewById(R.id.name);
+        final TextView textPhone =  findViewById(R.id.phonenumber);
+        final TextView textEmail =  findViewById(R.id.email);
+        final TextView textCompany =  findViewById(R.id.company);
+        final TextView textAddress =  findViewById(R.id.address);
+        final TextView textCity =     findViewById(R.id.city);
+        final TextView textZipCode =  findViewById(R.id.zip_code);
+        final TextView textCountry =  findViewById(R.id.country);
 
 
-        Button editProfile = (Button) findViewById(R.id.btn_big);
+        mDatabase = FirebaseDatabase.getInstance();
+        mReference = mDatabase.getReference().child("Users").child(email.replace(".",","));
+
+        mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserDTO post = dataSnapshot.getValue(UserDTO.class);
+
+                textName.setText(post.getName());
+                textPhone.setText(post.getPhoneNumber());
+                textCompany.setText(post.getCompany());
+                textAddress.setText(post.getAddress());
+                textCity.setText(post.getCity());
+                textZipCode.setText(Integer.toString(post.getZipCode()));
+                textCountry.setText(post.getCountry());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+        Button editProfile = findViewById(R.id.btn_big);
         editProfile.setText("Save \n Changes");
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Checker om felter er tommme!
-                if (!textName.getText().toString().equals("") && !textPhone.getText().toString().equals("") && !textCompany.getText().toString().equals("") && !textAddress.getText().toString().equals("") && !textZipCode.getText().toString().equals("") && !textCountry.getText().toString().equals("")) {
+                if (!textName.getText().toString().equals("") && !textPhone.getText().toString().equals("") && !textCompany.getText().toString().equals("") && !textAddress.getText().toString().equals("")&& !textCity.getText().toString().equals("") && !textZipCode.getText().toString().equals("") && !textCountry.getText().toString().equals("")) {
 
 
                     //opretter en Profil
-                    UserDTO profile = new UserDTO(textName.getText().toString(), String.valueOf(user.getEmail()).replace(".",","),textPhone.getText().toString(), textCompany.getText().toString(),textAddress.getText().toString(), Integer.parseInt(textZipCode.getText().toString()),textCountry.getText().toString());
+                    UserDTO profile = new UserDTO(textName.getText().toString(), String.valueOf(user.getEmail()).replace(".",","),textPhone.getText().toString(), textCompany.getText().toString(),textAddress.getText().toString(),textCity.getText().toString(), Integer.parseInt(textZipCode.getText().toString()),textCountry.getText().toString());
 
                     if (user != null) {
                         ref.child(String.valueOf(user.getEmail()).replace(".",",")).setValue(profile);
