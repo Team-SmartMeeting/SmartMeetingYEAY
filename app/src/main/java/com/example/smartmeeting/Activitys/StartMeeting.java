@@ -33,22 +33,21 @@ public class StartMeeting extends AppCompatActivity {
     private TextView meetingTitle;
     private ListView topicListView;
     private ArrayList<String> listItems;
-
-    private ProgressBar progressBar;
+    private ArrayAdapter<String> arrayAdapter;
+    //private ProgressBar progressBar;
 
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>
-                (this, android.R.layout.simple_list_item_1, listItems);
+
 
         topicList = new ArrayList<>();
         listItems = new ArrayList<>();
-        listItems.add("Test");
+        //listItems.add("Test");
         meetingTitle = findViewById(R.id.meetingTitle);
-        progressBar = findViewById(R.id.progressBar);
+        //progressBar = findViewById(R.id.progressBarsm);
 
 
         mDatabase = FirebaseDatabase.getInstance();
@@ -84,13 +83,14 @@ public class StartMeeting extends AppCompatActivity {
 
 
         topicListView = findViewById(R.id.listview_topics);
-
+        arrayAdapter = new ArrayAdapter<>
+                (this, android.R.layout.simple_list_item_1, listItems);
 
 
         Thread w = new Thread(){
             public void run(){
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(2500);
                     //progressBar.setVisibility(View.VISIBLE);
                     runOnUiThread(new Runnable() {
                         @Override
@@ -98,9 +98,10 @@ public class StartMeeting extends AppCompatActivity {
                             for (int i = 0;i < topicList.size();i++){
                                 listItems.add(getTopicTitle(i));
                             }
+
                             topicListView.setAdapter(arrayAdapter);
                             arrayAdapter.notifyDataSetChanged();
-                            listItems.add("t");
+                            //listItems.add("t");
                         }
                     });
                 } catch (InterruptedException e) {

@@ -46,7 +46,7 @@ public class DuringMeeting extends AppCompatActivity{
     private TextView nexttopic;
     private LinearLayout llclock;
     //private String email;
-    private ProgressBar progressBar;
+    //private ProgressBar progressBar;
 
     private int timerTRY;
     private int timerTRYTotal;
@@ -56,7 +56,7 @@ public class DuringMeeting extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_during_meeting);
-        progressBar = findViewById(R.id.progressBar);
+        //progressBar = findViewById(R.id.progressBardm);
         topicDescription = findViewById(R.id.topiccontent);
         topicTitle = findViewById(R.id.topictitle2);
         topicTimer = findViewById(R.id.clock);
