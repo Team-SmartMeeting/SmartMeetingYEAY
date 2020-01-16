@@ -103,24 +103,28 @@
             app:layout_constraintTop_toTopOf="parent">
 
         </ListView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
 
+            >
+            <Button
+                android:id="@+id/btn_big"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/btn_new_meeting_drawable"
+                android:text="Button">
+
+            </Button>
+
+
+        </LinearLayout>
         <include layout="@layout/toolbar" />
 
 
     </LinearLayout>
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_add_group"-->
-<!--        android:layout_width="80dp"-->
-<!--        android:layout_height="80dp"-->
-<!--        android:layout_marginBottom="50dp"-->
-<!--        android:background="@drawable/btn_new_meeting_drawable"-->
-<!--        android:text="Create Group"-->
-<!--        android:textColor="#FFFF"-->
-<!--        android:textSize="18sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
 
 
