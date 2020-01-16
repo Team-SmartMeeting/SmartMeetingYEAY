@@ -40,6 +40,7 @@ public class UserInvited extends AppCompatActivity {
     ArrayList<String> meets;
 
     UserDTO post;
+    int posstOrNot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +103,7 @@ public class UserInvited extends AppCompatActivity {
 
 
             //EVENT LISTENEREN
-            ref.addValueEventListener(new ValueEventListener() {
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     post = dataSnapshot.getValue(UserDTO.class);
@@ -116,6 +117,8 @@ public class UserInvited extends AppCompatActivity {
                         post.setMeetingsList(meets);
                     }
 
+                    ref.child("meetingsList").setValue(post.getMeetingsList());
+                    finish();
                 }
 
                 @Override
@@ -124,8 +127,6 @@ public class UserInvited extends AppCompatActivity {
                 }
             });
 
-
-//            ref.child(String.valueOf(post.getEmail()).replace(".", ",")).setValue(post);
 
         }
     }
@@ -149,6 +150,7 @@ public class UserInvited extends AppCompatActivity {
     public void UpdateList(){
 
         // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
+
         listView.setAdapter(new CustomAdapterUserInvited(UserInvited.this, emails));
 
     }
