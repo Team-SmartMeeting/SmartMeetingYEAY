@@ -86,20 +86,7 @@ public class UserInvited extends AppCompatActivity {
                 DatabaseReference meetingRef = ref.push();
                 meetingRef.setValue(myMeeting);
                 key = meetingRef.getKey();
-
-
-                for (int i = 0; i < 5; i++) {
-                    myMeeting.getInviteUserList().add("bob@peter,dk");
-                    myMeeting.getInviteUserList().add("bob@bobsen,dk");
-                    myMeeting.getInviteUserList().add("bob@peter,dk");
-                    myMeeting.getInviteUserList().add("bob@bobsen,dk");
-                    myMeeting.getInviteUserList().add("jens@peter,dk");
-                    myMeeting.getInviteUserList().add("simonphilipsen1990@gmail.com");
-                    myMeeting.getInviteUserList().add("bob@peter,dk");
-                    myMeeting.getInviteUserList().add("tester@tester.dk");
-                    myMeeting.getInviteUserList().add("bob@peter,dk");
-                    myMeeting.getInviteUserList().add("bob@bobsen,dk");
-                }
+                
                 inviteUsersToMeeting(myMeeting);
 
 
