@@ -38,11 +38,8 @@ public class StartMeeting extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         topicList = new ArrayList<>();
         listItems = new ArrayList<>();
-        //listItems.add("Test");
-
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -78,8 +75,6 @@ public class StartMeeting extends AppCompatActivity {
 
             }
         });
-
-
 
 
         super.onCreate(savedInstanceState);

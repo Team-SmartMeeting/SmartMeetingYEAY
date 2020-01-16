@@ -56,11 +56,6 @@ public class DuringMeeting extends AppCompatActivity{
 
 
         topicList = new ArrayList<>();
-//        Topic test = new Topic("Title Test","Test", 61);
-//        Topic test2 = new Topic("Title Test2","Test2", 62);
-//        topicList.add(test);
-//        topicList.add(test2);
-
 
 
         //Checker om der er en user logget på
@@ -76,14 +71,9 @@ public class DuringMeeting extends AppCompatActivity{
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for (int i = 0;i < 10;i++){
-                    System.out.println("TEST" + i);
-
-                }
                 MeetingDTO post = dataSnapshot.getValue(MeetingDTO.class);
 
                 meetingOwner = post.getCreatingUser();
-
 
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
