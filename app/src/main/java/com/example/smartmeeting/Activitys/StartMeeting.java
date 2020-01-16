@@ -27,13 +27,10 @@ public class StartMeeting extends AppCompatActivity {
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
     private ArrayList<Topic> topicList;
-    private TextView meetingTitle;
     private ListView topicListView;
     private ArrayList<String> listItems;
     private ArrayAdapter<String> arrayAdapter;
     private String email;
-    //private ProgressBar progressBar;
-
 
 
 
@@ -44,8 +41,6 @@ public class StartMeeting extends AppCompatActivity {
         topicList = new ArrayList<>();
         listItems = new ArrayList<>();
         //listItems.add("Test");
-        meetingTitle = findViewById(R.id.meetingTitle);
-        //progressBar = findViewById(R.id.progressBarsm);
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -66,11 +61,14 @@ public class StartMeeting extends AppCompatActivity {
 
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
-                    //meetingTitle.setText(post.getMeetingName());
                 }
                 else {
 
                 }
+                final TextView meetingTitle = findViewById(R.id.meetingTitle);
+                String meetingTitleString;
+                meetingTitleString = post.getMeetingName();
+                meetingTitle.setText(meetingTitleString);
             }
 
             @Override
@@ -94,11 +92,12 @@ public class StartMeeting extends AppCompatActivity {
         Thread w = new Thread(){
             public void run(){
                 try {
-                    Thread.sleep(2500);
-                    //progressBar.setVisibility(View.VISIBLE);
+                    Thread.sleep(3000);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            ProgressBar progressBar = findViewById(R.id.progressBarsm);
+                            progressBar.setVisibility(View.VISIBLE);
                             for (int i = 0;i < topicList.size();i++){
                                 listItems.add(getTopicTitle(i));
                             }
@@ -106,12 +105,12 @@ public class StartMeeting extends AppCompatActivity {
                             topicListView.setAdapter(arrayAdapter);
                             arrayAdapter.notifyDataSetChanged();
                             //listItems.add("t");
+                            progressBar.setVisibility(View.GONE);
                         }
                     });
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                //progressBar.setVisibility(View.GONE);
             }
         };
         w.start();

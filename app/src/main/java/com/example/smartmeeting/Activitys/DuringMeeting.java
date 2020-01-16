@@ -12,7 +12,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.smartmeeting.MainLogic.DTO.Topic.Topic;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
-import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
 import com.example.smartmeeting.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,7 +27,6 @@ public class DuringMeeting extends AppCompatActivity{
 
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
-
     private String meetingID = getMeeting();
     private ArrayList<Topic> topicList;
     private int topicListNum;
@@ -40,8 +38,6 @@ public class DuringMeeting extends AppCompatActivity{
     private TextView nexttopic;
     private LinearLayout llclock;
     private String email;
-    //private ProgressBar progressBar;
-
     private int timerTRY;
     private int timerTRYTotal;
     int totalTime = 0;
@@ -50,7 +46,6 @@ public class DuringMeeting extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_during_meeting);
-        //progressBar = findViewById(R.id.progressBardm);
         topicDescription = findViewById(R.id.topiccontent);
         topicTitle = findViewById(R.id.topictitle2);
         topicTimer = findViewById(R.id.clock);
@@ -86,7 +81,6 @@ public class DuringMeeting extends AppCompatActivity{
                 }
                 MeetingDTO post = dataSnapshot.getValue(MeetingDTO.class);
 
-                //textName.setText(post.getName());
 
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
@@ -132,10 +126,12 @@ public class DuringMeeting extends AppCompatActivity{
             public void run(){
                 try {
                     Thread.sleep(2000);
-                    //progressBar.setVisibility(View.VISIBLE);
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            ProgressBar progressBar = findViewById(R.id.progressBardm);
+                            progressBar.setVisibility(View.VISIBLE);
                             topicTitle.setText(getTopicTitle(topicListCurNum));
                             topicDescription.setText(getTopicDesciption(topicListCurNum));
                             topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
@@ -147,13 +143,12 @@ public class DuringMeeting extends AppCompatActivity{
                             }
                             timerTRYTotal = totalTime;
                             topicTotalTimer.setText(toClock(totalTime));
-
+                            progressBar.setVisibility(View.GONE);
                         }
                     });
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                //progressBar.setVisibility(View.GONE);
             }
         };
         w.start();
