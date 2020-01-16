@@ -22,6 +22,16 @@ public class MeetingDTO implements IMeetingDTO {
     private ArrayList<Topic> Agendalist;
     private ArrayList<String> inviteUserList;
 
+
+    public MeetingDTO(){
+    }
+
+    public MeetingDTO(String meetingName, String creatingUser, ArrayList <Topic> Agendalist){
+        this.meetingName = meetingName;
+        this.creatingUser = creatingUser;
+        this.Agendalist = Agendalist;
+    }
+
     public MeetingDTO(String meetingName, String startDate, String startTime, boolean priotize, int duration){
 
         this.meetingName = meetingName;
@@ -29,8 +39,8 @@ public class MeetingDTO implements IMeetingDTO {
         this.startTime = startTime;
         this.priotize = priotize;
         this.duration = duration;
-
     }
+
 
     //GETTERS AND SETTERS
 

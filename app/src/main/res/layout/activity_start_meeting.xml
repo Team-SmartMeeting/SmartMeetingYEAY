@@ -8,30 +8,42 @@
     android:fitsSystemWindows="true"
     tools:context=".Activitys.StartMeeting">
 
+    <ProgressBar
+        android:id="@+id/progressBarsm"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout6"
+        tools:layout_editor_absoluteY="683dp" />
+
+
     <LinearLayout
+        android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:gravity="center"
-        >
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/meetingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="Meeting title"
-            android:textSize="30dp"
-            >
-        </TextView>
+            android:textSize="30dp"></TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Meeting has yet to start"
-            android:textSize="30dp"
             android:layout_marginTop="50dp"
-            >
-        </TextView>
+            android:text="Meeting has yet to start"
+            android:textSize="30dp"></TextView>
 
         <Button
             android:id="@+id/btn_start"
@@ -40,18 +52,15 @@
             android:background="@drawable/btn_new_meeting_drawable"
             android:text="Start meeting"
 
-            >
-        </Button>
+            ></Button>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginLeft="15dp"
-            android:textSize="20dp"
             android:text="Agenda"
-            >
-        </TextView>
+            android:textSize="20dp"></TextView>
 
         <LinearLayout
             android:id="@+id/linearLayout5"
@@ -71,10 +80,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-            </ListView>
+                app:layout_constraintTop_toTopOf="parent"></ListView>
         </LinearLayout>
     </LinearLayout>
+
+
 
 
 
