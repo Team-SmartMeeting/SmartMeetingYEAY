@@ -11,6 +11,9 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         <activity android:name=".Activitys.InviteByEmail"></activity>
         <activity android:name=".Activitys.UserInvited" />
+        <activity android:name=".Activitys.StartMeeting"></activity>
+        <activity android:name=".Activitys.EndMeeting" />
+        <activity android:name=".Activitys.DuringMeeting" />
         <activity android:name=".Activitys.InviteToMeeting" />
         <activity android:name=".Activitys.popup_topic_2" />
         <activity android:name=".Activitys.Agenda" />
