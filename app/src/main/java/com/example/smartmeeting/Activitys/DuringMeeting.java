@@ -2,8 +2,6 @@ package com.example.smartmeeting.Activitys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,10 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.TextClock;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.smartmeeting.MainLogic.DTO.Topic.Topic;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
 import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
@@ -25,7 +20,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -45,7 +39,7 @@ public class DuringMeeting extends AppCompatActivity{
     private TextView topicTotalTimer;
     private TextView nexttopic;
     private LinearLayout llclock;
-    //private String email;
+    private String email;
     //private ProgressBar progressBar;
 
     private int timerTRY;
@@ -74,10 +68,10 @@ public class DuringMeeting extends AppCompatActivity{
 
 
         //Checker om der er en user logget på
-        //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        //if (user != null) {
-        //    email = user.getEmail();
-        //} else {finish();}
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            email = user.getEmail();
+        } else {finish();}
 
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Meetings").child(getMeeting());

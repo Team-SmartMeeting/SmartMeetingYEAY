@@ -2,27 +2,24 @@ package com.example.smartmeeting.Activitys;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.example.smartmeeting.MainLogic.DTO.Topic.Topic;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
 import com.example.smartmeeting.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 
 public class StartMeeting extends AppCompatActivity {
@@ -34,6 +31,7 @@ public class StartMeeting extends AppCompatActivity {
     private ListView topicListView;
     private ArrayList<String> listItems;
     private ArrayAdapter<String> arrayAdapter;
+    private String email;
     //private ProgressBar progressBar;
 
 
@@ -48,6 +46,12 @@ public class StartMeeting extends AppCompatActivity {
         //listItems.add("Test");
         meetingTitle = findViewById(R.id.meetingTitle);
         //progressBar = findViewById(R.id.progressBarsm);
+
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            email = user.getEmail();
+        } else {finish();}
 
 
         mDatabase = FirebaseDatabase.getInstance();
