@@ -31,6 +31,7 @@ public class StartMeeting extends AppCompatActivity {
     private ArrayList<String> listItems;
     private ArrayAdapter<String> arrayAdapter;
     private String email;
+    private String meetingOwner;
 
 
 
@@ -69,6 +70,7 @@ public class StartMeeting extends AppCompatActivity {
                 String meetingTitleString;
                 meetingTitleString = post.getMeetingName();
                 meetingTitle.setText(meetingTitleString);
+                meetingOwner = post.getCreatingUser();
             }
 
             @Override
@@ -120,8 +122,14 @@ public class StartMeeting extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
-                startActivity(intent);
+
+                if (!email.equals(meetingOwner)){
+                    Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
+                    startActivity(intent);
+                }
+                else {
+
+                }
             }
         });
     }

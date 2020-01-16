@@ -26,8 +26,9 @@ public class MeetingDTO implements IMeetingDTO {
     public MeetingDTO(){
     }
 
-    public MeetingDTO(String meetingName, ArrayList <Topic> Agendalist){
+    public MeetingDTO(String meetingName, String creatingUser, ArrayList <Topic> Agendalist){
         this.meetingName = meetingName;
+        this.creatingUser = creatingUser;
         this.Agendalist = Agendalist;
     }
 

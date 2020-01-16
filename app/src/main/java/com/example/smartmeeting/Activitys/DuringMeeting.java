@@ -41,6 +41,7 @@ public class DuringMeeting extends AppCompatActivity{
     private int timerTRY;
     private int timerTRYTotal;
     int totalTime = 0;
+    private String meetingOwner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +81,8 @@ public class DuringMeeting extends AppCompatActivity{
 
                 }
                 MeetingDTO post = dataSnapshot.getValue(MeetingDTO.class);
+
+                meetingOwner = post.getCreatingUser();
 
 
                 if (post.getAgendalist() != null){
@@ -156,32 +159,37 @@ public class DuringMeeting extends AppCompatActivity{
 
 
 
-
-
-
         Button btnNext = findViewById(R.id.btn_next);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                topicListCurNum++;
 
-                if (topicListCurNum == topicListNum){
-                    Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
-                    startActivity(intent);
-                }
-                else {
-                    timerTRY = getTopicTime(topicListCurNum);
-                    topicTitle.setText(getTopicTitle(topicListCurNum));
-                    topicDescription.setText(getTopicDesciption(topicListCurNum));
-                    topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
+                if (!email.equals(meetingOwner)){
+                    topicListCurNum++;
 
-                    if (topicListCurNum + 1 ==  topicListNum){
-                        nexttopic.setText("End of meeting");
+                    if (topicListCurNum == topicListNum){
+                        Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
+                        startActivity(intent);
                     }
                     else {
-                        nexttopic.setText(getTopicTitle(topicListCurNum + 1));
+                        timerTRY = getTopicTime(topicListCurNum);
+                        topicTitle.setText(getTopicTitle(topicListCurNum));
+                        topicDescription.setText(getTopicDesciption(topicListCurNum));
+                        topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
+
+                        if (topicListCurNum + 1 ==  topicListNum){
+                            nexttopic.setText("End of meeting");
+                        }
+                        else {
+                            nexttopic.setText(getTopicTitle(topicListCurNum + 1));
+                        }
                     }
                 }
+                else {
+
+                }
+
+
             }
         });
     }
