@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,15 +46,17 @@ public class DuringMeeting extends AppCompatActivity{
     private TextView nexttopic;
     private LinearLayout llclock;
     //private String email;
+    private ProgressBar progressBar;
 
     private int timerTRY;
     private int timerTRYTotal;
+    int totalTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_during_meeting);
-
+        progressBar = findViewById(R.id.progressBar);
         topicDescription = findViewById(R.id.topiccontent);
         topicTitle = findViewById(R.id.topictitle2);
         topicTimer = findViewById(R.id.clock);
@@ -63,10 +66,10 @@ public class DuringMeeting extends AppCompatActivity{
 
 
         topicList = new ArrayList<>();
-        Topic test = new Topic("Title Test","Test", 61);
-        Topic test2 = new Topic("Title Test2","Test2", 62);
-        topicList.add(test);
-        topicList.add(test2);
+//        Topic test = new Topic("Title Test","Test", 61);
+//        Topic test2 = new Topic("Title Test2","Test2", 62);
+//        topicList.add(test);
+//        topicList.add(test2);
 
 
 
@@ -99,25 +102,12 @@ public class DuringMeeting extends AppCompatActivity{
                 }
                 topicListNum = topicList.size();
                 System.out.println(topicListNum);
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
-
-
-
-        int totalTime = 0;
-
-        for (int i = 0;i < topicListNum;i++){
-            totalTime += getTopicTime(i);
-        }
-
-        timerTRY = getTopicTime(topicListCurNum);
-        timerTRYTotal = totalTime;
 
 
         Thread t = new Thread(){
@@ -141,20 +131,44 @@ public class DuringMeeting extends AppCompatActivity{
                 }
             }
         };
-
         t.start();
 
 
+        Thread w = new Thread(){
+            public void run(){
+                try {
+                    Thread.sleep(2000);
+                    //progressBar.setVisibility(View.VISIBLE);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            topicTitle.setText(getTopicTitle(topicListCurNum));
+                            topicDescription.setText(getTopicDesciption(topicListCurNum));
+                            topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
+                            nexttopic.setText(getTopicTitle(topicListCurNum + 1));
+                            llclock.setBackgroundColor(Color.GREEN);
+                            timerTRY = getTopicTime(topicListCurNum);
+                            for (int i = 0;i < topicListNum;i++){
+                                totalTime += getTopicTime(i);
+                            }
+                            timerTRYTotal = totalTime;
+                            topicTotalTimer.setText(toClock(totalTime));
 
-        topicTitle.setText(getTopicTitle(topicListCurNum));
-        topicDescription.setText(getTopicDesciption(topicListCurNum));
-        topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
-        nexttopic.setText(getTopicTitle(topicListCurNum + 1));
-        llclock.setBackgroundColor(Color.GREEN);
+                        }
+                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                //progressBar.setVisibility(View.GONE);
+            }
+        };
+        w.start();
 
 
 
-//        topicTotalTimer.setText(toClock(totalTime));
+
+
+
 
         Button btnNext = findViewById(R.id.btn_next);
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -172,7 +186,7 @@ public class DuringMeeting extends AppCompatActivity{
                     topicDescription.setText(getTopicDesciption(topicListCurNum));
                     topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
 
-                    if (topicListCurNum ==  topicListNum - 1){
+                    if (topicListCurNum + 1 ==  topicListNum){
                         nexttopic.setText("End of meeting");
                     }
                     else {
@@ -185,7 +199,7 @@ public class DuringMeeting extends AppCompatActivity{
 
 
     public String getMeeting(){
-        return "-LyYzCNhXW7Dtre1fSjB";
+        return "-LyhmpETDbxVJQ04N21w";
     }
 
     public Topic getTopic(int listNum){
@@ -193,29 +207,15 @@ public class DuringMeeting extends AppCompatActivity{
     }
 
     public String getTopicTitle(int listNum){
-        //String title = getTopic(listNum).getTopicName();
-
-        ///ArrayList<String> topicTitle = new ArrayList<>();
-        //topicTitle.add("Title 1");
-        //topicTitle.add("Title 2");
-        //topicTitle.add("Title 3");
         return getTopic(listNum).getTopicName();
     }
 
     public String getTopicDesciption(int listNum){
-        ArrayList<String> topicDesciption = new ArrayList<>();
-        topicDesciption.add("Description 1");
-        topicDesciption.add("Description 2");
-        topicDesciption.add("Description 3");
-        return topicDesciption.get(listNum);
+        return getTopic(listNum).getDescription();
     }
 
     public int getTopicTime(int listNum){
-        ArrayList<Integer> topicTime = new ArrayList<>();
-        topicTime.add(3);
-        topicTime.add(122);
-        topicTime.add(183);
-        return topicTime.get(listNum);
+        return getTopic(listNum).getTopicDuration();
     }
 
 
