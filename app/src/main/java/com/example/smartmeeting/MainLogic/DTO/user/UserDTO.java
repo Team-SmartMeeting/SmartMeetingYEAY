@@ -1,5 +1,9 @@
 package com.example.smartmeeting.MainLogic.DTO.user;
 
+import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
+
+import java.util.ArrayList;
+
 /**
  * @author Søren Aarup Poulsen
  */
@@ -13,6 +17,7 @@ public class UserDTO implements IUserDTO {
     private String Address;
     private int ZipCode;
     private String Country;
+    private ArrayList<String> meetingsList;
 
     public UserDTO() {
     }
@@ -22,6 +27,7 @@ public class UserDTO implements IUserDTO {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        meetingsList = new ArrayList<>();
     }
 
     public UserDTO(String name, String email, String phoneNumber,String Company,String Address, int ZipCode, String Country) {
@@ -32,6 +38,7 @@ public class UserDTO implements IUserDTO {
         this.Address = Address;
         this.ZipCode = ZipCode;
         this.Country = Country;
+        meetingsList = new ArrayList<>();
     }
 
 
@@ -90,5 +97,13 @@ public class UserDTO implements IUserDTO {
 
     public void setCountry(String country) {
         this.Country = country;
+    }
+
+    public ArrayList<String> getMeetingsList() {
+        return meetingsList;
+    }
+
+    public void setMeetingsList(ArrayList<String> meetingsList) {
+        this.meetingsList = meetingsList;
     }
 }

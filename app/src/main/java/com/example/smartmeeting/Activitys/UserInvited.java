@@ -1,5 +1,6 @@
 package com.example.smartmeeting.Activitys;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,16 +10,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterAgenda;
 import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterUserInvited;
-import com.example.smartmeeting.MainLogic.DTO.Topic.Topic;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
+import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
 import com.example.smartmeeting.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 
 public class UserInvited extends AppCompatActivity {
 
@@ -31,10 +35,19 @@ public class UserInvited extends AppCompatActivity {
     Gson gson;
     MeetingDTO myMeeting;
 
+    String key;
+    ArrayList<String> meets;
+
+    UserDTO post;
+    ArrayList<UserDTO> userList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_invited);
+
+        meets = new ArrayList<>();
+        userList = new ArrayList<>();
 
         //HENTER MØDET MED GSON
         gson = new Gson();
@@ -72,20 +85,102 @@ public class UserInvited extends AppCompatActivity {
 //        INDSÆT TIL DATABASEN
                 DatabaseReference meetingRef = ref.push();
                 meetingRef.setValue(myMeeting);
-
+                key = meetingRef.getKey();
+                
                 inviteUsersToMeeting(myMeeting);
 
-                finish();
+
             }
         });
 
     }
 
-    private void inviteUsersToMeeting(MeetingDTO meetingToInvFrom) {
+    private void inviteUsersToMeeting(final MeetingDTO meetingToInvFrom)  {
+
+        Thread t = new Thread() {
+            public void run() {
+                //Henter dataen fra databasen
+                for (String emailTIlInvite : meetingToInvFrom.getInviteUserList()) {
+
+                    bob(emailTIlInvite);
+
+                }
+
+
+                //venter så jeg når at få alt dataen
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
+
+                //Smider dem ind i databasen
+                for (UserDTO user : userList) {
+
+                    if (user.getMeetingsList() != null) {
+                        meets.clear();
+                        meets = user.getMeetingsList();
+                        meets.add(key);
+                        user.setMeetingsList(meets);
+                    } else {
+                        meets.clear();
+                        meets.add(key);
+                        user.setMeetingsList(meets);
+                    }
+
+                    DatabaseReference ref2 = database.getReference().child("Users").child(user.getEmail().replace(".", ","));
+
+                    ref2.child("meetingsList").setValue(user.getMeetingsList());
+
+                }
+
+
+                finish();
+            }
+        };
+
+        t.start();
+
 
 
 
     }
+
+    public synchronized void bob(final String emailTilInvite){
+
+        final DatabaseReference ref2 = database.getReference().child("Users").child(emailTilInvite.replace(".", ","));
+
+
+        //EVENT LISTENEREN
+        ref2.addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.hasChild("email")) {
+                    UserDTO post = dataSnapshot.getValue(UserDTO.class);
+                    userList.add(post);
+                    System.out.println("Sådan brugeren er added til 'userList'");
+                } else {
+                    System.out.println("Brugeren eksitere ikke");
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+    }
+
 
     //taget fra stackoverflow
     @Override
@@ -105,6 +200,7 @@ public class UserInvited extends AppCompatActivity {
     public void UpdateList(){
 
         // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
+
         listView.setAdapter(new CustomAdapterUserInvited(UserInvited.this, emails));
 
     }
