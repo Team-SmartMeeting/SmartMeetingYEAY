@@ -63,8 +63,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:textColor="#FFFFFF"
-                android:padding="5dp"
-                android:text="@string/underline_name"/>
+                android:padding="5dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -83,8 +82,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:textColor="#FFFFFF"
-                android:padding="5dp"
-                android:text="12345678" />
+                android:padding="5dp" />
 
 
             <TextView
@@ -104,8 +102,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:textColor="#FFFFFF"
-                android:padding="5dp"
-                android:text="SmartMeeting@Gmail.com" />
+                android:padding="5dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -124,8 +121,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:textColor="#FFFFFF"
-                android:padding="5dp"
-                android:text="Company Name" />
+                android:padding="5dp" />
 
 
             <TextView
@@ -145,8 +141,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:textColor="#FFFFFF"
-                android:padding="5dp"
-                android:text="Roadname 1" />
+                android:padding="5dp" />
 
 
             <TextView
@@ -166,8 +161,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:textColor="#FFFFFF"
-                android:padding="5dp"
-                android:text="Town City" />
+                android:padding="5dp" />
 
 
             <TextView
@@ -188,8 +182,7 @@
                 android:layout_marginBottom="20dp"
                 android:textColor="#FFFFFF"
                 android:inputType="phone"
-                android:padding="5dp"
-                android:text="1234" />
+                android:padding="5dp" />
 
 
             <TextView
@@ -209,8 +202,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:textColor="#FFFFFF"
-                android:padding="5dp"
-                android:text="Country" />
+                android:padding="5dp" />
 
             <Space
                 android:layout_width="0dp"
