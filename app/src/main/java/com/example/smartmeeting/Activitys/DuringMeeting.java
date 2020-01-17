@@ -88,6 +88,7 @@ public class DuringMeeting extends AppCompatActivity{
                 if (post.getAgendaStatus() == topicListNum) {
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     startActivity(intent);
+                    finish();
                 }
                 if (post.getAgendaStatus() != topicListCurNum){
                     topicListCurNum = post.getAgendaStatus();
@@ -151,6 +152,7 @@ public class DuringMeeting extends AppCompatActivity{
                     if (topicListCurNum == topicListNum){
                         Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                         startActivity(intent);
+                        finish();
                     }
                     else {
                         timerTRY = getTopicTime(topicListCurNum);

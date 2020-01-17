@@ -67,10 +67,12 @@ public class StartMeeting extends AppCompatActivity {
                 if (post.getMeetingStatus() == 1){
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
                     startActivity(intent);
+                    finish();
                 }
                 else if (post.getMeetingStatus() == 2){
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     startActivity(intent);
+                    finish();
 
                 }
 
@@ -113,6 +115,7 @@ public class StartMeeting extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
                     startActivity(intent);
+                    finish();
                 }
                 else {
 

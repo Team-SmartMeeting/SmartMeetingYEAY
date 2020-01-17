@@ -21,6 +21,7 @@ public class EndMeeting extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
                 startActivity(intent);
+                finish();
             }
         });
 
