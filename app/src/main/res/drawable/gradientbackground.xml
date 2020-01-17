@@ -1,16 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <gradient
-        android:angle="270"
-        android:centerColor="@color/menufarve"
-        android:startColor="@color/menufarve2"
-        android:endColor="#FFFFFF"
-        />
-    <padding
-        android:left="0dp"
-        android:top="0dp"
+    <item android:left="0dp"
         android:right="0dp"
-        android:bottom="0dp"
-        />
-</shape>
+        android:bottom="50dp">
+
+        <shape android:shape="rectangle">
+            <gradient android:startColor="@color/menufarve2"
+                android:centerColor="@color/menufarve"
+                android:endColor="@color/toolbar"
+                android:angle="270"
+               />
+<!--            android:height="0px"-->
+        </shape>
+    </item>
+</layer-list>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >-->
+
+<!--    <gradient-->
+<!--        android:angle="270"-->
+<!--        android:centerColor="@color/menufarve"-->
+<!--        android:startColor="@color/menufarve2"-->
+<!--        android:endColor="#FFFFFF"-->
+<!--        />-->
+<!--    <padding-->
+<!--        android:left="0dp"-->
+<!--        android:top="0dp"-->
+<!--        android:right="0dp"-->
+<!--        android:bottom="0dp"-->
+<!--        />-->
+<!--</shape>-->
