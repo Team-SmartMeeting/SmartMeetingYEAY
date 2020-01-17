@@ -84,13 +84,20 @@ public class DuringMeeting extends AppCompatActivity{
                 topicListNum = topicList.size();
                 System.out.println(topicListNum);
 
-                if (post.getAgendaStatus() == topicListNum - 1) {
+
+                if (post.getAgendaStatus() == topicListNum) {
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     startActivity(intent);
                 }
                 if (post.getAgendaStatus() != topicListCurNum){
                     topicListCurNum = post.getAgendaStatus();
-                    load();
+                    if (topicListCurNum == topicListNum) {
+
+                    }
+                    else {
+                        load();
+
+                    }
                 }
             }
 
