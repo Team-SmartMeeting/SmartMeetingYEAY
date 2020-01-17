@@ -118,7 +118,7 @@ public class StartMeeting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (!email.equals(meetingOwner)){
+                if (email.equals(meetingOwner)){
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
                     startActivity(intent);
                 }

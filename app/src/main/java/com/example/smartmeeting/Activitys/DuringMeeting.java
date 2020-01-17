@@ -154,7 +154,7 @@ public class DuringMeeting extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-                if (!email.equals(meetingOwner)){
+                if (email.equals(meetingOwner)){
                     topicListCurNum++;
 
                     if (topicListCurNum == topicListNum){
