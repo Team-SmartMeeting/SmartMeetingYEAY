@@ -107,7 +107,7 @@ public class Register extends AppCompatActivity {
 //                                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
 //                                                    .setValue(userDTO);
 
-                                            DatabaseReference usersRef = ref.child(txtEmail.getText().toString().replace(".",","));
+                                            DatabaseReference usersRef = ref.child(txtEmail.getText().toString().replace(".",",")).child("userinfo");
 
                                             usersRef.setValue(userDTO);
 
