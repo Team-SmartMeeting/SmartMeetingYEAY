@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterAgenda;
@@ -55,6 +56,10 @@ public class Agenda extends AppCompatActivity {
         //henter mødet med Gson
         gson = new Gson();
         myMeeting = gson.fromJson(getIntent().getStringExtra("meeting"), MeetingDTO.class);
+
+        //SÆTTER OVERSKRIFT
+        TextView tv = findViewById(R.id.metting_name);
+        tv.setText("Current meeting: " + myMeeting.getMeetingName());
 
 
         TopicTitels = new ArrayList<>();
@@ -105,7 +110,6 @@ public class Agenda extends AppCompatActivity {
         //Menuen
         Button btn_profile = findViewById(R.id.btn_profile_menu);
         Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_groupe = findViewById(R.id.btn_groupes_menu);
         Button btn_contacts = findViewById(R.id.btn_contacts_menu);
 
         btn_contacts.setOnClickListener(new View.OnClickListener() {
@@ -118,14 +122,6 @@ public class Agenda extends AppCompatActivity {
             }
         });
 
-        btn_groupe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), groups_list.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
         btn_meetings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +132,14 @@ public class Agenda extends AppCompatActivity {
             }
         });
 
-        btn_profile.setBackgroundResource(R.drawable.button_pressed);
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     @Override
