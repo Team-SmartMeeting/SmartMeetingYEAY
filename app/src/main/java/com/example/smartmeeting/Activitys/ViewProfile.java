@@ -66,7 +66,7 @@ public class ViewProfile extends AppCompatActivity {
         } else {finish();}
 
         mDatabase = FirebaseDatabase.getInstance();
-        mReference = mDatabase.getReference().child("Users").child(email.replace(".",","));
+        mReference = mDatabase.getReference().child("Users").child(email.replace(".",",")).child("userinfo");
 
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
