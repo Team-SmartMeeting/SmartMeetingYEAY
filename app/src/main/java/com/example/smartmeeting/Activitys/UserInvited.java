@@ -14,6 +14,8 @@ import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterUserInvited;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
 import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
 import com.example.smartmeeting.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -64,6 +66,12 @@ public class UserInvited extends AppCompatActivity {
         Button btn_add_user = findViewById(R.id.btn_add_user);
         Button btn_big = findViewById(R.id.btn_big);
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String email = user.getEmail();
+            myMeeting.setCreatingUser(email.replace(".",","));
+        } else {finish();}
+
         //TILFØJ FLERE USERS (EMAILS)
         btn_add_user.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +87,7 @@ public class UserInvited extends AppCompatActivity {
                 for (int i = 0; i<emails.size(); i++) {
                     emails.set(i, emails.get(i).replace(".",","));
                 }
+
 
                 myMeeting.setInviteUserList(emails);
 
@@ -97,89 +106,20 @@ public class UserInvited extends AppCompatActivity {
 
     private void inviteUsersToMeeting(final MeetingDTO meetingToInvFrom)  {
 
-        Thread t = new Thread() {
-            public void run() {
-                //Henter dataen fra databasen
-                for (String emailTIlInvite : meetingToInvFrom.getInviteUserList()) {
 
-                    bob(emailTIlInvite);
+        for (String emailTIlInvite : meetingToInvFrom.getInviteUserList()) {
 
-                }
+//                    bob(emailTIlInvite);
 
+            DatabaseReference ref2 = database.getReference().child("Users").child(emailTIlInvite.replace(".", ",")).child("meetingsList");
+            String key2 = ref2.push().getKey();
 
-                //venter så jeg når at få alt dataen
-                try {
-                    Thread.sleep(50);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            ref2.child(key2).setValue(key);
 
-
-
-                //Smider dem ind i databasen
-                for (UserDTO user : userList) {
-
-                    if (user.getMeetingsList() != null) {
-                        meets.clear();
-                        meets = user.getMeetingsList();
-                        meets.add(key);
-                        user.setMeetingsList(meets);
-                    } else {
-                        meets.clear();
-                        meets.add(key);
-                        user.setMeetingsList(meets);
-                    }
-
-                    DatabaseReference ref2 = database.getReference().child("Users").child(user.getEmail().replace(".", ","));
-
-                    ref2.child("meetingsList").setValue(user.getMeetingsList());
-
-                }
-
-
-                finish();
-            }
-        };
-
-        t.start();
-
-
-
+        }
 
     }
 
-    public synchronized void bob(final String emailTilInvite){
-
-        final DatabaseReference ref2 = database.getReference().child("Users").child(emailTilInvite.replace(".", ","));
-
-
-        //EVENT LISTENEREN
-        ref2.addListenerForSingleValueEvent(new ValueEventListener() {
-
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                if (dataSnapshot.hasChild("email")) {
-                    UserDTO post = dataSnapshot.getValue(UserDTO.class);
-                    userList.add(post);
-                    System.out.println("Sådan brugeren er added til 'userList'");
-                } else {
-                    System.out.println("Brugeren eksitere ikke");
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-    }
 
 
     //taget fra stackoverflow
