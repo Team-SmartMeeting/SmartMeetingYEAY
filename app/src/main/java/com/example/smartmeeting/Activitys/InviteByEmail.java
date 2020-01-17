@@ -35,5 +35,40 @@ public class InviteByEmail extends AppCompatActivity {
             }
         });
 
+
+        //Menuen
+        Button btn_profile = findViewById(R.id.btn_profile_menu);
+        Button btn_meetings = findViewById(R.id.btn_meeting_menu);
+        Button btn_contacts = findViewById(R.id.btn_contacts_menu);
+
+        btn_contacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ContactList.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+
+        btn_meetings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 }
