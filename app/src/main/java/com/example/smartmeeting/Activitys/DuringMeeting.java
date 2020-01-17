@@ -163,6 +163,9 @@ public class DuringMeeting extends AppCompatActivity{
                 if (email.equals(meetingOwner)){
                     topicListCurNum++;
 
+                    mReference.child("agendaStatus").setValue(topicListCurNum);
+
+
                     if (topicListCurNum == topicListNum){
                         Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                         startActivity(intent);
