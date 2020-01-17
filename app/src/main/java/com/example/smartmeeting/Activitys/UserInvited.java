@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterUserInvited;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
@@ -54,6 +55,10 @@ public class UserInvited extends AppCompatActivity {
         //HENTER MØDET MED GSON
         gson = new Gson();
         myMeeting = gson.fromJson(getIntent().getStringExtra("mymeeting"), MeetingDTO.class);
+
+        //SÆTTER OVERSKRIFT
+        TextView tv = findViewById(R.id.metting_name);
+        tv.setText("Current meeting: " + myMeeting.getMeetingName());
 
         //FORBINDELSE TIL DATA BASEN
         database = FirebaseDatabase.getInstance();
@@ -102,9 +107,45 @@ public class UserInvited extends AppCompatActivity {
             }
         });
 
+        //Menuen
+        Button btn_profile = findViewById(R.id.btn_profile_menu);
+        Button btn_meetings = findViewById(R.id.btn_meeting_menu);
+        Button btn_contacts = findViewById(R.id.btn_contacts_menu);
+
+        btn_contacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ContactList.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
+
+        btn_meetings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
     private void inviteUsersToMeeting(final MeetingDTO meetingToInvFrom)  {
+
+        MeetingDTO meetingOnUserDB = new MeetingDTO(meetingToInvFrom.getMeetingName(), meetingToInvFrom.getTime(), meetingToInvFrom.getDate(), meetingToInvFrom.getDuration());
 
 
         for (String emailTIlInvite : meetingToInvFrom.getInviteUserList()) {
@@ -114,9 +155,18 @@ public class UserInvited extends AppCompatActivity {
             DatabaseReference ref2 = database.getReference().child("Users").child(emailTIlInvite.replace(".", ",")).child("meetingsList");
             String key2 = ref2.push().getKey();
 
-            ref2.child(key2).setValue(key);
+            ref2.child(key2).setValue(meetingOnUserDB);
 
         }
+
+        DatabaseReference ref2 = database.getReference().child("Users").child(meetingToInvFrom.getCreatingUser().replace(".",",")).child("meetingsList");
+        String key2 = ref2.push().getKey();
+
+        ref2.child(key2).setValue(meetingOnUserDB);
+
+
+
+        finish();
 
     }
 

@@ -91,7 +91,7 @@ public class EditProfile extends AppCompatActivity {
                     UserDTO profile = new UserDTO(textName.getText().toString(), String.valueOf(user.getEmail()).replace(".",","),textPhone.getText().toString(), textCompany.getText().toString(),textAddress.getText().toString(),textCity.getText().toString(), Integer.parseInt(textZipCode.getText().toString()),textCountry.getText().toString());
 
                     if (user != null) {
-                        ref.child(String.valueOf(user.getEmail()).replace(".",",")).child("userinfo").setValue(profile);
+                        ref.child(String.valueOf(user.getEmail()).replace(".",",")).child("userinfo"). setValue(profile);
                     } else {
                         System.out.println("You are not logged in");
                     }
