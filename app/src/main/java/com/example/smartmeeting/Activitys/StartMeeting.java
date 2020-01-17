@@ -41,6 +41,8 @@ public class StartMeeting extends AppCompatActivity {
         topicList = new ArrayList<>();
         listItems = new ArrayList<>();
 
+
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             email = user.getEmail();
@@ -56,11 +58,19 @@ public class StartMeeting extends AppCompatActivity {
 
                 MeetingDTO post = dataSnapshot.getValue(MeetingDTO.class);
 
-
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
                 }
                 else {
+
+                }
+                if (post.getMeetingStatus() == 1){
+                    Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
+                    startActivity(intent);
+                }
+                else if (post.getMeetingStatus() == 2){
+                    Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
+                    startActivity(intent);
 
                 }
                 final TextView meetingTitle = findViewById(R.id.meetingTitle);
@@ -98,10 +108,8 @@ public class StartMeeting extends AppCompatActivity {
                             for (int i = 0;i < topicList.size();i++){
                                 listItems.add(getTopicTitle(i));
                             }
-
                             topicListView.setAdapter(arrayAdapter);
                             arrayAdapter.notifyDataSetChanged();
-                            //listItems.add("t");
                             progressBar.setVisibility(View.GONE);
                         }
                     });
@@ -120,12 +128,14 @@ public class StartMeeting extends AppCompatActivity {
                 email = email.replace(".", ",");
 
                 if (email.equals(meetingOwner)){
+
+                    mReference.child("meetigStatus").setValue(1);
+
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
                     startActivity(intent);
                 }
                 else {
-                    System.out.println(email);
-                    System.out.println(meetingOwner);
+
                 }
             }
         });

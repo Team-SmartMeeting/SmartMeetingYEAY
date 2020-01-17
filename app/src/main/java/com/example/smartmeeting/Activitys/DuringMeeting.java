@@ -184,8 +184,6 @@ public class DuringMeeting extends AppCompatActivity{
                 else {
 
                 }
-
-
             }
         });
     }
