@@ -45,7 +45,7 @@ public class CreateMeeting extends AppCompatActivity {
                     boolean ischecked = skifter.isChecked();
 
                     //opretter et møde
-                    MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), meetingDate.getText().toString(), meetingTime.getText().toString(), ischecked, Integer.parseInt(meetingDuration.getText().toString()));
+                    MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), meetingDate.getText().toString(), meetingTime.getText().toString(), ischecked, Integer.parseInt(meetingDuration.getText().toString()), 0, 0);
 
                     //MØDE I STRING FORMAT! (taget fra stackoverflow)
                     //-------------------------------------------------

@@ -21,6 +21,8 @@ public class MeetingDTO implements IMeetingDTO {
     private int duration;
     private ArrayList<Topic> Agendalist;
     private ArrayList<String> inviteUserList;
+    private int meetingStatus;
+    private int agendaStatus;
 
 
     public MeetingDTO(){
@@ -32,13 +34,15 @@ public class MeetingDTO implements IMeetingDTO {
         this.Agendalist = Agendalist;
     }
 
-    public MeetingDTO(String meetingName, String startDate, String startTime, boolean priotize, int duration){
+    public MeetingDTO(String meetingName, String startDate, String startTime, boolean priotize, int duration, int meetingStatus, int agendaStatus){
 
         this.meetingName = meetingName;
         this.startDate = startDate;
         this.startTime = startTime;
         this.priotize = priotize;
         this.duration = duration;
+        this.meetingStatus = meetingStatus;
+        this.agendaStatus = agendaStatus;
     }
 
 
@@ -122,5 +126,21 @@ public class MeetingDTO implements IMeetingDTO {
     @Override
     public void setInviteUserList(ArrayList<String> inviteUserList) {
         this.inviteUserList = inviteUserList;
+    }
+
+    public int getMeetingStatus() {
+        return meetingStatus;
+    }
+
+    public void setMeetingStatus(int meetingStatus) {
+        this.meetingStatus = meetingStatus;
+    }
+
+    public int getAgendaStatus() {
+        return agendaStatus;
+    }
+
+    public void setAgendaStatus(int agendaStatus) {
+        this.agendaStatus = agendaStatus;
     }
 }
