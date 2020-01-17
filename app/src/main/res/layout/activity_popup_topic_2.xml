@@ -33,7 +33,8 @@
                 android:gravity="center"
                 android:fontFamily="sans-serif-light"
                 android:labelFor="@id/text_email"
-                android:text="Topic"
+                android:textColor="#FFFFFF"
+                android:text="Add Topic"
                 android:textSize="24sp" />
 
             <ScrollView
@@ -51,9 +52,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
+                        android:fontFamily="sans-serif-black"
                         android:labelFor="@id/pop_topic_titel"
-                        android:text="Titel" />
+                        android:textSize="12dp"
+                        android:textColor="#FFFFFF"
+                        android:text="Title" />
 
                     <EditText
                         android:id="@+id/pop_topic_titel"
@@ -62,16 +65,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:drawablePadding="10dp"
-                        android:hint="Personale festen"
+                        android:hint="fx. Personale festen"
                         android:inputType="textPersonName"
                         android:singleLine="true" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="12dp"
+                        android:textColor="#FFFFFF"
                         android:labelFor="@id/pop_topic_tid"
-                        android:text="Tid i min." />
+                        android:text="Duration" />
 
                     <EditText
                         android:id="@+id/pop_topic_tid"
@@ -86,7 +91,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="12dp"
+                        android:textColor="#FFFFFF"
                         android:labelFor="@id/pop_topic_description"
                         android:text="Description" />
 
@@ -98,7 +105,7 @@
                         android:layout_marginBottom="10dp"
                         android:drawablePadding="10dp"
                         android:maxLines="5"
-                        android:hint="Gennemgang er de forskellige måder"
+                        android:hint="Gennemgang er de forskellige\nmåder vi arbejder sammen på"
                         android:inputType="textEmailAddress"
                         android:singleLine="true"
                         android:layout_weight="3"/>
@@ -121,8 +128,10 @@
         >
         <Button
             android:id="@+id/btn_big"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/btn_new_meeting_drawable"
             android:text="Button">
 

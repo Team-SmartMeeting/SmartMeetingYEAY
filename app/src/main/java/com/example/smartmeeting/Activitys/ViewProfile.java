@@ -73,6 +73,7 @@ public class ViewProfile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 UserDTO post = dataSnapshot.getValue(UserDTO.class);
 
+
                 textName.setText(post.getName());
                 textEmail.setText(post.getEmail());
                 textPhone.setText(post.getPhoneNumber());

@@ -1,7 +1,5 @@
 package com.example.smartmeeting.Activitys;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartmeeting.ContactElement;
 import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterContactlist;
@@ -143,6 +143,7 @@ public class ContactList extends AppCompatActivity {
                 intent.putExtra("name",kontakter.get(position).getName());
                 intent.putExtra("email",kontakter.get(position).getEmail());
                 intent.putExtra("number",kontakter.get(position).getNr());
+                intent.putExtra("position", position);
                 startActivity(intent);
 
             }
