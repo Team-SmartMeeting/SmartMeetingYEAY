@@ -109,7 +109,7 @@ public class StartMeeting extends AppCompatActivity {
 
                 if (email.equals(meetingOwner)){
 
-                    mReference.child("meetigStatus").setValue(1);
+                    mReference.child("meetingStatus").setValue(1);
 
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
                     startActivity(intent);
