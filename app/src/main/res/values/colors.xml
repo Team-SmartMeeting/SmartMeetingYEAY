@@ -5,4 +5,7 @@
     <color name="colorAccent">#F2DF74</color>
     <color name="menufarve2">#004165</color>
     <color name="menufarve">#5E9FAA</color>
+    <color name="toolbar">#fffafa</color>
+    <color name="toolbar2">#FFFFFF</color>
+
 </resources>
