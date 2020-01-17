@@ -128,7 +128,12 @@ public class DuringMeeting extends AppCompatActivity{
                             topicTitle.setText(getTopicTitle(topicListCurNum));
                             topicDescription.setText(getTopicDesciption(topicListCurNum));
                             topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
-                            nexttopic.setText(getTopicTitle(topicListCurNum + 1));
+                            if (topicListCurNum + 1 ==  topicListNum){
+                                nexttopic.setText("End of meeting");
+                            }
+                            else {
+                                nexttopic.setText(getTopicTitle(topicListCurNum + 1));
+                            }
                             llclock.setBackgroundColor(Color.GREEN);
                             timerTRY = getTopicTime(topicListCurNum);
                             for (int i = 0;i < topicListNum;i++){
@@ -153,6 +158,7 @@ public class DuringMeeting extends AppCompatActivity{
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                email = email.replace(".", ",");
 
                 if (email.equals(meetingOwner)){
                     topicListCurNum++;
@@ -186,7 +192,7 @@ public class DuringMeeting extends AppCompatActivity{
 
 
     public String getMeeting(){
-        return "-LymzNE_R2j0e_6lCfKH";
+        return "-Lyn9FeZLvrWQN8b626a";
     }
 
     public Topic getTopic(int listNum){

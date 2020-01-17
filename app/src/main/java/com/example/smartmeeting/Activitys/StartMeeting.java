@@ -117,13 +117,15 @@ public class StartMeeting extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                email = email.replace(".", ",");
 
                 if (email.equals(meetingOwner)){
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
                     startActivity(intent);
                 }
                 else {
-
+                    System.out.println(email);
+                    System.out.println(meetingOwner);
                 }
             }
         });
@@ -131,7 +133,7 @@ public class StartMeeting extends AppCompatActivity {
 
 
     public String getMeeting(){
-        return "-LymzNE_R2j0e_6lCfKH";
+        return "-Lyn9FeZLvrWQN8b626a";
     }
 
     public Topic getTopic(int listNum){
