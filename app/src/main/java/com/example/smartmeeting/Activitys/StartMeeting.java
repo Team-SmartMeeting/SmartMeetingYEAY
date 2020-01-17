@@ -73,6 +73,8 @@ public class StartMeeting extends AppCompatActivity {
                     startActivity(intent);
 
                 }
+
+
                 final TextView meetingTitle = findViewById(R.id.meetingTitle);
                 String meetingTitleString;
                 meetingTitleString = post.getMeetingName();
@@ -96,29 +98,7 @@ public class StartMeeting extends AppCompatActivity {
                 (this, android.R.layout.simple_list_item_1, listItems);
 
 
-        Thread w = new Thread(){
-            public void run(){
-                try {
-                    Thread.sleep(3000);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ProgressBar progressBar = findViewById(R.id.progressBarsm);
-                            progressBar.setVisibility(View.VISIBLE);
-                            for (int i = 0;i < topicList.size();i++){
-                                listItems.add(getTopicTitle(i));
-                            }
-                            topicListView.setAdapter(arrayAdapter);
-                            arrayAdapter.notifyDataSetChanged();
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    });
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        w.start();
+        load();
 
 
         Button btnStart = findViewById(R.id.btn_start);
@@ -142,8 +122,37 @@ public class StartMeeting extends AppCompatActivity {
     }
 
 
+
+    public void load (){
+        Thread w = new Thread(){
+            public void run(){
+                try {
+                    Thread.sleep(3000);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ProgressBar progressBar = findViewById(R.id.progressBarsm);
+                            progressBar.setVisibility(View.VISIBLE);
+                            for (int i = 0;i < topicList.size();i++){
+                                listItems.add(getTopicTitle(i));
+                            }
+                            topicListView.setAdapter(arrayAdapter);
+                            arrayAdapter.notifyDataSetChanged();
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        w.start();
+    }
+
+
+
     public String getMeeting(){
-        return "-Lyn9FeZLvrWQN8b626a";
+        return "-LynV7GZNMBhKAC-P6LZ";
     }
 
     public Topic getTopic(int listNum){

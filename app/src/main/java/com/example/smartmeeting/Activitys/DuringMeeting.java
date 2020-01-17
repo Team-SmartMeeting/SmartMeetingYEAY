@@ -83,6 +83,11 @@ public class DuringMeeting extends AppCompatActivity{
                 }
                 topicListNum = topicList.size();
                 System.out.println(topicListNum);
+
+                if (post.getAgendaStatus() != topicListCurNum){
+                    topicListCurNum++;
+                    load();
+                }
             }
 
             @Override
@@ -115,41 +120,7 @@ public class DuringMeeting extends AppCompatActivity{
         t.start();
 
 
-        Thread w = new Thread(){
-            public void run(){
-                try {
-                    Thread.sleep(2000);
-
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ProgressBar progressBar = findViewById(R.id.progressBardm);
-                            progressBar.setVisibility(View.VISIBLE);
-                            topicTitle.setText(getTopicTitle(topicListCurNum));
-                            topicDescription.setText(getTopicDesciption(topicListCurNum));
-                            topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
-                            if (topicListCurNum + 1 ==  topicListNum){
-                                nexttopic.setText("End of meeting");
-                            }
-                            else {
-                                nexttopic.setText(getTopicTitle(topicListCurNum + 1));
-                            }
-                            llclock.setBackgroundColor(Color.GREEN);
-                            timerTRY = getTopicTime(topicListCurNum);
-                            for (int i = 0;i < topicListNum;i++){
-                                totalTime += getTopicTime(i);
-                            }
-                            timerTRYTotal = totalTime;
-                            topicTotalTimer.setText(toClock(totalTime));
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    });
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        w.start();
+        load();
 
 
 
@@ -192,8 +163,50 @@ public class DuringMeeting extends AppCompatActivity{
     }
 
 
+
+    public void load(){
+
+        Thread w = new Thread(){
+            public void run(){
+                try {
+                    Thread.sleep(2000);
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ProgressBar progressBar = findViewById(R.id.progressBardm);
+                            progressBar.setVisibility(View.VISIBLE);
+                            topicTitle.setText(getTopicTitle(topicListCurNum));
+                            topicDescription.setText(getTopicDesciption(topicListCurNum));
+                            topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
+                            if (topicListCurNum + 1 ==  topicListNum){
+                                nexttopic.setText("End of meeting");
+                            }
+                            else {
+                                nexttopic.setText(getTopicTitle(topicListCurNum + 1));
+                            }
+                            llclock.setBackgroundColor(Color.GREEN);
+                            timerTRY = getTopicTime(topicListCurNum);
+                            for (int i = 0;i < topicListNum;i++){
+                                totalTime += getTopicTime(i);
+                            }
+                            timerTRYTotal = totalTime;
+                            topicTotalTimer.setText(toClock(totalTime));
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        w.start();
+
+    }
+
+
     public String getMeeting(){
-        return "-Lyn9FeZLvrWQN8b626a";
+        return "-LynV7GZNMBhKAC-P6LZ";
     }
 
     public Topic getTopic(int listNum){
