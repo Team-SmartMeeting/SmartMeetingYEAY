@@ -132,7 +132,13 @@ public class DuringMeeting extends AppCompatActivity{
         t.start();
 
 
-        load();
+
+        if (topicListCurNum == topicListNum) {
+
+        }
+        else {
+            load();
+        }
 
 
 

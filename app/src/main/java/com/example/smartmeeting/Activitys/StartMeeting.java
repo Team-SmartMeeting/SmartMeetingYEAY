@@ -100,7 +100,9 @@ public class StartMeeting extends AppCompatActivity {
                 (this, android.R.layout.simple_list_item_1, listItems);
 
 
+
         load();
+
 
 
         Button btnStart = findViewById(R.id.btn_start);
