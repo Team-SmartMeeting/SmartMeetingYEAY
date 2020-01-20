@@ -37,15 +37,21 @@
             android:layout_marginTop="40dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:text="Meeting title"
-            android:textSize="30dp"></TextView>
+            android:fontFamily="sans-serif-black"
+            android:textColor="#000000"
+            android:text="Meeting Title"
+            android:textSize="30dp">
+
+        </TextView>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="Meeting has yet to start"
-            android:textSize="30dp"></TextView>
+            android:textSize="30dp">
+
+        </TextView>
 
         <Button
             android:id="@+id/btn_start"
@@ -54,7 +60,9 @@
             android:background="@drawable/btn_new_meeting_drawable"
             android:text="Start meeting"
 
-            ></Button>
+            >
+
+        </Button>
 
         <TextView
             android:layout_width="wrap_content"
@@ -62,7 +70,11 @@
             android:layout_gravity="left"
             android:layout_marginLeft="15dp"
             android:text="Agenda"
-            android:textSize="20dp"></TextView>
+            android:fontFamily="sans-serif-black"
+            android:textColor="#000000"
+            android:textSize="20dp">
+
+        </TextView>
 
         <LinearLayout
             android:id="@+id/linearLayout5"
@@ -82,7 +94,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></ListView>
+                app:layout_constraintTop_toTopOf="parent">
+
+            </ListView>
         </LinearLayout>
     </LinearLayout>
 

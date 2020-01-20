@@ -45,9 +45,11 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="sans-serif-light"
+                                    android:fontFamily="sans-serif-black"
+                                    android:textSize="14dp"
+                                    android:textColor="#000000"
                                     android:labelFor="@id/text_email"
-                                    android:text="email" />
+                                    android:text="Email" />
 
                                 <EditText
                                     android:id="@+id/text_email"
@@ -63,9 +65,11 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="sans-serif-light"
+                                    android:fontFamily="sans-serif-black"
+                                    android:textSize="14dp"
+                                    android:textColor="#000000"
                                     android:labelFor="@id/text_password"
-                                    android:text="password" />
+                                    android:text="Password" />
 
                                 <EditText
                                     android:id="@+id/text_password"
@@ -82,6 +86,9 @@
                                     android:id="@+id/text_view_forget_password"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-black"
+                                    android:textSize="14dp"
+                                    android:textColor="#000000"
                                     android:layout_gravity="right"
                                     android:paddingTop="5dp"
                                     android:text="Forgot Password?" />
@@ -103,10 +110,13 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal"
-                                    android:text="Don't have an account.\nRegister Here"
+                                    android:text="Don't have an account?.\nClick Here and Register"
                                     android:clickable="true"
                                     android:textAlignment="center"
-                                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+                                    android:fontFamily="sans-serif-black"
+                                    android:textSize="14dp"
+                                    android:textColor="#000000"
+                                    />
                         </LinearLayout>
 
                 </RelativeLayout>

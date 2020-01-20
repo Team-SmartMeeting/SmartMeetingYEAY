@@ -26,7 +26,8 @@
             android:layout_marginBottom="16dp"
             android:gravity="center_horizontal"
             android:text="Register"
-            android:textColor="#fff"
+            android:fontFamily="sans-serif-black"
+            android:textColor="#000000"
             android:textSize="26sp"
             android:textStyle="bold"/>
 
@@ -58,9 +59,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-black"
+                    android:textSize="14dp"
+                    android:textColor="#000000"
                     android:labelFor="@id/text_email"
-                    android:text="full name" />
+                    android:text="Full name" />
 
                 <EditText
                     android:id="@+id/text_name"
@@ -76,9 +79,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-black"
+                    android:textSize="14dp"
+                    android:textColor="#000000"
                     android:labelFor="@id/text_email"
-                    android:text="email" />
+                    android:text="Email" />
 
                 <EditText
                     android:id="@+id/text_email"
@@ -94,9 +99,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-black"
+                    android:textSize="14dp"
+                    android:textColor="#000000"
                     android:labelFor="@id/text_email"
-                    android:text="phone number" />
+                    android:text="Phone Number" />
 
                 <EditText
                     android:id="@+id/text_phonenumber"
@@ -112,9 +119,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-black"
+                    android:textSize="14dp"
+                    android:textColor="#000000"
                     android:labelFor="@id/text_password"
-                    android:text="password" />
+                    android:text="Password" />
 
                 <EditText
                     android:id="@+id/text_password"
@@ -129,9 +138,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-black"
+                    android:textSize="14dp"
+                    android:textColor="#000000"
                     android:labelFor="@id/text_password"
-                    android:text="Re enter password" />
+                    android:text="Re Enter Password" />
 
                 <EditText
                     android:id="@+id/text_password_re"
@@ -162,6 +173,9 @@
                     android:layout_gravity="center_horizontal"
                     android:text="Already have an account.\nLogin Here"
                     android:clickable="true"
+                    android:fontFamily="sans-serif-black"
+                    android:textSize="14dp"
+                    android:textColor="#000000"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
             </LinearLayout>
@@ -170,15 +184,14 @@
         </RelativeLayout>
 
         <ImageButton
-            android:id="@+id/user_profile_photo"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_below="@+id/login_title"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:background="@drawable/user_profile_image_background2"
+            android:background="@drawable/user_profile_image_background"
             android:elevation="4dp"
-            android:src="@drawable/ic_boy"/>
+            android:src="@drawable/ic_iconfinder_profile_filled_299075"/>
 
 
 
