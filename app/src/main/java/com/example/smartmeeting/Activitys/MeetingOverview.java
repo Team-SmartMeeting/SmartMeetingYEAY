@@ -4,17 +4,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.ArrayMap;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterAgenda;
+import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterMeetings;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
+import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
 import com.example.smartmeeting.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
@@ -26,9 +37,16 @@ public class MeetingOverview extends AppCompatActivity {
     ArrayList<String> meetingDate;
     ArrayList<String> meetingTitels;
     ArrayList<String> meetingStartTime;
+    ArrayList<String> meetingIDs;
 
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
+
+    private String email;
+    ListView lw;
+
+
+    public HashMap<String, MeetingDTO> batch;
 
 
     @Override
@@ -38,6 +56,19 @@ public class MeetingOverview extends AppCompatActivity {
 
         Button bigBtn = findViewById(R.id.btn_big);
         bigBtn.setText("Create\n Meeting");
+
+        lw = findViewById(R.id.listview_meetings);
+
+        meetingsList = new ArrayList<>();
+
+        //Arraylist bliver skabt
+        meetingTitels = new ArrayList<>();
+        meetingStartTime = new ArrayList<>();
+        meetingDate = new ArrayList<>();
+        meetingIDs = new ArrayList<>();
+        meetingTime = new ArrayList<>();
+
+
 
         bigBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,9 +82,45 @@ public class MeetingOverview extends AppCompatActivity {
             }
         });
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            email = user.getEmail();
+        } else {finish();}
+
+        mDatabase = FirebaseDatabase.getInstance();
+        mReference = mDatabase.getReference().child("Users").child(email.replace(".",",")).child("meetingsList");
+
+        mReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                meetingsList.clear();
+                meetingIDs.clear();
+
+                for (DataSnapshot oneSnap : dataSnapshot.getChildren()){
+                    System.out.println(oneSnap.getKey());
+
+                    Map<?, ?> value = (Map<?, ?>) oneSnap.getValue();
+                    String snap_name = value.get("meetingName").toString();
+                    String snap_date = value.get("date").toString();
+                    String snap_time = value.get("time").toString();
+                    String snap_duration = value.get("duration").toString();
+                    meetingIDs.add(oneSnap.getKey());
 
 
-//        updateList();
+                    MeetingDTO hej = new MeetingDTO(snap_name, snap_time, snap_date, Integer.parseInt(snap_duration));
+
+                    meetingsList.add(hej);
+                }
+                updateList();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
 
 
 
@@ -121,22 +188,20 @@ public class MeetingOverview extends AppCompatActivity {
 
 
         // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
-//        listView.setAdapter(new CustomAdapterAgenda(Agenda.this,meetingTitels, meetingTime, meetingDate, meetingStartTime));
+        lw.setAdapter(new CustomAdapterMeetings(MeetingOverview.this,meetingTitels, meetingTime, meetingDate, meetingStartTime, meetingIDs));
 
 
-//        listView.setClickable(true);
-//
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(Agenda.this, ShowContact.class);
-//                intent.putExtra("name",agenda.get(position).getTopicName());
-//                intent.putExtra("email",agenda.get(position).getTopicDuration());
-//                intent.putExtra("number",agenda.get(position).getDescription());
-//                startActivity(intent);
-//
-//            }
-//        });
+        lw.setClickable(true);
+
+        lw.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MeetingOverview.this, StartMeeting.class);
+                intent.putExtra("meetingID",meetingIDs.get(position));
+                startActivity(intent);
+
+            }
+        });
 
     }
 }

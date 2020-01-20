@@ -23,14 +23,16 @@ public class CustomAdapterMeetings extends BaseAdapter {
     ArrayList<String> time;
     ArrayList<String> date;
     ArrayList<String> startTime;
+    ArrayList<String> id;
 
-    public CustomAdapterMeetings(Context context, ArrayList<String> titel, ArrayList<String> time, ArrayList<String> date, ArrayList<String> startTime){
+    public CustomAdapterMeetings(Context context, ArrayList<String> titel, ArrayList<String> time, ArrayList<String> date, ArrayList<String> startTime, ArrayList<String> ids){
 
         this.context = context;
         this.titel = titel;
         this.time = time;
         this.date = date;
         this.startTime = startTime;
+        this.id = ids;
 
     }
 
