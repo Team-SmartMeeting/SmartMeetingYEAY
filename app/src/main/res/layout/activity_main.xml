@@ -120,7 +120,7 @@
                     android:layout_marginTop="16dp"
                     android:background="@drawable/user_profile_image_background"
                     android:elevation="4dp"
-                    android:src="@drawable/ic_boy"/>
+                    android:src="@drawable/ic_iconfinder_profile_filled_299075"/>
 
         </RelativeLayout>
 
