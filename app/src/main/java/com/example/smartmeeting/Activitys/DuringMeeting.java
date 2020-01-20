@@ -40,8 +40,12 @@ public class DuringMeeting extends AppCompatActivity{
     private String email;
     private int timerTRY;
     private int timerTRYTotal;
-    int totalTime = 0;
+    private int totalTime = 0;
     private String meetingOwner;
+    private int meetingTotalTime;
+    private int topicTotalTime;
+    private int allocate;
+    MeetingDTO post;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,23 +61,32 @@ public class DuringMeeting extends AppCompatActivity{
 
         topicList = new ArrayList<>();
 
+        mDatabase = FirebaseDatabase.getInstance();
+        mReference = mDatabase.getReference().child("Meetings").child(getMeeting());
 
-        //Checker om der er en user logget på
+        //Tjekker om der er en user logget på
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             email = user.getEmail();
-        } else {finish();}
+        } else {
+            finish();
+        }
 
-        mDatabase = FirebaseDatabase.getInstance();
-        mReference = mDatabase.getReference().child("Meetings").child(getMeeting());
+
+
 
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                MeetingDTO post = dataSnapshot.getValue(MeetingDTO.class);
+                post = dataSnapshot.getValue(MeetingDTO.class);
 
                 meetingOwner = post.getCreatingUser();
+
+
+
+
+
 
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
@@ -81,25 +94,24 @@ public class DuringMeeting extends AppCompatActivity{
                 else {
 
                 }
+                meetingTotalTime = post.getDuration();
                 topicListNum = topicList.size();
-                System.out.println(topicListNum);
+
 
 
                 if (post.getAgendaStatus() == topicListNum) {
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     startActivity(intent);
+
+
                     finish();
                 }
+
                 if (post.getAgendaStatus() != topicListCurNum){
                     topicListCurNum = post.getAgendaStatus();
-                    if (topicListCurNum == topicListNum) {
-
-                    }
-                    else {
-                        load();
-
-                    }
                 }
+                load();
+
             }
 
             @Override
@@ -108,6 +120,7 @@ public class DuringMeeting extends AppCompatActivity{
         });
 
 
+        //Denne tråd tæller sekunder, som bruges til at vise tiden i timeren
         Thread t = new Thread(){
             @Override
             public void run(){
@@ -129,16 +142,11 @@ public class DuringMeeting extends AppCompatActivity{
                 }
             }
         };
+
         t.start();
 
 
-
-        if (topicListCurNum == topicListNum) {
-
-        }
-        else {
-            load();
-        }
+        load();
 
 
 
@@ -185,47 +193,71 @@ public class DuringMeeting extends AppCompatActivity{
 
     public void load(){
 
-        Thread w = new Thread(){
-            public void run(){
-                try {
-                    Thread.sleep(2000);
+        if (topicListCurNum == topicListNum) {
 
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ProgressBar progressBar = findViewById(R.id.progressBardm);
-                            progressBar.setVisibility(View.VISIBLE);
-                            topicTitle.setText(getTopicTitle(topicListCurNum));
-                            topicDescription.setText(getTopicDesciption(topicListCurNum));
-                            topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
-                            if (topicListCurNum + 1 ==  topicListNum){
-                                nexttopic.setText("End of meeting");
+        }
+        else {
+
+            Thread w = new Thread(){
+                public void run(){
+                    try {
+                        Thread.sleep(2000);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ProgressBar progressBar = findViewById(R.id.progressBardm);
+                                progressBar.setVisibility(View.VISIBLE);
+                                topicTitle.setText(getTopicTitle(topicListCurNum));
+                                topicDescription.setText(getTopicDesciption(topicListCurNum));
+                                topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
+                                if (topicListCurNum + 1 ==  topicListNum){
+                                    nexttopic.setText("End of meeting");
+                                }
+                                else {
+                                    nexttopic.setText(getTopicTitle(topicListCurNum + 1));
+                                }
+                                llclock.setBackgroundColor(Color.GREEN);
+                                for (int i = 0;i < topicListNum;i++){
+                                    totalTime += getTopicTime(i);
+                                }
+                                topicTotalTime = totalTime;
+
+                                allocateTime();
+                                timerTRYTotal = totalTime;
+                                timerTRY = (getTopicTime((topicListCurNum) * allocate));
+
+                                topicTotalTimer.setText(toClock(totalTime));
+                                progressBar.setVisibility(View.GONE);
                             }
-                            else {
-                                nexttopic.setText(getTopicTitle(topicListCurNum + 1));
-                            }
-                            llclock.setBackgroundColor(Color.GREEN);
-                            timerTRY = getTopicTime(topicListCurNum);
-                            for (int i = 0;i < topicListNum;i++){
-                                totalTime += getTopicTime(i);
-                            }
-                            timerTRYTotal = totalTime;
-                            topicTotalTimer.setText(toClock(totalTime));
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    });
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                        });
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
                 }
-            }
-        };
-        w.start();
+            };
+            w.start();
+        }
+    }
+
+
+
+
+    public void allocateTime(){
+
+        System.out.println("mTT " + meetingTotalTime);
+        System.out.println("tTT " + topicTotalTime);
+        allocate = (meetingTotalTime * 100 / (topicTotalTime / 60));
+        System.out.println("allo " + allocate);
 
     }
 
 
+
+
+
     public String getMeeting(){
-        return "-LynasKJ2n7g3d5srRI-";
+        return "-Lz1Mf-LnNOqYIIguiLJ";
     }
 
     public Topic getTopic(int listNum){
@@ -248,10 +280,9 @@ public class DuringMeeting extends AppCompatActivity{
     public String toClock(int totalTime){
 
         int minuts = totalTime / 60;
-
         int secunds = totalTime - minuts * 60;
-
         String clock;
+
         if (secunds < 10 && secunds > -10 ){
             clock = minuts + ":0" + secunds;
         }
@@ -263,10 +294,7 @@ public class DuringMeeting extends AppCompatActivity{
         if (totalTime < 0) {
             clock = "-" + clock;
         }
-
         return clock;
     }
-
-
 
 }

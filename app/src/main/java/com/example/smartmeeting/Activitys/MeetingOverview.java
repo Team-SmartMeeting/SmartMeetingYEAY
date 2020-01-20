@@ -4,25 +4,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartmeeting.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MeetingOverview extends AppCompatActivity {
 
-    ListView lv;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meeting_overview);
 
-        Button bigBtn = findViewById(R.id.btn_big);
-        bigBtn.setText("Create\n Meeting");
 
-        lv = findViewById(R.id.)
+        mDatabase = FirebaseDatabase.getInstance();
+        mReference = mDatabase.getReference().child("Meetings").child(getMeeting());
+
+
+        Button bigBtn = findViewById(R.id.btn_big);
+//        Button btnReset = findViewById(R.id.btn_reset);
+        bigBtn.setText("Create\n Meeting");
 
         bigBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +41,17 @@ public class MeetingOverview extends AppCompatActivity {
 
             }
         });
+
+//        btnReset.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mReference.child("agendaStatus").setValue(0);
+//                mReference.child("meetingStatus").setValue(0);
+//                mReference.child("agendalist").child("0").child("topicDuration").setValue(6 * 60);
+//                mReference.child("agendalist").child("1").child("topicDuration").setValue(7 * 60);
+//                mReference.child("agendalist").child("2").child("topicDuration").setValue(8 * 60);
+//            }
+//        });
 
 
 
@@ -82,4 +99,9 @@ public class MeetingOverview extends AppCompatActivity {
 
 
     }
+
+    public String getMeeting(){
+        return "-Lz1Mf-LnNOqYIIguiLJ";
+    }
+
 }
