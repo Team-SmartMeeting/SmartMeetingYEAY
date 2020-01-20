@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:gravity="center_horizontal"
-            android:text="new userDTO registration"
+            android:text="Register"
             android:textColor="#fff"
             android:textSize="26sp"
             android:textStyle="bold"/>

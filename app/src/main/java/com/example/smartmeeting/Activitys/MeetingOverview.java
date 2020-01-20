@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartmeeting.R;
 
 public class MeetingOverview extends AppCompatActivity {
+
+    ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,8 @@ public class MeetingOverview extends AppCompatActivity {
 
         Button bigBtn = findViewById(R.id.btn_big);
         bigBtn.setText("Create\n Meeting");
+
+        lv = findViewById(R.id.)
 
         bigBtn.setOnClickListener(new View.OnClickListener() {
             @Override

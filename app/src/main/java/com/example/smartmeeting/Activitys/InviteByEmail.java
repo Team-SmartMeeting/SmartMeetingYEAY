@@ -27,8 +27,10 @@ public class InviteByEmail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                String mail2 = email.getText().toString().replace("\n", "");
+
                 Intent intent = new Intent();
-                intent.putExtra("nymail", email.getText().toString());
+                intent.putExtra("nymail", mail2);
                 setResult(RESULT_OK, intent);
                 finish();
 
