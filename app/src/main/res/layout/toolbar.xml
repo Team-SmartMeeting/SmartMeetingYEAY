@@ -30,7 +30,7 @@
 
     <Button
         android:id="@+id/btn_groupes_menu"
-        android:layout_width="0.5dp"
+        android:layout_width="0dp"
         android:layout_weight="0"
         android:layout_gravity="bottom"
         android:layout_height="match_parent"
@@ -57,6 +57,16 @@
             android:drawableTop="@drawable/ic_contacts_24px"
 
         />
+        <Button
+            android:id="@+id/btn_groupes_menu"
+            android:layout_width="0dp"
+            android:layout_weight="0"
+            android:layout_gravity="bottom"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_normal"
+            android:text=""
+            android:textSize="9.5dp"
+            />
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        >-->
@@ -98,6 +108,16 @@
         android:textSize="9.5dp"
         android:drawableTop="@drawable/ic_list_24px"
         />
+        <Button
+            android:id="@+id/btn_groupes_menu"
+            android:layout_width="0dp"
+            android:layout_weight="0"
+            android:layout_gravity="bottom"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_normal"
+            android:text=""
+            android:textSize="9.5dp"
+            />
 
 
 </LinearLayout>
