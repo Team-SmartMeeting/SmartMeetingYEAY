@@ -75,7 +75,7 @@ public class CreateMeeting extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ContactList.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                overridePendingTransition(0, 0);
                 finish();
 
             }
@@ -87,7 +87,7 @@ public class CreateMeeting extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 finish();
             }
         });
@@ -97,7 +97,7 @@ public class CreateMeeting extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                overridePendingTransition(0, 0);
                 finish();
             }
         });

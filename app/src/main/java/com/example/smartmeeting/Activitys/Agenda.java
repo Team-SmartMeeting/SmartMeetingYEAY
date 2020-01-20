@@ -79,6 +79,8 @@ public class Agenda extends AppCompatActivity {
 
                 Intent intent = new Intent(Agenda.this, popup_topic_2.class);
                 startActivityForResult(intent, 1);
+                overridePendingTransition(0, 0);
+                finish();
 
             }
         });
@@ -119,7 +121,7 @@ public class Agenda extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ContactList.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                overridePendingTransition(0, 0);
                 finish();
 
             }
@@ -131,7 +133,7 @@ public class Agenda extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                overridePendingTransition(0, 0);
                 finish();
             }
         });
@@ -141,7 +143,7 @@ public class Agenda extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                overridePendingTransition(0, 0);
                 finish();
             }
         });

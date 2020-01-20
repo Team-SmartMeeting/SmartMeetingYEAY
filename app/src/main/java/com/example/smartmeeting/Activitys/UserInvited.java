@@ -79,7 +79,7 @@ public class UserInvited extends AppCompatActivity {
             String email = user.getEmail();
             myMeeting.setCreatingUser(email.replace(".",","));
         } else {
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            overridePendingTransition(0, 0);
             finish();
         }
 
@@ -123,7 +123,7 @@ public class UserInvited extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ContactList.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                overridePendingTransition(0, 0);
                 finish();
 
             }
@@ -135,7 +135,7 @@ public class UserInvited extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                overridePendingTransition(0, 0);
                 finish();
             }
         });
@@ -145,7 +145,7 @@ public class UserInvited extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                overridePendingTransition(0, 0);
                 finish();
             }
         });
@@ -174,7 +174,7 @@ public class UserInvited extends AppCompatActivity {
         ref2.child(key2).setValue(meetingOnUserDB);
 
 
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         finish();
 
     }
