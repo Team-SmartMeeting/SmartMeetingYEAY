@@ -33,7 +33,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/name"
                 android:layout_marginLeft="20dp"
                 android:text="Name" />
@@ -55,7 +57,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/phonenumber"
                 android:layout_marginLeft="20dp"
                 android:text="Phone number" />
@@ -78,7 +82,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/company"
                 android:layout_marginLeft="20dp"
                 android:text="Company" />
@@ -101,7 +107,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/address"
                 android:layout_marginLeft="20dp"
                 android:text="Address" />
@@ -125,7 +133,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/city"
                 android:layout_marginLeft="20dp"
                 android:text="City" />
@@ -149,7 +159,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/zip_code"
                 android:layout_marginLeft="20dp"
                 android:text="Zip code" />
@@ -173,7 +185,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/country"
                 android:layout_marginLeft="20dp"
                 android:text="Country" />

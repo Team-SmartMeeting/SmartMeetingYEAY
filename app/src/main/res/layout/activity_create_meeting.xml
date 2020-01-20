@@ -29,9 +29,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14dp"
+            android:textColor="#000000"
             android:labelFor="@id/create_meeting_name_ed"
-            android:textColor="#FFFFFF"
             android:layout_marginLeft="20dp"
             android:text="Full name" />
 
@@ -56,7 +57,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14dp"
+            android:textColor="#000000"
             android:labelFor="@id/create_meeting_date_et"
             android:layout_marginLeft="20dp"
             android:text="Date" />
@@ -66,7 +69,6 @@
             android:id="@+id/create_meeting_date_et"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:inputType="date"
@@ -82,7 +84,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14dp"
+            android:textColor="#000000"
             android:labelFor="@id/create_meeting_time_et"
             android:layout_marginLeft="20dp"
             android:text="Starting Time" />
@@ -92,7 +96,6 @@
             android:id="@+id/create_meeting_time_et"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:inputType="time"
@@ -108,7 +111,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14dp"
+            android:textColor="#000000"
             android:labelFor="@id/create_meeting_duration_et"
             android:layout_marginLeft="20dp"
             android:text="Duration in min." />
@@ -118,7 +123,6 @@
             android:id="@+id/create_meeting_duration_et"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@drawable/edit_text_field"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:inputType="number"
@@ -138,7 +142,6 @@
             android:gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:background="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -150,6 +153,9 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:inputType="number"
                 android:padding="5dp"
                 android:text="Allow participants to priortize topics?" />
@@ -170,8 +176,8 @@
                 android:switchMinWidth="75dp"
                 android:scaleX="1.5"
                 android:scaleY="1.5"
-                android:textOn="on"
-                android:textOff="off"/>
+                android:textOn="Enabled"
+                android:textOff="Disabled"/>
 
 
 
@@ -210,8 +216,8 @@
             >
             <Button
                 android:id="@+id/btn_big"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:background="@drawable/btn_new_meeting_drawable"
                 android:text="Button">
 
