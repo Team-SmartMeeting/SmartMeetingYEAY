@@ -2,21 +2,16 @@ package com.example.smartmeeting.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.ArrayMap;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterAgenda;
 import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterMeetings;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
-import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
 import com.example.smartmeeting.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,9 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 
 public class MeetingOverview extends AppCompatActivity {
 
@@ -46,10 +39,6 @@ public class MeetingOverview extends AppCompatActivity {
 
     private String email;
     ListView lw;
-
-
-    public HashMap<String, MeetingDTO> batch;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

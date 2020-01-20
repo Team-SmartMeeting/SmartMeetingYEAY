@@ -27,7 +27,6 @@ public class DuringMeeting extends AppCompatActivity{
 
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
-    private String meetingID = getMeeting();
     private ArrayList<Topic> topicList;
     private int topicListNum;
     private int topicListCurNum = 0;
@@ -59,12 +58,14 @@ public class DuringMeeting extends AppCompatActivity{
         llclock = findViewById(R.id.llclock);
 
 
+        String id = getIntent().getStringExtra("meetingID");
+
+        System.out.println(id);
+
         topicList = new ArrayList<>();
 
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
-        myAwesomeTextView.setText("Meetings");
         mDatabase = FirebaseDatabase.getInstance();
-        mReference = mDatabase.getReference().child("Meetings").child(getMeeting());
+        mReference = mDatabase.getReference().child("Meetings").child(id);
 
         //Tjekker om der er en user logget på
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -224,7 +225,7 @@ public class DuringMeeting extends AppCompatActivity{
                                 }
                                 topicTotalTime = totalTime;
 
-                                allocateTime();
+//                                allocateTime();
                                 timerTRYTotal = totalTime;
                                 timerTRY = (getTopicTime((topicListCurNum) * allocate));
 
@@ -259,7 +260,10 @@ public class DuringMeeting extends AppCompatActivity{
 
 
     public String getMeeting(){
-        return "-Lz1Mf-LnNOqYIIguiLJ";
+        String id = getIntent().getStringExtra("meetingID");
+
+        System.out.println(id);
+        return id;
     }
 
     public Topic getTopic(int listNum){
