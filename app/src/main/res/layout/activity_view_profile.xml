@@ -27,7 +27,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFFFF"
+                android:fontFamily="sans-serif-black"
+                android:textColor="#000000"
                 android:text="Profile Information"
                 android:layout_gravity="center"
                 android:textSize="30dp"
@@ -46,7 +47,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/name"
                 android:text="Name" />
 
@@ -65,7 +68,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/phonenumber"
                 android:text="Phone number" />
 
@@ -85,7 +90,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/email"
                 android:text="Email" />
 
@@ -104,7 +111,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/company"
                 android:text="Company" />
 
@@ -124,7 +133,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/address"
                 android:text="Address" />
 
@@ -144,7 +155,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/city"
                 android:text="City" />
 
@@ -164,7 +177,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/zip_code"
                 android:text="Zip code" />
 
@@ -185,7 +200,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-light"
+                android:fontFamily="sans-serif-black"
+                android:textSize="14dp"
+                android:textColor="#000000"
                 android:labelFor="@id/country"
                 android:text="Country" />
 

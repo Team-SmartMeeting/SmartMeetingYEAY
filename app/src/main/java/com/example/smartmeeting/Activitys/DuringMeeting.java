@@ -57,8 +57,6 @@ public class DuringMeeting extends AppCompatActivity{
 
         topicList = new ArrayList<>();
 
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
-        myAwesomeTextView.setText("Meetings");
 
         //Checker om der er en user logget på
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

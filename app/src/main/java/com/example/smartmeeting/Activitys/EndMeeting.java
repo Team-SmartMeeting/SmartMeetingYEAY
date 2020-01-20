@@ -15,8 +15,7 @@ public class EndMeeting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_meeting);
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
-        myAwesomeTextView.setText("Meetings");
+
         Button btnBack = findViewById(R.id.btn_back);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
