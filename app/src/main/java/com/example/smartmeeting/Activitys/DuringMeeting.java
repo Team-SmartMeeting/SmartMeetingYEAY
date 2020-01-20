@@ -75,9 +75,6 @@ public class DuringMeeting extends AppCompatActivity{
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
         }
-        } else {
-            finish();
-        }
 
 
 

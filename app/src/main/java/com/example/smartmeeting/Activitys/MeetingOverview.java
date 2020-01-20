@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,6 +46,9 @@ public class MeetingOverview extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meeting_overview);
 
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
+        myAwesomeTextView.setText("Meetings");
+
         Button bigBtn = findViewById(R.id.btn_big);
         bigBtn.setText("Create\n Meeting");
 
@@ -65,12 +69,6 @@ public class MeetingOverview extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), CreateMeeting.class);
-                startActivity(intent);
-
-//                Intent intent = new Intent(getApplicationContext(), StartMeeting.class);
-//                startActivity(intent);
-
-                Intent intent = new Intent(getApplicationContext(), StartMeeting.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();

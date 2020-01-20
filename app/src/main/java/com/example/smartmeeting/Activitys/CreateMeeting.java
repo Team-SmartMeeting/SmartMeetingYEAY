@@ -101,5 +101,7 @@ public class CreateMeeting extends AppCompatActivity {
                 finish();
             }
         });
+
+        btn_meetings.setBackgroundResource(R.drawable.button_pressed);
     }
 }
