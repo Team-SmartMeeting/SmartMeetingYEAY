@@ -41,6 +41,8 @@ public class StartMeeting extends AppCompatActivity {
         topicList = new ArrayList<>();
         listItems = new ArrayList<>();
 
+
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             email = user.getEmail();
@@ -56,13 +58,25 @@ public class StartMeeting extends AppCompatActivity {
 
                 MeetingDTO post = dataSnapshot.getValue(MeetingDTO.class);
 
-
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
                 }
                 else {
 
                 }
+                if (post.getMeetingStatus() == 1){
+                    Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else if (post.getMeetingStatus() == 2){
+                    Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+
+
                 final TextView meetingTitle = findViewById(R.id.meetingTitle);
                 String meetingTitleString;
                 meetingTitleString = post.getMeetingName();
@@ -86,6 +100,35 @@ public class StartMeeting extends AppCompatActivity {
                 (this, android.R.layout.simple_list_item_1, listItems);
 
 
+
+        load();
+
+
+
+        Button btnStart = findViewById(R.id.btn_start);
+        btnStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                email = email.replace(".", ",");
+
+                if (email.equals(meetingOwner)){
+
+                    mReference.child("meetingStatus").setValue(1);
+
+                    Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+
+                }
+            }
+        });
+    }
+
+
+
+    public void load (){
         Thread w = new Thread(){
             public void run(){
                 try {
@@ -98,10 +141,8 @@ public class StartMeeting extends AppCompatActivity {
                             for (int i = 0;i < topicList.size();i++){
                                 listItems.add(getTopicTitle(i));
                             }
-
                             topicListView.setAdapter(arrayAdapter);
                             arrayAdapter.notifyDataSetChanged();
-                            //listItems.add("t");
                             progressBar.setVisibility(View.GONE);
                         }
                     });
@@ -111,27 +152,12 @@ public class StartMeeting extends AppCompatActivity {
             }
         };
         w.start();
-
-
-        Button btnStart = findViewById(R.id.btn_start);
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (!email.equals(meetingOwner)){
-                    Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
-                    startActivity(intent);
-                }
-                else {
-
-                }
-            }
-        });
     }
 
 
+
     public String getMeeting(){
-        return "-LymzNE_R2j0e_6lCfKH";
+        return "-LynasKJ2n7g3d5srRI-";
     }
 
     public Topic getTopic(int listNum){
