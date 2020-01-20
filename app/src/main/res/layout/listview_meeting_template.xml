@@ -3,15 +3,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/gradientbackground"
+    android:padding="5dp"
     >
 
 
 
 
         <TextView
-            android:id="@+id/item_name"
-            android:background="@drawable/transparent"
+            android:id="@+id/item_meeting_name"
             android:layout_width="match_parent"
             android:paddingLeft="15dp"
             android:layout_height="34dp"
@@ -25,8 +24,7 @@
             android:layout_height="26dp"
             >
                 <TextView
-                    android:id="@+id/item_start_time"
-                    android:background="@drawable/transparent"
+                    android:id="@+id/item_meeting_start_time"
                     android:layout_width="200dp"
                     android:drawableLeft="@drawable/clock"
                     android:paddingLeft="15dp"
@@ -36,8 +34,7 @@
                     android:textSize="18sp"/>
 
                 <TextView
-                    android:id="@+id/item_date"
-                    android:background="@drawable/transparent"
+                    android:id="@+id/item_meeting_date"
                     android:layout_width="200dp"
                     android:drawableLeft="@drawable/calender"
                     android:paddingLeft="15dp"
@@ -53,8 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="26dp" >
                 <TextView
-                    android:id="@+id/item_durationi"
-                    android:background="@drawable/transparent"
+                    android:id="@+id/item_meeting_durationi"
                     android:layout_width="200dp"
                     android:drawableLeft="@drawable/hourglass"
                     android:paddingLeft="15dp"
@@ -65,7 +61,6 @@
 
                 <TextView
                     android:id="@+id/item_location"
-                    android:background="@drawable/transparent"
                     android:layout_width="200dp"
                     android:drawableLeft="@drawable/location"
                     android:paddingLeft="15dp"
@@ -75,5 +70,6 @@
                     android:textSize="18sp"/>
 
         </LinearLayout>
+
 
 </LinearLayout>

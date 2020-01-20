@@ -31,7 +31,7 @@ public class StartMeeting extends AppCompatActivity {
     private ArrayList<String> listItems;
     private ArrayAdapter<String> arrayAdapter;
     private String email;
-    private String meetingOwner;
+    private String meetingOwner, id;
 
 
 
@@ -41,6 +41,8 @@ public class StartMeeting extends AppCompatActivity {
         topicList = new ArrayList<>();
         listItems = new ArrayList<>();
 
+//        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
+//        myAwesomeTextView.setText("Meetings");
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -50,9 +52,11 @@ public class StartMeeting extends AppCompatActivity {
             finish();
         }
 
+        getMeeting();
+
 
         mDatabase = FirebaseDatabase.getInstance();
-        mReference = mDatabase.getReference().child("Meetings").child(getMeeting());
+        mReference = mDatabase.getReference().child("Meetings").child(id);
 
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -68,12 +72,14 @@ public class StartMeeting extends AppCompatActivity {
                 }
                 if (post.getMeetingStatus() == 1){
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
+                    intent.putExtra("meetingID", id);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
                 }
                 else if (post.getMeetingStatus() == 2){
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
+                    intent.putExtra("meetingID", id);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
@@ -120,6 +126,7 @@ public class StartMeeting extends AppCompatActivity {
                     mReference.child("meetingStatus").setValue(1);
 
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
+                    intent.putExtra("meetingID", id);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
@@ -161,8 +168,9 @@ public class StartMeeting extends AppCompatActivity {
 
 
 
-    public String getMeeting(){
-        return "-LynasKJ2n7g3d5srRI-";
+    public void getMeeting(){
+        id = getIntent().getStringExtra("meetingID");
+        System.out.println(id);
     }
 
     public Topic getTopic(int listNum){

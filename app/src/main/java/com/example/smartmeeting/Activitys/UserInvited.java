@@ -162,16 +162,15 @@ public class UserInvited extends AppCompatActivity {
 //                    bob(emailTIlInvite);
 
             DatabaseReference ref2 = database.getReference().child("Users").child(emailTIlInvite.replace(".", ",")).child("meetingsList");
-            String key2 = ref2.push().getKey();
 
-            ref2.child(key2).setValue(meetingOnUserDB);
+
+            ref2.child(key).setValue(meetingOnUserDB);
 
         }
 
         DatabaseReference ref2 = database.getReference().child("Users").child(meetingToInvFrom.getCreatingUser().replace(".",",")).child("meetingsList");
-        String key2 = ref2.push().getKey();
 
-        ref2.child(key2).setValue(meetingOnUserDB);
+        ref2.child(key).setValue(meetingOnUserDB);
 
 
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
