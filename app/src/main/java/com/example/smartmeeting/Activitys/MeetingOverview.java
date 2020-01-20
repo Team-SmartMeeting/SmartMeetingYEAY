@@ -10,33 +10,52 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartmeeting.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MeetingOverview extends AppCompatActivity {
 
-    ListView lv;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meeting_overview);
+
+
+        mDatabase = FirebaseDatabase.getInstance();
+        mReference = mDatabase.getReference().child("Meetings").child(getMeeting());
+
+
         TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
         myAwesomeTextView.setText("Meetings");
         Button bigBtn = findViewById(R.id.btn_big);
+//        Button btnReset = findViewById(R.id.btn_reset);
         bigBtn.setText("Create\n Meeting");
-
-        lv = findViewById(R.id.listview_meetings);
 
         bigBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), CreateMeeting.class);
-//                startActivity(intent);
-
-                Intent intent = new Intent(getApplicationContext(), StartMeeting.class);
+                Intent intent = new Intent(getApplicationContext(), CreateMeeting.class);
                 startActivity(intent);
+
+//                Intent intent = new Intent(getApplicationContext(), StartMeeting.class);
+//                startActivity(intent);
 
             }
         });
+
+//        btnReset.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mReference.child("agendaStatus").setValue(0);
+//                mReference.child("meetingStatus").setValue(0);
+//                mReference.child("agendalist").child("0").child("topicDuration").setValue(6 * 60);
+//                mReference.child("agendalist").child("1").child("topicDuration").setValue(7 * 60);
+//                mReference.child("agendalist").child("2").child("topicDuration").setValue(8 * 60);
+//            }
+//        });
 
 
 
@@ -84,4 +103,9 @@ public class MeetingOverview extends AppCompatActivity {
 
 
     }
+
+    public String getMeeting(){
+        return "-Lz1Mf-LnNOqYIIguiLJ";
+    }
+
 }
