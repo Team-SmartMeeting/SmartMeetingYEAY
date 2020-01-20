@@ -136,7 +136,8 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
+            android:textColor="#FFFF"
+            android:textSize="10dp"
             android:background="@drawable/btn_new_meeting_drawable"
             android:text="Button"
             android:layout_gravity="right">
@@ -145,20 +146,4 @@
 
 
     </LinearLayout>
-
-    <!--    <Button-->
-    <!--        android:id="@+id/btn_add_participant"-->
-    <!--        android:layout_width="100dp"-->
-    <!--        android:layout_height="100dp"-->
-    <!--        android:layout_marginBottom="50dp"-->
-    <!--        android:background="@drawable/btn_new_meeting_drawable"-->
-    <!--        android:text="Add participants"-->
-    <!--        android:textColor="#FFFF"-->
-    <!--        android:textSize="18sp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

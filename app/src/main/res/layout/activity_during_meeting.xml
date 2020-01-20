@@ -182,6 +182,7 @@
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
+                    android:textColor="#FFFF"
                     android:background="@drawable/btn_new_meeting_drawable"
                     android:text="Next Topic"></Button>
             </LinearLayout>

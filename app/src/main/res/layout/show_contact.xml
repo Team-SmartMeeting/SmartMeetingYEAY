@@ -102,7 +102,7 @@
                         android:textSize="14dp"
                         android:textColor="#000000"
                         android:labelFor="@id/text_email"
-                        android:text="phone number" />
+                        android:text="Phone Number" />
 
                     <EditText
                         android:id="@+id/text_phonenumber"
@@ -124,6 +124,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/edit_contact_button"
                         android:textSize="12dp"
+                        android:textColor="#FFFF"
                         android:text="Edit\n Contact"
                         >
 
@@ -139,6 +140,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/edit_contact_button"
                         android:textSize="12dp"
+                        android:textColor="#FFFF"
                         android:text="Save \n contact"
                         >
 
