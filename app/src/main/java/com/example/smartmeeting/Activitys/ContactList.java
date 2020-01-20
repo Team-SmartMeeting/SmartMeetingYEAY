@@ -42,8 +42,6 @@ public class ContactList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_list);
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_contacts_menu);
-        myAwesomeTextView.setText("Contacts");
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mPreferences.edit();
 
