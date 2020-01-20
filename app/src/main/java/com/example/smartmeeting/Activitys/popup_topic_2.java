@@ -49,6 +49,7 @@ public class popup_topic_2 extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("nytopic", myJson);
                 setResult(RESULT_OK, intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }
         });
@@ -66,6 +67,7 @@ public class popup_topic_2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ContactList.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
 
             }
@@ -76,6 +78,7 @@ public class popup_topic_2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), groups_list.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
 
             }
@@ -88,6 +91,7 @@ public class popup_topic_2 extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }
         });

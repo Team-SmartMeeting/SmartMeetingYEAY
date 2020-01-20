@@ -45,7 +45,10 @@ public class StartMeeting extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             email = user.getEmail();
-        } else {finish();}
+        } else {
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            finish();
+        }
 
 
         mDatabase = FirebaseDatabase.getInstance();
@@ -66,11 +69,13 @@ public class StartMeeting extends AppCompatActivity {
                 if (post.getMeetingStatus() == 1){
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
                 }
                 else if (post.getMeetingStatus() == 2){
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
 
                 }
@@ -116,6 +121,7 @@ public class StartMeeting extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
                 }
                 else {

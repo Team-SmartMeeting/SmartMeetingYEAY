@@ -100,7 +100,9 @@ public class Register extends AppCompatActivity {
                                             mEditor.putString("userPW", txtPassword.getText().toString());
                                             mEditor.putString("newUser","0");
                                             mEditor.commit();
+                                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                             finish();
+
 
                                             //indsætter den bruger man har lavet til databasen
 //                                            FirebaseDatabase.getInstance().getReference("Users")
@@ -144,6 +146,7 @@ public class Register extends AppCompatActivity {
         registerText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }
         });

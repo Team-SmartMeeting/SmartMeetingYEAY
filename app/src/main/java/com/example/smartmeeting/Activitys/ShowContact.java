@@ -81,7 +81,7 @@ public class ShowContact extends Activity {
                     mEditor.putInt("nrofcontact", (amountOfContact));
                     mEditor.commit();
                     Toast.makeText(ShowContact.this, "Contact saved",Toast.LENGTH_LONG).show();
-
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
                 }else {
                     Toast.makeText(ShowContact.this, "Failed",Toast.LENGTH_LONG).show();

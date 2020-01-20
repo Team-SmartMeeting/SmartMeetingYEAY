@@ -62,7 +62,10 @@ public class DuringMeeting extends AppCompatActivity{
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             email = user.getEmail();
-        } else {finish();}
+        } else {
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            finish();
+        }
 
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Meetings").child(getMeeting());
@@ -88,6 +91,7 @@ public class DuringMeeting extends AppCompatActivity{
                 if (post.getAgendaStatus() == topicListNum) {
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
                 }
                 if (post.getAgendaStatus() != topicListCurNum){
@@ -158,6 +162,7 @@ public class DuringMeeting extends AppCompatActivity{
                     if (topicListCurNum == topicListNum){
                         Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                         startActivity(intent);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         finish();
                     }
                     else {

@@ -65,6 +65,7 @@ public class InviteToMeeting extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ContactList.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
 
             }
@@ -76,6 +77,7 @@ public class InviteToMeeting extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }
         });
@@ -85,6 +87,7 @@ public class InviteToMeeting extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }
         });
@@ -104,6 +107,7 @@ public class InviteToMeeting extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("nymail2", nytTopic);
                 setResult(RESULT_OK, intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
 
 
@@ -117,6 +121,7 @@ public class InviteToMeeting extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("nymail2", nytTopic);
                 setResult(RESULT_OK, intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
 
 

@@ -59,7 +59,7 @@ public class add_contact extends AppCompatActivity {
                     mEditor.putInt("nrofcontact", (amountOfContact));
                     mEditor.commit();
                     Toast.makeText(add_contact.this, "UserDTO saved",Toast.LENGTH_LONG).show();
-
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
                 }
             }
