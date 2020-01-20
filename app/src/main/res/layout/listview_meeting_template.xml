@@ -10,7 +10,7 @@
 
 
         <TextView
-            android:id="@+id/item_name"
+            android:id="@+id/item_meeting_name"
             android:background="@drawable/transparent"
             android:layout_width="match_parent"
             android:paddingLeft="15dp"
@@ -25,7 +25,7 @@
             android:layout_height="26dp"
             >
                 <TextView
-                    android:id="@+id/item_start_time"
+                    android:id="@+id/item_meeting_start_time"
                     android:background="@drawable/transparent"
                     android:layout_width="200dp"
                     android:drawableLeft="@drawable/clock"
@@ -36,7 +36,7 @@
                     android:textSize="18sp"/>
 
                 <TextView
-                    android:id="@+id/item_date"
+                    android:id="@+id/item_meeting_date"
                     android:background="@drawable/transparent"
                     android:layout_width="200dp"
                     android:drawableLeft="@drawable/calender"
@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="26dp" >
                 <TextView
-                    android:id="@+id/item_durationi"
+                    android:id="@+id/item_meeting_durationi"
                     android:background="@drawable/transparent"
                     android:layout_width="200dp"
                     android:drawableLeft="@drawable/hourglass"
