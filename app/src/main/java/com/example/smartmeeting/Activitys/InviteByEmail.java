@@ -18,6 +18,8 @@ public class InviteByEmail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite_by_email);
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
+        myAwesomeTextView.setText("Meetings");
 
         email = findViewById(R.id.edittext_email_to_inv);
 

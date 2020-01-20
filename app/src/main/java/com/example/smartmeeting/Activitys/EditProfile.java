@@ -39,6 +39,9 @@ public class EditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_profile_menu);
+        myAwesomeTextView.setText("Profile");
+
         //Firebase
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users");

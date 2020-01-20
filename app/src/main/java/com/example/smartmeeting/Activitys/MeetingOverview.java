@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,11 +19,12 @@ public class MeetingOverview extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meeting_overview);
-
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
+        myAwesomeTextView.setText("Meetings");
         Button bigBtn = findViewById(R.id.btn_big);
         bigBtn.setText("Create\n Meeting");
 
-        lv = findViewById(R.id.)
+        lv = findViewById(R.id.listview_meetings);
 
         bigBtn.setOnClickListener(new View.OnClickListener() {
             @Override

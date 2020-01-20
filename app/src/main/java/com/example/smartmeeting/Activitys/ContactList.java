@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,7 +42,8 @@ public class ContactList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_list);
-
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_contacts_menu);
+        myAwesomeTextView.setText("Contacts");
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mPreferences.edit();
 
@@ -70,6 +72,7 @@ public class ContactList extends AppCompatActivity {
 
 
         btn_contacts.setBackgroundResource(R.drawable.button_pressed);
+
 
         btn_groupe.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -38,7 +38,8 @@ public class add_contact extends AppCompatActivity {
 
         Button btn = findViewById(R.id.btn_big);
         btn.setText("Add\n Contact");
-
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_contacts_menu);
+        myAwesomeTextView.setText("Contacts");
         // fortæller hvad knappen gør:
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

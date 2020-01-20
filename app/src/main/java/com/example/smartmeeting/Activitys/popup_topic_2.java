@@ -25,6 +25,8 @@ public class popup_topic_2 extends AppCompatActivity {
         setContentView(R.layout.activity_popup_topic_2);
         Button bigBtn = findViewById(R.id.btn_big);
         bigBtn.setText("Add \n topic");
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
+        myAwesomeTextView.setText("Meetings");
 
 
 

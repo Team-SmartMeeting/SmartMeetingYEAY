@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.smartmeeting.R;
 
@@ -18,6 +19,8 @@ public class InviteToMeeting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite_to_meeting);
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
+        myAwesomeTextView.setText("Meetings");
 
         //SÆTTER TINGENE OP
         Button btn_contact = findViewById(R.id.btn_invite_from_contact);

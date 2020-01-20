@@ -25,7 +25,8 @@ public class CreateMeeting extends AppCompatActivity {
         setContentView(R.layout.activity_create_meeting);
         Button bigBtn = findViewById(R.id.btn_big);
         bigBtn.setText("Next");
-
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
+        myAwesomeTextView.setText("Meetings");
 
         //Objekter i XML
         final TextView meetingName = findViewById(R.id.create_meeting_name_ed);

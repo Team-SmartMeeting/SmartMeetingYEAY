@@ -49,6 +49,9 @@ public class UserInvited extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_invited);
 
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
+        myAwesomeTextView.setText("Meetings");
+
         meets = new ArrayList<>();
         userList = new ArrayList<>();
 

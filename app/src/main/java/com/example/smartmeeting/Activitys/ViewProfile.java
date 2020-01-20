@@ -57,6 +57,8 @@ public class ViewProfile extends AppCompatActivity {
 
         Button editProfile = findViewById(R.id.btn_big);
         editProfile.setText("Edit \n Profile");
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_profile_menu);
+        myAwesomeTextView.setText("Profile");
 
 
         //Checker om der er en user logget på
