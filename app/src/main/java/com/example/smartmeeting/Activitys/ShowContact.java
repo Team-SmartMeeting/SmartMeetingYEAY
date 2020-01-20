@@ -32,10 +32,10 @@ public class ShowContact extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_contact);
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_contacts_menu);
-        myAwesomeTextView.setText("Contacts");
+
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mPreferences.edit();
+
         final Intent intent = getIntent();
 
         Button edit_contact = findViewById(R.id.edit_contact);
