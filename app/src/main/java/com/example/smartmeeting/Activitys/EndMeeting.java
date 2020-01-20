@@ -15,7 +15,7 @@ public class EndMeeting extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_meeting);
-        
+
         Button btnBack = findViewById(R.id.btn_back);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -26,6 +26,7 @@ public class EndMeeting extends AppCompatActivity {
                 finish();
             }
         });
+
 
     }
 }

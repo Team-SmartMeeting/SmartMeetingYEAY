@@ -154,7 +154,16 @@ public class DuringMeeting extends AppCompatActivity{
 
 
 
+
         Button btnNext = findViewById(R.id.btn_next);
+
+        if (email.equals(meetingOwner)) {
+            btnNext.setClickable(true);
+        } else {
+            btnNext.setClickable(false);
+//            btnNext.setBackground();
+        }
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
