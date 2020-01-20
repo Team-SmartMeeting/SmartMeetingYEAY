@@ -7,7 +7,7 @@
         android:color="@color/menufarve"
         />
     <gradient
-        android:angle="5%"
+        android:angle="45"
         android:centerX="1%"
         android:centerColor="#404040"
         android:startColor="#E8E8E8"
