@@ -171,6 +171,7 @@ public class StartMeeting extends AppCompatActivity {
                             if (!email.equals(meetingOwner)) {
                                 btnStart.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
                                 btnStart.setClickable(false);
+                                btnStart.setText("Wait");
                             }
 
                             topicListView.setAdapter(arrayAdapter);
