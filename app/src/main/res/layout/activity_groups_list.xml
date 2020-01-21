@@ -32,7 +32,10 @@
             android:layout_height="100dp"
             android:gravity="center"
             android:text="Group List"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            android:fontFamily="sans-serif-thin"
+            android:textColor="#FFFFFF"
+            />
 
         <ListView
             android:id="@+id/listview_meetings"

@@ -3,7 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/border2"
+    android:background="@drawable/bg_list"
     >
 
 <LinearLayout
@@ -26,7 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:drawableBottom="@drawable/border2"
+                    android:drawableBottom="@drawable/bg_list"
                     >
 
 

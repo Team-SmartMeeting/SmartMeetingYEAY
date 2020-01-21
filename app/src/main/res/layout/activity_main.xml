@@ -19,7 +19,8 @@
                     android:layout_marginBottom="16dp"
                     android:gravity="center_horizontal"
                     android:text="Account Login"
-                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-thin"
+                    android:textColor="#FFFFFF"
                     android:textSize="26sp"
                     android:textStyle="bold"/>
 
