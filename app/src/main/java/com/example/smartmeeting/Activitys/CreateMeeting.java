@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
 import com.example.smartmeeting.R;
@@ -26,9 +28,9 @@ public class CreateMeeting extends AppCompatActivity {
 
     Calendar c;
     DatePickerDialog dpd;
+    TimePickerDialog tpd;
 
     TextView meetingDate, meetingName, meetingTime, meetingDuration;
-    int days, mounths, years;
 
 
     @Override
@@ -47,11 +49,6 @@ public class CreateMeeting extends AppCompatActivity {
         meetingDuration = findViewById(R.id.create_meeting_duration_et);
         final Switch skifter = findViewById(R.id.switch1);
 
-        //TIL DATE PICKER
-        c = Calendar.getInstance();
-        days = c.get(Calendar.DAY_OF_MONTH);
-        mounths = c.get(Calendar.MONTH);
-        years = c.get(Calendar.YEAR);
 
 
         bigBtn.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +84,11 @@ public class CreateMeeting extends AppCompatActivity {
         btndate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //TIL DATE PICKER
+                c = Calendar.getInstance();
+                int days = c.get(Calendar.DAY_OF_MONTH);
+                int mounths = c.get(Calendar.MONTH);
+                int years = c.get(Calendar.YEAR);
 
                 dpd = new DatePickerDialog(CreateMeeting.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -96,6 +97,23 @@ public class CreateMeeting extends AppCompatActivity {
                     }
                 }, years, mounths, days);
                 dpd.show();
+
+            }
+        });
+
+        Button btntime = findViewById(R.id.btn_time_et);
+        btntime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                tpd = new TimePickerDialog(CreateMeeting.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        meetingTime.setText(hourOfDay + ":" + minute);
+                    }
+                }, 12, 00, true);
+
+                tpd.show();
 
             }
         });
