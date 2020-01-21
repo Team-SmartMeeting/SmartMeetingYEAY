@@ -3,11 +3,13 @@ package com.example.smartmeeting.Activitys;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -17,7 +19,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class CreateMeeting extends AppCompatActivity {
+
+    Calendar c;
+    DatePickerDialog dpd;
+
+    TextView meetingDate, meetingName, meetingTime, meetingDuration;
+    int days, mounths, years;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +41,18 @@ public class CreateMeeting extends AppCompatActivity {
         myAwesomeTextView.setText("Meetings");
 
         //Objekter i XML
-        final TextView meetingName = findViewById(R.id.create_meeting_name_ed);
-        final TextView meetingDate = findViewById(R.id.create_meeting_date_et);
-        final TextView meetingTime = findViewById(R.id.create_meeting_time_et);
-        final TextView meetingDuration = findViewById(R.id.create_meeting_duration_et);
+        meetingName = findViewById(R.id.create_meeting_name_ed);
+        meetingDate = findViewById(R.id.create_meeting_date_et);
+        meetingTime = findViewById(R.id.create_meeting_time_et);
+        meetingDuration = findViewById(R.id.create_meeting_duration_et);
         final Switch skifter = findViewById(R.id.switch1);
+
+        //TIL DATE PICKER
+        c = Calendar.getInstance();
+        days = c.get(Calendar.DAY_OF_MONTH);
+        mounths = c.get(Calendar.MONTH);
+        years = c.get(Calendar.YEAR);
+
 
         bigBtn.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -60,6 +79,23 @@ public class CreateMeeting extends AppCompatActivity {
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
                 }
+
+            }
+        });
+
+        Button btndate = findViewById(R.id.btn_date_et);
+        btndate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                dpd = new DatePickerDialog(CreateMeeting.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int mYear, int mMonth, int mDay) {
+                        meetingDate.setText(mDay+ "/" + (mMonth+1) + "/" + mYear);
+                    }
+                }, years, mounths, days);
+                dpd.show();
 
             }
         });
