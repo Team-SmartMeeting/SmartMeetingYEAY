@@ -3,6 +3,7 @@ package com.example.smartmeeting.Activitys;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
@@ -59,6 +60,9 @@ public class ShowContact extends Activity {
                 tv_name.setEnabled(true);
                 tv_phone.setEnabled(true);
                 tv_email.setEnabled(true);
+                tv_name.setTextColor(Color.parseColor("#FFFFFF"));
+                tv_phone.setTextColor(Color.parseColor("#FFFFFF"));
+                tv_email.setTextColor(Color.parseColor("#FFFFFF"));
             }
         });
         save_contact.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +88,7 @@ public class ShowContact extends Activity {
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
                 }else {
-                    Toast.makeText(ShowContact.this, "Failed",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ShowContact.this, "You are missing a name or Number, Or email is invalid",Toast.LENGTH_LONG).show();
                 }
             }
         });
