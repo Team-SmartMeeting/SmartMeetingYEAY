@@ -165,6 +165,11 @@ public class MeetingOverview extends AppCompatActivity {
 
     }
 
+    public String getMeeting(){
+        String id = getIntent().getStringExtra("meetingID");
+        System.out.println(id);
+        return id;
+    }
     private void updateList() {
 
         //CLEAR ALLE ARRAYLISTER SÅ DE ER KLAR TIL AT BLIVE REPOSTET
