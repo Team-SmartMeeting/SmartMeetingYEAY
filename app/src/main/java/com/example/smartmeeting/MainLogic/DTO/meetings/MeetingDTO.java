@@ -57,6 +57,8 @@ public class MeetingDTO implements IMeetingDTO {
     }
 
 
+
+
     //GETTERS AND SETTERS
 
     @Override

@@ -64,6 +64,7 @@
             android:layout_weight="1" >
         </Space>
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,6 +74,12 @@
             android:labelFor="@id/create_meeting_date_et"
             android:layout_marginLeft="20dp"
             android:text="Date" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:padding="5dp">
 
 
         <EditText
@@ -84,6 +91,16 @@
             android:inputType="date"
             android:padding="5dp"
             android:hint="F.eks. 05/02/2021" />
+
+            <Button
+                android:id="@+id/btn_date_et"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/calender" />
+
+        </FrameLayout>
 
         <Space
             android:layout_width="0dp"
@@ -101,6 +118,12 @@
             android:layout_marginLeft="20dp"
             android:text="Starting Time" />
 
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:padding="5dp">
+
 
         <EditText
             android:id="@+id/create_meeting_time_et"
@@ -111,6 +134,17 @@
             android:inputType="time"
             android:padding="5dp"
             android:hint="F.eks. 17:30" />
+
+            <Button
+                android:id="@+id/btn_time_et"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/clock" />
+
+
+        </FrameLayout>
 
         <Space
             android:layout_width="0dp"
