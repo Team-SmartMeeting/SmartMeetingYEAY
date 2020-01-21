@@ -59,7 +59,6 @@ public class popup_topic_2 extends AppCompatActivity {
         //Menuen
         Button btn_profile = findViewById(R.id.btn_profile_menu);
         Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_groupe = findViewById(R.id.btn_groupes_menu);
         Button btn_contacts = findViewById(R.id.btn_contacts_menu);
 
         btn_contacts.setOnClickListener(new View.OnClickListener() {
@@ -73,16 +72,6 @@ public class popup_topic_2 extends AppCompatActivity {
             }
         });
 
-        btn_groupe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), groups_list.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
-
-            }
-        });
 
         btn_meetings.setBackgroundResource(R.drawable.button_pressed);
 
