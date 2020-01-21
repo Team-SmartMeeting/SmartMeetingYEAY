@@ -32,17 +32,22 @@ public class StartMeeting extends AppCompatActivity {
     private ArrayAdapter<String> arrayAdapter;
     private String email;
     private String meetingOwner, id;
+    private Button btnStart;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_start_meeting);
+
         topicList = new ArrayList<>();
         listItems = new ArrayList<>();
 
-//        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
-//        myAwesomeTextView.setText("Meetings");
+        btnStart = findViewById(R.id.btn_start);
+
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -51,6 +56,7 @@ public class StartMeeting extends AppCompatActivity {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
         }
+        email = email.replace(".", ",");
 
         getMeeting();
 
@@ -65,6 +71,7 @@ public class StartMeeting extends AppCompatActivity {
                 MeetingDTO post = dataSnapshot.getValue(MeetingDTO.class);
 
                 meetingOwner = post.getCreatingUser();
+
 
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
@@ -96,7 +103,8 @@ public class StartMeeting extends AppCompatActivity {
                 meetingTitleString = post.getMeetingName();
                 meetingTitle.setText(meetingTitleString);
 
-                System.out.println(meetingOwner + "-----------------------------------------");
+
+
             }
 
             @Override
@@ -106,8 +114,7 @@ public class StartMeeting extends AppCompatActivity {
         });
 
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start_meeting);
+
 
 
         topicListView = findViewById(R.id.listview_topics);
@@ -120,7 +127,7 @@ public class StartMeeting extends AppCompatActivity {
 
 
 
-        Button btnStart = findViewById(R.id.btn_start);
+
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,11 +163,19 @@ public class StartMeeting extends AppCompatActivity {
                         public void run() {
                             ProgressBar progressBar = findViewById(R.id.progressBarsm);
                             progressBar.setVisibility(View.VISIBLE);
+
                             for (int i = 0;i < topicList.size();i++){
                                 listItems.add(getTopicTitle(i));
                             }
+
+                            if (!email.equals(meetingOwner)) {
+                                btnStart.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
+                                btnStart.setClickable(false);
+                            }
+
                             topicListView.setAdapter(arrayAdapter);
                             arrayAdapter.notifyDataSetChanged();
+
                             progressBar.setVisibility(View.GONE);
                         }
                     });

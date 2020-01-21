@@ -44,18 +44,23 @@ public class DuringMeeting extends AppCompatActivity{
     private int meetingTotalTime;
     private int topicTotalTime;
     private int allocate;
-    MeetingDTO post;
+    private MeetingDTO post;
+    private Button btnNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_during_meeting);
+
+
         topicDescription = findViewById(R.id.topiccontent);
         topicTitle = findViewById(R.id.topictitle2);
         topicTimer = findViewById(R.id.clock);
         topicTotalTimer = findViewById(R.id.totaltimer);
         nexttopic = findViewById(R.id.nexttopic);
         llclock = findViewById(R.id.llclock);
+        btnNext = findViewById(R.id.btn_next);
+
 
 
         String id = getIntent().getStringExtra("meetingID");
@@ -78,7 +83,7 @@ public class DuringMeeting extends AppCompatActivity{
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
         }
-
+        email = email.replace(".", ",");
 
 
 
@@ -150,14 +155,11 @@ public class DuringMeeting extends AppCompatActivity{
 
 
 
-        Button btnNext = findViewById(R.id.btn_next);
-        email = email.replace(".", ",");
+
         System.out.println(email);
         System.out.println(meetingOwner);
-        if (!email.equals(meetingOwner)) {
-            btnNext.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
-            btnNext.setClickable(false);
-        }
+
+
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -215,26 +217,38 @@ public class DuringMeeting extends AppCompatActivity{
                             public void run() {
                                 ProgressBar progressBar = findViewById(R.id.progressBardm);
                                 progressBar.setVisibility(View.VISIBLE);
+
+                                if (!email.equals(meetingOwner)) {
+                                    btnNext.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
+                                    btnNext.setClickable(false);
+                                }
+
                                 topicTitle.setText(getTopicTitle(topicListCurNum));
                                 topicDescription.setText(getTopicDesciption(topicListCurNum));
                                 topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
+
                                 if (topicListCurNum + 1 ==  topicListNum){
                                     nexttopic.setText("End of meeting");
                                 }
                                 else {
                                     nexttopic.setText(getTopicTitle(topicListCurNum + 1));
                                 }
+
                                 llclock.setBackgroundColor(Color.GREEN);
+
                                 for (int i = 0;i < topicListNum;i++){
                                     totalTime += getTopicTime(i);
                                 }
+
                                 topicTotalTime = totalTime;
 
-//                                allocateTime();
+                                allocateTime();
                                 timerTRYTotal = totalTime;
-                                timerTRY = (getTopicTime((topicListCurNum) * allocate));
-
+                                timerTRY = (getTopicTime((topicListCurNum))* allocate) / 100;
                                 topicTotalTimer.setText(toClock(totalTime));
+
+
+
                                 progressBar.setVisibility(View.GONE);
                             }
                         });
@@ -255,7 +269,7 @@ public class DuringMeeting extends AppCompatActivity{
 
         System.out.println("mTT " + meetingTotalTime);
         System.out.println("tTT " + topicTotalTime);
-        allocate = (meetingTotalTime * 100 / (topicTotalTime / 60));
+        allocate = (meetingTotalTime / topicTotalTime);
         System.out.println("allo " + allocate);
 
     }
