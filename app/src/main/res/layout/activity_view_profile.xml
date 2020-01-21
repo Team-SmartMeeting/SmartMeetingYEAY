@@ -43,36 +43,21 @@
                 android:layout_weight="1"></Space>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-black"
-                android:textSize="14dp"
-                android:textColor="#000000"
-                android:labelFor="@id/name"
-                android:text="Name" />
+
 
 
             <TextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:drawableLeft="@drawable/ic_person_black_24dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/border"
                 android:textColor="#FFFFFF"
                 android:padding="5dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-black"
-                android:textSize="14dp"
-                android:textColor="#000000"
-                android:labelFor="@id/phonenumber"
-                android:text="Phone number" />
 
 
             <TextView
@@ -83,63 +68,40 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/border"
                 android:textColor="#FFFFFF"
                 android:padding="5dp" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-black"
-                android:textSize="14dp"
-                android:textColor="#000000"
-                android:labelFor="@id/email"
-                android:text="Email" />
 
 
             <TextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:drawableLeft="@drawable/ic_email"
+                android:drawableLeft="@drawable/ic_contact_mail_black_24dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/border"
                 android:textColor="#FFFFFF"
                 android:padding="5dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-black"
-                android:textSize="14dp"
-                android:textColor="#000000"
-                android:labelFor="@id/company"
-                android:text="Company" />
 
 
             <TextView
                 android:id="@+id/company"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:drawableLeft="@drawable/ic_company"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/border"
                 android:textColor="#FFFFFF"
                 android:padding="5dp" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-black"
-                android:textSize="14dp"
-                android:textColor="#000000"
-                android:labelFor="@id/address"
-                android:text="Address" />
 
 
             <TextView
@@ -147,76 +109,56 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:layout_marginLeft="20dp"
-                android:drawableLeft="@drawable/"
+                android:drawableLeft="@drawable/ic_home_black_24dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/border"
                 android:textColor="#FFFFFF"
                 android:padding="5dp" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-black"
-                android:textSize="14dp"
-                android:textColor="#000000"
-                android:labelFor="@id/city"
-                android:text="City" />
 
 
             <TextView
                 android:id="@+id/city"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:drawableLeft="@drawable/ic_city"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/border"
                 android:textColor="#FFFFFF"
                 android:padding="5dp" />
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-black"
-                android:textSize="14dp"
-                android:textColor="#000000"
-                android:labelFor="@id/zip_code"
-                android:text="Zip code" />
 
 
             <TextView
                 android:id="@+id/zip_code"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:drawableLeft="@drawable/ic_zipcode"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/border"
                 android:textColor="#FFFFFF"
                 android:inputType="phone"
                 android:padding="5dp" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="sans-serif-black"
-                android:textSize="14dp"
-                android:textColor="#000000"
-                android:labelFor="@id/country"
-                android:text="Country" />
+
 
 
             <TextView
                 android:id="@+id/country"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:drawableLeft="@drawable/ic_country"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
+                android:background="@drawable/border"
                 android:textColor="#FFFFFF"
                 android:padding="5dp" />
 
