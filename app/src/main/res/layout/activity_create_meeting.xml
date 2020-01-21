@@ -53,7 +53,7 @@
             android:layout_height="35dp"
 
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="40dp"
             android:inputType="textPersonName"
             android:padding="5dp"
             android:hint="F.eks. Søren Aarup Poulsen" />
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="40dp"
             android:inputType="date"
             android:padding="5dp"
             android:hint="F.eks. 05/02/2021" />
@@ -130,7 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="40dp"
             android:inputType="time"
             android:padding="5dp"
             android:hint="F.eks. 17:30" />
@@ -168,7 +168,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="40dp"
             android:inputType="number"
             android:padding="5dp"
             android:hint="F.eks. 90" />

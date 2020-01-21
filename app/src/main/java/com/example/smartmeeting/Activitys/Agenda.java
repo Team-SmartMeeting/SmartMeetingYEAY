@@ -185,24 +185,6 @@ public class Agenda extends AppCompatActivity {
         // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
         listView.setAdapter(new CustomAdapterAgenda(Agenda.this,TopicTitels, TopicTime, TopicDescription));
 
-
-//        listView.setClickable(true);
-//
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(Agenda.this, ShowContact.class);
-//                intent.putExtra("name",agenda.get(position).getTopicName());
-//                intent.putExtra("email",agenda.get(position).getTopicDuration());
-//                intent.putExtra("number",agenda.get(position).getDescription());
-//                startActivity(intent);
-//
-//            }
-//        });
-
-
-
-
     }
 }
 
