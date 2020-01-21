@@ -96,6 +96,11 @@ public class MeetingOverview extends AppCompatActivity {
                     String snap_date = value.get("date").toString();
                     String snap_time = value.get("time").toString();
                     String snap_duration = value.get("duration").toString();
+
+                    int snap_duration_int = Integer.parseInt(snap_duration);
+                    snap_duration_int= snap_duration_int/60;
+                    snap_duration = String.valueOf(snap_duration_int);
+
                     meetingIDs.add(oneSnap.getKey());
 
 
