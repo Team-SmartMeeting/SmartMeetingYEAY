@@ -94,7 +94,7 @@ public class DuringMeeting extends AppCompatActivity{
 
                 post = dataSnapshot.getValue(MeetingDTO.class);
 
-                post.setMeetingStatus(2);
+                post.setMeetingStatus(3);
 
 
                 if (post.getAgendalist() != null){
