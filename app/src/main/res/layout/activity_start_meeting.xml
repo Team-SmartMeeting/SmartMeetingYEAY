@@ -32,14 +32,14 @@
 
         <TextView
             android:id="@+id/meetingTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:fontFamily="sans-serif-thin"
             android:textColor="#FFFFFF"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:text="Meeting Title">
 
         </TextView>
