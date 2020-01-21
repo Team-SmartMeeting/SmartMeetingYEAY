@@ -73,6 +73,7 @@ public class StartMeeting extends AppCompatActivity {
                 if (post.getMeetingStatus() == 1){
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
                     intent.putExtra("meetingID", id);
+                    intent.putExtra("owner", meetingOwner);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
@@ -92,6 +93,8 @@ public class StartMeeting extends AppCompatActivity {
                 meetingTitleString = post.getMeetingName();
                 meetingTitle.setText(meetingTitleString);
                 meetingOwner = post.getCreatingUser();
+
+                System.out.println(meetingOwner + "-----------------------------------------");
             }
 
             @Override

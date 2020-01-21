@@ -86,9 +86,6 @@ public class DuringMeeting extends AppCompatActivity{
                 post = dataSnapshot.getValue(MeetingDTO.class);
 
 
-                meetingOwner = post.getCreatingUser();
-
-
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
                 }
@@ -104,14 +101,18 @@ public class DuringMeeting extends AppCompatActivity{
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-
                     finish();
                 }
 
                 if (post.getAgendaStatus() != topicListCurNum){
                     topicListCurNum = post.getAgendaStatus();
                 }
+
+
+
+                String owner = getIntent().getStringExtra("owner");
+
+                meetingOwner = owner;
                 load();
 
             }
