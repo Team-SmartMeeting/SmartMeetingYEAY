@@ -32,7 +32,7 @@ public class InviteToMeeting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent in = new Intent(InviteToMeeting.this, InviteByEmail.class);
+                Intent in = new Intent(InviteToMeeting.this, Invite_Contacts.class);
                 startActivityForResult(in, 3);
 
             }
