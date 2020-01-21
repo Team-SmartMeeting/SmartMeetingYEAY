@@ -88,9 +88,6 @@ public class DuringMeeting extends AppCompatActivity{
 
 
 
-
-
-
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -120,7 +117,10 @@ public class DuringMeeting extends AppCompatActivity{
                     topicListCurNum = post.getAgendaStatus();
                 }
 
-
+                if (firstLoad){
+                    timerTRYTotal = meetingTotalTime;
+                    firstLoad = false;
+                }
 
 
                 load();
@@ -146,12 +146,6 @@ public class DuringMeeting extends AppCompatActivity{
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-
-                                if (firstLoad){
-                                    timerTRYTotal = meetingTotalTime;
-                                    firstLoad = false;
-                                }
-
                                 timerTRY--;
                                 timerTRYTotal--;
                                 topicTimer.setText(toClock(timerTRY));
@@ -224,7 +218,7 @@ public class DuringMeeting extends AppCompatActivity{
             Thread w = new Thread(){
                 public void run(){
                     try {
-                        Thread.sleep(200);
+                        Thread.sleep(500);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -254,10 +248,6 @@ public class DuringMeeting extends AppCompatActivity{
                                 }
 
                                 topicTotalTime = totalTime;
-
-
-
-
 
 
 
