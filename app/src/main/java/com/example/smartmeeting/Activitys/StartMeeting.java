@@ -87,7 +87,7 @@ public class StartMeeting extends AppCompatActivity {
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
                 }
-                else if (post.getMeetingStatus() == 2){
+                if (post.getMeetingStatus() == 2){
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     intent.putExtra("meetingID", id);
                     intent.putExtra("owner", meetingOwner);

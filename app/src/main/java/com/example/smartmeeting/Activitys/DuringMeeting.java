@@ -94,6 +94,8 @@ public class DuringMeeting extends AppCompatActivity{
 
                 post = dataSnapshot.getValue(MeetingDTO.class);
 
+                post.setMeetingStatus(2);
+
 
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
@@ -162,7 +164,7 @@ public class DuringMeeting extends AppCompatActivity{
         t.start();
 
 
-        load();
+        //load();
 
 
 
