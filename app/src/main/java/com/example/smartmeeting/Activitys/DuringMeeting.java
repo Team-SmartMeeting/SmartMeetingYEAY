@@ -85,11 +85,8 @@ public class DuringMeeting extends AppCompatActivity{
 
                 post = dataSnapshot.getValue(MeetingDTO.class);
 
+
                 meetingOwner = post.getCreatingUser();
-
-
-
-
 
 
                 if (post.getAgendalist() != null){
@@ -155,21 +152,19 @@ public class DuringMeeting extends AppCompatActivity{
 
 
 
-
-
         Button btnNext = findViewById(R.id.btn_next);
-
-        if (email.equals(meetingOwner)) {
-            btnNext.setClickable(true);
-        } else {
+        email = email.replace(".", ",");
+        System.out.println(email);
+        System.out.println(meetingOwner);
+        if (!email.equals(meetingOwner)) {
+            btnNext.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
             btnNext.setClickable(false);
-//            btnNext.setBackground();
         }
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                email = email.replace(".", ",");
+
 
                 if (email.equals(meetingOwner)){
                     topicListCurNum++;

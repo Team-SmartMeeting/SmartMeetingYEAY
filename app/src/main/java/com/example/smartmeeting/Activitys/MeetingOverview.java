@@ -74,6 +74,24 @@ public class MeetingOverview extends AppCompatActivity {
             }
         });
 
+        //-----------------------------------------
+        //Må ikke slet, men kan bare udkommenteres, Søren
+
+
+        Button btnReset = findViewById(R.id.btn_reset);
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference test = mDatabase.getReference().child("Meetings");
+                test.child("-Lz6l9u5kkG6m5zuV24T").child("agendaStatus").setValue(0);
+                test.child("-Lz6l9u5kkG6m5zuV24T").child("meetingStatus").setValue(0);
+                System.out.println("--------------------------------------");
+            }
+        });
+
+
+        //-----------------------------------------
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             email = user.getEmail();
