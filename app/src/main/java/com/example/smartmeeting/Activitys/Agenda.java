@@ -79,8 +79,6 @@ public class Agenda extends AppCompatActivity {
 
                 Intent intent = new Intent(Agenda.this, popup_topic_2.class);
                 startActivityForResult(intent, 1);
-                overridePendingTransition(0, 0);
-                finish();
 
             }
         });
