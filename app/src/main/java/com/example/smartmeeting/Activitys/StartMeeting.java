@@ -157,7 +157,7 @@ public class StartMeeting extends AppCompatActivity {
         Thread w = new Thread(){
             public void run(){
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(200);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

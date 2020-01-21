@@ -43,9 +43,10 @@ public class DuringMeeting extends AppCompatActivity{
     private String meetingOwner;
     private int meetingTotalTime;
     private int topicTotalTime;
-    private int allocate;
+    private double allocate;
     private MeetingDTO post;
     private Button btnNext;
+    private boolean firstLoad = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,9 @@ public class DuringMeeting extends AppCompatActivity{
 
 
 
+
+
+
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -115,6 +119,10 @@ public class DuringMeeting extends AppCompatActivity{
                 if (post.getAgendaStatus() != topicListCurNum){
                     topicListCurNum = post.getAgendaStatus();
                 }
+
+
+
+
                 load();
 
             }
@@ -123,6 +131,9 @@ public class DuringMeeting extends AppCompatActivity{
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
+
+
 
 
         //Denne tråd tæller sekunder, som bruges til at vise tiden i timeren
@@ -135,6 +146,12 @@ public class DuringMeeting extends AppCompatActivity{
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+
+                                if (firstLoad){
+                                    timerTRYTotal = meetingTotalTime;
+                                    firstLoad = false;
+                                }
+
                                 timerTRY--;
                                 timerTRYTotal--;
                                 topicTimer.setText(toClock(timerTRY));
@@ -154,10 +171,6 @@ public class DuringMeeting extends AppCompatActivity{
         load();
 
 
-
-
-        System.out.println(email);
-        System.out.println(meetingOwner);
 
 
 
@@ -211,7 +224,7 @@ public class DuringMeeting extends AppCompatActivity{
             Thread w = new Thread(){
                 public void run(){
                     try {
-                        Thread.sleep(2000);
+                        Thread.sleep(200);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -242,10 +255,16 @@ public class DuringMeeting extends AppCompatActivity{
 
                                 topicTotalTime = totalTime;
 
+
+
+
+
+
+
                                 allocateTime();
-                                timerTRYTotal = totalTime;
-                                timerTRY = (getTopicTime((topicListCurNum))* allocate) / 100;
-                                topicTotalTimer.setText(toClock(totalTime));
+
+                                timerTRY = (int) Math.round((getTopicTime((topicListCurNum))* allocate));
+                                topicTotalTimer.setText(toClock(timerTRYTotal));
 
 
 
@@ -269,7 +288,11 @@ public class DuringMeeting extends AppCompatActivity{
 
         System.out.println("mTT " + meetingTotalTime);
         System.out.println("tTT " + topicTotalTime);
-        allocate = (meetingTotalTime / topicTotalTime);
+
+        double mtt = meetingTotalTime;
+        double ttt = topicTotalTime;
+
+        allocate = (mtt / ttt);
         System.out.println("allo " + allocate);
 
     }
