@@ -64,6 +64,8 @@ public class StartMeeting extends AppCompatActivity {
 
                 MeetingDTO post = dataSnapshot.getValue(MeetingDTO.class);
 
+                meetingOwner = post.getCreatingUser();
+
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
                 }
@@ -81,6 +83,7 @@ public class StartMeeting extends AppCompatActivity {
                 else if (post.getMeetingStatus() == 2){
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     intent.putExtra("meetingID", id);
+                    intent.putExtra("owner", meetingOwner);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
@@ -92,7 +95,6 @@ public class StartMeeting extends AppCompatActivity {
                 String meetingTitleString;
                 meetingTitleString = post.getMeetingName();
                 meetingTitle.setText(meetingTitleString);
-                meetingOwner = post.getCreatingUser();
 
                 System.out.println(meetingOwner + "-----------------------------------------");
             }
@@ -130,6 +132,7 @@ public class StartMeeting extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
                     intent.putExtra("meetingID", id);
+                    intent.putExtra("owner", meetingOwner);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();

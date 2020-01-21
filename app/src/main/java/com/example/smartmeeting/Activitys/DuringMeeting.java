@@ -67,6 +67,9 @@ public class DuringMeeting extends AppCompatActivity{
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Meetings").child(id);
 
+
+        meetingOwner = getIntent().getStringExtra("owner");
+
         //Tjekker om der er en user logget på
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -107,12 +110,6 @@ public class DuringMeeting extends AppCompatActivity{
                 if (post.getAgendaStatus() != topicListCurNum){
                     topicListCurNum = post.getAgendaStatus();
                 }
-
-
-
-                String owner = getIntent().getStringExtra("owner");
-
-                meetingOwner = owner;
                 load();
 
             }
