@@ -181,25 +181,25 @@ public class DuringMeeting extends AppCompatActivity{
                     mReference.child("agendaStatus").setValue(topicListCurNum);
 
 
-                    if (topicListCurNum == topicListNum){
-                        Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        finish();
-                    }
-                    else {
-                        timerTRY = getTopicTime(topicListCurNum);
-                        topicTitle.setText(getTopicTitle(topicListCurNum));
-                        topicDescription.setText(getTopicDesciption(topicListCurNum));
-                        topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
-
-                        if (topicListCurNum + 1 ==  topicListNum){
-                            nexttopic.setText("End of meeting");
-                        }
-                        else {
-                            nexttopic.setText(getTopicTitle(topicListCurNum + 1));
-                        }
-                    }
+//                    if (topicListCurNum == topicListNum){
+//                        Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
+//                        startActivity(intent);
+//                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+//                        finish();
+//                    }
+//                    else {
+//                        timerTRY = getTopicTime(topicListCurNum);
+//                        topicTitle.setText(getTopicTitle(topicListCurNum));
+//                        topicDescription.setText(getTopicDesciption(topicListCurNum));
+//                        topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
+//
+//                        if (topicListCurNum + 1 ==  topicListNum){
+//                            nexttopic.setText("End of meeting");
+//                        }
+//                        else {
+//                            nexttopic.setText(getTopicTitle(topicListCurNum + 1));
+//                        }
+//                    }
                 }
                 else {
 
