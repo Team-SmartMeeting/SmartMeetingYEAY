@@ -89,8 +89,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="40dp"
             android:inputType="date"
+            android:enabled="false"
             android:padding="5dp"
-            android:hint="F.eks. 05/02/2021" />
+            android:hint="Click on the callender to the right" />
 
             <Button
                 android:id="@+id/btn_date_et"
@@ -133,7 +134,8 @@
             android:layout_marginRight="40dp"
             android:inputType="time"
             android:padding="5dp"
-            android:hint="F.eks. 17:30" />
+            android:enabled="false"
+            android:hint="Click on the clock to the right" />
 
             <Button
                 android:id="@+id/btn_time_et"
