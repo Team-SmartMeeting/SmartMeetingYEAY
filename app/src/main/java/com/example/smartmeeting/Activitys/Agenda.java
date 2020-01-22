@@ -112,6 +112,7 @@ public class Agenda extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        UpdateList();
 
     }
 
@@ -146,6 +147,22 @@ public class Agenda extends AppCompatActivity {
 
         // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
         listView.setAdapter(new CustomAdapterAgenda(Agenda.this,TopicTitels, TopicTime, TopicDescription));
+
+        listView.setClickable(true);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(Agenda.this, popup_topic_2.class);
+                intent.putExtra("agendatitel",TopicTitels.get(position));
+                intent.putExtra("agendatid",TopicTime.get(position));
+                intent.putExtra("agendabeskrivelse",TopicDescription.get(position));
+
+                agenda.remove(position);
+                startActivityForResult(intent,1);
+
+            }
+        });
 
     }
 }

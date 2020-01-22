@@ -92,6 +92,7 @@ public class MeetingOverview extends AppCompatActivity {
         mReference = mDatabase.getReference().child("Users").child(email.replace(".",",")).child("meetingsList");
 
         mReference.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 meetingsList.clear();
@@ -202,11 +203,8 @@ public class MeetingOverview extends AppCompatActivity {
         for (int i = 0; i < meetingsList.size(); i++) {
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            System.out.println("HEJ HEJ HEJ");
             Date d = new Date();
             String today = d.getDate() + "/" + (d.getMonth()+1) + "/" + (d.getYear()+1900);
-            System.out.println(today);
-            System.out.println("HEJHEJHEJ");
 
             if (!sdf.parse(meetingsList.get(i).getDate()).before(sdf.parse(today))) {
                     meetingTitels.add(meetingsList.get(i).getMeetingName());

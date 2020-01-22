@@ -32,6 +32,11 @@ public class popup_topic_2 extends AppCompatActivity {
         tv_tid = findViewById(R.id.pop_topic_tid);
         tv_topic = findViewById(R.id.pop_topic_description);
 
+        if (getIntent().hasExtra("agendatitel")){
+            tv_titel.setText(getIntent().getStringExtra("agendatitel"));
+            tv_tid.setText(getIntent().getStringExtra("agendatid"));
+            tv_topic.setText(getIntent().getStringExtra("agendabeskrivelse"));
+        }
 
 
 
@@ -53,4 +58,5 @@ public class popup_topic_2 extends AppCompatActivity {
             }
         });
     }
+
 }

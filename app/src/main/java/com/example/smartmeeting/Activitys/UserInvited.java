@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -56,9 +57,6 @@ public class UserInvited extends AppCompatActivity {
         gson = new Gson();
         myMeeting = gson.fromJson(getIntent().getStringExtra("mymeeting"), MeetingDTO.class);
 
-        //SÆTTER OVERSKRIFT
-        TextView tv = findViewById(R.id.metting_name);
-        tv.setText("Current meeting: " + myMeeting.getMeetingName());
 
         //FORBINDELSE TIL DATA BASEN
         database = FirebaseDatabase.getInstance();
@@ -108,6 +106,17 @@ public class UserInvited extends AppCompatActivity {
                 
                 inviteUsersToMeeting(myMeeting);
 
+
+            }
+        });
+
+
+        //CLICKABLE LISTVIEW OBJEKT
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                emails.remove(position);
+                UpdateList();
 
             }
         });
@@ -166,6 +175,7 @@ public class UserInvited extends AppCompatActivity {
         // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
 
         listView.setAdapter(new CustomAdapterUserInvited(UserInvited.this, emails));
+
 
     }
 
