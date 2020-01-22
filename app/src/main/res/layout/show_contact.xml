@@ -160,6 +160,5 @@
         </RelativeLayout>
 
     </RelativeLayout>
-    <include layout="@layout/toolbar" />
 </LinearLayout>
 

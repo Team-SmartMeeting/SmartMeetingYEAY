@@ -25,8 +25,6 @@ public class popup_topic_2 extends AppCompatActivity {
         setContentView(R.layout.activity_popup_topic_2);
         Button bigBtn = findViewById(R.id.btn_big);
         bigBtn.setText("Add \n topic");
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
-        myAwesomeTextView.setText("Meetings");
 
 
 
@@ -49,37 +47,6 @@ public class popup_topic_2 extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.putExtra("nytopic", myJson);
                 setResult(RESULT_OK, intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
-            }
-        });
-
-
-
-        //Menuen
-        Button btn_profile = findViewById(R.id.btn_profile_menu);
-        Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_contacts = findViewById(R.id.btn_contacts_menu);
-
-        btn_contacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ContactList.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
-
-            }
-        });
-
-
-        btn_meetings.setBackgroundResource(R.drawable.button_pressed);
-
-        btn_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
-                startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
             }

@@ -71,8 +71,6 @@ public class Agenda extends AppCompatActivity {
         Button btnPaticipants = findViewById(R.id.btn_big);
         Button btnTopics = findViewById(R.id.btn_add_topic);
         btnPaticipants.setText("Add\n Participants");
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
-        myAwesomeTextView.setText("Meetings");
         btnTopics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

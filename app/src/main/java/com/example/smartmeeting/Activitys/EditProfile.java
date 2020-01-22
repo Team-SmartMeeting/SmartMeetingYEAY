@@ -39,9 +39,6 @@ public class EditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_profile_menu);
-        myAwesomeTextView.setText("Profile");
-
         //Firebase
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users");
@@ -106,37 +103,6 @@ public class EditProfile extends AppCompatActivity {
                 }
             }
         });
-
-
-        //Menuen
-        Button btn_profile = findViewById(R.id.btn_profile_menu);
-        Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_contacts = findViewById(R.id.btn_contacts_menu);
-
-        btn_contacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ContactList.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                finish();
-
-            }
-        });
-
-
-        btn_meetings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                finish();
-            }
-        });
-
-        btn_profile.setBackgroundResource(R.drawable.button_pressed);
-
 
     }
 }

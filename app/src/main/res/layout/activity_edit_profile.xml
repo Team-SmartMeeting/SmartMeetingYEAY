@@ -245,6 +245,4 @@
             android:text="Button"
             android:layout_gravity="right">
         </Button>
-
-    <include layout="@layout/toolbar" />
 </LinearLayout>
