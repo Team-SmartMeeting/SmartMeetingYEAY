@@ -45,6 +45,7 @@ public class ViewProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_profile);
 
+        ////Textviews
         textName = findViewById(R.id.name);
         textPhone = findViewById(R.id.phonenumber);
         textEmail = findViewById(R.id.email);
@@ -54,11 +55,9 @@ public class ViewProfile extends AppCompatActivity {
         textZipCode = findViewById(R.id.zip_code);
         textCountry = findViewById(R.id.country);
 
-
+        //button
         Button editProfile = findViewById(R.id.btn_big);
         editProfile.setText("Edit \n Profile");
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_profile_menu);
-        myAwesomeTextView.setText("Profile");
 
 
         //Checker om der er en user logget på
@@ -70,10 +69,12 @@ public class ViewProfile extends AppCompatActivity {
             finish();
         }
 
-
+        //Finder en bestemt bruger via en path /Users/Email/userinfo
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Users").child(email.replace(".",",")).child("userinfo");
 
+
+        //sætter en Valuelistener til at lytte for data ændringer
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -108,6 +109,10 @@ public class ViewProfile extends AppCompatActivity {
         Button btn_profile = findViewById(R.id.btn_profile_menu);
         Button btn_meetings = findViewById(R.id.btn_meeting_menu);
         Button btn_contacts = findViewById(R.id.btn_contacts_menu);
+
+        //Sætter menu texten under ikonet,
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_profile_menu);
+        myAwesomeTextView.setText("Profile");
 
         btn_contacts.setOnClickListener(new View.OnClickListener() {
             @Override

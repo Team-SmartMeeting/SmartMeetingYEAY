@@ -120,9 +120,9 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:inputType="phone"
                         android:singleLine="true" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <Button
                         android:id="@+id/edit_contact"
@@ -136,10 +136,12 @@
 
 
                     </Button>
-    <Space
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"></Space>
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                    </Space>
                     <Button
                         android:id="@+id/save_contact"
                         android:layout_width="wrap_content"
@@ -152,13 +154,11 @@
 
 
                     </Button>
-</LinearLayout>
+                </LinearLayout>
 
                 </LinearLayout>
             </ScrollView>
-
         </RelativeLayout>
-
     </RelativeLayout>
 </LinearLayout>
 
