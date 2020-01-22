@@ -198,72 +198,72 @@ public class DuringMeeting extends AppCompatActivity{
 
     public void load(){
 
-        if (topicListCurNum == topicListNum) {
+        if (!(topicListCurNum == topicListNum)) {
+            ProgressBar progressBar = findViewById(R.id.progressBardm);
+            progressBar.setVisibility(View.VISIBLE);
 
-        }
-        else {
+            if (!email.equals(meetingOwner)) {
+                btnNext.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
+                btnNext.setClickable(false);
+                btnNext.setText("Wait");
+            }
 
-            Thread w = new Thread(){
-                public void run(){
-                    try {
-                        Thread.sleep(500);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
+            topicTitle.setText(getTopicTitle(topicListCurNum));
+            topicDescription.setText(getTopicDesciption(topicListCurNum));
+            topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
+            llclock.setBackgroundColor(Color.GREEN);
 
-                                ProgressBar progressBar = findViewById(R.id.progressBardm);
-                                progressBar.setVisibility(View.VISIBLE);
+            if (topicListCurNum + 1 ==  topicListNum){
+                nexttopic.setText("End of meeting");
+            }
+            else {
+                nexttopic.setText(getTopicTitle(topicListCurNum + 1));
+            }
 
-                                if (!email.equals(meetingOwner)) {
-                                    btnNext.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
-                                    btnNext.setClickable(false);
-                                    btnNext.setText("Wait");
-                                }
+            if (firstLoad){
 
-                                topicTitle.setText(getTopicTitle(topicListCurNum));
-                                topicDescription.setText(getTopicDesciption(topicListCurNum));
-                                topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
-                                llclock.setBackgroundColor(Color.GREEN);
-
-                                if (topicListCurNum + 1 ==  topicListNum){
-                                    nexttopic.setText("End of meeting");
-                                }
-                                else {
-                                    nexttopic.setText(getTopicTitle(topicListCurNum + 1));
-                                }
-
-                                if (firstLoad){
-
-                                    for (int i = 0;i < topicListNum;i++){
-                                        timeList.add(getTopicTime(i));
-                                        activetopics.add(true);
-                                        totalTime += getTopicTime(i);
-                                    }
-
-                                    topicTotalTime = totalTime;
-                                    allocateTime();
-
-                                    for (int i = 0;i < timeList.size();i++){
-                                        allocatedTimer = (int) ((timeList.get(i)* allocate));
-                                        timeList.set(i, allocatedTimer);
-                                    }
-
-                                    timerTRYTotal = meetingTotalTime;
-                                    firstLoad = false;
-                                }
-
-                                timerTRY = timeList.get(topicListCurNum);
-                                topicTotalTimer.setText(toClock(timerTRYTotal));
-                                progressBar.setVisibility(View.GONE);
-                            }
-                        });
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                for (int i = 0;i < topicListNum;i++){
+                    timeList.add(getTopicTime(i));
+                    activetopics.add(true);
+                    totalTime += getTopicTime(i);
                 }
-            };
-            w.start();
+
+                topicTotalTime = totalTime;
+                allocateTime();
+
+                for (int i = 0;i < timeList.size();i++){
+                    allocatedTimer = (int) ((timeList.get(i)* allocate));
+                    timeList.set(i, allocatedTimer);
+                }
+
+                timerTRYTotal = meetingTotalTime;
+                firstLoad = false;
+            }
+
+            timerTRY = timeList.get(topicListCurNum);
+            topicTotalTimer.setText(toClock(timerTRYTotal));
+            progressBar.setVisibility(View.GONE);
         }
+//        else {
+//
+////            Thread w = new Thread(){
+////                public void run(){
+////                    try {
+////                        Thread.sleep(500);
+////                        runOnUiThread(new Runnable() {
+////                            @Override
+////                            public void run() {
+////
+////
+////                            }
+////                        });
+////                    } catch (InterruptedException e) {
+////                        e.printStackTrace();
+////                    }
+////                }
+////            };
+////            w.start();
+//        }
     }
 
 
@@ -279,7 +279,8 @@ public class DuringMeeting extends AppCompatActivity{
 
     public void destributeTime (){
 
-        int remainingTime = fromClock(topicTimer.getText().toString());
+        //int remainingTime = fromClock(topicTimer.getText().toString());
+        int remainingTime = timerTRY;
         int remainingTopicsTime = 0;
 
         for (int i = 0;i < activetopics.size();i++) {

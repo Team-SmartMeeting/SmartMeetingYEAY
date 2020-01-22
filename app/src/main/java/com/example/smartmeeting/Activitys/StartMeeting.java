@@ -35,7 +35,8 @@ public class StartMeeting extends AppCompatActivity {
     private ArrayList<String> listItems;
     private ArrayAdapter<String> arrayAdapter;
     private String email;
-    private String meetingOwner, id;
+    private String meetingOwner;
+    private String id;
     private Button btnStart;
     private boolean firstTime = true;
 
@@ -51,7 +52,6 @@ public class StartMeeting extends AppCompatActivity {
         listItems = new ArrayList<>();
 
         btnStart = findViewById(R.id.btn_start);
-
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -80,9 +80,6 @@ public class StartMeeting extends AppCompatActivity {
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
                 }
-                else {
-
-                }
 
                 if (firstTime){
                     if (post.getMeetingStatus() == 1){
@@ -94,7 +91,6 @@ public class StartMeeting extends AppCompatActivity {
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                         finish();
                     }
-
                 }
 
                 if (post.getMeetingStatus() == 2){
@@ -104,7 +100,6 @@ public class StartMeeting extends AppCompatActivity {
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
-
                 }
 
                 final TextView meetingTitle = findViewById(R.id.meetingTitle);
@@ -113,7 +108,6 @@ public class StartMeeting extends AppCompatActivity {
                 meetingTitle.setText(meetingTitleString);
 
                 load();
-
             }
 
             @Override
@@ -134,6 +128,7 @@ public class StartMeeting extends AppCompatActivity {
                 email = email.replace(".", ",");
 
                 if (email.equals(meetingOwner)){
+                    firstTime = false;
 
                     mReference.child("meetingStatus").setValue(1);
 
@@ -154,46 +149,34 @@ public class StartMeeting extends AppCompatActivity {
 
 
     public void load (){
-        Thread w = new Thread(){
-            public void run(){
-                try {
-                    Thread.sleep(300);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
 
-                            ProgressBar progressBar = findViewById(R.id.progressBarsm);
-                            progressBar.setVisibility(View.VISIBLE);
+        ProgressBar progressBar = findViewById(R.id.progressBarsm);
+        progressBar.setVisibility(View.VISIBLE);
 
-                            for (int i = 0;i < topicList.size();i++){
-                                listItems.add(getTopicTitle(i));
-                            }
-
-                            if (!email.equals(meetingOwner)) {
-                                btnStart.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
-                                btnStart.setClickable(false);
-                                btnStart.setText("Wait");
-                            }
-
-                            topicListView.setAdapter(arrayAdapter);
-                            arrayAdapter.notifyDataSetChanged();
-
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    });
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        if (firstTime) {
+            firstTime = false;
+            for (int i = 0;i < topicList.size();i++){
+                listItems.add(getTopicTitle(i));
             }
-        };
-        w.start();
+        }
+
+        if (!email.equals(meetingOwner)) {
+            btnStart.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
+            btnStart.setClickable(false);
+            btnStart.setText("Wait");
+        }
+
+        topicListView.setAdapter(arrayAdapter);
+
+        arrayAdapter.notifyDataSetChanged();
+
+        progressBar.setVisibility(View.GONE);
     }
 
 
 
     public void getMeeting(){
         id = getIntent().getStringExtra("meetingID");
-        System.out.println(id);
     }
 
     public Topic getTopic(int listNum){
