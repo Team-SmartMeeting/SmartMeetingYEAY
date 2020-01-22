@@ -20,8 +20,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
+
+/**
+ * @author Andreas Østergaard Schliemann
+ */
 
 public class DuringMeeting extends AppCompatActivity{
 
@@ -56,7 +59,6 @@ public class DuringMeeting extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_during_meeting);
 
-
         topicDescription = findViewById(R.id.topiccontent);
         topicTitle = findViewById(R.id.topictitle2);
         topicTimer = findViewById(R.id.clock);
@@ -65,11 +67,7 @@ public class DuringMeeting extends AppCompatActivity{
         llclock = findViewById(R.id.llclock);
         btnNext = findViewById(R.id.btn_next);
 
-
-
         String id = getIntent().getStringExtra("meetingID");
-
-        System.out.println(id);
 
         topicList = new ArrayList<>();
         timeList = new ArrayList<>();
@@ -77,7 +75,6 @@ public class DuringMeeting extends AppCompatActivity{
 
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Meetings").child(id);
-
 
         meetingOwner = getIntent().getStringExtra("owner");
 
@@ -103,9 +100,6 @@ public class DuringMeeting extends AppCompatActivity{
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
                 }
-                else {
-
-                }
 
                 meetingTotalTime = post.getDuration();
                 topicListNum = topicList.size();
@@ -121,19 +115,13 @@ public class DuringMeeting extends AppCompatActivity{
                     topicListCurNum = post.getAgendaStatus();
                 }
 
-
-
-
                 load();
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-
 
 
 
@@ -169,12 +157,6 @@ public class DuringMeeting extends AppCompatActivity{
         t.start();
 
 
-//        load();
-
-
-
-
-
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,9 +189,6 @@ public class DuringMeeting extends AppCompatActivity{
 //                            nexttopic.setText(getTopicTitle(topicListCurNum + 1));
 //                        }
 //                    }
-                }
-                else {
-
                 }
             }
         });
@@ -253,7 +232,6 @@ public class DuringMeeting extends AppCompatActivity{
                                     nexttopic.setText(getTopicTitle(topicListCurNum + 1));
                                 }
 
-
                                 if (firstLoad){
 
                                     for (int i = 0;i < topicListNum;i++){
@@ -293,25 +271,15 @@ public class DuringMeeting extends AppCompatActivity{
 
     public void allocateTime(){
 
-        System.out.println("mTT " + meetingTotalTime);
-        System.out.println("tTT " + topicTotalTime);
-
         double mtt = meetingTotalTime;
         double ttt = topicTotalTime;
 
         allocate = (mtt / ttt);
-        System.out.println("allo " + allocate);
-
     }
 
     public void destributeTime (){
 
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        System.out.println(topicTimer.getText());
         int remainingTime = fromClock(topicTimer.getText().toString());
-
-        //int remainingTime = timerTRY;
-
         int remainingTopicsTime = 0;
 
         for (int i = 0;i < activetopics.size();i++) {
@@ -324,12 +292,6 @@ public class DuringMeeting extends AppCompatActivity{
         double rtp = remainingTopicsTime;
         double factor = rtm / rtp + 1;
 
-
-        System.out.println("##################################3");
-        System.out.println("rtp " + remainingTopicsTime);
-        System.out.println("rtm " + remainingTime);
-        System.out.println("factor " + factor);
-
         for (int i = 0;i < timeList.size();i++){
             if (activetopics.get(i)) {
                 timeList.set(i, (int) Math.round(timeList.get(i) * factor));
@@ -340,11 +302,8 @@ public class DuringMeeting extends AppCompatActivity{
 
 
 
-
     public String getMeeting(){
         String id = getIntent().getStringExtra("meetingID");
-
-        System.out.println(id);
         return id;
     }
 
@@ -389,10 +348,6 @@ public class DuringMeeting extends AppCompatActivity{
         int time;
 
         String split[] = remainingTime.split(":");
-
-        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||");
-        System.out.println(split[0]);
-        System.out.println(split[1]);
 
         int minut = Integer.parseInt(split[0]);
         int secund = Integer.parseInt(split[1]);

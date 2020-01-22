@@ -22,6 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
+/**
+ * @author Andreas Østergaard Schliemann
+ */
+
 public class StartMeeting extends AppCompatActivity {
 
     private FirebaseDatabase mDatabase;
@@ -73,13 +77,13 @@ public class StartMeeting extends AppCompatActivity {
 
                 meetingOwner = post.getCreatingUser();
 
-
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
                 }
                 else {
 
                 }
+
                 if (firstTime){
                     if (post.getMeetingStatus() == 1){
                         firstTime = false;
@@ -92,6 +96,7 @@ public class StartMeeting extends AppCompatActivity {
                     }
 
                 }
+
                 if (post.getMeetingStatus() == 2){
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     intent.putExtra("meetingID", id);
@@ -102,13 +107,12 @@ public class StartMeeting extends AppCompatActivity {
 
                 }
 
-
                 final TextView meetingTitle = findViewById(R.id.meetingTitle);
                 String meetingTitleString;
                 meetingTitleString = post.getMeetingName();
                 meetingTitle.setText(meetingTitleString);
 
-
+                load();
 
             }
 
@@ -119,18 +123,9 @@ public class StartMeeting extends AppCompatActivity {
         });
 
 
-
-
-
         topicListView = findViewById(R.id.listview_topics);
         arrayAdapter = new ArrayAdapter<>
                 (this, android.R.layout.simple_list_item_1, listItems);
-
-
-
-        load();
-
-
 
 
         btnStart.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +161,7 @@ public class StartMeeting extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+
                             ProgressBar progressBar = findViewById(R.id.progressBarsm);
                             progressBar.setVisibility(View.VISIBLE);
 
