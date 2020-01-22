@@ -83,8 +83,8 @@ public class MeetingOverview extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatabaseReference test = mDatabase.getReference().child("Meetings");
-                test.child("-Lz7YG8p_Yc4OQswEU2U").child("agendaStatus").setValue(0);
-                test.child("-Lz7YG8p_Yc4OQswEU2U").child("meetingStatus").setValue(0);
+                test.child("-LzCLJb6oh_NUItLTRJC").child("agendaStatus").setValue(0);
+                test.child("-LzCLJb6oh_NUItLTRJC").child("meetingStatus").setValue(0);
                 System.out.println("--------------------------------------");
             }
         });

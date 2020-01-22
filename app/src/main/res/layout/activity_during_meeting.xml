@@ -71,7 +71,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/gradientbackground2"
+            android:background="@drawable/gradientbackground"
             android:text=""
             android:textAlignment="center"
             android:textSize="18dp">

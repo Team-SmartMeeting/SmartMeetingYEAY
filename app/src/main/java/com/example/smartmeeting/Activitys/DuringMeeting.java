@@ -47,6 +47,9 @@ public class DuringMeeting extends AppCompatActivity{
     private MeetingDTO post;
     private Button btnNext;
     private boolean firstLoad = true;
+    private int allocatedTimer;
+    private ArrayList<Integer> timeList;
+    private ArrayList<Boolean> activetopics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,8 @@ public class DuringMeeting extends AppCompatActivity{
         System.out.println(id);
 
         topicList = new ArrayList<>();
+        timeList = new ArrayList<>();
+        activetopics = new ArrayList<>();
 
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Meetings").child(id);
@@ -119,10 +124,7 @@ public class DuringMeeting extends AppCompatActivity{
                     topicListCurNum = post.getAgendaStatus();
                 }
 
-                if (firstLoad){
-                    timerTRYTotal = meetingTotalTime;
-                    firstLoad = false;
-                }
+
 
 
                 load();
@@ -144,7 +146,7 @@ public class DuringMeeting extends AppCompatActivity{
             public void run(){
                 while (!isInterrupted()){
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(10);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -152,6 +154,12 @@ public class DuringMeeting extends AppCompatActivity{
                                 timerTRYTotal--;
                                 topicTimer.setText(toClock(timerTRY));
                                 topicTotalTimer.setText(toClock(timerTRYTotal));
+                                if (timerTRY == allocatedTimer / 10) {
+                                    llclock.setBackgroundColor(Color.YELLOW);
+                                }
+                                if (timerTRY < 1){
+                                    llclock.setBackgroundColor(Color.RED);
+                                }
                             }
                         });
                     } catch (InterruptedException e) {
@@ -176,6 +184,8 @@ public class DuringMeeting extends AppCompatActivity{
 
 
                 if (email.equals(meetingOwner)){
+                    activetopics.set(topicListCurNum, false);
+                    destributeTime();
                     topicListCurNum++;
 
                     mReference.child("agendaStatus").setValue(topicListCurNum);
@@ -246,17 +256,34 @@ public class DuringMeeting extends AppCompatActivity{
 
                                 llclock.setBackgroundColor(Color.GREEN);
 
-                                for (int i = 0;i < topicListNum;i++){
-                                    totalTime += getTopicTime(i);
+
+
+                                if (firstLoad){
+
+                                    for (int i = 0;i < topicListNum;i++){
+                                        timeList.add(getTopicTime(i));
+                                        activetopics.add(true);
+                                        totalTime += getTopicTime(i);
+                                    }
+
+                                    topicTotalTime = totalTime;
+                                    allocateTime();
+                                    for (int i = 0;i < timeList.size();i++){
+                                        allocatedTimer = (int) Math.round((timeList.get(i)* allocate));
+                                        timeList.set(i, allocatedTimer);
+                                    }
+
+
+
+                                    timerTRYTotal = meetingTotalTime;
+
+                                    firstLoad = false;
                                 }
 
-                                topicTotalTime = totalTime;
+
+                                timerTRY = timeList.get(topicListCurNum);
 
 
-
-                                allocateTime();
-
-                                timerTRY = (int) Math.round((getTopicTime((topicListCurNum))* allocate));
                                 topicTotalTimer.setText(toClock(timerTRYTotal));
 
 
@@ -267,7 +294,6 @@ public class DuringMeeting extends AppCompatActivity{
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
                 }
             };
             w.start();
@@ -288,6 +314,34 @@ public class DuringMeeting extends AppCompatActivity{
         allocate = (mtt / ttt);
         System.out.println("allo " + allocate);
 
+    }
+
+    public void destributeTime (){
+
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(topicTimer.getText());
+        int remainingTime = fromClock(topicTimer.getText().toString());
+        int remainingTopics = 0;
+
+        for (int i = 0;i < activetopics.size();i++) {
+                if (activetopics.get(i)) {
+                remainingTopics += timeList.get(i);
+            }
+        }
+
+        double rtm = remainingTime;
+        double rtp = remainingTopics;
+        double factor = rtm / rtp;
+        System.out.println("##################################3");
+        System.out.println("rtp " + remainingTopics);
+        System.out.println("rtm " + remainingTime);
+        System.out.println("factor " + factor);
+
+        for (int i = 0;i < timeList.size();i++){
+            if (activetopics.get(i)) {
+                timeList.set(i, (int) Math.round(timeList.get(i) * factor));
+            }
+        }
     }
 
 
@@ -336,6 +390,24 @@ public class DuringMeeting extends AppCompatActivity{
             clock = "-" + clock;
         }
         return clock;
+    }
+
+    public int fromClock (String remainingTime) {
+        int time;
+
+        String split[] = remainingTime.split(":");
+
+        System.out.println("|||||||||||||||||||||||||||||||||||||||||||||||");
+        System.out.println(split[0]);
+        System.out.println(split[1]);
+
+        int minut = Integer.parseInt(split[0]);
+        int secund = Integer.parseInt(split[1]);
+
+        time = minut * 60 + secund;
+
+        System.out.println(time);
+        return time;
     }
 
 }
