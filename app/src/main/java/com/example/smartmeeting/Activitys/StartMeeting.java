@@ -33,6 +33,7 @@ public class StartMeeting extends AppCompatActivity {
     private String email;
     private String meetingOwner, id;
     private Button btnStart;
+    private boolean firstTime = true;
 
 
 
@@ -79,13 +80,17 @@ public class StartMeeting extends AppCompatActivity {
                 else {
 
                 }
-                if (post.getMeetingStatus() == 1){
-                    Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
-                    intent.putExtra("meetingID", id);
-                    intent.putExtra("owner", meetingOwner);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    finish();
+                if (firstTime){
+                    if (post.getMeetingStatus() == 1){
+                        firstTime = false;
+                        Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
+                        intent.putExtra("meetingID", id);
+                        intent.putExtra("owner", meetingOwner);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        finish();
+                    }
+
                 }
                 if (post.getMeetingStatus() == 2){
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
