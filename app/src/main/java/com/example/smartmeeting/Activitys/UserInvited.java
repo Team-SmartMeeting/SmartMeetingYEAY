@@ -49,9 +49,6 @@ public class UserInvited extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_invited);
 
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
-        myAwesomeTextView.setText("Meetings");
-
         meets = new ArrayList<>();
         userList = new ArrayList<>();
 
@@ -92,6 +89,7 @@ public class UserInvited extends AppCompatActivity {
             }
         });
 
+        btn_big.setText("Create \n meeting ");
         btn_big.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,43 +108,6 @@ public class UserInvited extends AppCompatActivity {
                 inviteUsersToMeeting(myMeeting);
 
 
-            }
-        });
-
-        //Menuen
-        Button btn_profile = findViewById(R.id.btn_profile_menu);
-        Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_contacts = findViewById(R.id.btn_contacts_menu);
-
-        btn_contacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ContactList.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
-
-            }
-        });
-
-
-        btn_meetings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
-            }
-        });
-
-        btn_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
             }
         });
 

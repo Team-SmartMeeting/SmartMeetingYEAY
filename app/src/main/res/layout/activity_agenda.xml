@@ -151,7 +151,6 @@
 
 
         </LinearLayout>
-        <include layout="@layout/toolbar" />
 
 
     </LinearLayout>

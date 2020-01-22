@@ -99,7 +99,6 @@ public class Agenda extends AppCompatActivity {
                     intent.putExtra("mymeeting", myJson);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    finish();
 
                     //INDSÆT TIL DATABASEN
 //                    DatabaseReference meetingRef = ref.push();
@@ -109,42 +108,7 @@ public class Agenda extends AppCompatActivity {
                 }
             });
 
-        //Menuen
-        Button btn_profile = findViewById(R.id.btn_profile_menu);
-        Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_contacts = findViewById(R.id.btn_contacts_menu);
-
-        btn_contacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ContactList.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
-
-            }
-        });
-
-
-        btn_meetings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
-            }
-        });
-
-        btn_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
-            }
-        });
+       
     }
 
     @Override

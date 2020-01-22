@@ -21,6 +21,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -39,8 +42,6 @@ public class CreateMeeting extends AppCompatActivity {
         setContentView(R.layout.activity_create_meeting);
         Button bigBtn = findViewById(R.id.btn_big);
         bigBtn.setText("Next");
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
-        myAwesomeTextView.setText("Meetings");
 
         //Objekter i XML
         meetingName = findViewById(R.id.create_meeting_name_ed);
@@ -108,7 +109,23 @@ public class CreateMeeting extends AppCompatActivity {
                 tpd = new TimePickerDialog(CreateMeeting.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        meetingTime.setText(hourOfDay + ":" + minute);
+
+                        String minuteStri;
+                        String hourStri;
+
+                        if (minute < 10) {
+                            minuteStri = "0" + minute;
+                        } else {
+                            minuteStri = Integer.toString(minute);
+                        }
+
+                        if (hourOfDay < 10) {
+                            hourStri = "0" + hourOfDay;
+                        } else {
+                            hourStri = Integer.toString(hourOfDay);
+                        }
+
+                        meetingTime.setText(hourStri + ":" + minuteStri);
                     }
                 }, 12, 00, true);
 
@@ -118,43 +135,6 @@ public class CreateMeeting extends AppCompatActivity {
         });
 
 
-        //Menuen
-        Button btn_profile = findViewById(R.id.btn_profile_menu);
-        Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_contacts = findViewById(R.id.btn_contacts_menu);
 
-        btn_contacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ContactList.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
-
-            }
-        });
-
-
-        btn_meetings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                finish();
-            }
-        });
-
-        btn_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
-            }
-        });
-
-        btn_meetings.setBackgroundResource(R.drawable.button_pressed);
     }
 }
