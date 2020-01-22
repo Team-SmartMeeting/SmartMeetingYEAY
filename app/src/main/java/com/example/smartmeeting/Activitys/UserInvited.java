@@ -173,6 +173,10 @@ public class UserInvited extends AppCompatActivity {
         ref2.child(key).setValue(meetingOnUserDB);
 
 
+
+        Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         finish();
 
