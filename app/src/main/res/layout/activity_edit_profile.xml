@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:background="@drawable/gradientbackground"
     tools:context=".Activitys.EditProfile">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +16,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -30,13 +31,13 @@
                 android:textColor="#FFFFFF"
                 android:text="Edit Profile"
                 android:layout_gravity="center"
-                android:textSize="30dp"
-                ></TextView>
+                android:textSize="30dp">
+            </TextView>
             <Space
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_weight="1" >
-        </Space>
+            </Space>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -47,7 +48,6 @@
                 android:labelFor="@id/name"
                 android:layout_marginLeft="20dp"
                 android:text="Name" />
-
 
             <EditText
                 android:id="@+id/name"
@@ -73,7 +73,6 @@
                 android:layout_marginLeft="20dp"
                 android:text="Phone number" />
 
-
             <EditText
                 android:id="@+id/phonenumber"
                 android:layout_width="match_parent"
@@ -88,7 +87,6 @@
                 android:background="@drawable/border"
                 android:text="F.eks. 12345678" />
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -98,7 +96,6 @@
                 android:labelFor="@id/company"
                 android:layout_marginLeft="20dp"
                 android:text="Company" />
-
 
             <EditText
                 android:id="@+id/company"
@@ -114,7 +111,6 @@
                 android:background="@drawable/border"
                 android:text="F.eks. Company Name" />
 
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,7 +120,6 @@
                 android:labelFor="@id/address"
                 android:layout_marginLeft="20dp"
                 android:text="Address" />
-
 
             <EditText
                 android:id="@+id/address"
@@ -140,8 +135,6 @@
                 android:background="@drawable/border"
                 android:text="F.eks. Roadname 1" />
 
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -151,7 +144,6 @@
                 android:labelFor="@id/city"
                 android:layout_marginLeft="20dp"
                 android:text="City" />
-
 
             <EditText
                 android:id="@+id/city"
@@ -167,8 +159,6 @@
                 android:background="@drawable/border"
                 android:text="F.eks. Town City" />
 
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -178,7 +168,6 @@
                 android:labelFor="@id/zip_code"
                 android:layout_marginLeft="20dp"
                 android:text="Zip code" />
-
 
             <EditText
                 android:id="@+id/zip_code"
@@ -193,8 +182,6 @@
                 android:padding="5dp"
                 android:background="@drawable/border"
                 android:text="F.eks. 1234" />
-
-
 
             <TextView
                 android:layout_width="wrap_content"
@@ -227,12 +214,8 @@
                 android:layout_weight="6" >
             </Space>
 
-
-
-
-
-
         </LinearLayout>
+
 </ScrollView>
         <Button
             android:id="@+id/btn_big"
@@ -245,4 +228,5 @@
             android:text="Button"
             android:layout_gravity="right">
         </Button>
+
 </LinearLayout>

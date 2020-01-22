@@ -31,20 +31,15 @@
                 android:textColor="#FFFFFF"
                 android:text="Profile Information"
                 android:layout_gravity="center"
-                android:textSize="30dp"
-                >
-
-
+                android:textSize="30dp">
             </TextView>
 
             <Space
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"></Space>
+                android:layout_weight="1">
 
-
-
-
+            </Space>
 
             <TextView
                 android:id="@+id/name"
@@ -165,8 +160,8 @@
             <Space
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="6"></Space>
-
+                android:layout_weight="6">
+            </Space>
 
         </LinearLayout>
         </ScrollView>
@@ -181,6 +176,5 @@
             android:text="Button"
             android:layout_gravity="right">
         </Button>
-
         <include layout="@layout/toolbar" />
 </LinearLayout>

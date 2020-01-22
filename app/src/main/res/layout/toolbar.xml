@@ -3,22 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
-
-
-
-
-
+    android:layout_height="wrap_content">
 
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:layout_weight="1"
-    >
-    <Button
+    android:layout_weight="1">
 
+    <Button
         android:id="@+id/btn_meeting_menu"
         android:layout_width="0.5dp"
         android:layout_weight="2"
@@ -28,15 +21,16 @@
         android:fontFamily="sans-serif-thin"
         android:textSize="12dp"
         android:textColor="#FFFFFF"
-        android:drawableTop="@drawable/ic_meeting"
-        />
+        android:drawableTop="@drawable/ic_meeting" />
+
 </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_weight="1"
-        >
+        android:layout_weight="1">
+
         <Button
             android:id="@+id/btn_contacts_menu"
             android:layout_width="0.5dp"
@@ -47,15 +41,15 @@
             android:textSize="12dp"
             android:textColor="#FFFFFF"
             android:background="@drawable/button_normal"
-            android:drawableTop="@drawable/ic_contacts_black_24dp"
-        />
-</LinearLayout>
+            android:drawableTop="@drawable/ic_contacts_black_24dp" />
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_weight="1"
-        >
+        android:layout_weight="1">
 
     <Button
         android:id="@+id/btn_profile_menu"
@@ -67,10 +61,8 @@
         android:textSize="12dp"
         android:textColor="#FFFFFF"
         android:background="@drawable/button_normal"
-        android:drawableTop="@drawable/ic_person"
-        />
-
+        android:drawableTop="@drawable/ic_person" />
 </LinearLayout>
-0
+
 </LinearLayout>
 
