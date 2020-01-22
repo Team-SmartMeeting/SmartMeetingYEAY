@@ -99,8 +99,6 @@ public class DuringMeeting extends AppCompatActivity{
 
                 post = dataSnapshot.getValue(MeetingDTO.class);
 
-                post.setMeetingStatus(3);
-
 
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
@@ -108,10 +106,9 @@ public class DuringMeeting extends AppCompatActivity{
                 else {
 
                 }
+
                 meetingTotalTime = post.getDuration();
                 topicListNum = topicList.size();
-
-
 
                 if (post.getAgendaStatus() == topicListNum) {
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
@@ -146,7 +143,7 @@ public class DuringMeeting extends AppCompatActivity{
             public void run(){
                 while (!isInterrupted()){
                     try {
-                        Thread.sleep(10);
+                        Thread.sleep(1000);
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -234,6 +231,7 @@ public class DuringMeeting extends AppCompatActivity{
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+
                                 ProgressBar progressBar = findViewById(R.id.progressBardm);
                                 progressBar.setVisibility(View.VISIBLE);
 
@@ -246,6 +244,7 @@ public class DuringMeeting extends AppCompatActivity{
                                 topicTitle.setText(getTopicTitle(topicListCurNum));
                                 topicDescription.setText(getTopicDesciption(topicListCurNum));
                                 topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
+                                llclock.setBackgroundColor(Color.GREEN);
 
                                 if (topicListCurNum + 1 ==  topicListNum){
                                     nexttopic.setText("End of meeting");
@@ -253,9 +252,6 @@ public class DuringMeeting extends AppCompatActivity{
                                 else {
                                     nexttopic.setText(getTopicTitle(topicListCurNum + 1));
                                 }
-
-                                llclock.setBackgroundColor(Color.GREEN);
-
 
 
                                 if (firstLoad){
@@ -268,26 +264,18 @@ public class DuringMeeting extends AppCompatActivity{
 
                                     topicTotalTime = totalTime;
                                     allocateTime();
+
                                     for (int i = 0;i < timeList.size();i++){
-                                        allocatedTimer = (int) Math.round((timeList.get(i)* allocate));
+                                        allocatedTimer = (int) ((timeList.get(i)* allocate));
                                         timeList.set(i, allocatedTimer);
                                     }
 
-
-
                                     timerTRYTotal = meetingTotalTime;
-
                                     firstLoad = false;
                                 }
 
-
                                 timerTRY = timeList.get(topicListCurNum);
-
-
                                 topicTotalTimer.setText(toClock(timerTRYTotal));
-
-
-
                                 progressBar.setVisibility(View.GONE);
                             }
                         });
@@ -321,19 +309,24 @@ public class DuringMeeting extends AppCompatActivity{
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         System.out.println(topicTimer.getText());
         int remainingTime = fromClock(topicTimer.getText().toString());
-        int remainingTopics = 0;
+
+        //int remainingTime = timerTRY;
+
+        int remainingTopicsTime = 0;
 
         for (int i = 0;i < activetopics.size();i++) {
                 if (activetopics.get(i)) {
-                remainingTopics += timeList.get(i);
+                remainingTopicsTime += timeList.get(i);
             }
         }
 
         double rtm = remainingTime;
-        double rtp = remainingTopics;
-        double factor = rtm / rtp;
+        double rtp = remainingTopicsTime;
+        double factor = rtm / rtp + 1;
+
+
         System.out.println("##################################3");
-        System.out.println("rtp " + remainingTopics);
+        System.out.println("rtp " + remainingTopicsTime);
         System.out.println("rtm " + remainingTime);
         System.out.println("factor " + factor);
 
