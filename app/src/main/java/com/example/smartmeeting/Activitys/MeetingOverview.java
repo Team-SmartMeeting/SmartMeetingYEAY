@@ -96,6 +96,11 @@ public class MeetingOverview extends AppCompatActivity {
                     String snap_date = value.get("date").toString();
                     String snap_time = value.get("time").toString();
                     String snap_duration = value.get("duration").toString();
+
+                    int snap_duration_int = Integer.parseInt(snap_duration);
+                    snap_duration_int= snap_duration_int/60;
+                    snap_duration = String.valueOf(snap_duration_int);
+
                     meetingIDs.add(oneSnap.getKey());
 
 
@@ -124,7 +129,6 @@ public class MeetingOverview extends AppCompatActivity {
         //Menuen
         Button btn_profile = findViewById(R.id.btn_profile_menu);
         Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_groupe = findViewById(R.id.btn_groupes_menu);
         Button btn_contacts = findViewById(R.id.btn_contacts_menu);
 
         btn_contacts.setOnClickListener(new View.OnClickListener() {
@@ -138,16 +142,6 @@ public class MeetingOverview extends AppCompatActivity {
             }
         });
 
-        btn_groupe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), groups_list.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
-
-            }
-        });
 
         btn_meetings.setBackgroundResource(R.drawable.button_pressed);
 

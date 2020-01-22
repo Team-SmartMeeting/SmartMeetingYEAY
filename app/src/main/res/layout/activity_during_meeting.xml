@@ -35,15 +35,17 @@
 
         <TextView
             android:id="@+id/topictitle2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:fontFamily="sans-serif-black"
-            android:text=""
-            android:textSize="30dp"></TextView>
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:fontFamily="sans-serif-thin"
+            android:textColor="#FFFFFF"
+            android:text="Meeting title"
+            ></TextView>
 
         <Space
             android:layout_width="0dp"
@@ -52,9 +54,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_description_black_24dp"
             android:layout_gravity="left"
             android:layout_marginLeft="10dp"
-            android:fontFamily="sans-serif-black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
             android:text="Topic Description:"
             android:textSize="19dp">
 
@@ -96,7 +99,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-black"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:textColor="#000000"
                     android:text="Topic timer:"
                     android:textSize="18dp">
@@ -151,7 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:fontFamily="sans-serif-black"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:labelFor="@id/name"
                     android:text="Next Topic"
                     android:textSize="15dp">
@@ -199,7 +202,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="sans-serif-black"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
                     android:labelFor="@id/name"
                     android:text="Meeting timer"
                     android:textSize="15dp">

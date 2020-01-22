@@ -22,6 +22,6 @@
     <string name="menu_profile">Profile</string>
     <string name="menu_groupe">Groups</string>
     <string name="menu_settings">Settings</string>
-    //underline strings
-    <string name="underline_name"><u>Søren Aarup Poulsen</u>.</string>
+//underline strings
+    <string name="list_name"><u>Name</u>.</string>
 </resources>

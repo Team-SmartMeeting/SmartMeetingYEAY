@@ -74,7 +74,6 @@ public class CreateMeeting extends AppCompatActivity {
                     intent.putExtra("meeting", myJson);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    finish();
                 }
 
             }

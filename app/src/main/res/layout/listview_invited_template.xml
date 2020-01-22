@@ -12,6 +12,7 @@
         <TextView
             android:id="@+id/listview_invited_users_element"
             android:layout_weight="100"
+            android:drawableLeft="@drawable/ic_email"
             android:layout_width="wrap_content"
             android:paddingLeft="15dp"
             android:layout_height="match_parent"
@@ -24,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Remove" />
 
 
 </LinearLayout>
