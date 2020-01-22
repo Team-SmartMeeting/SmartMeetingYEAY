@@ -41,6 +41,7 @@ public class popup_topic_2 extends AppCompatActivity {
 
                 Topic topic = new Topic(tv_titel.getText().toString(), tv_topic.getText().toString(), (Integer.parseInt(tv_tid.getText().toString())*60));
 
+                //LAVER TOPIC OM TIL ET JSON OBJEKT JEG KAN SENDE MED INTENTET
                 Gson gson = new Gson();
                 String myJson = gson.toJson(topic);
 

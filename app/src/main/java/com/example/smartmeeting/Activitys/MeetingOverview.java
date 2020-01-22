@@ -65,6 +65,7 @@ public class MeetingOverview extends AppCompatActivity {
 
 
 
+        //KNAPPEN TIL AT OPRETTE MØDER
         bigBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,11 +75,13 @@ public class MeetingOverview extends AppCompatActivity {
             }
         });
 
+        //CHECKER OM BRUGEREN ER LOGGET IND, HVIS DER INGEN BRUGER LOGGET IND, LUK APPEN.
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             email = user.getEmail();
         } else {finish();}
 
+        //FINDER EN REFERENCE TIL DEN BRUGER SOM ER LOGGET PÅ MEETINGLIST
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Users").child(email.replace(".",",")).child("meetingsList");
 
@@ -89,14 +92,15 @@ public class MeetingOverview extends AppCompatActivity {
                 meetingIDs.clear();
 
                 for (DataSnapshot oneSnap : dataSnapshot.getChildren()){
-                    System.out.println(oneSnap.getKey());
 
+                    //MAPPER DE FORSKELLIGE VÆRDIER!
                     Map<?, ?> value = (Map<?, ?>) oneSnap.getValue();
                     String snap_name = value.get("meetingName").toString();
                     String snap_date = value.get("date").toString();
                     String snap_time = value.get("time").toString();
                     String snap_duration = value.get("duration").toString();
 
+                    //FÅR DURATION I MINUTTER I STEDET FOR SEKUNDER
                     int snap_duration_int = Integer.parseInt(snap_duration);
                     snap_duration_int= snap_duration_int/60;
                     snap_duration = String.valueOf(snap_duration_int);

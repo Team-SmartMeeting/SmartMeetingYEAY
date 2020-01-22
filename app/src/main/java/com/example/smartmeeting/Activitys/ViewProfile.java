@@ -101,7 +101,6 @@ public class ViewProfile extends AppCompatActivity {
                     Intent startIntent = new Intent(getApplicationContext(), EditProfile.class);
                     startActivity(startIntent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    finish();
                 }
             });
 

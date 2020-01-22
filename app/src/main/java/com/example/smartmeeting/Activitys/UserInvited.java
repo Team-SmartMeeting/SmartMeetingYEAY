@@ -71,6 +71,7 @@ public class UserInvited extends AppCompatActivity {
         Button btn_add_user = findViewById(R.id.btn_add_user);
         Button btn_big = findViewById(R.id.btn_big);
 
+        //CHECKER AT MAN ER LOGGET IND OG HENTER DEN EMAIL MAN ER LOGGET PÅ MED.
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             String email = user.getEmail();

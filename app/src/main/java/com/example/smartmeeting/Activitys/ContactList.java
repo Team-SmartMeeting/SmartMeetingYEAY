@@ -37,7 +37,6 @@ public class ContactList extends AppCompatActivity {
     ArrayList<String> kontakt_email = new ArrayList<>();
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +57,6 @@ public class ContactList extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), add_contact.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
             }
         });
 
@@ -100,6 +98,8 @@ public class ContactList extends AppCompatActivity {
     private void checkSharedPreferences() {
         kontakter.clear();
         kontakt_names.clear();
+        kontakt_email.clear();
+        kontakt_phone.clear();
 
         int amountOfContact = mPreferences.getInt("nrofcontact", 0);
 

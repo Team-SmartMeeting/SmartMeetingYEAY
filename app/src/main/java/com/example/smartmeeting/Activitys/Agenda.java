@@ -140,7 +140,7 @@ public class Agenda extends AppCompatActivity {
         //TILFØJER ALLE TOPICS TIL ARRAYLISTER
         for (int i = 0; i < agenda.size(); i++) {
             TopicTitels.add(agenda.get(i).getTopicName());
-            TopicTime.add(Integer.toString(agenda.get(i).getTopicDuration()));
+            TopicTime.add(Integer.toString((agenda.get(i).getTopicDuration())/60));
             TopicDescription.add(agenda.get(i).getDescription());
         }
 
