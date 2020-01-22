@@ -34,15 +34,18 @@ public class EditProfile extends AppCompatActivity {
     FirebaseDatabase database;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String email = user.getEmail();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        //Firebase
+        //Firebase Instance og reference
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users");
 
+        //text views
         final TextView textName =  findViewById(R.id.name);
         final TextView textPhone =  findViewById(R.id.phonenumber);
         final TextView textEmail =  findViewById(R.id.email);
@@ -52,10 +55,11 @@ public class EditProfile extends AppCompatActivity {
         final TextView textZipCode =  findViewById(R.id.zip_code);
         final TextView textCountry =  findViewById(R.id.country);
 
-
+        //Firebase Instance og reference på path /Users/email/userinfo
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Users").child(email.replace(".",",")).child("userinfo");
 
+        //sætter en Valuelistener til at lytte for data ændringer
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

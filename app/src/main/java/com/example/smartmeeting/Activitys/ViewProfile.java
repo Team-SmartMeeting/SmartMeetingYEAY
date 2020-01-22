@@ -55,7 +55,7 @@ public class ViewProfile extends AppCompatActivity {
         textZipCode = findViewById(R.id.zip_code);
         textCountry = findViewById(R.id.country);
 
-        //button
+        //button og buttontext
         Button editProfile = findViewById(R.id.btn_big);
         editProfile.setText("Edit \n Profile");
 
@@ -78,9 +78,9 @@ public class ViewProfile extends AppCompatActivity {
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                //Bruger UserDTO Get/set metoder på vores Datasnapshot og ændrer vores Textviews
                 UserDTO post = dataSnapshot.getValue(UserDTO.class);
-
-
                 textName.setText(post.getName());
                 textEmail.setText(post.getEmail());
                 textPhone.setText(post.getPhoneNumber());
@@ -124,7 +124,6 @@ public class ViewProfile extends AppCompatActivity {
 
             }
         });
-
 
         btn_meetings.setOnClickListener(new View.OnClickListener() {
             @Override
