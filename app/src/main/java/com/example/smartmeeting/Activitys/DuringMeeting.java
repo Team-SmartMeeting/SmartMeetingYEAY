@@ -168,27 +168,6 @@ public class DuringMeeting extends AppCompatActivity{
                     topicListCurNum++;
 
                     mReference.child("agendaStatus").setValue(topicListCurNum);
-
-
-//                    if (topicListCurNum == topicListNum){
-//                        Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
-//                        startActivity(intent);
-//                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-//                        finish();
-//                    }
-//                    else {
-//                        timerTRY = getTopicTime(topicListCurNum);
-//                        topicTitle.setText(getTopicTitle(topicListCurNum));
-//                        topicDescription.setText(getTopicDesciption(topicListCurNum));
-//                        topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
-//
-//                        if (topicListCurNum + 1 ==  topicListNum){
-//                            nexttopic.setText("End of meeting");
-//                        }
-//                        else {
-//                            nexttopic.setText(getTopicTitle(topicListCurNum + 1));
-//                        }
-//                    }
                 }
             }
         });
@@ -244,26 +223,6 @@ public class DuringMeeting extends AppCompatActivity{
             topicTotalTimer.setText(toClock(timerTRYTotal));
             progressBar.setVisibility(View.GONE);
         }
-//        else {
-//
-////            Thread w = new Thread(){
-////                public void run(){
-////                    try {
-////                        Thread.sleep(500);
-////                        runOnUiThread(new Runnable() {
-////                            @Override
-////                            public void run() {
-////
-////
-////                            }
-////                        });
-////                    } catch (InterruptedException e) {
-////                        e.printStackTrace();
-////                    }
-////                }
-////            };
-////            w.start();
-//        }
     }
 
 
