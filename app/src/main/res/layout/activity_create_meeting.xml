@@ -44,7 +44,7 @@
             android:textColor="#000000"
             android:labelFor="@id/create_meeting_name_ed"
             android:layout_marginLeft="20dp"
-            android:text="Full name" />
+            android:text="Meeting titel" />
 
 
         <EditText
@@ -56,7 +56,7 @@
             android:layout_marginRight="40dp"
             android:inputType="textPersonName"
             android:padding="5dp"
-            android:hint="F.eks. Søren Aarup Poulsen" />
+            android:hint="Smart Meeting overview" />
 
         <Space
             android:layout_width="0dp"
@@ -99,7 +99,7 @@
             android:textColor="#000000"
             android:labelFor="@id/create_meeting_duration_et"
             android:layout_marginLeft="20dp"
-            android:text="Duration in min." />
+            android:text="Location for the meeting" />
 
 
         <EditText
