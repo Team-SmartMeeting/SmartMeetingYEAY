@@ -71,8 +71,6 @@ public class Agenda extends AppCompatActivity {
         Button btnPaticipants = findViewById(R.id.btn_big);
         Button btnTopics = findViewById(R.id.btn_add_topic);
         btnPaticipants.setText("Add\n Participants");
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
-        myAwesomeTextView.setText("Meetings");
         btnTopics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +97,6 @@ public class Agenda extends AppCompatActivity {
                     intent.putExtra("mymeeting", myJson);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    finish();
 
                     //INDSÆT TIL DATABASEN
 //                    DatabaseReference meetingRef = ref.push();
@@ -109,47 +106,13 @@ public class Agenda extends AppCompatActivity {
                 }
             });
 
-        //Menuen
-        Button btn_profile = findViewById(R.id.btn_profile_menu);
-        Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_contacts = findViewById(R.id.btn_contacts_menu);
-
-        btn_contacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ContactList.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
-
-            }
-        });
-
-
-        btn_meetings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
-            }
-        });
-
-        btn_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
-            }
-        });
+       
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        UpdateList();
 
     }
 
@@ -178,30 +141,28 @@ public class Agenda extends AppCompatActivity {
         //TILFØJER ALLE TOPICS TIL ARRAYLISTER
         for (int i = 0; i < agenda.size(); i++) {
             TopicTitels.add(agenda.get(i).getTopicName());
-            TopicTime.add(Integer.toString(agenda.get(i).getTopicDuration()));
+            TopicTime.add(Integer.toString((agenda.get(i).getTopicDuration())/60));
             TopicDescription.add(agenda.get(i).getDescription());
         }
 
         // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
         listView.setAdapter(new CustomAdapterAgenda(Agenda.this,TopicTitels, TopicTime, TopicDescription));
 
+        listView.setClickable(true);
 
-//        listView.setClickable(true);
-//
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(Agenda.this, ShowContact.class);
-//                intent.putExtra("name",agenda.get(position).getTopicName());
-//                intent.putExtra("email",agenda.get(position).getTopicDuration());
-//                intent.putExtra("number",agenda.get(position).getDescription());
-//                startActivity(intent);
-//
-//            }
-//        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(Agenda.this, popup_topic_2.class);
+                intent.putExtra("agendatitel",TopicTitels.get(position));
+                intent.putExtra("agendatid",TopicTime.get(position));
+                intent.putExtra("agendabeskrivelse",TopicDescription.get(position));
 
+                agenda.remove(position);
+                startActivityForResult(intent,1);
 
-
+            }
+        });
 
     }
 }

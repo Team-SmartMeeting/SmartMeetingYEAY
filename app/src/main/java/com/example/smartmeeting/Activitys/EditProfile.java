@@ -1,14 +1,13 @@
 package com.example.smartmeeting.Activitys;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartmeeting.MainLogic.DTO.user.UserDTO;
 import com.example.smartmeeting.R;
@@ -19,7 +18,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 
 
 /**
@@ -34,18 +32,18 @@ public class EditProfile extends AppCompatActivity {
     FirebaseDatabase database;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String email = user.getEmail();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_profile_menu);
-        myAwesomeTextView.setText("Profile");
-
-        //Firebase
+        //Firebase Instance og reference
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Users");
 
+        //Text views
         final TextView textName =  findViewById(R.id.name);
         final TextView textPhone =  findViewById(R.id.phonenumber);
         final TextView textEmail =  findViewById(R.id.email);
@@ -55,15 +53,17 @@ public class EditProfile extends AppCompatActivity {
         final TextView textZipCode =  findViewById(R.id.zip_code);
         final TextView textCountry =  findViewById(R.id.country);
 
-
+        //Firebase Instance og reference på path /Users/email/userinfo
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Users").child(email.replace(".",",")).child("userinfo");
 
+        //sætter en Valuelistener til at lytte for data ændringer og henter dem
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 UserDTO post = dataSnapshot.getValue(UserDTO.class);
 
+                //Sætter alle textviews til den hentede data
                 textName.setText(post.getName());
                 textPhone.setText(post.getPhoneNumber());
                 textCompany.setText(post.getCompany());
@@ -73,6 +73,7 @@ public class EditProfile extends AppCompatActivity {
                 textCountry.setText(post.getCountry());
             }
 
+            //Hvis der sker en fejl kan du evt lave nogen fejlbeskeder for at printe dem ud.
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -80,74 +81,33 @@ public class EditProfile extends AppCompatActivity {
         });
 
 
-
-        Button editProfile = findViewById(R.id.btn_big);
-        editProfile.setText("Save \n Changes");
-        editProfile.setOnClickListener(new View.OnClickListener() {
+        //opretter savebutton
+        Button saveProfile = findViewById(R.id.btn_big);
+        saveProfile.setText("Save \n Changes");
+        saveProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Checker om felter er tommme!
                 if (!textName.getText().toString().equals("") && !textPhone.getText().toString().equals("") && !textCompany.getText().toString().equals("") && !textAddress.getText().toString().equals("")&& !textCity.getText().toString().equals("") && !textZipCode.getText().toString().equals("") && !textCountry.getText().toString().equals("")) {
 
 
-                    //opretter en Profil
+                    //opretter en Profil med UserDTO
                     UserDTO profile = new UserDTO(textName.getText().toString(), String.valueOf(user.getEmail()).replace(".",","),textPhone.getText().toString(), textCompany.getText().toString(),textAddress.getText().toString(),textCity.getText().toString(), Integer.parseInt(textZipCode.getText().toString()),textCountry.getText().toString());
-
+                    //Checker om User er i databasen
                     if (user != null) {
                         ref.child(String.valueOf(user.getEmail()).replace(".",",")).child("userinfo"). setValue(profile);
                     } else {
-                        System.out.println("You are not logged in");
+                        Toast.makeText(EditProfile.this, "You are not logged in",Toast.LENGTH_LONG).show();
                     }
-
-                    Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                    //Data er gemt i database og går tilbage til Viewprofile
                     finish();
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                }else {
+                    //Fejl  besked
+                    Toast.makeText(EditProfile.this, "Alle felter skal udfyldes",Toast.LENGTH_LONG).show();
                 }
             }
         });
-
-
-        //Menuen
-        Button btn_profile = findViewById(R.id.btn_profile_menu);
-        Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_groupe = findViewById(R.id.btn_groupes_menu);
-        Button btn_contacts = findViewById(R.id.btn_contacts_menu);
-
-        btn_contacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ContactList.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                finish();
-
-            }
-        });
-
-        btn_groupe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), groups_list.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                finish();
-
-            }
-        });
-
-        btn_meetings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                finish();
-            }
-        });
-
-        btn_profile.setBackgroundResource(R.drawable.button_pressed);
-
 
     }
 }

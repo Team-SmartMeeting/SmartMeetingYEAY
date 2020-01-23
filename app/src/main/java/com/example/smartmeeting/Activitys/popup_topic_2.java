@@ -25,8 +25,6 @@ public class popup_topic_2 extends AppCompatActivity {
         setContentView(R.layout.activity_popup_topic_2);
         Button bigBtn = findViewById(R.id.btn_big);
         bigBtn.setText("Add \n topic");
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
-        myAwesomeTextView.setText("Meetings");
 
 
 
@@ -34,6 +32,11 @@ public class popup_topic_2 extends AppCompatActivity {
         tv_tid = findViewById(R.id.pop_topic_tid);
         tv_topic = findViewById(R.id.pop_topic_description);
 
+        if (getIntent().hasExtra("agendatitel")){
+            tv_titel.setText(getIntent().getStringExtra("agendatitel"));
+            tv_tid.setText(getIntent().getStringExtra("agendatid"));
+            tv_topic.setText(getIntent().getStringExtra("agendabeskrivelse"));
+        }
 
 
 
@@ -43,6 +46,7 @@ public class popup_topic_2 extends AppCompatActivity {
 
                 Topic topic = new Topic(tv_titel.getText().toString(), tv_topic.getText().toString(), (Integer.parseInt(tv_tid.getText().toString())*60));
 
+                //LAVER TOPIC OM TIL ET JSON OBJEKT JEG KAN SENDE MED INTENTET
                 Gson gson = new Gson();
                 String myJson = gson.toJson(topic);
 
@@ -53,47 +57,6 @@ public class popup_topic_2 extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
-        //Menuen
-        Button btn_profile = findViewById(R.id.btn_profile_menu);
-        Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_groupe = findViewById(R.id.btn_groupes_menu);
-        Button btn_contacts = findViewById(R.id.btn_contacts_menu);
-
-        btn_contacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ContactList.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
-
-            }
-        });
-
-        btn_groupe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), groups_list.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
-
-            }
-        });
-
-        btn_meetings.setBackgroundResource(R.drawable.button_pressed);
-
-        btn_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
-            }
-        });
     }
+
 }

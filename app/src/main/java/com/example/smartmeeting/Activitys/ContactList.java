@@ -37,7 +37,6 @@ public class ContactList extends AppCompatActivity {
     ArrayList<String> kontakt_email = new ArrayList<>();
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +57,6 @@ public class ContactList extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), add_contact.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
             }
         });
 
@@ -67,23 +65,13 @@ public class ContactList extends AppCompatActivity {
         //Menuen
         Button btn_profile = findViewById(R.id.btn_profile_menu);
         Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_groupe = findViewById(R.id.btn_groupes_menu);
         Button btn_contacts = findViewById(R.id.btn_contacts_menu);
-
+        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_contacts_menu);
+        myAwesomeTextView.setText("Contacts");
 
         btn_contacts.setBackgroundResource(R.drawable.button_pressed);
 
 
-        btn_groupe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), groups_list.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
-
-            }
-        });
 
         btn_meetings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +98,8 @@ public class ContactList extends AppCompatActivity {
     private void checkSharedPreferences() {
         kontakter.clear();
         kontakt_names.clear();
+        kontakt_email.clear();
+        kontakt_phone.clear();
 
         int amountOfContact = mPreferences.getInt("nrofcontact", 0);
 

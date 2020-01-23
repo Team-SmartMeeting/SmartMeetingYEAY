@@ -17,6 +17,7 @@ public class MeetingDTO implements IMeetingDTO {
     private String creatingUser;
     private String startDate;
     private String startTime;
+    private String lokation;
     private boolean priotize;
     private int duration;
     private ArrayList<Topic> Agendalist;
@@ -34,6 +35,15 @@ public class MeetingDTO implements IMeetingDTO {
         this.startTime = startTime;
         this.startDate = startDate;
         this.duration = duration;
+
+    }
+
+    public MeetingDTO(String meetingName, String startTime, String startDate, int duration, String lokation){
+        this.meetingName = meetingName;
+        this.startTime = startTime;
+        this.startDate = startDate;
+        this.duration = duration;
+        this.lokation = lokation;
 
     }
 
@@ -55,6 +65,8 @@ public class MeetingDTO implements IMeetingDTO {
         this.meetingStatus = meetingStatus;
         this.agendaStatus = agendaStatus;
     }
+
+
 
 
     //GETTERS AND SETTERS
@@ -153,5 +165,13 @@ public class MeetingDTO implements IMeetingDTO {
 
     public void setAgendaStatus(int agendaStatus) {
         this.agendaStatus = agendaStatus;
+    }
+
+    public String getLokation() {
+        return lokation;
+    }
+
+    public void setLokation(String lokation) {
+        this.lokation = lokation;
     }
 }

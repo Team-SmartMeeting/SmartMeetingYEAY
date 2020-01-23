@@ -41,9 +41,6 @@ public class StartMeeting extends AppCompatActivity {
         topicList = new ArrayList<>();
         listItems = new ArrayList<>();
 
-//        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
-//        myAwesomeTextView.setText("Meetings");
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             email = user.getEmail();

@@ -26,15 +26,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Invite with Email"
+                android:fontFamily="sans-serif-thin"
+                android:textColor="#FFFFFF"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                >
+
+
+            </TextView>
+
 
             <EditText
                 android:id="@+id/edittext_email_to_inv"
                 android:layout_width="match_parent"
+                android:drawableLeft="@drawable/ic_email"
                 android:fontFamily="sans-serif-black"
-                android:textSize="14dp"
+                android:textSize="20dp"
                 android:textColor="#000000"
                 android:layout_height="wrap_content"
-                android:hint="Type Email"
+                android:hint="Type your email here"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
 
             <Button
@@ -48,8 +61,6 @@
                 android:layout_height="1dp"
                 android:layout_weight="1"></Space>
 
-
-            <include layout="@layout/toolbar" />
 
 
         </LinearLayout>

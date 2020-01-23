@@ -24,14 +24,16 @@ public class CustomAdapterMeetings extends BaseAdapter {
     ArrayList<String> date;
     ArrayList<String> startTime;
     ArrayList<String> id;
+    ArrayList<String> lokation;
 
-    public CustomAdapterMeetings(Context context, ArrayList<String> titel, ArrayList<String> time, ArrayList<String> date, ArrayList<String> startTime, ArrayList<String> ids){
+    public CustomAdapterMeetings(Context context, ArrayList<String> titel, ArrayList<String> time, ArrayList<String> date, ArrayList<String> startTime, ArrayList<String> lokation, ArrayList<String> ids){
 
         this.context = context;
         this.titel = titel;
         this.time = time;
         this.date = date;
         this.startTime = startTime;
+        this.lokation = lokation;
         this.id = ids;
 
     }
@@ -67,11 +69,13 @@ public class CustomAdapterMeetings extends BaseAdapter {
         TextView duration = (TextView) row.findViewById(R.id.item_meeting_durationi);
         TextView beskrivelse = (TextView) row.findViewById(R.id.item_meeting_date);
         TextView startTimeTV = (TextView) row.findViewById(R.id.item_meeting_start_time);
+        TextView lokationTV = (TextView) row.findViewById(R.id.item_location);
 
         titlen.setText(titel.get(position));
         duration.setText(time.get(position));
         beskrivelse.setText(date.get(position));
         startTimeTV.setText(startTime.get(position));
+        lokationTV.setText(lokation.get(position));
 
         return row;
     }

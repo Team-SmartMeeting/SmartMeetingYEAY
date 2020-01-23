@@ -71,7 +71,9 @@
                         android:layout_marginBottom="10dp"
                         android:drawableLeft="@drawable/ic_email"
                         android:drawablePadding="10dp"
-                        android:hint="Full name"
+                        android:textColor="#000000"
+                        android:text="Full name"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:inputType="textPersonName"
                         android:singleLine="true" />
 
@@ -91,7 +93,9 @@
                         android:layout_marginBottom="10dp"
                         android:drawableLeft="@drawable/ic_email"
                         android:drawablePadding="10dp"
-                        android:hint="SmartMeeting@gmail.com"
+                        android:textColor="#000000"
+                        android:text="SmartMeeting@gmail.com"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:inputType="textEmailAddress"
                         android:singleLine="true" />
 
@@ -111,7 +115,9 @@
                         android:layout_marginBottom="10dp"
                         android:drawableLeft="@drawable/ic_phone"
                         android:drawablePadding="10dp"
-                        android:hint="+45 3156 8872"
+                        android:textColor="#000000"
+                        android:text="+45 3156 8872"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                         android:inputType="phone"
                         android:singleLine="true" />
 <LinearLayout
@@ -154,6 +160,5 @@
         </RelativeLayout>
 
     </RelativeLayout>
-    <include layout="@layout/toolbar" />
 </LinearLayout>
 

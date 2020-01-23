@@ -3,6 +3,7 @@ package com.example.smartmeeting.Activitys;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
@@ -28,17 +29,21 @@ public class ShowContact extends Activity {
     EditText tv_phone;
     EditText tv_email;
 
+    boolean editing;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_contact);
+
+        editing = false;
 
         mPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         mEditor = mPreferences.edit();
 
         final Intent intent = getIntent();
 
-        Button edit_contact = findViewById(R.id.edit_contact);
+        final Button edit_contact = findViewById(R.id.edit_contact);
         Button save_contact = findViewById(R.id.save_contact);
 
         tv_name = findViewById(R.id.text_name);
@@ -56,9 +61,37 @@ public class ShowContact extends Activity {
         edit_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv_name.setEnabled(true);
-                tv_phone.setEnabled(true);
-                tv_email.setEnabled(true);
+
+                if (editing == false) {
+                    tv_name.setEnabled(true);
+                    tv_phone.setEnabled(true);
+                    tv_email.setEnabled(true);
+                    tv_name.setTextColor(Color.parseColor("#FFFFFF"));
+                    tv_phone.setTextColor(Color.parseColor("#FFFFFF"));
+                    tv_email.setTextColor(Color.parseColor("#FFFFFF"));
+                    edit_contact.setText("Cancel\nedit");
+                    editing = true;
+
+                } else {
+                    //Så man ikke kan edit
+                    tv_name.setEnabled(false);
+                    tv_phone.setEnabled(false);
+                    tv_email.setEnabled(false);
+
+                    //Sætter teksten tilbage
+                    tv_name.setText(intent.getStringExtra("name"));
+                    tv_phone.setText(intent.getStringExtra("number"));
+                    tv_email.setText(intent.getStringExtra("email"));
+
+                    //Sætter farven tilbage
+                    tv_name.setTextColor(Color.parseColor("#000000"));
+                    tv_phone.setTextColor(Color.parseColor("#000000"));
+                    tv_email.setTextColor(Color.parseColor("#000000"));
+
+                    //Ændre knap navn og edit boolean
+                    edit_contact.setText("Edit\ncontact");
+                    editing = false;
+                }
             }
         });
         save_contact.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +117,7 @@ public class ShowContact extends Activity {
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
                 }else {
-                    Toast.makeText(ShowContact.this, "Failed",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ShowContact.this, "You are missing a name or Number, Or email is invalid",Toast.LENGTH_LONG).show();
                 }
             }
         });

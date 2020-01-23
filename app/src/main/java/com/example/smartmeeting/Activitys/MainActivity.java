@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                                 Intent in = new Intent(getApplicationContext(), MeetingOverview.class);
                                 startActivity(in);
                                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                                finish();
 
                             } else {
                                 Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();

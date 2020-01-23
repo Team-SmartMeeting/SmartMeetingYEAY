@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -49,9 +50,6 @@ public class UserInvited extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_invited);
 
-        TextView myAwesomeTextView = (TextView)findViewById(R.id.btn_meeting_menu);
-        myAwesomeTextView.setText("Meetings");
-
         meets = new ArrayList<>();
         userList = new ArrayList<>();
 
@@ -59,9 +57,6 @@ public class UserInvited extends AppCompatActivity {
         gson = new Gson();
         myMeeting = gson.fromJson(getIntent().getStringExtra("mymeeting"), MeetingDTO.class);
 
-        //SÆTTER OVERSKRIFT
-        TextView tv = findViewById(R.id.metting_name);
-        tv.setText("Current meeting: " + myMeeting.getMeetingName());
 
         //FORBINDELSE TIL DATA BASEN
         database = FirebaseDatabase.getInstance();
@@ -74,6 +69,7 @@ public class UserInvited extends AppCompatActivity {
         Button btn_add_user = findViewById(R.id.btn_add_user);
         Button btn_big = findViewById(R.id.btn_big);
 
+        //CHECKER AT MAN ER LOGGET IND OG HENTER DEN EMAIL MAN ER LOGGET PÅ MED.
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             String email = user.getEmail();
@@ -92,6 +88,7 @@ public class UserInvited extends AppCompatActivity {
             }
         });
 
+        btn_big.setText("Create \n meeting ");
         btn_big.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,40 +110,14 @@ public class UserInvited extends AppCompatActivity {
             }
         });
 
-        //Menuen
-        Button btn_profile = findViewById(R.id.btn_profile_menu);
-        Button btn_meetings = findViewById(R.id.btn_meeting_menu);
-        Button btn_contacts = findViewById(R.id.btn_contacts_menu);
 
-        btn_contacts.setOnClickListener(new View.OnClickListener() {
+        //CLICKABLE LISTVIEW OBJEKT
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ContactList.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                emails.remove(position);
+                UpdateList();
 
-            }
-        });
-
-
-        btn_meetings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
-            }
-        });
-
-        btn_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ViewProfile.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
             }
         });
 
@@ -154,12 +125,12 @@ public class UserInvited extends AppCompatActivity {
 
     private void inviteUsersToMeeting(final MeetingDTO meetingToInvFrom)  {
 
-        MeetingDTO meetingOnUserDB = new MeetingDTO(meetingToInvFrom.getMeetingName(), meetingToInvFrom.getTime(), meetingToInvFrom.getDate(), meetingToInvFrom.getDuration());
+        MeetingDTO meetingOnUserDB = new MeetingDTO(meetingToInvFrom.getMeetingName(), meetingToInvFrom.getTime(), meetingToInvFrom.getDate(), meetingToInvFrom.getDuration(), meetingToInvFrom.getLokation());
 
 
         for (String emailTIlInvite : meetingToInvFrom.getInviteUserList()) {
 
-//                    bob(emailTIlInvite);
+
 
             DatabaseReference ref2 = database.getReference().child("Users").child(emailTIlInvite.replace(".", ",")).child("meetingsList");
 
@@ -173,6 +144,10 @@ public class UserInvited extends AppCompatActivity {
         ref2.child(key).setValue(meetingOnUserDB);
 
 
+
+        Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         finish();
 
@@ -200,6 +175,7 @@ public class UserInvited extends AppCompatActivity {
         // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
 
         listView.setAdapter(new CustomAdapterUserInvited(UserInvited.this, emails));
+
 
     }
 

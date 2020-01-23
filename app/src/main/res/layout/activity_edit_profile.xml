@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:background="@drawable/gradientbackground"
     tools:context=".Activitys.EditProfile">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,20 +16,28 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity=""
             android:layout_weight="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:textColor="#FFFFFF"
+                android:text="Edit Profile"
+                android:layout_gravity="center"
+                android:textSize="30dp">
+            </TextView>
             <Space
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_weight="1" >
-        </Space>
+            </Space>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -40,10 +49,10 @@
                 android:layout_marginLeft="20dp"
                 android:text="Name" />
 
-
             <EditText
                 android:id="@+id/name"
                 android:layout_width="match_parent"
+                android:drawableLeft="@drawable/ic_person_black_24dp"
                 android:layout_height="35dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -52,7 +61,7 @@
                 android:inputType="textPersonName"
                 android:padding="5dp"
                 android:background="@drawable/border"
-                android:hint="F.eks. Søren Aarup Poulsen" />
+                android:text="F.eks. Søren Aarup Poulsen" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -64,10 +73,10 @@
                 android:layout_marginLeft="20dp"
                 android:text="Phone number" />
 
-
             <EditText
                 android:id="@+id/phonenumber"
                 android:layout_width="match_parent"
+                android:drawableLeft="@drawable/ic_phone"
                 android:layout_height="35dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -76,8 +85,7 @@
                 android:inputType="phone"
                 android:padding="5dp"
                 android:background="@drawable/border"
-                android:hint="F.eks. 12345678" />
-
+                android:text="F.eks. 12345678" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -89,10 +97,10 @@
                 android:layout_marginLeft="20dp"
                 android:text="Company" />
 
-
             <EditText
                 android:id="@+id/company"
                 android:layout_width="match_parent"
+                android:drawableLeft="@drawable/ic_company"
                 android:layout_height="35dp"
                 android:layout_marginLeft="20dp"
                 android:textColor="#FFFFFF"
@@ -101,8 +109,7 @@
                 android:inputType="textPersonName"
                 android:padding="5dp"
                 android:background="@drawable/border"
-                android:hint="F.eks. Company Name" />
-
+                android:text="F.eks. Company Name" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -114,10 +121,10 @@
                 android:layout_marginLeft="20dp"
                 android:text="Address" />
 
-
             <EditText
                 android:id="@+id/address"
                 android:layout_width="match_parent"
+                android:drawableLeft="@drawable/ic_home_black_24dp"
                 android:layout_height="35dp"
                 android:textColor="#FFFFFF"
                 android:layout_marginLeft="20dp"
@@ -126,9 +133,7 @@
                 android:inputType="textPostalAddress"
                 android:padding="5dp"
                 android:background="@drawable/border"
-                android:hint="F.eks. Roadname 1" />
-
-
+                android:text="F.eks. Roadname 1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -140,10 +145,10 @@
                 android:layout_marginLeft="20dp"
                 android:text="City" />
 
-
             <EditText
                 android:id="@+id/city"
                 android:layout_width="match_parent"
+                android:drawableLeft="@drawable/ic_city"
                 android:layout_height="35dp"
                 android:layout_marginLeft="20dp"
                 android:textColor="#FFFFFF"
@@ -152,9 +157,7 @@
                 android:inputType="textPersonName"
                 android:padding="5dp"
                 android:background="@drawable/border"
-                android:hint="F.eks. Town City" />
-
-
+                android:text="F.eks. Town City" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -166,10 +169,10 @@
                 android:layout_marginLeft="20dp"
                 android:text="Zip code" />
 
-
             <EditText
                 android:id="@+id/zip_code"
                 android:layout_width="match_parent"
+                android:drawableLeft="@drawable/ic_zipcode"
                 android:layout_height="35dp"
                 android:layout_marginLeft="20dp"
                 android:textColor="#FFFFFF"
@@ -178,9 +181,7 @@
                 android:inputType="phone"
                 android:padding="5dp"
                 android:background="@drawable/border"
-                android:hint="F.eks. 1234" />
-
-
+                android:text="F.eks. 1234" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -196,6 +197,7 @@
             <EditText
                 android:id="@+id/country"
                 android:layout_width="match_parent"
+                android:drawableLeft="@drawable/ic_country"
                 android:layout_height="35dp"
                 android:layout_marginLeft="20dp"
                 android:textColor="#FFFFFF"
@@ -204,7 +206,7 @@
                 android:inputType="textPersonName"
                 android:padding="5dp"
                 android:background="@drawable/border"
-                android:hint="F.eks.Country name" />
+                android:text="F.eks.Country name" />
 
             <Space
                 android:layout_width="0dp"
@@ -212,12 +214,8 @@
                 android:layout_weight="6" >
             </Space>
 
-
-
-
-
-
         </LinearLayout>
+
 </ScrollView>
         <Button
             android:id="@+id/btn_big"
@@ -231,5 +229,4 @@
             android:layout_gravity="right">
         </Button>
 
-    <include layout="@layout/toolbar" />
 </LinearLayout>
