@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradientbackground"
+    tools:context=".Activitys.CreateMeeting">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Meeting"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            android:textColor="#FFFFFF"
+            android:fontFamily="sans-serif-thin"
+            >
+
+
+        </TextView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14dp"
+            android:textColor="#000000"
+            android:labelFor="@id/create_meeting_name_ed"
+            android:layout_marginLeft="20dp"
+            android:text="Meeting name" />
+
+
+        <EditText
+            android:id="@+id/create_meeting_name_ed"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="40dp"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:hint="F.eks. Weekly meetup" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14dp"
+            android:textColor="#000000"
+            android:labelFor="@id/create_meeting_duration_et"
+            android:layout_marginLeft="20dp"
+            android:text="Duration in min." />
+
+
+        <EditText
+            android:id="@+id/create_meeting_duration_et"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="40dp"
+            android:inputType="number"
+            android:padding="5dp"
+            android:hint="F.eks. 90" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14dp"
+            android:textColor="#000000"
+            android:labelFor="@id/create_meeting_duration_et"
+            android:layout_marginLeft="20dp"
+            android:text="Duration in min." />
+
+
+        <EditText
+            android:id="@+id/create_meeting_location_et"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="40dp"
+            android:inputType="text"
+            android:padding="5dp"
+            android:hint="F.eks. 'Lokale X1.80'" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14dp"
+            android:textColor="#000000"
+            android:labelFor="@id/create_meeting_date_et"
+            android:layout_marginLeft="20dp"
+            android:text="Date" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:padding="5dp">
+
+
+            <EditText
+                android:id="@+id/create_meeting_date_et"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="40dp"
+                android:inputType="date"
+                android:enabled="false"
+                android:padding="5dp"
+                android:hint="Click on the callender to the right" />
+
+            <Button
+                android:id="@+id/btn_date_et"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/calender" />
+
+        </FrameLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14dp"
+            android:textColor="#000000"
+            android:labelFor="@id/create_meeting_time_et"
+            android:layout_marginLeft="20dp"
+            android:text="Starting Time" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:padding="5dp">
+
+
+            <EditText
+                android:id="@+id/create_meeting_time_et"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="40dp"
+                android:inputType="time"
+                android:padding="5dp"
+                android:enabled="false"
+                android:hint="Click on the clock to the right" />
+
+            <Button
+                android:id="@+id/btn_time_et"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="right|center_vertical"
+                android:background="@drawable/clock" />
+
+
+        </FrameLayout>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="2" >
+        </Space>
+
+
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+
+            >
+            <Button
+                android:id="@+id/btn_doneEdit"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="10dp"
+                android:textColor="#FFFF"
+                android:textSize="10dp"
+                android:background="@drawable/btn_new_meeting_drawable"
+                android:text="Done"
+                android:layout_gravity="right">
+
+            </Button>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

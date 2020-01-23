@@ -24,6 +24,7 @@ public class MeetingDTO implements IMeetingDTO {
     private ArrayList<String> inviteUserList;
     private int meetingStatus;
     private int agendaStatus;
+    private String meetingID;
 
     public MeetingDTO(){
 
@@ -174,5 +175,13 @@ public class MeetingDTO implements IMeetingDTO {
 
     public void setLokation(String lokation) {
         this.lokation = lokation;
+    }
+
+    public String getMeetingID() {
+        return meetingID;
+    }
+
+    public void setMeetingID(String meetingID) {
+        this.meetingID = meetingID;
     }
 }

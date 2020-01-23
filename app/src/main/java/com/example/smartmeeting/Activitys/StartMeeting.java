@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 /**
@@ -152,6 +154,30 @@ public class StartMeeting extends AppCompatActivity {
                 else {
 
                 }
+            }
+        });
+
+
+
+
+
+        //KNAPPEN TIL AT EDIT MEETING
+        Button btneditmeeting = findViewById(R.id.btn_edit_meeting);
+        btneditmeeting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //MØDE I STRING FORMAT! (taget fra stackoverflow)
+                //-------------------------------------------------
+                theMeeting.setMeetingID(id);
+                Gson gson = new Gson();
+                String myJson = gson.toJson(theMeeting);
+                //-------------------------------------------------
+                Intent intent = new Intent(getApplicationContext(), editMeeting.class);
+                intent.putExtra("theMeeting", myJson);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+
             }
         });
     }

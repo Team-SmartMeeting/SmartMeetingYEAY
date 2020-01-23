@@ -99,5 +99,20 @@
 
             </ListView>
         </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btn_edit_meeting"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#FFFF"
+            android:textSize="10dp"
+            android:background="@drawable/btn_new_meeting_drawable"
+            android:text="Edit meeting"
+            android:layout_gravity="right">
+        </Button>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
