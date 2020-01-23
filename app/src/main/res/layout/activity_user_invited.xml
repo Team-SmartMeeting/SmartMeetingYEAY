@@ -113,6 +113,7 @@
                         android:layout_marginRight="10dp"
                         android:labelFor="@id/create_meeting_name_ed"
                         android:text="Invite user"
+                        android:paddingLeft="10dp"
                         android:layout_gravity="center"
                         android:gravity="center"
                         />
