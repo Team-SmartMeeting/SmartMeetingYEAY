@@ -51,7 +51,8 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/border"
                 android:textColor="#FFFFFF"
-                android:padding="5dp" />
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp" />
 
 
 
@@ -60,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:drawableLeft="@drawable/ic_phone"
+                android:gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
@@ -80,7 +82,8 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/border"
                 android:textColor="#FFFFFF"
-                android:padding="5dp" />
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp" />
 
 
 
@@ -94,7 +97,8 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/border"
                 android:textColor="#FFFFFF"
-                android:padding="5dp" />
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp" />
 
 
 
@@ -109,7 +113,8 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/border"
                 android:textColor="#FFFFFF"
-                android:padding="5dp" />
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp" />
 
 
 
@@ -124,7 +129,8 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/border"
                 android:textColor="#FFFFFF"
-                android:padding="5dp" />
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"  />
 
 
 
@@ -139,7 +145,8 @@
                 android:background="@drawable/border"
                 android:textColor="#FFFFFF"
                 android:inputType="phone"
-                android:padding="5dp" />
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp" />
 
 
 
@@ -155,7 +162,8 @@
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/border"
                 android:textColor="#FFFFFF"
-                android:padding="5dp" />
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp" />
 
             <Space
                 android:layout_width="0dp"
