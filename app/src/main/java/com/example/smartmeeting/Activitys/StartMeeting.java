@@ -214,6 +214,8 @@ public class StartMeeting extends AppCompatActivity {
 
     public void getMeeting(){
         id = getIntent().getStringExtra("meetingID");
+        System.out.println("________________________-");
+        System.out.println(id);
     }
 
     public Topic getTopic(int listNum){

@@ -93,8 +93,8 @@ public class MeetingOverview extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //                DatabaseReference test = mDatabase.getReference().child("Meetings");
-//                test.child("-LzCLJb6oh_NUItLTRJC").child("agendaStatus").setValue(0);
-//                test.child("-LzCLJb6oh_NUItLTRJC").child("meetingStatus").setValue(0);
+//                test.child("-LzJ3DLUEyq5CRCB17wS").child("agendaStatus").setValue(0);
+//                test.child("-LzJ3DLUEyq5CRCB17wS").child("meetingStatus").setValue(0);
 //                System.out.println("--------------------------------------");
 //            }
 //        });
