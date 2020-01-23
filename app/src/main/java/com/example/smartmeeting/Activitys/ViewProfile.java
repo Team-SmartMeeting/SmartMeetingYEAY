@@ -56,6 +56,21 @@ public class ViewProfile extends AppCompatActivity {
         Button editProfile = findViewById(R.id.btn_big);
         editProfile.setText("Edit \n Profile");
 
+        //LOGUD
+        Button btnlogud = findViewById(R.id.btn_logud);
+        btnlogud.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+
+
+            }
+        });
+
 
         //Checker om der er en user logget på
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

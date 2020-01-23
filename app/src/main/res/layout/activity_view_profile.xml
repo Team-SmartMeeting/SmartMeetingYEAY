@@ -165,6 +165,35 @@
 
         </LinearLayout>
         </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity=""
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_logud"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#FFFF"
+            android:textSize="10dp"
+            android:background="@drawable/btn_new_meeting_drawable"
+            android:text="Log out"
+            android:layout_gravity="right">
+        </Button>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="6">
+        </Space>
+
         <Button
             android:id="@+id/btn_big"
             android:layout_width="60dp"
@@ -176,5 +205,6 @@
             android:text="Button"
             android:layout_gravity="right">
         </Button>
+    </LinearLayout>
         <include layout="@layout/toolbar" />
 </LinearLayout>

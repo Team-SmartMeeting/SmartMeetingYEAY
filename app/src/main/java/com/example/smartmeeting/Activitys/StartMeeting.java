@@ -40,6 +40,8 @@ public class StartMeeting extends AppCompatActivity {
     private Button btnStart;
     private boolean firstTime = true;
 
+    MeetingDTO theMeeting;
+
 
 
     @Override
@@ -78,6 +80,7 @@ public class StartMeeting extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 MeetingDTO post = dataSnapshot.getValue(MeetingDTO.class);
+                theMeeting = post;
 
                 meetingOwner = post.getCreatingUser();
 
