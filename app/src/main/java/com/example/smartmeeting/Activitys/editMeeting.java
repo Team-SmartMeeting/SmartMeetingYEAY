@@ -1,5 +1,6 @@
 package com.example.smartmeeting.Activitys;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -13,6 +14,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.example.smartmeeting.MainLogic.DTO.Topic.Topic;
 import com.example.smartmeeting.MainLogic.DTO.meetings.MeetingDTO;
 import com.example.smartmeeting.R;
 import com.google.firebase.database.DatabaseReference;
@@ -62,6 +64,8 @@ public class editMeeting extends AppCompatActivity {
         meetingLokation.setText(myMeeting.getLokation());
         meetingTime.setText(myMeeting.getTime());
 
+
+        //DONE EDITING
         Button btn_doneedit = findViewById(R.id.btn_doneEdit);
         btn_doneedit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,11 +99,27 @@ public class editMeeting extends AppCompatActivity {
 
                 database.getReference("Meetings").child(myMeeting.getMeetingID()).setValue(myMeeting);
 
-                Intent intent = new Intent(getApplicationContext(), MeetingOverview.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 finish();
+            }
+        });
+
+        //EDIT AGENDA
+        Button btneditagenda = findViewById(R.id.btn_Editagenda);
+        btneditagenda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //MØDE I STRING FORMAT! (taget fra stackoverflow)
+                //-------------------------------------------------
+                String myJson = gson.toJson(myMeeting);
+                //-------------------------------------------------
+
+                Intent intent = new Intent(getApplicationContext(), Agenda.class);
+                intent.putExtra("editmeeting", myJson);
+                startActivityForResult(intent, 420);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -159,6 +179,19 @@ public class editMeeting extends AppCompatActivity {
             }
         });
 
+    }
+
+    //taget fra stackoverflow
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 420){
+            if (resultCode == RESULT_OK){
+                MeetingDTO thenewmeeting = gson.fromJson(data.getStringExtra("nymeeting"), MeetingDTO.class);
+                myMeeting = thenewmeeting;
+            }
+
+        }
     }
 
 

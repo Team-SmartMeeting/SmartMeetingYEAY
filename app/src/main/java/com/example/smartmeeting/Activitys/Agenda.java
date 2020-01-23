@@ -53,24 +53,37 @@ public class Agenda extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Meetings");
 
-        //henter mødet med Gson
-        gson = new Gson();
-        myMeeting = gson.fromJson(getIntent().getStringExtra("meeting"), MeetingDTO.class);
-
         //SÆTTER OVERSKRIFT
         TextView tv = findViewById(R.id.metting_name);
-        tv.setText("Current meeting: " + myMeeting.getMeetingName());
 
 
         TopicTitels = new ArrayList<>();
         TopicTime = new ArrayList<>();
         TopicDescription = new ArrayList<>();
         listView = findViewById(R.id.listview_agenda);
-
         //KNAPPERNE
         Button btnPaticipants = findViewById(R.id.btn_big);
         Button btnTopics = findViewById(R.id.btn_add_topic);
         btnPaticipants.setText("Add\n Participants");
+
+        //henter mødet med Gson
+        gson = new Gson();
+        if (getIntent().hasExtra("meeting")) {
+            myMeeting = gson.fromJson(getIntent().getStringExtra("meeting"), MeetingDTO.class);
+        }
+
+        if (getIntent().hasExtra("editmeeting")) {
+            myMeeting = gson.fromJson(getIntent().getStringExtra("editmeeting"), MeetingDTO.class);
+            agenda = myMeeting.getAgendalist();
+            btnPaticipants.setText("Done\nediting");
+            UpdateList();
+        }
+
+
+        //Skifter overskrift
+        tv.setText("Current meeting: " + myMeeting.getMeetingName());
+
+        //TOPICKNAP
         btnTopics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,23 +97,43 @@ public class Agenda extends AppCompatActivity {
         btnPaticipants.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     //GIR MØDET AGENDAEN
                     myMeeting.setAgendalist(agenda);
 
-                    //MØDE I STRING FORMAT! (taget fra stackoverflow)
-                    //-------------------------------------------------
-                    Gson gson = new Gson();
-                    String myJson = gson.toJson(myMeeting);
-                    //-------------------------------------------------
+                    if (getIntent().hasExtra("meeting")) {
 
-                    Intent intent = new Intent(getApplicationContext(), UserInvited.class);
-                    intent.putExtra("mymeeting", myJson);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        //MØDE I STRING FORMAT! (taget fra stackoverflow)
+                        //-------------------------------------------------
+                        Gson gson = new Gson();
+                        String myJson = gson.toJson(myMeeting);
+                        //-------------------------------------------------
 
-                    //INDSÆT TIL DATABASEN
+                        Intent intent = new Intent(getApplicationContext(), UserInvited.class);
+                        intent.putExtra("mymeeting", myJson);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
+                        //INDSÆT TIL DATABASEN
 //                    DatabaseReference meetingRef = ref.push();
 //                    meetingRef.setValue(myMeeting);
+                    }
+
+                    if (getIntent().hasExtra("editmeeting")) {
+
+                        database.getReference("Meetings").child(myMeeting.getMeetingID()).child("agendalist").setValue(myMeeting.getAgendalist());
+
+                        //LAVER TOPIC OM TIL ET JSON OBJEKT JEG KAN SENDE MED INTENTET
+                        String myJson = gson.toJson(myMeeting);
+
+                        Intent intent = new Intent();
+                        intent.putExtra("nymeeting", myJson);
+                        setResult(RESULT_OK, intent);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        finish();
+                    }
+
+
 
 
                 }
