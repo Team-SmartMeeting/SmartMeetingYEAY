@@ -192,10 +192,10 @@ public class StartMeeting extends AppCompatActivity {
 
         listItems.clear();
 
-            firstTime = false;
-            for (int i = 0;i < topicList.size();i++){
-                listItems.add(getTopicTitle(i));
-            }
+
+        for (int i = 0;i < topicList.size();i++){
+            listItems.add(getTopicTitle(i));
+        }
 
         if (!email.equals(meetingOwner)) {
             btnStart.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
