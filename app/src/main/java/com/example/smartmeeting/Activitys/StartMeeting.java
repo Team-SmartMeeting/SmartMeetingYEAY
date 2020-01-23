@@ -41,6 +41,7 @@ public class StartMeeting extends AppCompatActivity {
     private String id;
     private Button btnStart;
     private boolean firstTime = true;
+    Button btneditmeeting;
 
     MeetingDTO theMeeting;
 
@@ -54,6 +55,8 @@ public class StartMeeting extends AppCompatActivity {
 
         topicList = new ArrayList<>();
         listItems = new ArrayList<>();
+
+        btneditmeeting = findViewById(R.id.btn_edit_meeting);
 
         btnStart = findViewById(R.id.btn_start);
 
@@ -162,7 +165,6 @@ public class StartMeeting extends AppCompatActivity {
 
 
         //KNAPPEN TIL AT EDIT MEETING
-        Button btneditmeeting = findViewById(R.id.btn_edit_meeting);
         btneditmeeting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -200,6 +202,8 @@ public class StartMeeting extends AppCompatActivity {
         if (!email.equals(meetingOwner)) {
             btnStart.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
             btnStart.setClickable(false);
+            btneditmeeting.setClickable(false);
+            btneditmeeting.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
             btnStart.setText("Wait");
         }
 
