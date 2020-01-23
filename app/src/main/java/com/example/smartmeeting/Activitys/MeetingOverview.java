@@ -75,19 +75,19 @@ public class MeetingOverview extends AppCompatActivity {
         });
 
         //-----------------------------------------
-        //Må ikke slet, men kan bare udkommenteres, Søren
+        //Må ikke slettes, men kan bare udkommenteres, Søren
 
 
-        Button btnReset = findViewById(R.id.btn_reset);
-        btnReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatabaseReference test = mDatabase.getReference().child("Meetings");
-                test.child("-LzCLJb6oh_NUItLTRJC").child("agendaStatus").setValue(0);
-                test.child("-LzCLJb6oh_NUItLTRJC").child("meetingStatus").setValue(0);
-                System.out.println("--------------------------------------");
-            }
-        });
+//        Button btnReset = findViewById(R.id.btn_reset);
+//        btnReset.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                DatabaseReference test = mDatabase.getReference().child("Meetings");
+//                test.child("-LzCLJb6oh_NUItLTRJC").child("agendaStatus").setValue(0);
+//                test.child("-LzCLJb6oh_NUItLTRJC").child("meetingStatus").setValue(0);
+//                System.out.println("--------------------------------------");
+//            }
+//        });
 
 
         //-----------------------------------------
