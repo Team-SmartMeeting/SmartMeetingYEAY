@@ -34,8 +34,7 @@
                 android:fontFamily="sans-serif-light"
                 android:textColor="#FFFFFF"
                 android:text="Invite Participants"
-                android:textSize="30dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
             <Button
                 android:id="@+id/btn_invite_from_contact"

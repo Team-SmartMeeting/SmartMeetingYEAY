@@ -19,11 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="sans-serif-light"
             android:textColor="#FFFFFF"
             android:labelFor="@id/text_email"
             android:text="Add Topic"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             />
         <RelativeLayout
             android:layout_width="fill_parent"

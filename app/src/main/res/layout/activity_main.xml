@@ -21,8 +21,8 @@
                     android:text="Account Login"
                     android:fontFamily="sans-serif-light"
                     android:textColor="#FFFFFF"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-                    android:textStyle="bold"/>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                    />
 
                 <RelativeLayout
                     android:layout_width="fill_parent"

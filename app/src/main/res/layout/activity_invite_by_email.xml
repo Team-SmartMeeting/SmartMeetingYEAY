@@ -33,7 +33,7 @@
                 android:gravity="center"
                 android:fontFamily="sans-serif-light"
                 android:textColor="#FFFFFF"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                 >
 
 

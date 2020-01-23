@@ -21,10 +21,10 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-thin"
+            android:fontFamily="sans-serif-light"
             android:gravity="center"
             android:text="Meetings"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="#FFFFFF"
             app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
