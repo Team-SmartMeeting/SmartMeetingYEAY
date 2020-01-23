@@ -40,6 +40,7 @@ public class MeetingOverview extends AppCompatActivity {
     ArrayList<String> meetingTitels;
     ArrayList<String> meetingStartTime;
     ArrayList<String> meetingIDs;
+    ArrayList<String> meetingLokation;
 
     private FirebaseDatabase mDatabase;
     private DatabaseReference mReference;
@@ -68,6 +69,7 @@ public class MeetingOverview extends AppCompatActivity {
         meetingDate = new ArrayList<>();
         meetingIDs = new ArrayList<>();
         meetingTime = new ArrayList<>();
+        meetingLokation = new ArrayList<>();
 
 
 
@@ -106,6 +108,7 @@ public class MeetingOverview extends AppCompatActivity {
                     String snap_date = value.get("date").toString();
                     String snap_time = value.get("time").toString();
                     String snap_duration = value.get("duration").toString();
+                    String snap_lokation = value.get("lokation").toString();
 
                     //FÅR DURATION I MINUTTER I STEDET FOR SEKUNDER
                     int snap_duration_int = Integer.parseInt(snap_duration);
@@ -115,7 +118,7 @@ public class MeetingOverview extends AppCompatActivity {
                     meetingIDs.add(oneSnap.getKey());
 
 
-                    MeetingDTO hej = new MeetingDTO(snap_name, snap_time, snap_date, Integer.parseInt(snap_duration));
+                    MeetingDTO hej = new MeetingDTO(snap_name, snap_time, snap_date, Integer.parseInt(snap_duration), snap_lokation);
 
                     meetingsList.add(hej);
                 }
@@ -181,6 +184,7 @@ public class MeetingOverview extends AppCompatActivity {
         meetingTime.clear();
         meetingDate.clear();
         meetingStartTime.clear();
+        meetingLokation.clear();
 
         meetingsList.sort(new Comparator<MeetingDTO>() {
             @Override
@@ -211,13 +215,14 @@ public class MeetingOverview extends AppCompatActivity {
                     meetingTime.add(Integer.toString(meetingsList.get(i).getDuration()));
                     meetingDate.add(meetingsList.get(i).getDate());
                     meetingStartTime.add(meetingsList.get(i).getTime());
+                    meetingLokation.add(meetingsList.get(i).getLokation());
             }
         }
 
 
 
         // DER SKAL LAVES EN NY ADAPTER TIL AT SMIDE DATAEN IND I LISTEN
-        lw.setAdapter(new CustomAdapterMeetings(MeetingOverview.this,meetingTitels, meetingTime, meetingDate, meetingStartTime, meetingIDs));
+        lw.setAdapter(new CustomAdapterMeetings(MeetingOverview.this,meetingTitels, meetingTime, meetingDate, meetingStartTime, meetingLokation, meetingIDs));
 
 
         lw.setClickable(true);

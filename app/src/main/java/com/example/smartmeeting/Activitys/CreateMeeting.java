@@ -33,7 +33,7 @@ public class CreateMeeting extends AppCompatActivity {
     DatePickerDialog dpd;
     TimePickerDialog tpd;
 
-    TextView meetingDate, meetingName, meetingTime, meetingDuration;
+    TextView meetingDate, meetingName, meetingTime, meetingDuration, meetingLokation;
 
 
     @Override
@@ -47,6 +47,7 @@ public class CreateMeeting extends AppCompatActivity {
         meetingName = findViewById(R.id.create_meeting_name_ed);
         meetingDate = findViewById(R.id.create_meeting_date_et);
         meetingTime = findViewById(R.id.create_meeting_time_et);
+        meetingLokation = findViewById(R.id.create_meeting_location_et);
         meetingDuration = findViewById(R.id.create_meeting_duration_et);
         final Switch skifter = findViewById(R.id.switch1);
 
@@ -64,7 +65,7 @@ public class CreateMeeting extends AppCompatActivity {
 
                     //opretter et møde
                     MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), meetingDate.getText().toString(), meetingTime.getText().toString(), ischecked, (Integer.parseInt(meetingDuration.getText().toString())*60), 0, 0);
-
+                    meeting.setLokation(meetingLokation.getText().toString());
                     //MØDE I STRING FORMAT! (taget fra stackoverflow)
                     //-------------------------------------------------
                     Gson gson = new Gson();

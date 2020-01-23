@@ -64,6 +64,60 @@
             android:layout_weight="1" >
         </Space>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14dp"
+            android:textColor="#000000"
+            android:labelFor="@id/create_meeting_duration_et"
+            android:layout_marginLeft="20dp"
+            android:text="Duration in min." />
+
+
+        <EditText
+            android:id="@+id/create_meeting_duration_et"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="40dp"
+            android:inputType="number"
+            android:padding="5dp"
+            android:hint="F.eks. 90" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:textSize="14dp"
+            android:textColor="#000000"
+            android:labelFor="@id/create_meeting_duration_et"
+            android:layout_marginLeft="20dp"
+            android:text="Duration in min." />
+
+
+        <EditText
+            android:id="@+id/create_meeting_location_et"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="40dp"
+            android:inputType="text"
+            android:padding="5dp"
+            android:hint="F.eks. 'Lokale X1.80'" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" >
+        </Space>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -154,32 +208,7 @@
             android:layout_weight="1" >
         </Space>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:textSize="14dp"
-            android:textColor="#000000"
-            android:labelFor="@id/create_meeting_duration_et"
-            android:layout_marginLeft="20dp"
-            android:text="Duration in min." />
 
-
-        <EditText
-            android:id="@+id/create_meeting_duration_et"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="40dp"
-            android:inputType="number"
-            android:padding="5dp"
-            android:hint="F.eks. 90" />
-
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" >
-        </Space>
 
         <LinearLayout
             android:layout_width="match_parent"

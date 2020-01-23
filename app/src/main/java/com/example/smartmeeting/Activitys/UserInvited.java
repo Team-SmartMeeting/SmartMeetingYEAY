@@ -125,7 +125,7 @@ public class UserInvited extends AppCompatActivity {
 
     private void inviteUsersToMeeting(final MeetingDTO meetingToInvFrom)  {
 
-        MeetingDTO meetingOnUserDB = new MeetingDTO(meetingToInvFrom.getMeetingName(), meetingToInvFrom.getTime(), meetingToInvFrom.getDate(), meetingToInvFrom.getDuration());
+        MeetingDTO meetingOnUserDB = new MeetingDTO(meetingToInvFrom.getMeetingName(), meetingToInvFrom.getTime(), meetingToInvFrom.getDate(), meetingToInvFrom.getDuration(), meetingToInvFrom.getLokation());
 
 
         for (String emailTIlInvite : meetingToInvFrom.getInviteUserList()) {
