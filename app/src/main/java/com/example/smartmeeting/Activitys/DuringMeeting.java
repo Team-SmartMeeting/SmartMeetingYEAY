@@ -20,8 +20,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
+
+/**
+ * @author Andreas Østergaard Schliemann
+ */
 
 public class DuringMeeting extends AppCompatActivity{
 
@@ -43,29 +46,37 @@ public class DuringMeeting extends AppCompatActivity{
     private String meetingOwner;
     private int meetingTotalTime;
     private int topicTotalTime;
-    private int allocate;
-    MeetingDTO post;
+    private double allocate;
+    private MeetingDTO post;
+    private Button btnNext;
+    private boolean firstLoad = true;
+    private int allocatedTimer;
+    private ArrayList<Integer> timeList;
+    private ArrayList<Boolean> activetopics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_during_meeting);
+
         topicDescription = findViewById(R.id.topiccontent);
         topicTitle = findViewById(R.id.topictitle2);
         topicTimer = findViewById(R.id.clock);
         topicTotalTimer = findViewById(R.id.totaltimer);
         nexttopic = findViewById(R.id.nexttopic);
         llclock = findViewById(R.id.llclock);
-
+        btnNext = findViewById(R.id.btn_next);
 
         String id = getIntent().getStringExtra("meetingID");
 
-        System.out.println(id);
-
         topicList = new ArrayList<>();
+        timeList = new ArrayList<>();
+        activetopics = new ArrayList<>();
 
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Meetings").child(id);
+
+        meetingOwner = getIntent().getStringExtra("owner");
 
         //Tjekker om der er en user logget på
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -75,54 +86,46 @@ public class DuringMeeting extends AppCompatActivity{
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
         }
+        email = email.replace(".", ",");
 
 
-
-
+        //Denne tråd lytter til databasen og aktivere nedenstående metode,
+        //hver gang noget data, inden for det område den lytter til, ændre sig.
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 post = dataSnapshot.getValue(MeetingDTO.class);
 
-                meetingOwner = post.getCreatingUser();
-
-
-
-
-
 
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
                 }
-                else {
 
-                }
                 meetingTotalTime = post.getDuration();
                 topicListNum = topicList.size();
 
-
-
+                //Sender brugeren over til EndMeeting, hvis alle punkterne på dagsordnen er blevet gennemgået
                 if (post.getAgendaStatus() == topicListNum) {
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-
-
                     finish();
                 }
 
+                //Holder styr på hvilkt punkt på dagsordnen man er noget til
                 if (post.getAgendaStatus() != topicListCurNum){
                     topicListCurNum = post.getAgendaStatus();
                 }
-                load();
 
+                load();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
 
 
         //Denne tråd tæller sekunder, som bruges til at vise tiden i timeren
@@ -139,6 +142,14 @@ public class DuringMeeting extends AppCompatActivity{
                                 timerTRYTotal--;
                                 topicTimer.setText(toClock(timerTRY));
                                 topicTotalTimer.setText(toClock(timerTRYTotal));
+
+                                //Skifter timerens farve når tiden er ved at løbe ud
+                                if (timerTRY == allocatedTimer / 10) {
+                                    llclock.setBackgroundColor(Color.YELLOW);
+                                }
+                                if (timerTRY < 1){
+                                    llclock.setBackgroundColor(Color.RED);
+                                }
                             }
                         });
                     } catch (InterruptedException e) {
@@ -151,130 +162,119 @@ public class DuringMeeting extends AppCompatActivity{
         t.start();
 
 
-        load();
-
-
-
-
-
-        Button btnNext = findViewById(R.id.btn_next);
-
-        if (email.equals(meetingOwner)) {
-            btnNext.setClickable(true);
-        } else {
-            btnNext.setClickable(false);
-//            btnNext.setBackground();
-        }
-
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                email = email.replace(".", ",");
 
                 if (email.equals(meetingOwner)){
+                    activetopics.set(topicListCurNum, false);
+                    distributeTime();
                     topicListCurNum++;
 
                     mReference.child("agendaStatus").setValue(topicListCurNum);
-
-
-                    if (topicListCurNum == topicListNum){
-                        Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        finish();
-                    }
-                    else {
-                        timerTRY = getTopicTime(topicListCurNum);
-                        topicTitle.setText(getTopicTitle(topicListCurNum));
-                        topicDescription.setText(getTopicDesciption(topicListCurNum));
-                        topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
-
-                        if (topicListCurNum + 1 ==  topicListNum){
-                            nexttopic.setText("End of meeting");
-                        }
-                        else {
-                            nexttopic.setText(getTopicTitle(topicListCurNum + 1));
-                        }
-                    }
-                }
-                else {
-
                 }
             }
         });
     }
 
 
-
+    //Denne metode opdatere hele layoutet
     public void load(){
 
-        if (topicListCurNum == topicListNum) {
+        //Men kun hvis man er gået vidre til et nyt punkt på dagsordnen
+        if (!(topicListCurNum == topicListNum)) {
+            ProgressBar progressBar = findViewById(R.id.progressBardm);
+            progressBar.setVisibility(View.VISIBLE);
 
-        }
-        else {
+            //Det er kun den person, der har lavet mødet, meetingOwner, som kan gå vidre til næste punkt på dagsordnen
+            if (!email.equals(meetingOwner)) {
+                btnNext.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
+                btnNext.setClickable(false);
+                btnNext.setText("Wait");
+            }
 
-            Thread w = new Thread(){
-                public void run(){
-                    try {
-                        Thread.sleep(2000);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ProgressBar progressBar = findViewById(R.id.progressBardm);
-                                progressBar.setVisibility(View.VISIBLE);
-                                topicTitle.setText(getTopicTitle(topicListCurNum));
-                                topicDescription.setText(getTopicDesciption(topicListCurNum));
-                                topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
-                                if (topicListCurNum + 1 ==  topicListNum){
-                                    nexttopic.setText("End of meeting");
-                                }
-                                else {
-                                    nexttopic.setText(getTopicTitle(topicListCurNum + 1));
-                                }
-                                llclock.setBackgroundColor(Color.GREEN);
-                                for (int i = 0;i < topicListNum;i++){
-                                    totalTime += getTopicTime(i);
-                                }
-                                topicTotalTime = totalTime;
+            topicTitle.setText(getTopicTitle(topicListCurNum));
+            topicDescription.setText(getTopicDesciption(topicListCurNum));
+            topicTimer.setText(toClock(getTopicTime(topicListCurNum)));
+            llclock.setBackgroundColor(Color.GREEN);
 
-//                                allocateTime();
-                                timerTRYTotal = totalTime;
-                                timerTRY = (getTopicTime((topicListCurNum) * allocate));
+            if (topicListCurNum + 1 ==  topicListNum){
+                nexttopic.setText("End of meeting");
+            }
+            else {
+                nexttopic.setText(getTopicTitle(topicListCurNum + 1));
+            }
 
-                                topicTotalTimer.setText(toClock(totalTime));
-                                progressBar.setVisibility(View.GONE);
-                            }
-                        });
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+            //Dette stykke kode skal kun køres èn gang
+            if (firstLoad){
 
+                for (int i = 0;i < topicListNum;i++){
+                    timeList.add(getTopicTime(i));
+                    activetopics.add(true);
+                    totalTime += getTopicTime(i);
                 }
-            };
-            w.start();
+
+                topicTotalTime = totalTime;
+                allocateTime();
+
+                for (int i = 0;i < timeList.size();i++){
+                    allocatedTimer = (int) ((timeList.get(i)* allocate));
+                    timeList.set(i, allocatedTimer);
+                }
+
+                timerTRYTotal = meetingTotalTime;
+                firstLoad = false;
+            }
+
+            timerTRY = timeList.get(topicListCurNum);
+            topicTotalTimer.setText(toClock(timerTRYTotal));
+            progressBar.setVisibility(View.GONE);
         }
     }
 
 
 
 
+    //Allokerer tid til hvert punkt på dagsordnen proportionalt,
+    //hvid den totale tid for alle punkter på dagsordnen er længere
+    // eller kortere end tiden for hele mødet
     public void allocateTime(){
 
-        System.out.println("mTT " + meetingTotalTime);
-        System.out.println("tTT " + topicTotalTime);
-        allocate = (meetingTotalTime * 100 / (topicTotalTime / 60));
-        System.out.println("allo " + allocate);
+        double mtt = meetingTotalTime;
+        double ttt = topicTotalTime;
 
+        allocate = (mtt / ttt);
     }
 
+    //Tager den overskydende tid fra det afsluttede punkt på dagsordnen og
+    //fordeler det propotionalt ud over de resterende punkter
+    public void distributeTime(){
+
+        int remainingTime = timerTRY;
+        int remainingTopicsTime = 0;
+
+        for (int i = 0;i < activetopics.size();i++) {
+                if (activetopics.get(i)) {
+                remainingTopicsTime += timeList.get(i);
+            }
+        }
+
+        double rtm = remainingTime;
+        double rtp = remainingTopicsTime;
+        double factor = rtm / rtp + 1;
+
+        for (int i = 0;i < timeList.size();i++){
+            if (activetopics.get(i)) {
+                timeList.set(i, (int) Math.round(timeList.get(i) * factor));
+            }
+        }
+    }
 
 
 
 
     public String getMeeting(){
         String id = getIntent().getStringExtra("meetingID");
-
-        System.out.println(id);
         return id;
     }
 
@@ -314,5 +314,4 @@ public class DuringMeeting extends AppCompatActivity{
         }
         return clock;
     }
-
 }

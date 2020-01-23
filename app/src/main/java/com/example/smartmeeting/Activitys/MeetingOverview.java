@@ -83,6 +83,27 @@ public class MeetingOverview extends AppCompatActivity {
             }
         });
 
+
+        //-----------------------------------------
+        //Må ikke slettes, men kan bare udkommenteres, Søren
+
+
+//        Button btnReset = findViewById(R.id.btn_reset);
+//        btnReset.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                DatabaseReference test = mDatabase.getReference().child("Meetings");
+//                test.child("-LzCLJb6oh_NUItLTRJC").child("agendaStatus").setValue(0);
+//                test.child("-LzCLJb6oh_NUItLTRJC").child("meetingStatus").setValue(0);
+//                System.out.println("--------------------------------------");
+//            }
+//        });
+
+
+        //-----------------------------------------
+
+
+
         //CHECKER OM BRUGEREN ER LOGGET IND, HVIS DER INGEN BRUGER LOGGET IND, LUK APPEN.
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {

@@ -22,6 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
+/**
+ * @author Andreas Østergaard Schliemann
+ */
+
 public class StartMeeting extends AppCompatActivity {
 
     private FirebaseDatabase mDatabase;
@@ -31,23 +35,34 @@ public class StartMeeting extends AppCompatActivity {
     private ArrayList<String> listItems;
     private ArrayAdapter<String> arrayAdapter;
     private String email;
-    private String meetingOwner, id;
+    private String meetingOwner;
+    private String id;
+    private Button btnStart;
+    private boolean firstTime = true;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_start_meeting);
+
         topicList = new ArrayList<>();
         listItems = new ArrayList<>();
 
+        btnStart = findViewById(R.id.btn_start);
+
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //Tjekker om der er en user logget på
         if (user != null) {
             email = user.getEmail();
         } else {
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             finish();
         }
+        email = email.replace(".", ",");
 
         getMeeting();
 
@@ -55,40 +70,50 @@ public class StartMeeting extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Meetings").child(id);
 
+
+        //Denne tråd lytter til databasen og aktivere nedenstående metode,
+        //hver gang noget data, inden for det område den lytter til, ændre sig.
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 MeetingDTO post = dataSnapshot.getValue(MeetingDTO.class);
 
+                meetingOwner = post.getCreatingUser();
+
                 if (post.getAgendalist() != null){
                     topicList = post.getAgendalist();
                 }
-                else {
 
+                //Sender bruugeren hen til DuringMeeting, når møderholder starter mødet
+                if (firstTime){
+                    if (post.getMeetingStatus() == 1){
+                        firstTime = false;
+                        Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
+                        intent.putExtra("meetingID", id);
+                        intent.putExtra("owner", meetingOwner);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        finish();
+                    }
                 }
-                if (post.getMeetingStatus() == 1){
-                    Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
-                    intent.putExtra("meetingID", id);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    finish();
-                }
-                else if (post.getMeetingStatus() == 2){
+
+                //Sender brugeren hen til EndMeeting, hvis mødet er overstået
+                if (post.getMeetingStatus() == 2){
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     intent.putExtra("meetingID", id);
+                    intent.putExtra("owner", meetingOwner);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
-
                 }
-
 
                 final TextView meetingTitle = findViewById(R.id.meetingTitle);
                 String meetingTitleString;
                 meetingTitleString = post.getMeetingName();
                 meetingTitle.setText(meetingTitleString);
-                meetingOwner = post.getCreatingUser();
+
+                load();
             }
 
             @Override
@@ -98,32 +123,25 @@ public class StartMeeting extends AppCompatActivity {
         });
 
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start_meeting);
-
-
         topicListView = findViewById(R.id.listview_topics);
         arrayAdapter = new ArrayAdapter<>
                 (this, android.R.layout.simple_list_item_1, listItems);
 
 
-
-        load();
-
-
-
-        Button btnStart = findViewById(R.id.btn_start);
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 email = email.replace(".", ",");
 
+                //Det er kun mødeholder, der kan starte mødet
                 if (email.equals(meetingOwner)){
+                    firstTime = false;
 
                     mReference.child("meetingStatus").setValue(1);
 
                     Intent intent = new Intent(getApplicationContext(), DuringMeeting.class);
                     intent.putExtra("meetingID", id);
+                    intent.putExtra("owner", meetingOwner);
                     startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     finish();
@@ -137,37 +155,36 @@ public class StartMeeting extends AppCompatActivity {
 
 
 
+    //Opdatere layoutet
     public void load (){
-        Thread w = new Thread(){
-            public void run(){
-                try {
-                    Thread.sleep(3000);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            ProgressBar progressBar = findViewById(R.id.progressBarsm);
-                            progressBar.setVisibility(View.VISIBLE);
-                            for (int i = 0;i < topicList.size();i++){
-                                listItems.add(getTopicTitle(i));
-                            }
-                            topicListView.setAdapter(arrayAdapter);
-                            arrayAdapter.notifyDataSetChanged();
-                            progressBar.setVisibility(View.GONE);
-                        }
-                    });
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
+        ProgressBar progressBar = findViewById(R.id.progressBarsm);
+        progressBar.setVisibility(View.VISIBLE);
+
+        if (firstTime) {
+            firstTime = false;
+            for (int i = 0;i < topicList.size();i++){
+                listItems.add(getTopicTitle(i));
             }
-        };
-        w.start();
+        }
+
+        if (!email.equals(meetingOwner)) {
+            btnStart.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
+            btnStart.setClickable(false);
+            btnStart.setText("Wait");
+        }
+
+        topicListView.setAdapter(arrayAdapter);
+
+        arrayAdapter.notifyDataSetChanged();
+
+        progressBar.setVisibility(View.GONE);
     }
 
 
 
     public void getMeeting(){
         id = getIntent().getStringExtra("meetingID");
-        System.out.println(id);
     }
 
     public Topic getTopic(int listNum){
