@@ -77,7 +77,7 @@
             <EditText
                 android:id="@+id/phonenumber"
                 android:layout_width="match_parent"
-                android:drawableLeft="@drawable/ic_phone"
+                android:drawableLeft="@drawable/ic_phone2"
                 android:layout_height="35dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
