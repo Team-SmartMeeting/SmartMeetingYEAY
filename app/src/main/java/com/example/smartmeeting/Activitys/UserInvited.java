@@ -130,7 +130,7 @@ public class UserInvited extends AppCompatActivity {
 
         for (String emailTIlInvite : meetingToInvFrom.getInviteUserList()) {
 
-//                    bob(emailTIlInvite);
+
 
             DatabaseReference ref2 = database.getReference().child("Users").child(emailTIlInvite.replace(".", ",")).child("meetingsList");
 
