@@ -108,10 +108,7 @@ public class ShowContact extends Activity {
                     String contact_String = name + "     " + email + "     " + phoneNumber + "     " + (amountOfContact);
                     String nr = Integer.toString(amountOfContact);
 
-                    mEditor.putString(Integer.toString(intent.getIntExtra("posistion",0)),contact_String);
-                    mEditor.commit();
-                    amountOfContact++;
-                    mEditor.putInt("nrofcontact", (amountOfContact));
+                    mEditor.putString(Integer.toString(intent.getIntExtra("position",0)),contact_String);
                     mEditor.commit();
                     Toast.makeText(ShowContact.this, "Contact saved",Toast.LENGTH_LONG).show();
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
