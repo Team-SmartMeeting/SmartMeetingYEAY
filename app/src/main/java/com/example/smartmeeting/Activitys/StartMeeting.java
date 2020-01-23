@@ -190,12 +190,12 @@ public class StartMeeting extends AppCompatActivity {
         ProgressBar progressBar = findViewById(R.id.progressBarsm);
         progressBar.setVisibility(View.VISIBLE);
 
-        if (firstTime) {
+        listItems.clear();
+
             firstTime = false;
             for (int i = 0;i < topicList.size();i++){
                 listItems.add(getTopicTitle(i));
             }
-        }
 
         if (!email.equals(meetingOwner)) {
             btnStart.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
