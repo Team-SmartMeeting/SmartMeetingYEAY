@@ -59,12 +59,11 @@ public class MeetingDTO implements IMeetingDTO {
         this.agendaStatus = agendaStatus;
     }
 
-    public MeetingDTO(String meetingName, String startDate, String startTime, boolean priotize, int duration, int meetingStatus, int agendaStatus){
+    public MeetingDTO(String meetingName, String startDate, String startTime, int duration, int meetingStatus, int agendaStatus){
 
         this.meetingName = meetingName;
         this.startDate = startDate;
         this.startTime = startTime;
-        this.priotize = priotize;
         this.duration = duration;
         this.meetingStatus = meetingStatus;
         this.agendaStatus = agendaStatus;

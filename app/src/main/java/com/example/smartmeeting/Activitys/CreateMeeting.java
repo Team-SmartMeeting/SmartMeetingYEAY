@@ -49,7 +49,6 @@ public class CreateMeeting extends AppCompatActivity {
         meetingTime = findViewById(R.id.create_meeting_time_et);
         meetingLokation = findViewById(R.id.create_meeting_location_et);
         meetingDuration = findViewById(R.id.create_meeting_duration_et);
-        final Switch skifter = findViewById(R.id.switch1);
 
 
 
@@ -61,10 +60,8 @@ public class CreateMeeting extends AppCompatActivity {
                 //Checker om felter er tommme!
                 if (!meetingName.getText().toString().equals("") && !meetingDuration.getText().toString().equals("") && !meetingDate.getText().toString().equals("") && !meetingTime.getText().toString().equals("")) {
 
-                    boolean ischecked = skifter.isChecked();
-
                     //opretter et møde
-                    MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), meetingDate.getText().toString(), meetingTime.getText().toString(), ischecked, (Integer.parseInt(meetingDuration.getText().toString())*60), 0, 0);
+                    MeetingDTO meeting = new MeetingDTO(meetingName.getText().toString(), meetingDate.getText().toString(), meetingTime.getText().toString(), (Integer.parseInt(meetingDuration.getText().toString())*60), 0, 0);
                     meeting.setLokation(meetingLokation.getText().toString());
                     //MØDE I STRING FORMAT! (taget fra stackoverflow)
                     //-------------------------------------------------

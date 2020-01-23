@@ -210,64 +210,6 @@
 
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:gravity="center"
-                android:fontFamily="sans-serif-black"
-                android:textSize="14dp"
-                android:textColor="#000000"
-                android:inputType="number"
-                android:padding="5dp"
-                android:text="Allow participants to priortize topics?" />
-
-
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1" >
-                </Space>
-
-
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:switchMinWidth="75dp"
-                android:scaleX="1.5"
-                android:scaleY="1.5"
-                android:textOn="Enabled"
-                android:textOff="Disabled"/>
-
-
-
-
-
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_weight="1" >
-                </Space>
-
-
-
-        </LinearLayout>
 
 
         <Space
