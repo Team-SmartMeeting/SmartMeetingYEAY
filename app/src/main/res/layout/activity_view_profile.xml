@@ -49,7 +49,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/border"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:gravity="center_vertical"
                 android:paddingLeft="5dp" />
 
@@ -59,7 +59,7 @@
                 android:id="@+id/phonenumber"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:drawableLeft="@drawable/ic_phone"
+                android:drawableLeft="@drawable/ic_phone2"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
