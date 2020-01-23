@@ -1,6 +1,7 @@
 package com.example.smartmeeting.Activitys;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,6 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartmeeting.MainLogic.Adapters.CustomAdapterMeetings;
@@ -22,7 +24,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.Map;
 
 public class MeetingOverview extends AppCompatActivity {
@@ -86,6 +92,7 @@ public class MeetingOverview extends AppCompatActivity {
         mReference = mDatabase.getReference().child("Users").child(email.replace(".",",")).child("meetingsList");
 
         mReference.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 meetingsList.clear();
@@ -112,7 +119,11 @@ public class MeetingOverview extends AppCompatActivity {
 
                     meetingsList.add(hej);
                 }
-                updateList();
+                try {
+                    updateList();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -162,7 +173,8 @@ public class MeetingOverview extends AppCompatActivity {
 
     }
 
-    private void updateList() {
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void updateList() throws ParseException {
 
         //CLEAR ALLE ARRAYLISTER SÅ DE ER KLAR TIL AT BLIVE REPOSTET
         meetingTitels.clear();
@@ -170,12 +182,36 @@ public class MeetingOverview extends AppCompatActivity {
         meetingDate.clear();
         meetingStartTime.clear();
 
+        meetingsList.sort(new Comparator<MeetingDTO>() {
+            @Override
+            public int compare(MeetingDTO o1, MeetingDTO o2) {
+                return o1.getDate().compareTo(o2.getDate());
+            }
+        });
+
+        meetingsList.sort(new Comparator<MeetingDTO>() {
+            @Override
+            public int compare(MeetingDTO o1, MeetingDTO o2) {
+                if (o1.getDate().compareTo(o2.getDate()) == 0) {
+                    return o1.getTime().compareTo(o2.getTime());
+                }
+                return 0;
+            }
+        });
+
         //TILFØJER ALLE TOPICS TIL ARRAYLISTER
         for (int i = 0; i < meetingsList.size(); i++) {
-            meetingTitels.add(meetingsList.get(i).getMeetingName());
-            meetingTime.add(Integer.toString(meetingsList.get(i).getDuration()));
-            meetingDate.add(meetingsList.get(i).getDate());
-            meetingStartTime.add(meetingsList.get(i).getTime());
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date d = new Date();
+            String today = d.getDate() + "/" + (d.getMonth()+1) + "/" + (d.getYear()+1900);
+
+            if (!sdf.parse(meetingsList.get(i).getDate()).before(sdf.parse(today))) {
+                    meetingTitels.add(meetingsList.get(i).getMeetingName());
+                    meetingTime.add(Integer.toString(meetingsList.get(i).getDuration()));
+                    meetingDate.add(meetingsList.get(i).getDate());
+                    meetingStartTime.add(meetingsList.get(i).getTime());
+            }
         }
 
 

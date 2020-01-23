@@ -80,6 +80,8 @@ public class ViewProfile extends AppCompatActivity {
 
                 //Bruger data fra vores Datasnapshot og ændrer vores Textviews
                 UserDTO post = dataSnapshot.getValue(UserDTO.class);
+
+
                 textName.setText(post.getName());
                 textEmail.setText(post.getEmail());
                 textPhone.setText(post.getPhoneNumber());
@@ -128,6 +130,7 @@ public class ViewProfile extends AppCompatActivity {
 
             }
         });
+
 
         btn_meetings.setOnClickListener(new View.OnClickListener() {
             @Override
