@@ -8,7 +8,7 @@
     <string name="meesinglogin_text">Uden at være logget kan du følgende: </string>
 
     //navne til toolbaren:
-    <string name="app_name">SmartMeeting</string>
+    <string name="app_name">C7 SmartMeeting</string>
     <string name="create_meeting">Create meeting</string>
     <string name="create_agenda">Create agenda</string>
     <string name="add_topic">Add topic</string>
