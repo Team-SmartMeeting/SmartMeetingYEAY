@@ -11,7 +11,6 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
         <activity android:name=".Activitys.editMeeting"></activity>
         <activity android:name=".Activitys.Invite_Contacts" />
-        <activity android:name=".Activitys.InviteFromContacts" />
         <activity android:name=".Activitys.InviteByEmail" />
         <activity android:name=".Activitys.UserInvited" />
         <activity android:name=".Activitys.StartMeeting" />
