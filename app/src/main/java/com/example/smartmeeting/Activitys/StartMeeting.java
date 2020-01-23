@@ -55,6 +55,7 @@ public class StartMeeting extends AppCompatActivity {
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //Tjekker om der er en user logget på
         if (user != null) {
             email = user.getEmail();
         } else {
@@ -69,6 +70,9 @@ public class StartMeeting extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         mReference = mDatabase.getReference().child("Meetings").child(id);
 
+
+        //Denne tråd lytter til databasen og aktivere nedenstående metode,
+        //hver gang noget data, inden for det område den lytter til, ændre sig.
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -81,6 +85,7 @@ public class StartMeeting extends AppCompatActivity {
                     topicList = post.getAgendalist();
                 }
 
+                //Sender bruugeren hen til DuringMeeting, når møderholder starter mødet
                 if (firstTime){
                     if (post.getMeetingStatus() == 1){
                         firstTime = false;
@@ -93,6 +98,7 @@ public class StartMeeting extends AppCompatActivity {
                     }
                 }
 
+                //Sender brugeren hen til EndMeeting, hvis mødet er overstået
                 if (post.getMeetingStatus() == 2){
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     intent.putExtra("meetingID", id);
@@ -127,6 +133,7 @@ public class StartMeeting extends AppCompatActivity {
             public void onClick(View v) {
                 email = email.replace(".", ",");
 
+                //Det er kun mødeholder, der kan starte mødet
                 if (email.equals(meetingOwner)){
                     firstTime = false;
 
@@ -148,6 +155,7 @@ public class StartMeeting extends AppCompatActivity {
 
 
 
+    //Opdatere layoutet
     public void load (){
 
         ProgressBar progressBar = findViewById(R.id.progressBarsm);

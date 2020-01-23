@@ -89,7 +89,8 @@ public class DuringMeeting extends AppCompatActivity{
         email = email.replace(".", ",");
 
 
-
+        //Denne tråd lytter til databasen og aktivere nedenstående metode,
+        //hver gang noget data, inden for det område den lytter til, ændre sig.
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -104,6 +105,7 @@ public class DuringMeeting extends AppCompatActivity{
                 meetingTotalTime = post.getDuration();
                 topicListNum = topicList.size();
 
+                //Sender brugeren over til EndMeeting, hvis alle punkterne på dagsordnen er blevet gennemgået
                 if (post.getAgendaStatus() == topicListNum) {
                     Intent intent = new Intent(getApplicationContext(), EndMeeting.class);
                     startActivity(intent);
@@ -111,6 +113,7 @@ public class DuringMeeting extends AppCompatActivity{
                     finish();
                 }
 
+                //Holder styr på hvilkt punkt på dagsordnen man er noget til
                 if (post.getAgendaStatus() != topicListCurNum){
                     topicListCurNum = post.getAgendaStatus();
                 }
@@ -139,6 +142,8 @@ public class DuringMeeting extends AppCompatActivity{
                                 timerTRYTotal--;
                                 topicTimer.setText(toClock(timerTRY));
                                 topicTotalTimer.setText(toClock(timerTRYTotal));
+
+                                //Skifter timerens farve når tiden er ved at løbe ud
                                 if (timerTRY == allocatedTimer / 10) {
                                     llclock.setBackgroundColor(Color.YELLOW);
                                 }
@@ -161,10 +166,9 @@ public class DuringMeeting extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-
                 if (email.equals(meetingOwner)){
                     activetopics.set(topicListCurNum, false);
-                    destributeTime();
+                    distributeTime();
                     topicListCurNum++;
 
                     mReference.child("agendaStatus").setValue(topicListCurNum);
@@ -174,13 +178,15 @@ public class DuringMeeting extends AppCompatActivity{
     }
 
 
-
+    //Denne metode opdatere hele layoutet
     public void load(){
 
+        //Men kun hvis man er gået vidre til et nyt punkt på dagsordnen
         if (!(topicListCurNum == topicListNum)) {
             ProgressBar progressBar = findViewById(R.id.progressBardm);
             progressBar.setVisibility(View.VISIBLE);
 
+            //Det er kun den person, der har lavet mødet, meetingOwner, som kan gå vidre til næste punkt på dagsordnen
             if (!email.equals(meetingOwner)) {
                 btnNext.setBackgroundResource(R.drawable.btn_new_meeting_drawable_disable);
                 btnNext.setClickable(false);
@@ -199,6 +205,7 @@ public class DuringMeeting extends AppCompatActivity{
                 nexttopic.setText(getTopicTitle(topicListCurNum + 1));
             }
 
+            //Dette stykke kode skal kun køres èn gang
             if (firstLoad){
 
                 for (int i = 0;i < topicListNum;i++){
@@ -228,6 +235,9 @@ public class DuringMeeting extends AppCompatActivity{
 
 
 
+    //Allokerer tid til hvert punkt på dagsordnen proportionalt,
+    //hvid den totale tid for alle punkter på dagsordnen er længere
+    // eller kortere end tiden for hele mødet
     public void allocateTime(){
 
         double mtt = meetingTotalTime;
@@ -236,9 +246,10 @@ public class DuringMeeting extends AppCompatActivity{
         allocate = (mtt / ttt);
     }
 
-    public void destributeTime (){
+    //Tager den overskydende tid fra det afsluttede punkt på dagsordnen og
+    //fordeler det propotionalt ud over de resterende punkter
+    public void distributeTime(){
 
-        //int remainingTime = fromClock(topicTimer.getText().toString());
         int remainingTime = timerTRY;
         int remainingTopicsTime = 0;
 
@@ -303,19 +314,4 @@ public class DuringMeeting extends AppCompatActivity{
         }
         return clock;
     }
-
-    public int fromClock (String remainingTime) {
-        int time;
-
-        String split[] = remainingTime.split(":");
-
-        int minut = Integer.parseInt(split[0]);
-        int secund = Integer.parseInt(split[1]);
-
-        time = minut * 60 + secund;
-
-        System.out.println(time);
-        return time;
-    }
-
 }
