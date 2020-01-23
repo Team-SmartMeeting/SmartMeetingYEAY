@@ -140,6 +140,7 @@ public class MeetingOverview extends AppCompatActivity {
 
 
                     MeetingDTO hej = new MeetingDTO(snap_name, snap_time, snap_date, Integer.parseInt(snap_duration), snap_lokation);
+                    hej.setMeetingID(oneSnap.getKey());
 
                     meetingsList.add(hej);
                 }
@@ -252,7 +253,7 @@ public class MeetingOverview extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MeetingOverview.this, StartMeeting.class);
-                intent.putExtra("meetingID",meetingIDs.get(position));
+                intent.putExtra("meetingID",meetingsList.get(position).getMeetingID());
                 startActivity(intent);
 
             }
