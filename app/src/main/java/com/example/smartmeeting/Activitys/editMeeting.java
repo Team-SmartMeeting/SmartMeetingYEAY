@@ -81,7 +81,7 @@ public class editMeeting extends AppCompatActivity {
                 MeetingDTO meetingOnUserDB = new MeetingDTO(meetingName.getText().toString(), meetingTime.getText().toString(), meetingDate.getText().toString(), (Integer.parseInt(meetingDuration.getText().toString()))*60, meetingLokation.getText().toString());
 
 
-                if (myMeeting.getInviteUserList().size()<0) {
+                if (myMeeting.getInviteUserList().size()>0) {
                     for (String emailTIlInvite : myMeeting.getInviteUserList()) {
 
                         DatabaseReference ref2 = database.getReference().child("Users").child(emailTIlInvite.replace(".", ",")).child("meetingsList");
