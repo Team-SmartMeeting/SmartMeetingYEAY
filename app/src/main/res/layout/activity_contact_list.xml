@@ -23,8 +23,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Contacts"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-            android:fontFamily="sans-serif-thin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:fontFamily="sans-serif-light"
             android:textColor="#FFFFFF"
             app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 

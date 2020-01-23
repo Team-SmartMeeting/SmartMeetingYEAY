@@ -41,8 +41,9 @@
             android:layout_marginTop="30dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:fontFamily="sans-serif-thin"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
             android:textColor="#FFFFFF"
             android:text="Meeting title"
             ></TextView>

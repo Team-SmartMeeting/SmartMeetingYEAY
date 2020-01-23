@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:fontFamily="sans-serif-thin"
+                android:fontFamily="sans-serif-light"
                 android:textColor="#FFFFFF"
                 android:text="Invite Participants"
                 android:textSize="30dp"
@@ -40,13 +40,28 @@
             <Button
                 android:id="@+id/btn_invite_from_contact"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_new_meeting_drawable"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:paddingLeft="5dp"
                 android:text="Invite from Contact" />
+
 
             <Button
                 android:id="@+id/btn_invite_from_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_new_meeting_drawable"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:paddingLeft="5dp"
                 android:text="Invite with email" />
 
             <Space

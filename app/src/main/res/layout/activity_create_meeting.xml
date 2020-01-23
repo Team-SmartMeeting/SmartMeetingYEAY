@@ -27,14 +27,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Create Meeting"
-    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+    android:textAppearance="@style/TextAppearance.AppCompat.Display2"
     android:textColor="#FFFFFF"
-    android:fontFamily="sans-serif-thin"
+    android:fontFamily="sans-serif-light"
+    android:gravity="center"
     >
 
-
 </TextView>
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,14 +43,13 @@
             android:textColor="#000000"
             android:labelFor="@id/create_meeting_name_ed"
             android:layout_marginLeft="20dp"
-            android:text="Meeting titel" />
+            android:text="Meeting title" />
 
 
         <EditText
             android:id="@+id/create_meeting_name_ed"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-
             android:layout_marginLeft="20dp"
             android:layout_marginRight="40dp"
             android:inputType="textPersonName"

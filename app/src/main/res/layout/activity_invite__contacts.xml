@@ -22,8 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Contact"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            android:text="Contacts"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
         <ListView
@@ -57,11 +57,9 @@
 
             </Button>
 
-
         </LinearLayout>
 
     </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

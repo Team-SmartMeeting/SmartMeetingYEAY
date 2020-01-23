@@ -29,10 +29,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Invite with Email"
-                android:fontFamily="sans-serif-thin"
+                android:text="Invite with email"
+                android:gravity="center"
+                android:fontFamily="sans-serif-light"
                 android:textColor="#FFFFFF"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 >
 
 
@@ -44,6 +45,7 @@
                 android:layout_width="match_parent"
                 android:drawableLeft="@drawable/ic_email"
                 android:fontFamily="sans-serif-black"
+                android:layout_marginTop="20dp"
                 android:textSize="20dp"
                 android:textColor="#000000"
                 android:layout_height="wrap_content"
@@ -53,7 +55,14 @@
             <Button
                 android:id="@+id/btn_invite_from_email_lastbtn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_new_meeting_drawable"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:paddingLeft="5dp"
                 android:text="Invite with email" />
 
             <Space

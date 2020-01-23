@@ -27,9 +27,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit Meeting"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textColor="#FFFFFF"
-            android:fontFamily="sans-serif-thin"
+            android:gravity="center"
+            android:fontFamily="sans-serif-light"
             >
 
 

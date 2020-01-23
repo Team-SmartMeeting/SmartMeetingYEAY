@@ -27,11 +27,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-thin"
+                android:fontFamily="sans-serif-light"
                 android:textColor="#FFFFFF"
                 android:text="Edit Profile"
                 android:layout_gravity="center"
-                android:textSize="30dp">
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2">
+
             </TextView>
             <Space
             android:layout_width="0dp"
