@@ -44,17 +44,23 @@ public class popup_topic_2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Topic topic = new Topic(tv_titel.getText().toString(), tv_topic.getText().toString(), (Integer.parseInt(tv_tid.getText().toString())*60));
+                if (!tv_tid.getText().toString().equals("") && !tv_titel.getText().toString().equals("") && !tv_topic.getText().toString().equals("")) {
 
-                //LAVER TOPIC OM TIL ET JSON OBJEKT JEG KAN SENDE MED INTENTET
-                Gson gson = new Gson();
-                String myJson = gson.toJson(topic);
+                    Topic topic = new Topic(tv_titel.getText().toString(), tv_topic.getText().toString(), (Integer.parseInt(tv_tid.getText().toString()) * 60));
 
-                Intent intent = new Intent();
-                intent.putExtra("nytopic", myJson);
-                setResult(RESULT_OK, intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                finish();
+                    //LAVER TOPIC OM TIL ET JSON OBJEKT JEG KAN SENDE MED INTENTET
+                    Gson gson = new Gson();
+                    String myJson = gson.toJson(topic);
+
+                    Intent intent = new Intent();
+                    intent.putExtra("nytopic", myJson);
+                    setResult(RESULT_OK, intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    finish();
+                }
+
+
+
             }
         });
     }
