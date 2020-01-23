@@ -88,16 +88,16 @@ public class MeetingOverview extends AppCompatActivity {
         //Må ikke slettes, men kan bare udkommenteres, Søren
 
 
-//        Button btnReset = findViewById(R.id.btn_reset);
-//        btnReset.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                DatabaseReference test = mDatabase.getReference().child("Meetings");
-//                test.child("-LzJ3DLUEyq5CRCB17wS").child("agendaStatus").setValue(0);
-//                test.child("-LzJ3DLUEyq5CRCB17wS").child("meetingStatus").setValue(0);
-//                System.out.println("--------------------------------------");
-//            }
-//        });
+        Button btnReset = findViewById(R.id.btn_reset);
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference test = mDatabase.getReference().child("Meetings");
+                test.child("-LzJ3DLUEyq5CRCB17wS").child("agendaStatus").setValue(0);
+                test.child("-LzJ3DLUEyq5CRCB17wS").child("meetingStatus").setValue(0);
+                System.out.println("--------------------------------------");
+            }
+        });
 
 
         //-----------------------------------------

@@ -58,14 +58,14 @@
                 android:layout_gravity="right">
 
             </Button>
-<!--            <Button-->
-<!--                android:id="@+id/btn_reset"-->
-<!--                android:layout_width="60dp"-->
-<!--                android:layout_height="60dp"-->
-<!--                android:background="@drawable/btn_new_meeting_drawable"-->
-<!--                android:text="Reset">-->
+            <Button
+                android:id="@+id/btn_reset"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/btn_new_meeting_drawable"
+                android:text="Reset">
 
-<!--            </Button>-->
+            </Button>
 
 
         </LinearLayout>

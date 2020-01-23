@@ -180,8 +180,13 @@ public class DuringMeeting extends AppCompatActivity{
     //Denne metode opdatere hele layoutet
     public void load(){
 
-        activetopics.set(topicListCurNum - 1, false);
-        distributeTime();
+        if (firstLoad){
+
+        }
+        else {
+            activetopics.set(topicListCurNum - 1, false);
+            distributeTime();
+        }
 
         //Men kun hvis man er gået vidre til et nyt punkt på dagsordnen
         if (!(topicListCurNum == topicListNum)) {
