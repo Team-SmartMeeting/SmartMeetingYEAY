@@ -74,9 +74,14 @@ public class Agenda extends AppCompatActivity {
 
         if (getIntent().hasExtra("editmeeting")) {
             myMeeting = gson.fromJson(getIntent().getStringExtra("editmeeting"), MeetingDTO.class);
-            agenda = myMeeting.getAgendalist();
+            if (myMeeting.getAgendalist() != null) {
+                agenda = myMeeting.getAgendalist();
+            }
+
             btnPaticipants.setText("Done\nediting");
+
             UpdateList();
+
         }
 
 
